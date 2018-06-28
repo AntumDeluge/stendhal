@@ -1,6 +1,6 @@
 /* $Id$ */
 /***************************************************************************
- *                   (C) Copyright 2003-2023 - Stendhal                    *
+ *                   (C) Copyright 2003-2024 - Stendhal                    *
  ***************************************************************************
  ***************************************************************************
  *                                                                         *
@@ -24,13 +24,19 @@ public class CollisionMap {
 	private final int width;
 	private final int height;
 	private final BitSet[] colls;
+	private final BitSet[] ranged_colls;
+	private final BitSet[] table_colls;
 
 	public CollisionMap(final int width, final int height) {
 		this.width = width;
 		this.height = height;
 		colls = new BitSet[width];
+		ranged_colls = new BitSet[width];
+		table_colls = new BitSet[width];
 		for (int i = 0; i < width; i++) {
 			colls[i] = new BitSet();
+			ranged_colls[i] = new BitSet();
+			table_colls[i] = new BitSet();
 		}
 
 	}
@@ -58,9 +64,43 @@ public class CollisionMap {
 		return colls[i].get(j);
 	}
 
+	public final int getType(final int i, final int j) {
+		if (get(i, j)) {
+			if (ranged_colls[i].get(j)) {
+				return 2;
+			} else if (table_colls[i].get(j)) {
+				return 3;
+			}
+		}
+
+		return 1;
+	}
+
 	public void set(final int i, final int j) {
 
 		colls[i].set(j);
+	}
+
+	/**
+	 * Collision types:
+	 *   1: standard
+	 *   2: ranged allowed
+	 *   3: table
+	 *
+	 * @param i
+	 * @param j
+	 * @param collisionType
+	 */
+	public void set(final int i, final int j, final int collisionType) {
+		switch (collisionType) {
+		case 1:
+			set(i, j);
+			break;
+		case 2:
+			ranged_colls[i].set(j);
+		default:
+			break;
+		}
 	}
 
 	public boolean collides(final int x, final int y, final int width, final int height) {
@@ -83,6 +123,8 @@ public class CollisionMap {
 	public void clear() {
 		for (int i = 0; i < this.width; i++) {
 			colls[i].clear();
+			ranged_colls[i].clear();
+			table_colls[i].clear();
 		}
 
 	}
