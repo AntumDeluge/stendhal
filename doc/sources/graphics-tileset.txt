@@ -626,6 +626,11 @@ steps.*              Kimmo Rundelin (kiheru); CC BY-SA 3.0; Stendhal
 vertical_dark.png    Kimmo Rundelin (kiheru); CC BY-SA 3.0; Stendhal
 vertical_pale.png    Kimmo Rundelin (kiheru); CC BY-SA 3.0; Stendhal
 
+tiled/tileset/light/
+
+shadows.png         Jordan Irwin (AntumDeluge); CC0; Stendhal
+shadows-opaque-png  Jordan Irwin (AntumDeluge); CC0; Stendhal
+
 tiled/tileset/ground/ridge/
 
 earth_dark.png  Kimmo Rundelin (kiheru); CC BY-SA 3.0; Stendhal
