@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define RootDir "..\.."
-#define MyAppName "Stendhal"
+#define MyAppName "Stendhal (safe)"
 #define MyAppVersion "1.32.5"
 #define MyAppPublisher "Faiumoni e. V."
 #define MyAppURL "https://stendhalgame.org/"
@@ -28,7 +28,7 @@ LicenseFile="{#RootDir}\LICENSE.txt"
 ;PrivilegesRequired=lowest
 PrivilegesRequiredOverridesAllowed=dialog
 OutputDir="{#RootDir}\build"
-OutputBaseFilename="stendhal-{#MyAppVersion}-setup"
+OutputBaseFilename="stendhal-noblood-{#MyAppVersion}-setup"
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
@@ -46,7 +46,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 
 [Files]
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
-Source: "{#RootDir}\build\stendhal-{#MyAppVersion}\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "{#RootDir}\build\stendhal-noblood-{#MyAppVersion}\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "{#RootDir}\buildtools\launch4j\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
 
 [Icons]
