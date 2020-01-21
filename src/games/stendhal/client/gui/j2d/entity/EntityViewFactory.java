@@ -19,7 +19,6 @@ import org.apache.log4j.Logger;
 
 import games.stendhal.client.Triple;
 import games.stendhal.client.entity.IEntity;
-import games.stendhal.client.gui.wt.core.WtWindowManager;
 
 /*
  * The entity views are generic, but we don't simply have sufficient data to
@@ -78,10 +77,7 @@ public class EntityViewFactory {
 
 			// hack to hide blood
 			if (entityClass == Blood2DView.class) {
-				boolean showBlood = WtWindowManager.getInstance().getPropertyBoolean("gamescreen.blood", true);
-				if (!showBlood) {
-					return null;
-				}
+				return null;
 			}
 
 			final EntityView<IEntity> en = entityClass.newInstance();
