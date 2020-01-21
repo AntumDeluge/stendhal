@@ -44,7 +44,7 @@
 	<property name="build_client" value="${buildroot}/build_client"/>
 
 	<property name="client_data" value="stendhal-data-${version}.jar"/>
-	<property name="client_jarname" value="stendhal-${version}.jar"/>
+	<property name="client_jarname" value="${distname}.jar"/>
 	<property name="client_sound_data" value="stendhal-sound-data-${version}.jar"/>
 	<property name="client_music_data" value="stendhal-music-data-${version}.jar"/>
 	<property name="client_starter_jarname" value="stendhal-starter-${version}.jar"/>
@@ -650,113 +650,113 @@
 	</target>
 
 	<target name="dist_client_binary" depends="client_build">
-		<mkdir dir="${buildroot}/stendhal-${version}"/>
-		<mkdir dir="${buildroot}/stendhal-${version}/lib"/>
-		<mkdir dir="${buildroot}/stendhal-${version}/log"/>
+		<mkdir dir="${buildroot}/${distname}"/>
+		<mkdir dir="${buildroot}/${distname}/lib"/>
+		<mkdir dir="${buildroot}/${distname}/log"/>
 
-		<copy tofile="${buildroot}/stendhal-${version}/stendhal-starter.jar" file="${lib}/${client_starter_jarname}"/>
-		<copy tofile="${buildroot}/stendhal-${version}/lib/stendhal.jar" file="${lib}/${client_jarname}"/>
-		<copy tofile="${buildroot}/stendhal-${version}/lib/log4j.jar" file="${log4j_jar}"/>
-		<copy tofile="${buildroot}/stendhal-${version}/lib/marauroa.jar" file="${marauroa_jar}"/>
-		<copy tofile="${buildroot}/stendhal-${version}/lib/jorbis.jar" file="${jorbis_jar}"/>
-		<copy tofile="${buildroot}/stendhal-${version}/lib/stendhal-sound-data.jar" file="${lib}/${client_sound_data}"/>
-		<copy tofile="${buildroot}/stendhal-${version}/lib/stendhal-music-data.jar" file="${lib}/${client_music_data}"/>
-		<copy tofile="${buildroot}/stendhal-${version}/lib/stendhal-data.jar" file="${lib}/${client_data}"/>
-		<copy todir="${buildroot}/stendhal-${version}/lib">
+		<copy tofile="${buildroot}/${distname}/stendhal-starter.jar" file="${lib}/${client_starter_jarname}"/>
+		<copy tofile="${buildroot}/${distname}/lib/stendhal.jar" file="${lib}/${client_jarname}"/>
+		<copy tofile="${buildroot}/${distname}/lib/log4j.jar" file="${log4j_jar}"/>
+		<copy tofile="${buildroot}/${distname}/lib/marauroa.jar" file="${marauroa_jar}"/>
+		<copy tofile="${buildroot}/${distname}/lib/jorbis.jar" file="${jorbis_jar}"/>
+		<copy tofile="${buildroot}/${distname}/lib/stendhal-sound-data.jar" file="${lib}/${client_sound_data}"/>
+		<copy tofile="${buildroot}/${distname}/lib/stendhal-music-data.jar" file="${lib}/${client_music_data}"/>
+		<copy tofile="${buildroot}/${distname}/lib/stendhal-data.jar" file="${lib}/${client_data}"/>
+		<copy todir="${buildroot}/${distname}/lib">
 			<fileset dir="libs">
 				<include name="*.txt"/>
 				<include name="*.html"/>
 			</fileset>
 		</copy>
-		<copy todir="${buildroot}/stendhal-${version}/doc">
+		<copy todir="${buildroot}/${distname}/doc">
 			<fileset dir="doc"/>
 			<fileset dir="." includes="LICENSE.txt"/>
 		</copy>
-		<touch file="${buildroot}/stendhal-${version}/log/stendhal.txt" />
-		<copy todir="${buildroot}/stendhal-${version}" file="README.md"/>
-		<zip destfile="${buildroot}/stendhal-${version}.zip">
-			<zipfileset dir="${buildroot}/stendhal-${version}" excludes="stendhal-starter.jar"/>
-			<zipfileset dir="${buildroot}/stendhal-${version}" includes="stendhal-starter.jar" filemode="755"/>
+		<touch file="${buildroot}/${distname}/log/stendhal.txt" />
+		<copy todir="${buildroot}/${distname}" file="README.md"/>
+		<zip destfile="${buildroot}/${distname}.zip">
+			<zipfileset dir="${buildroot}/${distname}" excludes="stendhal-starter.jar"/>
+			<zipfileset dir="${buildroot}/${distname}" includes="stendhal-starter.jar" filemode="755"/>
 			<zipfileset dir="buildtools/launch4j" includes="stendhal-starter.exe" filemode="755"/>
 		</zip>
 		<antcall target="win_installer" if:true="${os.windows}" />
-		<delete dir="${buildroot}/stendhal-${version}"/>
+		<delete dir="${buildroot}/${distname}"/>
 	</target>
 
 
 	<target name="dist_client_starter" depends="client_build">
-		<mkdir dir="${buildroot}/stendhal-${version}"/>
-		<copy todir="${buildroot}/stendhal-${version}" file="${lib}/${client_starter_jarname}"/>
-		<copy todir="${buildroot}/stendhal-${version}/lib">
+		<mkdir dir="${buildroot}/${distname}"/>
+		<copy todir="${buildroot}/${distname}" file="${lib}/${client_starter_jarname}"/>
+		<copy todir="${buildroot}/${distname}/lib">
 			<fileset dir="libs">
 				<include name="*.txt"/>
 				<include name="*.html"/>
 			</fileset>
 		</copy>
-		<copy todir="${buildroot}/stendhal-${version}/doc">
+		<copy todir="${buildroot}/${distname}/doc">
 			<fileset dir="doc"/>
 			<fileset dir="." includes="LICENSE.txt"/>
 		</copy>
-		<copy todir="${buildroot}/stendhal-${version}" file="README.md"/>
+		<copy todir="${buildroot}/${distname}" file="README.md"/>
 		<zip destfile="${buildroot}/stendhal-starter-${version}.zip">
-			<zipfileset dir="${buildroot}/stendhal-${version}" excludes="${client_starter_jarname}"/>
-			<zipfileset dir="${buildroot}/stendhal-${version}" includes="${client_starter_jarname}" filemode="755"/>
+			<zipfileset dir="${buildroot}/${distname}" excludes="${client_starter_jarname}"/>
+			<zipfileset dir="${buildroot}/${distname}" includes="${client_starter_jarname}" filemode="755"/>
 		</zip>
-		<delete dir="${buildroot}/stendhal-${version}"/>
+		<delete dir="${buildroot}/${distname}"/>
 	</target>
 
 	<target name="dist_source">
-		<mkdir dir="${buildroot}/stendhal-${version}-src"/>
+		<mkdir dir="${buildroot}/${distname}-src"/>
 
-		<copy todir="${buildroot}/stendhal-${version}-src/src">
+		<copy todir="${buildroot}/${distname}-src/src">
 			<fileset dir="src"/>
 		</copy>
 
-		<mkdir dir="${buildroot}/stendhal-${version}-src/libs"/>
-		<copy todir="${buildroot}/stendhal-${version}-src/libs">
+		<mkdir dir="${buildroot}/${distname}-src/libs"/>
+		<copy todir="${buildroot}/${distname}-src/libs">
 			<fileset dir="libs"/>
 		</copy>
 
-		<copy todir="${buildroot}/stendhal-${version}-src/tests">
+		<copy todir="${buildroot}/${distname}-src/tests">
 			<fileset dir="tests"/>
 		</copy>
 
-		<copy todir="${buildroot}/stendhal-${version}-src/data">
+		<copy todir="${buildroot}/${distname}-src/data">
 			<fileset dir="data">
 			</fileset>
 		</copy>
 
-		<copy todir="${buildroot}/stendhal-${version}-src/tiled">
+		<copy todir="${buildroot}/${distname}-src/tiled">
 			<fileset dir="${tiled}">
 				<exclude name="world/**" />
 			</fileset>
 		</copy>
 
-		<copy todir="${buildroot}/stendhal-${version}-src" file="build.xml"/>
-		<copy todir="${buildroot}/stendhal-${version}-src" file="build.ant.properties"/>
+		<copy todir="${buildroot}/${distname}-src" file="build.xml"/>
+		<copy todir="${buildroot}/${distname}-src" file="build.ant.properties"/>
 
-		<copy todir="${buildroot}/stendhal-${version}-src" file="README.md"/>
-		<copy todir="${buildroot}/stendhal-${version}-src" file="LICENSE.txt"/>
-		<copy todir="${buildroot}/stendhal-${version}-src" file="runserver.bat"/>
-		<copy todir="${buildroot}/stendhal-${version}-src" file="runserver.sh"/>
-		<copy todir="${buildroot}/stendhal-${version}-src/lib">
+		<copy todir="${buildroot}/${distname}-src" file="README.md"/>
+		<copy todir="${buildroot}/${distname}-src" file="LICENSE.txt"/>
+		<copy todir="${buildroot}/${distname}-src" file="runserver.bat"/>
+		<copy todir="${buildroot}/${distname}-src" file="runserver.sh"/>
+		<copy todir="${buildroot}/${distname}-src/lib">
 			<fileset dir="libs">
 				<include name="*.txt"/>
 				<include name="*.html"/>
 			</fileset>
 		</copy>
-		<copy todir="${buildroot}/stendhal-${version}-src/doc">
+		<copy todir="${buildroot}/${distname}-src/doc">
 			<fileset dir="doc"/>
 			<fileset dir="." includes="LICENSE.txt"/>
 		</copy>
 
-		<tar destfile="${buildroot}/stendhal-${version}-src.tar.gz" compression="gzip" longfile="gnu">
-			<tarfileset dir="${buildroot}/stendhal-${version}-src" prefix="stendhal-${version}">
+		<tar destfile="${buildroot}/${distname}-src.tar.gz" compression="gzip" longfile="gnu">
+			<tarfileset dir="${buildroot}/${distname}-src" prefix="${distname}">
 				<exclude name="**/CVS/**"/>
 			</tarfileset>
 		</tar>
 
-		<delete dir="${buildroot}/stendhal-${version}-src"/>
+		<delete dir="${buildroot}/${distname}-src"/>
 	</target>
 
 	<target name="win_installer" description="creates a Windows installer executable using Inno Setup">
@@ -930,7 +930,7 @@
 			<arg value="-output" />
 			<arg value="${build}/lib/stendhal-diff-${version.old}-${version}.jar" />
 			<arg value="${build-archive}/lib/stendhal.jar" />
-			<arg value="${build}/lib/stendhal-${version}.jar" />
+			<arg value="${build}/lib/${distname}.jar" />
 		</java>
 		<java jar="libs/jardiff.jar" fork="true">
 			<arg value="-nonminimal" />
