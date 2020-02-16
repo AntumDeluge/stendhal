@@ -32,7 +32,6 @@ import games.stendhal.server.entity.npc.action.SayRequiredItemAction;
 import games.stendhal.server.entity.npc.action.SayTimeRemainingAction;
 import games.stendhal.server.entity.npc.action.SetQuestAction;
 import games.stendhal.server.entity.npc.action.SetQuestToTimeStampAction;
-import games.stendhal.server.entity.npc.action.StartRecordingRandomItemCollectionAction;
 import games.stendhal.server.entity.npc.condition.AndCondition;
 import games.stendhal.server.entity.npc.condition.NotCondition;
 import games.stendhal.server.entity.npc.condition.OrCondition;
@@ -66,7 +65,7 @@ import games.stendhal.server.util.TimeUtil;
  * REPETITIONS:
  * <li> once a day
  */
-public class DailyItemQuest extends AbstractQuest {
+public class DailyItemQuest extends RepeatableCollectorQuest {
 
 	private static DailyItemQuest instance;
 
@@ -83,6 +82,9 @@ public class DailyItemQuest extends AbstractQuest {
 	 * it better, go ahead. *
 	 */
 	private static Map<String,Integer> items;
+
+	private static final String startMessage = "Ados is in need of supplies. Go fetch [item]"
+			+ " and say #complete, once you've brought it.";
 
 
 	/**
@@ -320,17 +322,6 @@ public class DailyItemQuest extends AbstractQuest {
 		return items.containsKey(item);
 	}
 
-	private ChatAction startQuestAction() {
-		// common place to get the start quest actions as we can both starts it and abort and start again
-
-		final List<ChatAction> actions = new LinkedList<ChatAction>();
-		actions.add(new StartRecordingRandomItemCollectionAction(QUEST_SLOT,0,items,"Ados is in need of supplies. Go fetch [item]"
-				+ " and say #complete, once you've brought it."));
-		actions.add(new SetQuestToTimeStampAction(QUEST_SLOT, 1));
-
-		return new MultipleActions(actions);
-	}
-
 	private void getQuest() {
 		final SpeakerNPC npc = npcs.get("Mayor Chalmers");
 		npc.add(ConversationStates.ATTENDING, ConversationPhrases.QUEST_MESSAGES,
@@ -365,7 +356,7 @@ public class DailyItemQuest extends AbstractQuest {
 										new TimePassedCondition(QUEST_SLOT,1,delay))),
 				ConversationStates.ATTENDING,
 				null,
-				startQuestAction());
+				startQuestAction(npc, items, startMessage));
 	}
 
 	private void completeQuest() {
@@ -422,7 +413,7 @@ public class DailyItemQuest extends AbstractQuest {
 				ConversationStates.ATTENDING,
 				null,
 				// start quest again immediately
-				startQuestAction());
+				startQuestAction(npc, items, startMessage));
 
 		npc.add(ConversationStates.ATTENDING,
 				ConversationPhrases.ABORT_MESSAGES,

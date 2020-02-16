@@ -40,7 +40,6 @@ import games.stendhal.server.entity.npc.action.SayRequiredItemAction;
 import games.stendhal.server.entity.npc.action.SayTimeRemainingAction;
 import games.stendhal.server.entity.npc.action.SetQuestAction;
 import games.stendhal.server.entity.npc.action.SetQuestToTimeStampAction;
-import games.stendhal.server.entity.npc.action.StartRecordingRandomItemCollectionAction;
 import games.stendhal.server.entity.npc.condition.AndCondition;
 import games.stendhal.server.entity.npc.condition.LevelGreaterThanCondition;
 import games.stendhal.server.entity.npc.condition.LevelLessThanCondition;
@@ -79,7 +78,7 @@ import games.stendhal.server.util.TimeUtil;
  * REPETITIONS:
  * <ul><li> once a week</ul>
  */
-public class WeeklyItemQuest extends AbstractQuest {
+public class WeeklyItemQuest extends RepeatableCollectorQuest {
 
 	/** the logger instance */
 	private static final Logger logger = Logger.getLogger(WeeklyItemQuest.class);
@@ -104,6 +103,9 @@ public class WeeklyItemQuest extends AbstractQuest {
 
 	private static final int LEVEL_MED = 51;
 	private static final int LEVEL_HARD = 151;
+
+	private static final String startMessage = "I want Kirdneh's museum to be the greatest in the land! Please fetch [item]"
+			+ " and say #complete, once you've brought it.";
 
 
 	/**
@@ -298,26 +300,6 @@ public class WeeklyItemQuest extends AbstractQuest {
 		items_hard.put(item, quant);
 	}
 
-	private ChatAction startQuestAction(final String level) {
-		// common place to get the start quest actions as we can both starts it and abort and start again
-
-		final Map<String, Integer> items;
-		if (level.equals("easy")) {
-			items = items_easy;
-		} else if (level.equals("med") || level.equals("medium")) {
-			items = items_med;
-		} else {
-			items = items_hard;
-		}
-
-		final List<ChatAction> actions = new LinkedList<ChatAction>();
-		actions.add(new StartRecordingRandomItemCollectionAction(QUEST_SLOT, 0, items, "I want Kirdneh's museum to be the greatest in the land! Please fetch [item]"
-				+ " and say #complete, once you've brought it."));
-		actions.add(new SetQuestToTimeStampAction(QUEST_SLOT, 1));
-
-		return new MultipleActions(actions);
-	}
-
 	private void getQuest() {
 		final SpeakerNPC npc = npcs.get("Hazel");
 
@@ -375,21 +357,21 @@ public class WeeklyItemQuest extends AbstractQuest {
 				startEasyCondition,
 				ConversationStates.ATTENDING,
 				null,
-				startQuestAction("easy"));
+				startQuestAction(npc, items_easy, startMessage));
 
 		// for players levels 51-150
 		npc.add(ConversationStates.ATTENDING, ConversationPhrases.QUEST_MESSAGES,
 				startMedCondition,
 				ConversationStates.ATTENDING,
 				null,
-				startQuestAction("med"));
+				startQuestAction(npc, items_med, startMessage));
 
 		// for players levels 151+
 		npc.add(ConversationStates.ATTENDING, ConversationPhrases.QUEST_MESSAGES,
 				startHardCondition,
 				ConversationStates.ATTENDING,
 				null,
-				startQuestAction("hard"));
+				startQuestAction(npc, items_hard, startMessage));
 	}
 
 	private void completeQuest() {
@@ -473,21 +455,21 @@ public class WeeklyItemQuest extends AbstractQuest {
 				startEasyCondition,
 				ConversationStates.ATTENDING,
 				null,
-				startQuestAction("easy"));
+				startQuestAction(npc, items_easy, startMessage));
 
 		npc.add(ConversationStates.ATTENDING,
 				ConversationPhrases.ABORT_MESSAGES,
 				startMedCondition,
 				ConversationStates.ATTENDING,
 				null,
-				startQuestAction("med"));
+				startQuestAction(npc, items_med, startMessage));
 
 		npc.add(ConversationStates.ATTENDING,
 				ConversationPhrases.ABORT_MESSAGES,
 				startHardCondition,
 				ConversationStates.ATTENDING,
 				null,
-				startQuestAction("hard"));
+				startQuestAction(npc, items_hard, startMessage));
 
 		npc.add(ConversationStates.ATTENDING,
 				ConversationPhrases.ABORT_MESSAGES,
