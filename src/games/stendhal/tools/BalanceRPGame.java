@@ -203,6 +203,8 @@ public class BalanceRPGame {
 
 			durationThreshold = DEFAULT_DURATION_THRESHOLD;
 
+			Integer suggestedXP = null;
+
 			boolean balanced = false;
 			int tries = 0;
 			while (!balanced) {
@@ -227,6 +229,7 @@ public class BalanceRPGame {
 
 				if (isCorrectResult(level, meanTurns, meanLeftHP / (double) player.getBaseHP())) {
 					balanced = true;
+					suggestedXP = proposedXPValue;
 				} else {
 					optimizer.step(meanLeftHP, meanTurns);
 
@@ -274,6 +277,10 @@ public class BalanceRPGame {
 			stringBuilder.append(target.getDef());
 			stringBuilder.append("\t\tHP: ");
 			stringBuilder.append(target.getBaseHP());
+			if (suggestedXP != null) {
+				stringBuilder.append("\t\tSuggested XP: ");
+				stringBuilder.append(suggestedXP);
+			}
 			System.out.println(stringBuilder.toString());
 		}
 	}
