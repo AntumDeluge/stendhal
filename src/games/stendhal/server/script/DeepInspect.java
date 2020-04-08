@@ -1,6 +1,6 @@
 /* $Id$ */
 /***************************************************************************
- *                   (C) Copyright 2003-2023 - Stendhal                    *
+ *                   (C) Copyright 2003-2024 - Stendhal                    *
  ***************************************************************************
  ***************************************************************************
  *                                                                         *
@@ -291,6 +291,10 @@ public class DeepInspect extends ScriptImpl {
 					sb.append("[" + npcName + ":" + commerceInfo.get(npcName) + "]");
 				}
 			}
+
+			// money exchanged
+			sb.append("\n\nMoney Exchange:\n   ");
+			sb.append("Earned: " + player.getQuantityOfMoneyEarned() + "\n   Spent: " + player.getQuantityOfMoneySpent());
 
 			sb.append("\n");
 			admin.sendPrivateText(sb.toString());

@@ -15,6 +15,7 @@ package games.stendhal.server.entity.player;
 import static games.stendhal.common.constants.Actions.AUTOWALK;
 import static games.stendhal.common.constants.Actions.MOVE_CONTINUOUS;
 import static games.stendhal.server.entity.player.PlayerLootedItemsHandler.LOOTED_ITEMS;
+import static games.stendhal.server.entity.player.PlayerLootedItemsHandler.MONEY_EXCHANGE;
 
 import games.stendhal.common.constants.Events;
 import marauroa.common.game.Definition;
@@ -94,6 +95,8 @@ public class PlayerRPClass {
 
 		// Count looted items
 		player.addAttribute(LOOTED_ITEMS, Type.MAP, Definition.HIDDEN);
+		// count money exchange
+		player.addAttribute(MONEY_EXCHANGE, Type.STRING, Definition.HIDDEN);
 
 		// We use this for the buddy system
 		player.addRPSlot("!buddy", 1, Definition.PRIVATE);

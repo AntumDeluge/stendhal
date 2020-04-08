@@ -14,6 +14,8 @@ package games.stendhal.server.entity.player;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
+
 /**
  * Handling for counting looted items of a player
  *
@@ -21,8 +23,13 @@ import java.util.Map;
  */
 public class PlayerLootedItemsHandler {
 
+	private static final Logger logger = Logger.getLogger(PlayerLootedItemsHandler.class);
+
 	/** name of the map where the items and the corresponding numbers are stored */
 	public static final String LOOTED_ITEMS = "looted_items";
+
+	/** name of attribute where money exchange numbers are stored */
+	public static final String MONEY_EXCHANGE = "money_exchange";
 
 	private final Player player;
 
@@ -41,6 +48,9 @@ public class PlayerLootedItemsHandler {
 	private final Map<String, Integer> bought;
 
 	private final Map<String, Integer> sold;
+
+	private int moneyEarned;
+	private int moneySpent;
 
 	/**
 	 * Create a new PlayerLootedItemsHandler for a player
@@ -80,6 +90,26 @@ public class PlayerLootedItemsHandler {
 				if(!item.contains("produced.") && !item.contains("obtained.") && !item.contains("mined.")
 						&& !item.contains("harvested.") && !item.contains("bought.") && !item.contains("sold.")) {
 					looted.put(item, player.getInt(LOOTED_ITEMS, item));
+				}
+			}
+		}
+
+		moneyEarned = 0;
+		moneySpent = 0;
+		if (player.has(MONEY_EXCHANGE)) {
+			final String[] exchange = player.get(MONEY_EXCHANGE).split(",");
+			for (final String exchangeType: exchange) {
+				if (exchangeType.contains("=")) {
+					try {
+						final String[] tmp = exchangeType.split("=");
+						if (tmp[0].equals("earned")) {
+							moneyEarned = Integer.parseInt(tmp[1]);
+						} else if (tmp[0].equals("spent")) {
+							moneySpent = Integer.parseInt(tmp[1]);
+						}
+					} catch (final NumberFormatException e) {
+						logger.warn("Money exchange format not integer value");
+					}
 				}
 			}
 		}
@@ -261,6 +291,48 @@ public class PlayerLootedItemsHandler {
 	}
 
 	/**
+	 * Increases money earned from transactions.
+	 *
+	 * @param quantity
+	 * 		Amount to increase by.
+	 */
+	public void incMoneyEarned(final int quantity) {
+		moneyEarned += quantity;
+		onMoneyExchanged();
+	}
+
+	/**
+	 * Increases money spent on transactions.
+	 *
+	 * @param quantity
+	 * 		Amount to increase by.
+	 */
+	public void incMoneySpent(final int quantity) {
+		moneySpent += quantity;
+		onMoneyExchanged();
+	}
+
+	/**
+	 * Retrieves total money earned from transactions.
+	 *
+	 * @return
+	 * 		Integer value of total money earned.
+	 */
+	public int getQuantityOfMoneyEarned() {
+		return moneyEarned;
+	}
+
+	/**
+	 * Retrieves total money spent on transactions.
+	 *
+	 * @return
+	 * 		Integer value of total money spent.
+	 */
+	public int getQuantityOfMoneySpent() {
+		return moneySpent;
+	}
+
+	/**
 	 * handles redundant storage of counted items in player object and a separate map
 	 *
 	 * @param item the item to count
@@ -281,6 +353,13 @@ public class PlayerLootedItemsHandler {
 		int increased = current + count;
 		redundantMap.put(item, increased);
 		player.put(LOOTED_ITEMS, key.toString(), increased);
+	}
+
+	/**
+	 * Updates the record for the player's amount of money earned & spent.
+	 */
+	private void onMoneyExchanged() {
+		player.put(MONEY_EXCHANGE, "earned=" + moneyEarned + ",spent=" + moneySpent);
 	}
 
 	/**
