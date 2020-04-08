@@ -1,6 +1,6 @@
 /* $Id$ */
 /***************************************************************************
- *                   (C) Copyright 2003-2023 - Stendhal                    *
+ *                   (C) Copyright 2003-2024 - Stendhal                    *
  ***************************************************************************
  ***************************************************************************
  *                                                                         *
@@ -210,6 +210,7 @@ public class BalanceRPGame {
 			durationThreshold = DEFAULT_DURATION_THRESHOLD;
 
 			Integer proposedXPValue = null;
+			Integer suggestedXP = null;
 
 			boolean balanced = false;
 			int tries = 0;
@@ -235,6 +236,7 @@ public class BalanceRPGame {
 
 				if (isCorrectResult(level, meanTurns, meanLeftHP / (double) player.getBaseHP())) {
 					balanced = true;
+					suggestedXP = proposedXPValue;
 				} else {
 					optimizer.step(meanLeftHP, meanTurns);
 
@@ -284,8 +286,14 @@ public class BalanceRPGame {
 			stringBuilder.append("\t\tHP: ");
 			stringBuilder.append(target.getBaseHP());
 
-			if (System.getProperty("showxp") != null && proposedXPValue != null) {
-				stringBuilder.append("\t\tXP: " + proposedXPValue);
+			if (System.getProperty("showxp") != null) {
+				if (proposedXPValue != null) {
+					stringBuilder.append("\t\tXP: " + proposedXPValue);
+				}
+				if (suggestedXP != null) {
+					stringBuilder.append("\t\tSuggested XP: ");
+					stringBuilder.append(suggestedXP);
+				}
 			}
 
 			suggestions.add(stringBuilder.toString());
