@@ -2577,6 +2577,46 @@ public class Player extends DressedEntity implements UseListener {
 	}
 
 	/**
+	 * Increases money earned from transactions.
+	 *
+	 * @param quantity
+	 * 		Amount to increase by.
+	 */
+	public void incMoneyEarned(final int quantity) {
+		itemCounter.incMoneyEarned(quantity);
+	}
+
+	/**
+	 * Increases money spent on transactions.
+	 *
+	 * @param quantity
+	 * 		Amount to increase by.
+	 */
+	public void incMoneySpent(final int quantity) {
+		itemCounter.incMoneySpent(quantity);
+	}
+
+	/**
+	 * Retrieves total money earned from transactions.
+	 *
+	 * @return
+	 * 		Integer value of total money earned.
+	 */
+	public int getQuantityOfMoneyEarned() {
+		return itemCounter.getQuantityOfMoneyEarned();
+	}
+
+	/**
+	 * Retrieves total money spent on transactions.
+	 *
+	 * @return
+	 * 		Integer value of total money spent.
+	 */
+	public int getQuantityOfMoneySpent() {
+		return itemCounter.getQuantityOfMoneySpent();
+	}
+
+	/**
 	 * Gets the recorded item stored in a substate of quest slot
 	 *
 	 * @param questname

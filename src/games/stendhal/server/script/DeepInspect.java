@@ -262,6 +262,14 @@ public class DeepInspect extends ScriptImpl {
 			sb.append("\n");
 			admin.sendPrivateText(sb.toString());
 			sb.setLength(0);
+
+			// money exchanged
+			sb.append("Money Exchange:\n   ");
+			sb.append("Earned: " + player.getQuantityOfMoneyEarned() + "\n   Spent: " + player.getQuantityOfMoneySpent());
+
+			sb.append("\n");
+			admin.sendPrivateText(sb.toString());
+			sb.setLength(0);
 		}
 	}
 }
