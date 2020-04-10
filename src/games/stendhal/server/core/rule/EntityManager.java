@@ -20,6 +20,7 @@ import games.stendhal.server.core.rule.defaultruleset.DefaultSpell;
 import games.stendhal.server.entity.Entity;
 import games.stendhal.server.entity.creature.Creature;
 import games.stendhal.server.entity.item.Item;
+import games.stendhal.server.entity.item.StackableItem;
 import games.stendhal.server.entity.spell.Spell;
 /**
  * Ruleset Interface for resolving Entities in Stendhal.
@@ -143,6 +144,8 @@ public interface EntityManager {
 	 *
 	 */
 	Item getItem(String clazz);
+
+	StackableItem getStackableItem(String clazz);
 
 	/**
 	 * Retrieves a Spell or null if the spell is unknown.

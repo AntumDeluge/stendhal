@@ -29,6 +29,7 @@ import games.stendhal.server.core.rule.EntityManager;
 import games.stendhal.server.entity.Entity;
 import games.stendhal.server.entity.creature.Creature;
 import games.stendhal.server.entity.item.Item;
+import games.stendhal.server.entity.item.StackableItem;
 import games.stendhal.server.entity.spell.Spell;
 
 /**
@@ -366,6 +367,16 @@ public class DefaultEntityManager implements EntityManager {
 				createdItem.put(clazz, item.getItem());
 			}
 			return item.getItem();
+		}
+
+		return null;
+	}
+
+	@Override
+	public StackableItem getStackableItem(final String clazz) {
+		final Item item = getItem(clazz);
+		if (item instanceof StackableItem) {
+			return (StackableItem) item;
 		}
 
 		return null;

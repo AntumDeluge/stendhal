@@ -57,6 +57,14 @@ table.concat = function(tbl1, tbl2)
 	end
 end
 
+function getPlayer(name)
+	return singletonRepository:getRuleProcessor():getPlayer(name)
+end
+
+function getNPC(name)
+	return singletonRepository:getNPCList():get(name)
+end
+
 --- Helper function for creating ChatCondition instances.
 newCondition = function(classname, ...)
 	return luajava.newInstance("games.stendhal.server.entity.npc.condition." .. classname, ...)

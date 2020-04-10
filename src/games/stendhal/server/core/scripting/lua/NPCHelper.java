@@ -19,17 +19,22 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
+import org.luaj.vm2.LuaFunction;
 import org.luaj.vm2.LuaTable;
 import org.luaj.vm2.LuaValue;
+import org.luaj.vm2.lib.jse.CoerceJavaToLua;
 
+import games.stendhal.common.parser.Sentence;
 import games.stendhal.server.core.engine.SingletonRepository;
 import games.stendhal.server.core.pathfinder.FixedPath;
 import games.stendhal.server.core.pathfinder.Node;
 import games.stendhal.server.core.rule.EntityManager;
+import games.stendhal.server.entity.Entity;
 import games.stendhal.server.entity.RPEntity;
 import games.stendhal.server.entity.npc.ChatAction;
 import games.stendhal.server.entity.npc.ChatCondition;
 import games.stendhal.server.entity.npc.ConversationStates;
+import games.stendhal.server.entity.npc.EventRaiser;
 import games.stendhal.server.entity.npc.SilentNPC;
 import games.stendhal.server.entity.npc.SpeakerNPC;
 import games.stendhal.server.entity.npc.action.MultipleActions;
@@ -39,6 +44,7 @@ import games.stendhal.server.entity.npc.behaviour.impl.BuyerBehaviour;
 import games.stendhal.server.entity.npc.behaviour.impl.SellerBehaviour;
 import games.stendhal.server.entity.npc.condition.AndCondition;
 import games.stendhal.server.entity.npc.condition.NotCondition;
+import games.stendhal.server.entity.player.Player;
 
 
 /**
@@ -469,5 +475,42 @@ public class NPCHelper {
 		}
 
 		return new MultipleActions(actions.toArray(new ChatAction[] {}));
+	}
+
+	public ChatCondition customCondition(final LuaFunction f) {
+		return new ChatCondition() {
+
+			@Override
+			public boolean fire(final Player player, final Sentence sentence, final Entity npc) {
+				final LuaValue luaPlayer = CoerceJavaToLua.coerce(player);
+				final LuaValue luaSentence = CoerceJavaToLua.coerce(sentence);
+				final LuaValue luaNPC = CoerceJavaToLua.coerce(npc);
+
+				final LuaValue result = f.call(luaPlayer, luaSentence, luaNPC);
+
+				if (!result.isboolean()) {
+					logger.warn("Lua function did not return boolean value");
+					return false;
+				}
+
+				return result.toboolean();
+			}
+		};
+	}
+
+	public ChatAction customAction(final LuaFunction f) {
+		return new ChatAction() {
+
+			@Override
+			public void fire(final Player player, final Sentence sentence, final EventRaiser npc) {
+				final LuaValue luaPlayer = CoerceJavaToLua.coerce(player);
+				final LuaValue luaSentence = CoerceJavaToLua.coerce(sentence);
+				final LuaValue luaNPC = CoerceJavaToLua.coerce(npc);
+
+				final LuaValue[] all = {luaPlayer, luaSentence, luaNPC};
+
+				f.invoke(all);
+			}
+		};
 	}
 }
