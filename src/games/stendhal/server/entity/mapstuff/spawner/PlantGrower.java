@@ -27,20 +27,20 @@ import marauroa.common.game.RPClass;
 import marauroa.common.game.RPObject;
 
 /**
- * A PassiveEntityRespawnPoint basically is a 1x1 area where a plant, a fruit or
+ * A PlantGrower basically is a 1x1 area where a plant, a fruit or
  * another non-moving thing grows. This growing thing is a pickable Item (e.g. a
  * mushroom, an apple); by extending this class, it can also grow something
  * special (e.g. SheepFood).
  *
- * PassiveEntityRespawnPoint are currently invisible (fully transparent) on the
- * client side. Extend GrowingPassiveEntityRespawnPoint and implement
+ * PlantGrower are currently invisible (fully transparent) on the
+ * client side. Extend GrowingPlantGrower and implement
  * UseListener if grown item should not be dragable without special interaction.
  *
  * @author Daniel Herding
  *
  */
-public class PassiveEntityRespawnPoint extends Entity implements TurnListener {
-	private static Logger LOGGER = Logger.getLogger(PassiveEntityRespawnPoint.class);
+public class PlantGrower extends Entity implements TurnListener {
+	private static Logger LOGGER = Logger.getLogger(PlantGrower.class);
 	/**
 	 * Tells how many turns it takes in average for a new fruit to become ripe.
 	 */
@@ -56,7 +56,7 @@ public class PassiveEntityRespawnPoint extends Entity implements TurnListener {
 	 */
 	private final String growingItemName;
 
-	public PassiveEntityRespawnPoint(final RPObject object, final String growingItemName,
+	public PlantGrower(final RPObject object, final String growingItemName,
 			final int meanTurnsForRegrow) {
 		super(object);
 		this.growingItemName = growingItemName;
@@ -71,7 +71,7 @@ public class PassiveEntityRespawnPoint extends Entity implements TurnListener {
 		// update();
 	}
 
-	public PassiveEntityRespawnPoint(final String growingItemName,
+	public PlantGrower(final String growingItemName,
 			final int meanTurnsForRegrow) {
 		this.growingItemName = growingItemName;
 		this.meanTurnsForRegrow = meanTurnsForRegrow;

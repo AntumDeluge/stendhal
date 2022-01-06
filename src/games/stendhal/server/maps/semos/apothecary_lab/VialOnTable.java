@@ -15,7 +15,7 @@ import java.util.Map;
 
 import games.stendhal.server.core.config.ZoneConfigurator;
 import games.stendhal.server.core.engine.StendhalRPZone;
-import games.stendhal.server.entity.mapstuff.spawner.PassiveEntityRespawnPoint;
+import games.stendhal.server.entity.mapstuff.spawner.PlantGrower;
 
 /**
  * Creates vial on table in apothecary's lab.
@@ -27,7 +27,7 @@ public class VialOnTable implements ZoneConfigurator {
 	}
 
 	private void buildVialGrower(final StendhalRPZone zone) {
-		final PassiveEntityRespawnPoint vialGrower = new PassiveEntityRespawnPoint("vial", 1000);
+		final PlantGrower vialGrower = new PlantGrower("vial", 1000);
 		vialGrower.setPosition(18, 13);
 		vialGrower.setDescription("It looks like there was a small item sitting on this table at some point.");
 		zone.add(vialGrower);

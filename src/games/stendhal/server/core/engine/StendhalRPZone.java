@@ -63,8 +63,8 @@ import games.stendhal.server.entity.mapstuff.area.WalkBlockerFactory;
 import games.stendhal.server.entity.mapstuff.portal.OneWayPortalDestination;
 import games.stendhal.server.entity.mapstuff.portal.Portal;
 import games.stendhal.server.entity.mapstuff.spawner.CreatureRespawnPoint;
-import games.stendhal.server.entity.mapstuff.spawner.PassiveEntityRespawnPoint;
-import games.stendhal.server.entity.mapstuff.spawner.PassiveEntityRespawnPointFactory;
+import games.stendhal.server.entity.mapstuff.spawner.PlantGrower;
+import games.stendhal.server.entity.mapstuff.spawner.PlantGrowerFactory;
 import games.stendhal.server.entity.mapstuff.spawner.SheepFood;
 import games.stendhal.server.entity.npc.NPC;
 import games.stendhal.server.entity.npc.SpeakerNPC;
@@ -114,7 +114,7 @@ public class StendhalRPZone extends MarauroaRPZone {
 
 	private final List<CreatureRespawnPoint> respawnPoints;
 
-	private final List<PassiveEntityRespawnPoint> plantGrowers;
+	private final List<PlantGrower> plantGrowers;
 
 	private final List<RPEntity> playersAndFriends;
 
@@ -213,7 +213,7 @@ public class StendhalRPZone extends MarauroaRPZone {
 		npcs = new LinkedList<NPC>();
 		sheepFoods = new LinkedList<SheepFood>();
 		respawnPoints = new LinkedList<CreatureRespawnPoint>();
-		plantGrowers = new LinkedList<PassiveEntityRespawnPoint>();
+		plantGrowers = new LinkedList<PlantGrower>();
 		players = new LinkedList<Player>();
 		playersAndFriends = new LinkedList<RPEntity>();
 
@@ -346,7 +346,7 @@ public class StendhalRPZone extends MarauroaRPZone {
 		respawnPoints.remove(point);
 	}
 
-	public List<PassiveEntityRespawnPoint> getPlantGrowers() {
+	public List<PlantGrower> getPlantGrowers() {
 		return plantGrowers;
 	}
 
@@ -666,7 +666,7 @@ public class StendhalRPZone extends MarauroaRPZone {
 							+ " found");
 				}
 			} else if (clazz.contains("logic/item")) {
-				final PassiveEntityRespawnPoint passiveEntityrespawnPoint = PassiveEntityRespawnPointFactory.create(
+				final PlantGrower passiveEntityrespawnPoint = PlantGrowerFactory.create(
 						clazz, type, getID(), x, y);
 				if (passiveEntityrespawnPoint != null) {
 					passiveEntityrespawnPoint.setPosition(x, y);
@@ -923,8 +923,8 @@ public class StendhalRPZone extends MarauroaRPZone {
 		/*
 		 * Eventually move to <Entity>.onAdded().
 		 */
-		if (object instanceof PassiveEntityRespawnPoint) {
-			plantGrowers.add((PassiveEntityRespawnPoint) object);
+		if (object instanceof PlantGrower) {
+			plantGrowers.add((PlantGrower) object);
 		}
 
 		if (object instanceof Blood) {
@@ -1003,7 +1003,7 @@ public class StendhalRPZone extends MarauroaRPZone {
 		/*
 		 * Eventually move to <Entity>.onRemoved().
 		 */
-		if (object instanceof PassiveEntityRespawnPoint) {
+		if (object instanceof PlantGrower) {
 			plantGrowers.remove(object);
 		}
 

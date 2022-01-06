@@ -19,7 +19,7 @@ import java.util.List;
 
 import games.stendhal.server.core.engine.SingletonRepository;
 import games.stendhal.server.core.engine.StendhalRPZone;
-import games.stendhal.server.entity.mapstuff.spawner.PassiveEntityRespawnPoint;
+import games.stendhal.server.entity.mapstuff.spawner.PlantGrower;
 import games.stendhal.server.entity.npc.ChatAction;
 import games.stendhal.server.entity.npc.ConversationPhrases;
 import games.stendhal.server.entity.npc.ConversationStates;
@@ -133,7 +133,7 @@ public class PlinksToy extends AbstractQuest {
 
 	private void step_2() {
 		final StendhalRPZone zone = SingletonRepository.getRPWorld().getZone("0_semos_plains_n");
-		final PassiveEntityRespawnPoint teddyRespawner = new PassiveEntityRespawnPoint("teddy", 1500);
+		final PlantGrower teddyRespawner = new PlantGrower("teddy", 1500);
 		teddyRespawner.setPosition(107, 84);
 		teddyRespawner.setDescription("There's a teddy-bear-shaped depression in the sand here.");
 		zone.add(teddyRespawner);

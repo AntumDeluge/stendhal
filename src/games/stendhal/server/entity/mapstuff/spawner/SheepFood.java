@@ -22,7 +22,7 @@ import marauroa.common.game.RPObject;
 /**
  * A regenerative source of food that can be eaten by sheep.
  */
-public class SheepFood extends PassiveEntityRespawnPoint {
+public class SheepFood extends PlantGrower {
 
 	private int amount;
 

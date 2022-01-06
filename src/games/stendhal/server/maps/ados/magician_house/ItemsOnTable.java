@@ -18,7 +18,7 @@ import games.stendhal.server.core.config.ZoneConfigurator;
 import games.stendhal.server.core.engine.SingletonRepository;
 import games.stendhal.server.core.engine.StendhalRPZone;
 import games.stendhal.server.entity.item.Item;
-import games.stendhal.server.entity.mapstuff.spawner.PassiveEntityRespawnPoint;
+import games.stendhal.server.entity.mapstuff.spawner.PlantGrower;
 
 /**
  * Creates the items on the table in the magician house.
@@ -36,7 +36,7 @@ public class ItemsOnTable implements ZoneConfigurator {
 		item.setInfoString("giant_red_dragon");
 
 		// Plant grower for poison
-		final PassiveEntityRespawnPoint plantGrower = new PassiveEntityRespawnPoint("poison", 1500);
+		final PlantGrower plantGrower = new PlantGrower("poison", 1500);
 		plantGrower.setPosition(3, 6);
 		plantGrower.setDescription("Haizen tends to put his magic drinks here.");
 		zone.add(plantGrower);
@@ -44,7 +44,7 @@ public class ItemsOnTable implements ZoneConfigurator {
 		plantGrower.setToFullGrowth();
 
 		// grower for an empty slim bottle (see Koboldish Torcibud quest, respawning time 1h)
-		final PassiveEntityRespawnPoint bottleGrower1 = new PassiveEntityRespawnPoint("slim bottle", 12000);
+		final PlantGrower bottleGrower1 = new PlantGrower("slim bottle", 12000);
 		bottleGrower1.setPosition(10, 5);
 		bottleGrower1.setDescription("This is a likely spot where a bottle could be found.");
 		zone.add(bottleGrower1);

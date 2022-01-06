@@ -24,7 +24,7 @@ public class GrowingPassiveEntityRespawnPointTestHelper {
 	public static void generateRPClasses() {
 
 		if (!RPClass.hasRPClass("growing_entity_spawner")) {
-			PassiveEntityRespawnPointTestHelper.generateRPClasses();
+			PlantGrowerTestHelper.generateRPClasses();
 			GrowingPassiveEntityRespawnPoint.generateRPClass();
 		}
 	}

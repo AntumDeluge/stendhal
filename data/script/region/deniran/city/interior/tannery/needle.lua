@@ -19,7 +19,7 @@ local zone = "int_deniran_tannery"
 
 if game:setZone(zone) then
 	-- respawns after 10 minutes
-	local needleGrower = luajava.newInstance("games.stendhal.server.entity.mapstuff.spawner.PassiveEntityRespawnPoint", "leather needle", 2000)
+	local needleGrower = luajava.newInstance("games.stendhal.server.entity.mapstuff.spawner.PlantGrower", "leather needle", 2000)
 	needleGrower:setDescription("It looks like there was a small item sitting on this crate at some point.")
 	needleGrower:setPosition(32, 13)
 	game:add(needleGrower)

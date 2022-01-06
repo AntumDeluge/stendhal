@@ -29,7 +29,7 @@ import marauroa.common.game.RPObject;
  * @author daniel, hendrik
  */
 public abstract class GrowingPassiveEntityRespawnPoint extends
-		PassiveEntityRespawnPoint {
+		PlantGrower {
 
 	private static Logger logger = Logger.getLogger(GrowingPassiveEntityRespawnPoint.class);
 

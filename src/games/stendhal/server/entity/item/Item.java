@@ -32,7 +32,7 @@ import games.stendhal.server.core.events.UseListener;
 import games.stendhal.server.entity.PassiveEntity;
 import games.stendhal.server.entity.RPEntity;
 import games.stendhal.server.entity.item.behavior.UseBehavior;
-import games.stendhal.server.entity.mapstuff.spawner.PassiveEntityRespawnPoint;
+import games.stendhal.server.entity.mapstuff.spawner.PlantGrower;
 import games.stendhal.server.entity.player.Player;
 import games.stendhal.server.entity.status.StatusType;
 import marauroa.common.game.Definition;
@@ -76,7 +76,7 @@ public class Item extends PassiveEntity implements TurnListener, EquipListener,
 	 * null if it wasn't grown by a plant grower, or if it has already been
 	 * picked.
 	 */
-	private PassiveEntityRespawnPoint plantGrower;
+	private PlantGrower plantGrower;
 
 	/** The damage type of weapons */
 	private Nature damageType = Nature.CUT;
@@ -269,7 +269,7 @@ public class Item extends PassiveEntity implements TurnListener, EquipListener,
 	 * @param plantGrower
 	 *            a plant grower
 	 */
-	public void setPlantGrower(final PassiveEntityRespawnPoint plantGrower) {
+	public void setPlantGrower(final PlantGrower plantGrower) {
 		this.plantGrower = plantGrower;
 	}
 
@@ -279,7 +279,7 @@ public class Item extends PassiveEntity implements TurnListener, EquipListener,
 	 *
 	 * @return PlantGrower or null
 	 */
-	public PassiveEntityRespawnPoint getPlantGrower() {
+	public PlantGrower getPlantGrower() {
 		return plantGrower;
 	}
 

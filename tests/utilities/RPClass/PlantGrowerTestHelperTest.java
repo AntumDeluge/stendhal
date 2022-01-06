@@ -18,11 +18,11 @@ import org.junit.Test;
 
 import marauroa.common.game.RPClass;
 
-public class PassiveEntityRespawnPointTestHelperTest {
+public class PlantGrowerTestHelperTest {
 
 	@Test
 	public void testGenerateRPClasses() {
-		PassiveEntityRespawnPointTestHelper.generateRPClasses();
+		PlantGrowerTestHelper.generateRPClasses();
 		assertTrue(RPClass.hasRPClass("plant_grower"));
 	}
 

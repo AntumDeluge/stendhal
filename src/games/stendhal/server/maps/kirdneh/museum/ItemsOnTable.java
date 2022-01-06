@@ -16,7 +16,7 @@ import java.util.Map;
 
 import games.stendhal.server.core.config.ZoneConfigurator;
 import games.stendhal.server.core.engine.StendhalRPZone;
-import games.stendhal.server.entity.mapstuff.spawner.PassiveEntityRespawnPoint;
+import games.stendhal.server.entity.mapstuff.spawner.PlantGrower;
 
 /**
  * Creates the items on the table in the museum.
@@ -31,35 +31,35 @@ public class ItemsOnTable implements ZoneConfigurator {
 
 	private void buildBasementArea(final StendhalRPZone zone) {
 
-		final PassiveEntityRespawnPoint plantGrower = new PassiveEntityRespawnPoint("emerald", 4000);
+		final PlantGrower plantGrower = new PlantGrower("emerald", 4000);
 		plantGrower.setPosition(26, 38);
 		plantGrower.setDescription("A space for a gem to be displayed is here.");
 		zone.add(plantGrower);
 
 		plantGrower.setToFullGrowth();
 
-		final PassiveEntityRespawnPoint plantGrower2 = new PassiveEntityRespawnPoint("sapphire", 4000);
+		final PlantGrower plantGrower2 = new PlantGrower("sapphire", 4000);
 		plantGrower2.setPosition(26, 39);
 		plantGrower2.setDescription("A space for a gem to be displayed is here.");
 		zone.add(plantGrower2);
 
 		plantGrower2.setToFullGrowth();
 
-		final PassiveEntityRespawnPoint plantGrower3 = new PassiveEntityRespawnPoint("carbuncle", 4000);
+		final PlantGrower plantGrower3 = new PlantGrower("carbuncle", 4000);
 		plantGrower3.setPosition(26, 40);
 		plantGrower3.setDescription("A space for a gem to be displayed is here.");
 		zone.add(plantGrower3);
 
 		plantGrower3.setToFullGrowth();
 
-		final PassiveEntityRespawnPoint plantGrower4 = new PassiveEntityRespawnPoint("obsidian", 4000);
+		final PlantGrower plantGrower4 = new PlantGrower("obsidian", 4000);
 		plantGrower4.setPosition(26, 41);
 		plantGrower4.setDescription("A space for a gem to be displayed is here.");
 		zone.add(plantGrower4);
 
 		plantGrower4.setToFullGrowth();
 
-		final PassiveEntityRespawnPoint plantGrower5 = new PassiveEntityRespawnPoint("diamond", 4000);
+		final PlantGrower plantGrower5 = new PlantGrower("diamond", 4000);
 		plantGrower5.setPosition(26, 42);
 		plantGrower5.setDescription("A space for a gem to be displayed is here.");
 		zone.add(plantGrower5);

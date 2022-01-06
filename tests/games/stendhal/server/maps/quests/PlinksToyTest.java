@@ -34,7 +34,7 @@ import games.stendhal.server.maps.semos.plains.LittleBoyNPC;
 import utilities.PlayerTestHelper;
 import utilities.QuestHelper;
 import utilities.RPClass.ItemTestHelper;
-import utilities.RPClass.PassiveEntityRespawnPointTestHelper;
+import utilities.RPClass.PlantGrowerTestHelper;
 
 public class PlinksToyTest {
 	private Player player = null;
@@ -45,7 +45,7 @@ public class PlinksToyTest {
 	public static void setUpBeforeClass() throws Exception {
 		QuestHelper.setUpBeforeClass();
 
-		PassiveEntityRespawnPointTestHelper.generateRPClasses();
+		PlantGrowerTestHelper.generateRPClasses();
 	}
 
 	@Before

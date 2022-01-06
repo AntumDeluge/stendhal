@@ -47,7 +47,7 @@ import games.stendhal.server.entity.mapstuff.portal.Portal;
 import games.stendhal.server.entity.mapstuff.sign.Sign;
 import games.stendhal.server.entity.mapstuff.sound.LoopedSoundSource;
 import games.stendhal.server.entity.mapstuff.spawner.GrowingPassiveEntityRespawnPoint;
-import games.stendhal.server.entity.mapstuff.spawner.PassiveEntityRespawnPoint;
+import games.stendhal.server.entity.mapstuff.spawner.PlantGrower;
 import games.stendhal.server.entity.mapstuff.spawner.SheepFood;
 import games.stendhal.server.entity.mapstuff.useable.FishSource;
 import games.stendhal.server.entity.mapstuff.useable.GoldSource;
@@ -166,7 +166,7 @@ public class RPClassGenerator {
 			ItemInformation.generateRPClass();
 		}
 		if (!RPClass.hasRPClass("plant_grower")) {
-			PassiveEntityRespawnPoint.generateRPClass();
+			PlantGrower.generateRPClass();
 		}
 		if (!RPClass.hasRPClass("portal")) {
 			Portal.generateRPClass();
@@ -235,7 +235,7 @@ public class RPClassGenerator {
 			PurpleDragon.generateRPClass();
 		}
 
-		// PassiveEntityRespawnPoint sub-class
+		// PlantGrower sub-class
 		if (!RPClass.hasRPClass("ambient_sound_source")) {
 			LoopedSoundSource.generateRPClass();
 		}

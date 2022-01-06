@@ -15,7 +15,7 @@ import java.util.Map;
 
 import games.stendhal.server.core.config.ZoneConfigurator;
 import games.stendhal.server.core.engine.StendhalRPZone;
-import games.stendhal.server.entity.mapstuff.spawner.PassiveEntityRespawnPoint;
+import games.stendhal.server.entity.mapstuff.spawner.PlantGrower;
 
 /**
  * Creates spawn point for:
@@ -37,14 +37,14 @@ public class ItemsOnTable implements ZoneConfigurator {
 	private void buildOutsideHutArea(final StendhalRPZone zone) {
 
         // grower for a slim bottle (1h)
-		final PassiveEntityRespawnPoint bottleGrower1 = new PassiveEntityRespawnPoint("slim bottle", 12000);
+		final PlantGrower bottleGrower1 = new PlantGrower("slim bottle", 12000);
 		bottleGrower1.setPosition(48, 28);
 		bottleGrower1.setDescription("This seems a likely spot where a bottle could be found.");
 		zone.add(bottleGrower1);
 		bottleGrower1.setToFullGrowth();
 
         // grower for an eared bottle (1h)
-		final PassiveEntityRespawnPoint bottleGrower2 = new PassiveEntityRespawnPoint("eared bottle", 12000);
+		final PlantGrower bottleGrower2 = new PlantGrower("eared bottle", 12000);
 		bottleGrower2.setPosition(49, 31);
 		bottleGrower2.setDescription("This seems a likely spot where a bottle could be found.");
 		zone.add(bottleGrower2);

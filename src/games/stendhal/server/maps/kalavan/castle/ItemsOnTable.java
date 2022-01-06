@@ -16,7 +16,7 @@ import java.util.Map;
 
 import games.stendhal.server.core.config.ZoneConfigurator;
 import games.stendhal.server.core.engine.StendhalRPZone;
-import games.stendhal.server.entity.mapstuff.spawner.PassiveEntityRespawnPoint;
+import games.stendhal.server.entity.mapstuff.spawner.PlantGrower;
 
 /**
  * Creates the items on the table in the castle basement.
@@ -32,7 +32,7 @@ public class ItemsOnTable implements ZoneConfigurator {
 	private void buildBasementArea(final StendhalRPZone zone) {
 
 		// Plant grower for poison
-		final PassiveEntityRespawnPoint plantGrower = new PassiveEntityRespawnPoint("disease poison", 2000);
+		final PlantGrower plantGrower = new PlantGrower("disease poison", 2000);
 		plantGrower.setPosition(109, 103);
 		plantGrower.setDescription("Scientists often put bottles down here.");
 		zone.add(plantGrower);
@@ -40,7 +40,7 @@ public class ItemsOnTable implements ZoneConfigurator {
 		plantGrower.setToFullGrowth();
 
 		// Plant grower for antidote
-		final PassiveEntityRespawnPoint plantGrower2 = new PassiveEntityRespawnPoint("greater antidote", 4500);
+		final PlantGrower plantGrower2 = new PlantGrower("greater antidote", 4500);
 		plantGrower2.setPosition(83, 111);
 		plantGrower2.setDescription("Scientists often put bottles down here.");
 		zone.add(plantGrower2);
@@ -48,7 +48,7 @@ public class ItemsOnTable implements ZoneConfigurator {
 		plantGrower2.setToFullGrowth();
 
 		// Plant grower for mega poison
-		final PassiveEntityRespawnPoint plantGrower3 = new PassiveEntityRespawnPoint("mega poison", 4000);
+		final PlantGrower plantGrower3 = new PlantGrower("mega poison", 4000);
 		plantGrower3.setPosition(100, 116);
 		plantGrower3.setDescription("Scientists often put bottles down here.");
 		zone.add(plantGrower3);
@@ -56,7 +56,7 @@ public class ItemsOnTable implements ZoneConfigurator {
 		plantGrower3.setToFullGrowth();
 
 		// Plant grower for a shield (3 hours)
-		final PassiveEntityRespawnPoint plantGrower4 = new PassiveEntityRespawnPoint("crown shield", 36000);
+		final PlantGrower plantGrower4 = new PlantGrower("crown shield", 36000);
 		plantGrower4.setPosition(40, 22);
 		plantGrower4.setDescription("Imperial soliders leave their things here.");
 		zone.add(plantGrower4);
@@ -64,7 +64,7 @@ public class ItemsOnTable implements ZoneConfigurator {
 		plantGrower4.setToFullGrowth();
 
 		// Plant grower for a claymore (24 hours)
-		final PassiveEntityRespawnPoint plantGrower5 = new PassiveEntityRespawnPoint("claymore", 288000);
+		final PlantGrower plantGrower5 = new PlantGrower("claymore", 288000);
 		plantGrower5.setPosition(27, 21);
 		plantGrower5.setDescription("Imperial soliders leave their things here.");
 		zone.add(plantGrower5);
@@ -72,7 +72,7 @@ public class ItemsOnTable implements ZoneConfigurator {
 		plantGrower5.setToFullGrowth();
 
 		// grower for an empty eared bottle (30min)
-		final PassiveEntityRespawnPoint bottleGrower1 = new PassiveEntityRespawnPoint("eared bottle", 6000);
+		final PlantGrower bottleGrower1 = new PlantGrower("eared bottle", 6000);
 		bottleGrower1.setPosition(91, 90);
 		bottleGrower1.setDescription("Scientists often put bottles down here.");
 		zone.add(bottleGrower1);
@@ -80,7 +80,7 @@ public class ItemsOnTable implements ZoneConfigurator {
 		bottleGrower1.setToFullGrowth();
 
 		// grower for an empty slim bottle (30min)
-		final PassiveEntityRespawnPoint bottleGrower2 = new PassiveEntityRespawnPoint("slim bottle", 6000);
+		final PlantGrower bottleGrower2 = new PlantGrower("slim bottle", 6000);
 		bottleGrower2.setPosition(102, 89);
 		bottleGrower2.setDescription("Scientists often put bottles down here.");
 		zone.add(bottleGrower2);
@@ -88,7 +88,7 @@ public class ItemsOnTable implements ZoneConfigurator {
 		bottleGrower2.setToFullGrowth();
 
 		// grower for an empty fat bottle
-		final PassiveEntityRespawnPoint bottleGrower3 = new PassiveEntityRespawnPoint("fat bottle", 3000);
+		final PlantGrower bottleGrower3 = new PlantGrower("fat bottle", 3000);
 		bottleGrower3.setPosition(104, 105);
 		bottleGrower3.setDescription("Scientists often put bottles down here.");
 		zone.add(bottleGrower3);

@@ -17,7 +17,7 @@ import marauroa.common.game.RPClass;
 
 public class SheepFoodTestHelper {
 	public static void generateRPClasses() {
-		PassiveEntityRespawnPointTestHelper.generateRPClasses();
+		PlantGrowerTestHelper.generateRPClasses();
 		if (!RPClass.hasRPClass("food")) {
 			SheepFood.generateRPClass();
 		}
