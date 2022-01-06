@@ -47,6 +47,7 @@ import games.stendhal.server.entity.mapstuff.portal.Portal;
 import games.stendhal.server.entity.mapstuff.sign.Sign;
 import games.stendhal.server.entity.mapstuff.sound.LoopedSoundSource;
 import games.stendhal.server.entity.mapstuff.spawner.GrowingPassiveEntityRespawnPoint;
+import games.stendhal.server.entity.mapstuff.spawner.ItemGrower;
 import games.stendhal.server.entity.mapstuff.spawner.PlantGrower;
 import games.stendhal.server.entity.mapstuff.spawner.SheepFood;
 import games.stendhal.server.entity.mapstuff.useable.FishSource;
@@ -167,6 +168,9 @@ public class RPClassGenerator {
 		}
 		if (!RPClass.hasRPClass("plant_grower")) {
 			PlantGrower.generateRPClass();
+		}
+		if (!RPClass.hasRPClass("item_grower")) {
+			ItemGrower.generateRPClass();
 		}
 		if (!RPClass.hasRPClass("portal")) {
 			Portal.generateRPClass();

@@ -32,7 +32,7 @@ import games.stendhal.server.core.events.UseListener;
 import games.stendhal.server.entity.PassiveEntity;
 import games.stendhal.server.entity.RPEntity;
 import games.stendhal.server.entity.item.behavior.UseBehavior;
-import games.stendhal.server.entity.mapstuff.spawner.PlantGrower;
+import games.stendhal.server.entity.mapstuff.spawner.HarvestableEntityRespawnPoint;
 import games.stendhal.server.entity.player.Player;
 import games.stendhal.server.entity.status.StatusType;
 import marauroa.common.game.Definition;
@@ -76,7 +76,7 @@ public class Item extends PassiveEntity implements TurnListener, EquipListener,
 	 * null if it wasn't grown by a plant grower, or if it has already been
 	 * picked.
 	 */
-	private PlantGrower plantGrower;
+	private HarvestableEntityRespawnPoint plantGrower;
 
 	/** The damage type of weapons */
 	private Nature damageType = Nature.CUT;
@@ -263,13 +263,13 @@ public class Item extends PassiveEntity implements TurnListener, EquipListener,
 	}
 
 	/**
-	 * If this item is created by a PlantGrower, the item will notify it when
+	 * If this item is created by a HarvestableEntityRespawnPoint, the item will notify it when
 	 * picked from the ground.
 	 *
 	 * @param plantGrower
 	 *            a plant grower
 	 */
-	public void setPlantGrower(final PlantGrower plantGrower) {
+	public void setPlantGrower(final HarvestableEntityRespawnPoint plantGrower) {
 		this.plantGrower = plantGrower;
 	}
 
@@ -279,7 +279,7 @@ public class Item extends PassiveEntity implements TurnListener, EquipListener,
 	 *
 	 * @return PlantGrower or null
 	 */
-	public PlantGrower getPlantGrower() {
+	public HarvestableEntityRespawnPoint getPlantGrower() {
 		return plantGrower;
 	}
 
@@ -707,7 +707,7 @@ public class Item extends PassiveEntity implements TurnListener, EquipListener,
 		// stop the timer so that the item won't degrade anymore
 		SingletonRepository.getTurnNotifier().dontNotify(this);
 		if (plantGrower != null) {
-			plantGrower.onFruitPicked(this);
+			plantGrower.onHarvested(this);
 		}
 	}
 

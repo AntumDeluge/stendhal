@@ -39,7 +39,7 @@ import marauroa.common.game.RPObject;
  * @author Daniel Herding
  *
  */
-public class PlantGrower extends Entity implements TurnListener {
+public class PlantGrower extends HarvestableEntityRespawnPoint implements TurnListener {
 	private static Logger LOGGER = Logger.getLogger(PlantGrower.class);
 	/**
 	 * Tells how many turns it takes in average for a new fruit to become ripe.
@@ -105,6 +105,11 @@ public class PlantGrower extends Entity implements TurnListener {
 		SingletonRepository.getTurnNotifier().notifyInTurns(getRandomTurnsForRegrow(), this);
 	}
 
+	@Override
+	public void onHarvested(final Item harvested) {
+		onFruitPicked(harvested);
+	}
+
 	protected int getRandomTurnsForRegrow() {
 		return Rand.randGaussian(meanTurnsForRegrow, (int) (0.1 * meanTurnsForRegrow));
 	}
@@ -151,6 +156,7 @@ public class PlantGrower extends Entity implements TurnListener {
 
 	}
 
+	@Override
 	public void onItemPickedUp(Player player) {
 		player.incHarvestedForItem(growingItemName, 1);
 	}
