@@ -1,0 +1,25 @@
+var namespacegames_1_1stendhal_1_1server_1_1events =
+[
+    [ "AttackEvent", "d3/dd1/classgames_1_1stendhal_1_1server_1_1events_1_1_attack_event.html", "d3/dd1/classgames_1_1stendhal_1_1server_1_1events_1_1_attack_event" ],
+    [ "BestiaryEvent", "d3/dee/classgames_1_1stendhal_1_1server_1_1events_1_1_bestiary_event.html", "d3/dee/classgames_1_1stendhal_1_1server_1_1events_1_1_bestiary_event" ],
+    [ "BuddyLoginEvent", "d0/d65/classgames_1_1stendhal_1_1server_1_1events_1_1_buddy_login_event.html", "d0/d65/classgames_1_1stendhal_1_1server_1_1events_1_1_buddy_login_event" ],
+    [ "BuddyLogoutEvent", "de/d68/classgames_1_1stendhal_1_1server_1_1events_1_1_buddy_logout_event.html", "de/d68/classgames_1_1stendhal_1_1server_1_1events_1_1_buddy_logout_event" ],
+    [ "ExamineEvent", "d1/d87/classgames_1_1stendhal_1_1server_1_1events_1_1_examine_event.html", "d1/d87/classgames_1_1stendhal_1_1server_1_1events_1_1_examine_event" ],
+    [ "GlobalVisualEffectEvent", "d0/d89/classgames_1_1stendhal_1_1server_1_1events_1_1_global_visual_effect_event.html", "d0/d89/classgames_1_1stendhal_1_1server_1_1events_1_1_global_visual_effect_event" ],
+    [ "GroupChangeEvent", "d5/ddf/classgames_1_1stendhal_1_1server_1_1events_1_1_group_change_event.html", "d5/ddf/classgames_1_1stendhal_1_1server_1_1events_1_1_group_change_event" ],
+    [ "GroupInviteEvent", "d6/d7f/classgames_1_1stendhal_1_1server_1_1events_1_1_group_invite_event.html", "d6/d7f/classgames_1_1stendhal_1_1server_1_1events_1_1_group_invite_event" ],
+    [ "HealedEvent", "de/d43/classgames_1_1stendhal_1_1server_1_1events_1_1_healed_event.html", "de/d43/classgames_1_1stendhal_1_1server_1_1events_1_1_healed_event" ],
+    [ "ImageEffectEvent", "d8/d45/classgames_1_1stendhal_1_1server_1_1events_1_1_image_effect_event.html", "d8/d45/classgames_1_1stendhal_1_1server_1_1events_1_1_image_effect_event" ],
+    [ "PlayerLoggedOnEvent", "de/db6/classgames_1_1stendhal_1_1server_1_1events_1_1_player_logged_on_event.html", "de/db6/classgames_1_1stendhal_1_1server_1_1events_1_1_player_logged_on_event" ],
+    [ "PlayerLoggedOutEvent", "d9/dff/classgames_1_1stendhal_1_1server_1_1events_1_1_player_logged_out_event.html", "d9/dff/classgames_1_1stendhal_1_1server_1_1events_1_1_player_logged_out_event" ],
+    [ "PrivateTextEvent", "db/d0b/classgames_1_1stendhal_1_1server_1_1events_1_1_private_text_event.html", "db/d0b/classgames_1_1stendhal_1_1server_1_1events_1_1_private_text_event" ],
+    [ "ProgressStatusEvent", "d4/d40/classgames_1_1stendhal_1_1server_1_1events_1_1_progress_status_event.html", "d4/d40/classgames_1_1stendhal_1_1server_1_1events_1_1_progress_status_event" ],
+    [ "ReachedAchievementEvent", "df/dd9/classgames_1_1stendhal_1_1server_1_1events_1_1_reached_achievement_event.html", "df/dd9/classgames_1_1stendhal_1_1server_1_1events_1_1_reached_achievement_event" ],
+    [ "ShowItemListEvent", "db/d06/classgames_1_1stendhal_1_1server_1_1events_1_1_show_item_list_event.html", "db/d06/classgames_1_1stendhal_1_1server_1_1events_1_1_show_item_list_event" ],
+    [ "ShowOutfitListEvent", "d7/dde/classgames_1_1stendhal_1_1server_1_1events_1_1_show_outfit_list_event.html", "d7/dde/classgames_1_1stendhal_1_1server_1_1events_1_1_show_outfit_list_event" ],
+    [ "SoundEvent", "dc/da2/classgames_1_1stendhal_1_1server_1_1events_1_1_sound_event.html", "dc/da2/classgames_1_1stendhal_1_1server_1_1events_1_1_sound_event" ],
+    [ "TextEvent", "d7/d8e/classgames_1_1stendhal_1_1server_1_1events_1_1_text_event.html", "d7/d8e/classgames_1_1stendhal_1_1server_1_1events_1_1_text_event" ],
+    [ "TradeStateChangeEvent", "d5/d8e/classgames_1_1stendhal_1_1server_1_1events_1_1_trade_state_change_event.html", "d5/d8e/classgames_1_1stendhal_1_1server_1_1events_1_1_trade_state_change_event" ],
+    [ "TransitionGraphEvent", "dc/da2/classgames_1_1stendhal_1_1server_1_1events_1_1_transition_graph_event.html", "dc/da2/classgames_1_1stendhal_1_1server_1_1events_1_1_transition_graph_event" ],
+    [ "ViewChangeEvent", "df/db4/classgames_1_1stendhal_1_1server_1_1events_1_1_view_change_event.html", "df/db4/classgames_1_1stendhal_1_1server_1_1events_1_1_view_change_event" ]
+];

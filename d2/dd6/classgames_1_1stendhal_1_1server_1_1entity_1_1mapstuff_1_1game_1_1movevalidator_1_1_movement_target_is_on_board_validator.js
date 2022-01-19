@@ -1,0 +1,4 @@
+var classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1game_1_1movevalidator_1_1_movement_target_is_on_board_validator =
+[
+    [ "validate", "d2/dd6/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1game_1_1movevalidator_1_1_movement_target_is_on_board_validator.html#a4ff4f428c9b52c0622f11220c0737117", null ]
+];

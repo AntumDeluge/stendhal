@@ -1,0 +1,4 @@
+var classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1portal_1_1_random_destination_portal_factory =
+[
+    [ "createPortal", "dc/dcb/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1portal_1_1_random_destination_portal_factory.html#aba63f1c03ebf4357d5972aeae90b7ee8", null ]
+];

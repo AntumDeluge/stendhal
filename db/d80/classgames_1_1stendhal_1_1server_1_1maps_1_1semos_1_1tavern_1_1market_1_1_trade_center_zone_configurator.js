@@ -1,0 +1,4 @@
+var classgames_1_1stendhal_1_1server_1_1maps_1_1semos_1_1tavern_1_1market_1_1_trade_center_zone_configurator =
+[
+    [ "configureZone", "db/d80/classgames_1_1stendhal_1_1server_1_1maps_1_1semos_1_1tavern_1_1market_1_1_trade_center_zone_configurator.html#acd7e8d8580041effd427df51c616046d", null ]
+];

@@ -1,0 +1,4 @@
+var classgames_1_1stendhal_1_1server_1_1maps_1_1deniran_1_1cityinterior_1_1bakery_1_1_shop_assistant_n_p_c =
+[
+    [ "configureZone", "d4/d7d/classgames_1_1stendhal_1_1server_1_1maps_1_1deniran_1_1cityinterior_1_1bakery_1_1_shop_assistant_n_p_c.html#a64f2789add49a7487efb5293cbfca1c8", null ]
+];

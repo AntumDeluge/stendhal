@@ -1,0 +1,4 @@
+var classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1equipping_1_1validator_1_1_equipment_action_validator =
+[
+    [ "validate", "db/dbb/classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1equipping_1_1validator_1_1_equipment_action_validator.html#a80707becae2f101253b0b55550cb7be4", null ]
+];

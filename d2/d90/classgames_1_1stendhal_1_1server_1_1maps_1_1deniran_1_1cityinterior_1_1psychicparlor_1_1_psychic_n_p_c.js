@@ -1,0 +1,4 @@
+var classgames_1_1stendhal_1_1server_1_1maps_1_1deniran_1_1cityinterior_1_1psychicparlor_1_1_psychic_n_p_c =
+[
+    [ "configureZone", "d2/d90/classgames_1_1stendhal_1_1server_1_1maps_1_1deniran_1_1cityinterior_1_1psychicparlor_1_1_psychic_n_p_c.html#a052088d0f8fcd0469f7f141949de01f5", null ]
+];

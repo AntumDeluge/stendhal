@@ -1,0 +1,6 @@
+var classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1behaviour_1_1impl_1_1_item_dropping_teleporter_behaviour =
+[
+    [ "ItemDroppingTeleporterBehaviour", "dd/d1d/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1behaviour_1_1impl_1_1_item_dropping_teleporter_behaviour.html#a48b92292eadb91401a9b11f0a3c934e8", null ],
+    [ "ItemDroppingTeleporterBehaviour", "dd/d1d/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1behaviour_1_1impl_1_1_item_dropping_teleporter_behaviour.html#a1cb36553a4f04f8619359b0d1cd2434a", null ],
+    [ "doRegularBehaviour", "dd/d1d/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1behaviour_1_1impl_1_1_item_dropping_teleporter_behaviour.html#af0c6df56902f1742ce3ae443608e0db2", null ]
+];

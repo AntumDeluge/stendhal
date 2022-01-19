@@ -1,0 +1,4 @@
+var classgames_1_1stendhal_1_1server_1_1maps_1_1semos_1_1tavern_1_1market_1_1_remove_offer_handler_1_1_remove_offer_chat_action =
+[
+    [ "fire", "dd/d7b/classgames_1_1stendhal_1_1server_1_1maps_1_1semos_1_1tavern_1_1market_1_1_remove_offer_handler_1_1_remove_offer_chat_action.html#a38daf76ae8300a75e62715731d4d01a0", null ]
+];

@@ -1,0 +1,4 @@
+var interfacegames_1_1stendhal_1_1server_1_1maps_1_1athor_1_1ship_1_1_athor_ferry_1_1_i_ferry_listener =
+[
+    [ "onNewFerryState", "de/d32/interfacegames_1_1stendhal_1_1server_1_1maps_1_1athor_1_1ship_1_1_athor_ferry_1_1_i_ferry_listener.html#ab441e08be5b6bc0f754bf669f508474c", null ]
+];

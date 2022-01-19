@@ -1,0 +1,6 @@
+var classgames_1_1stendhal_1_1server_1_1maps_1_1semos_1_1tavern_1_1market_1_1_prolong_offer_handler =
+[
+    [ "ConfirmProlongOfferChatAction", "d1/d95/classgames_1_1stendhal_1_1server_1_1maps_1_1semos_1_1tavern_1_1market_1_1_prolong_offer_handler_ffed3b84740ea0d1fa136e306d959d35.html", "d1/d95/classgames_1_1stendhal_1_1server_1_1maps_1_1semos_1_1tavern_1_1market_1_1_prolong_offer_handler_ffed3b84740ea0d1fa136e306d959d35" ],
+    [ "ProlongOfferChatAction", "d3/dd6/classgames_1_1stendhal_1_1server_1_1maps_1_1semos_1_1tavern_1_1market_1_1_prolong_offer_handler_1_1_prolong_offer_chat_action.html", "d3/dd6/classgames_1_1stendhal_1_1server_1_1maps_1_1semos_1_1tavern_1_1market_1_1_prolong_offer_handler_1_1_prolong_offer_chat_action" ],
+    [ "add", "d6/d6a/classgames_1_1stendhal_1_1server_1_1maps_1_1semos_1_1tavern_1_1market_1_1_prolong_offer_handler.html#a79d412322b48416cc99e8f82f3a1a3b3", null ]
+];

@@ -1,0 +1,4 @@
+var classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1game_1_1movevalidator_1_1_players_turn_validator =
+[
+    [ "validate", "d8/dd0/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1game_1_1movevalidator_1_1_players_turn_validator.html#a0ad5b1b8def11ee400f904380264a594", null ]
+];

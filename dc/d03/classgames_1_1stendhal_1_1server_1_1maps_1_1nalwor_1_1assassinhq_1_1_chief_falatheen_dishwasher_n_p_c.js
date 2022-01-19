@@ -1,0 +1,4 @@
+var classgames_1_1stendhal_1_1server_1_1maps_1_1nalwor_1_1assassinhq_1_1_chief_falatheen_dishwasher_n_p_c =
+[
+    [ "configureZone", "dc/d03/classgames_1_1stendhal_1_1server_1_1maps_1_1nalwor_1_1assassinhq_1_1_chief_falatheen_dishwasher_n_p_c.html#a6d2d6901d90f91a3182dc0410af71687", null ]
+];

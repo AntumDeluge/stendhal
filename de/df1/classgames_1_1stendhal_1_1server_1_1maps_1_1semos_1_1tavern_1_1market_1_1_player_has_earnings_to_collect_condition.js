@@ -1,0 +1,4 @@
+var classgames_1_1stendhal_1_1server_1_1maps_1_1semos_1_1tavern_1_1market_1_1_player_has_earnings_to_collect_condition =
+[
+    [ "fire", "de/df1/classgames_1_1stendhal_1_1server_1_1maps_1_1semos_1_1tavern_1_1market_1_1_player_has_earnings_to_collect_condition.html#a0deccd448813623a55c1dde3c2c9db6c", null ]
+];

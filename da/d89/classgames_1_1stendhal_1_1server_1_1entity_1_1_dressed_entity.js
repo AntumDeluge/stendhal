@@ -1,0 +1,25 @@
+var classgames_1_1stendhal_1_1server_1_1entity_1_1_dressed_entity =
+[
+    [ "DressedEntity", "da/d89/classgames_1_1stendhal_1_1server_1_1entity_1_1_dressed_entity.html#a4c85782ecc91b2a41726fa4213ed4498", null ],
+    [ "DressedEntity", "da/d89/classgames_1_1stendhal_1_1server_1_1entity_1_1_dressed_entity.html#aba1bc5e18853e93332f5f2a1cdd234de", null ],
+    [ "dropItemsOn", "da/d89/classgames_1_1stendhal_1_1server_1_1entity_1_1_dressed_entity.html#a7d5750275fa9afaee5059e5f3cec0da9", null ],
+    [ "getOriginalOutfit", "da/d89/classgames_1_1stendhal_1_1server_1_1entity_1_1_dressed_entity.html#a3f11cec4b875343991bf97e95e10f54f", null ],
+    [ "getOutfit", "da/d89/classgames_1_1stendhal_1_1server_1_1entity_1_1_dressed_entity.html#adeeb872ae239c5dd0d30e9a004a1e9dd", null ],
+    [ "getOutfitColors", "da/d89/classgames_1_1stendhal_1_1server_1_1entity_1_1_dressed_entity.html#acf520b3cabbfd96030fa881b1b024e19", null ],
+    [ "isNaked", "da/d89/classgames_1_1stendhal_1_1server_1_1entity_1_1_dressed_entity.html#a9f3a5a3feeda5007f28e4c0185e9d29c", null ],
+    [ "logic", "da/d89/classgames_1_1stendhal_1_1server_1_1entity_1_1_dressed_entity.html#ac572d858fb893caf683dd595e03cde4b", null ],
+    [ "put", "da/d89/classgames_1_1stendhal_1_1server_1_1entity_1_1_dressed_entity.html#a973a105a64434483731873a79aad4ffc", null ],
+    [ "restoreOriginalOutfit", "da/d89/classgames_1_1stendhal_1_1server_1_1entity_1_1_dressed_entity.html#a3165b695f6889ed98a27c8e3bce57361", null ],
+    [ "setOutfit", "da/d89/classgames_1_1stendhal_1_1server_1_1entity_1_1_dressed_entity.html#abfc6faa2418ed61e5c25ffe49bf22462", null ],
+    [ "setOutfit", "da/d89/classgames_1_1stendhal_1_1server_1_1entity_1_1_dressed_entity.html#a6eeee7cf40cc9a9a7becfce86a77f39f", null ],
+    [ "setOutfit", "da/d89/classgames_1_1stendhal_1_1server_1_1entity_1_1_dressed_entity.html#a49a75de2c52c78654bf3503fb5c493cc", null ],
+    [ "setOutfit", "da/d89/classgames_1_1stendhal_1_1server_1_1entity_1_1_dressed_entity.html#a1c78de4e765b4908c96c7d5700acae8a", null ],
+    [ "setOutfit", "da/d89/classgames_1_1stendhal_1_1server_1_1entity_1_1_dressed_entity.html#aff6b75f9cdb123776ea447f3222638d2", null ],
+    [ "setOutfit", "da/d89/classgames_1_1stendhal_1_1server_1_1entity_1_1_dressed_entity.html#abe3e6e0412fb2de16bb1c266f97db03f", null ],
+    [ "setOutfitColor", "da/d89/classgames_1_1stendhal_1_1server_1_1entity_1_1_dressed_entity.html#ab042da07355b599976a4532792d42b35", null ],
+    [ "setOutfitColor", "da/d89/classgames_1_1stendhal_1_1server_1_1entity_1_1_dressed_entity.html#ad670bb91ac0ed2aaded62c55f6ac6fd4", null ],
+    [ "setOutfitColor", "da/d89/classgames_1_1stendhal_1_1server_1_1entity_1_1_dressed_entity.html#a4dde807b4eb773ed1151f13c54224888", null ],
+    [ "setOutfitColors", "da/d89/classgames_1_1stendhal_1_1server_1_1entity_1_1_dressed_entity.html#a8d230b8c3646ff573152173a31f4a415", null ],
+    [ "setOutfitWithDetail", "da/d89/classgames_1_1stendhal_1_1server_1_1entity_1_1_dressed_entity.html#a7b1ec58c8b5e86941ce457dce41031ee", null ],
+    [ "unsetOutfitColor", "da/d89/classgames_1_1stendhal_1_1server_1_1entity_1_1_dressed_entity.html#a0a750aaf00d247016faa10da97ad53e8", null ]
+];

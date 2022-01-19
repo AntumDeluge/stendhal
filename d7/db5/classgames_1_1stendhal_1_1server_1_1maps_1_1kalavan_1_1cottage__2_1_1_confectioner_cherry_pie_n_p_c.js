@@ -1,0 +1,4 @@
+var classgames_1_1stendhal_1_1server_1_1maps_1_1kalavan_1_1cottage__2_1_1_confectioner_cherry_pie_n_p_c =
+[
+    [ "configureZone", "d7/db5/classgames_1_1stendhal_1_1server_1_1maps_1_1kalavan_1_1cottage__2_1_1_confectioner_cherry_pie_n_p_c.html#a7f9a37d0cdc5c6ff0cf8a5a67a859ebe", null ]
+];

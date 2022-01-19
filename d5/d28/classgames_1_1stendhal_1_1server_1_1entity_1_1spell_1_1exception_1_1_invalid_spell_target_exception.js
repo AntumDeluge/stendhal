@@ -1,0 +1,4 @@
+var classgames_1_1stendhal_1_1server_1_1entity_1_1spell_1_1exception_1_1_invalid_spell_target_exception =
+[
+    [ "InvalidSpellTargetException", "d5/d28/classgames_1_1stendhal_1_1server_1_1entity_1_1spell_1_1exception_1_1_invalid_spell_target_exception.html#a336091a9c15b30ec29d93875aa89e161", null ]
+];

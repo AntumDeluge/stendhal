@@ -1,0 +1,7 @@
+var namespacegames_1_1stendhal_1_1server_1_1maps_1_1ados_1_1abandonedkeep =
+[
+    [ "DwarfBuyerGuyNPC", "d7/d8f/classgames_1_1stendhal_1_1server_1_1maps_1_1ados_1_1abandonedkeep_1_1_dwarf_buyer_guy_n_p_c.html", "d7/d8f/classgames_1_1stendhal_1_1server_1_1maps_1_1ados_1_1abandonedkeep_1_1_dwarf_buyer_guy_n_p_c" ],
+    [ "DwarfWeaponArmorGuyNPC", "dd/db7/classgames_1_1stendhal_1_1server_1_1maps_1_1ados_1_1abandonedkeep_1_1_dwarf_weapon_armor_guy_n_p_c.html", "dd/db7/classgames_1_1stendhal_1_1server_1_1maps_1_1ados_1_1abandonedkeep_1_1_dwarf_weapon_armor_guy_n_p_c" ],
+    [ "OrcKillGiantDwarfNPC", "da/d21/classgames_1_1stendhal_1_1server_1_1maps_1_1ados_1_1abandonedkeep_1_1_orc_kill_giant_dwarf_n_p_c.html", "da/d21/classgames_1_1stendhal_1_1server_1_1maps_1_1ados_1_1abandonedkeep_1_1_orc_kill_giant_dwarf_n_p_c" ],
+    [ "OrcWeaponArmorGuyNPC", "d4/d96/classgames_1_1stendhal_1_1server_1_1maps_1_1ados_1_1abandonedkeep_1_1_orc_weapon_armor_guy_n_p_c.html", "d4/d96/classgames_1_1stendhal_1_1server_1_1maps_1_1ados_1_1abandonedkeep_1_1_orc_weapon_armor_guy_n_p_c" ]
+];

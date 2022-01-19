@@ -1,0 +1,5 @@
+var classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1pvp_1_1_player_vs_player_challenge_accepted_turn_listener =
+[
+    [ "PlayerVsPlayerChallengeAcceptedTurnListener", "d8/dc2/classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1pvp_1_1_player_vs_player_challenge_accepted_turn_listener.html#a56ab5c87e0ddae3f11b5065bc7e677a0", null ],
+    [ "onTurnReached", "d8/dc2/classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1pvp_1_1_player_vs_player_challenge_accepted_turn_listener.html#a9d314ff3542689d0c2cae3cb90d77ef0", null ]
+];

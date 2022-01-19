@@ -1,0 +1,28 @@
+var classgames_1_1stendhal_1_1server_1_1core_1_1scripting_1_1_scripting_sandbox =
+[
+    [ "ScriptingSandbox", "d4/de7/classgames_1_1stendhal_1_1server_1_1core_1_1scripting_1_1_scripting_sandbox.html#ab0b2265bc3a7684e9649ccc307e6bca6", null ],
+    [ "add", "d4/de7/classgames_1_1stendhal_1_1server_1_1core_1_1scripting_1_1_scripting_sandbox.html#a28017dbbd78d0679461a81c850108133", null ],
+    [ "add", "d4/de7/classgames_1_1stendhal_1_1server_1_1core_1_1scripting_1_1_scripting_sandbox.html#a42086e641454bd27f86744befef7ace8", null ],
+    [ "add", "d4/de7/classgames_1_1stendhal_1_1server_1_1core_1_1scripting_1_1_scripting_sandbox.html#a50e6b5d4ff5d201c807f5e79c44b414a", null ],
+    [ "addGameEvent", "d4/de7/classgames_1_1stendhal_1_1server_1_1core_1_1scripting_1_1_scripting_sandbox.html#ae403376c235dec0c35476c359cf1ba6f", null ],
+    [ "execute", "d4/de7/classgames_1_1stendhal_1_1server_1_1core_1_1scripting_1_1_scripting_sandbox.html#a6c9d6cc3b45dcf5e51ae44ddb694a33d", null ],
+    [ "getCreature", "d4/de7/classgames_1_1stendhal_1_1server_1_1core_1_1scripting_1_1_scripting_sandbox.html#a0b7c10ad97cc508047b79fe590b75459", null ],
+    [ "getCreatures", "d4/de7/classgames_1_1stendhal_1_1server_1_1core_1_1scripting_1_1_scripting_sandbox.html#a04f0253c4243f1184c7faa4c3648b5c8", null ],
+    [ "getItem", "d4/de7/classgames_1_1stendhal_1_1server_1_1core_1_1scripting_1_1_scripting_sandbox.html#affc582e9427cc0b063edf280ac4e1133", null ],
+    [ "getItems", "d4/de7/classgames_1_1stendhal_1_1server_1_1core_1_1scripting_1_1_scripting_sandbox.html#a0b68770eedeac1adc20f26bb1f8a1f08", null ],
+    [ "getMessage", "d4/de7/classgames_1_1stendhal_1_1server_1_1core_1_1scripting_1_1_scripting_sandbox.html#a66e1ced087e60ce0b8d4057ef35bc1ec", null ],
+    [ "getZone", "d4/de7/classgames_1_1stendhal_1_1server_1_1core_1_1scripting_1_1_scripting_sandbox.html#a0d3b6f57cc7903f722563683e7d3f6b3", null ],
+    [ "getZone", "d4/de7/classgames_1_1stendhal_1_1server_1_1core_1_1scripting_1_1_scripting_sandbox.html#ae597a4800039841b62cae7d81e7ae885", null ],
+    [ "load", "d4/de7/classgames_1_1stendhal_1_1server_1_1core_1_1scripting_1_1_scripting_sandbox.html#a783ed5da012a6b40064a908d11d9b3eb", null ],
+    [ "modify", "d4/de7/classgames_1_1stendhal_1_1server_1_1core_1_1scripting_1_1_scripting_sandbox.html#a3094b14a90052c369f0d891703ad35f5", null ],
+    [ "playerIsInZone", "d4/de7/classgames_1_1stendhal_1_1server_1_1core_1_1scripting_1_1_scripting_sandbox.html#a3ab1fd38c0da9738d3346ee90887fa40", null ],
+    [ "postExecute", "d4/de7/classgames_1_1stendhal_1_1server_1_1core_1_1scripting_1_1_scripting_sandbox.html#a6e852b303f459be2a3fef0f82ac319b3", null ],
+    [ "preExecute", "d4/de7/classgames_1_1stendhal_1_1server_1_1core_1_1scripting_1_1_scripting_sandbox.html#a02899c9dcf38bcf005ee78fa2a90c375", null ],
+    [ "privateText", "d4/de7/classgames_1_1stendhal_1_1server_1_1core_1_1scripting_1_1_scripting_sandbox.html#ae38293b2be2c616e2277a81a5409c53d", null ],
+    [ "remove", "d4/de7/classgames_1_1stendhal_1_1server_1_1core_1_1scripting_1_1_scripting_sandbox.html#ab81ba45949e57342e59d89771d61e420", null ],
+    [ "remove", "d4/de7/classgames_1_1stendhal_1_1server_1_1core_1_1scripting_1_1_scripting_sandbox.html#a0df8a0976cd2b25817421dd80358c40b", null ],
+    [ "setMessage", "d4/de7/classgames_1_1stendhal_1_1server_1_1core_1_1scripting_1_1_scripting_sandbox.html#a0bb51d5541f64466f4c3bc19f027fb1d", null ],
+    [ "setZone", "d4/de7/classgames_1_1stendhal_1_1server_1_1core_1_1scripting_1_1_scripting_sandbox.html#a7b4e369b73ff672429a1198bd7dee793", null ],
+    [ "setZone", "d4/de7/classgames_1_1stendhal_1_1server_1_1core_1_1scripting_1_1_scripting_sandbox.html#a493ca934023243cef419a9ee0111f0c6", null ],
+    [ "unload", "d4/de7/classgames_1_1stendhal_1_1server_1_1core_1_1scripting_1_1_scripting_sandbox.html#a37131bc85a5da3e5b28b5a8edf6a99ea", null ]
+];

@@ -1,0 +1,4 @@
+var classgames_1_1stendhal_1_1server_1_1maps_1_1semos_1_1tavern_1_1market_1_1_remove_offer_handler_14a004f48874bd0f27f290be0ece812de =
+[
+    [ "fire", "d6/d5d/classgames_1_1stendhal_1_1server_1_1maps_1_1semos_1_1tavern_1_1market_1_1_remove_offer_handler_14a004f48874bd0f27f290be0ece812de.html#ad85d9eb104c871e9fdd777f014361042", null ]
+];

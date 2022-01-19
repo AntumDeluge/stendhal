@@ -1,0 +1,4 @@
+var classgames_1_1stendhal_1_1server_1_1maps_1_1deniran_1_1cityinterior_1_1dressshop_1_1_outfit_lender_n_p_c =
+[
+    [ "configureZone", "df/d4d/classgames_1_1stendhal_1_1server_1_1maps_1_1deniran_1_1cityinterior_1_1dressshop_1_1_outfit_lender_n_p_c.html#a2bace1ac5f9e32b4b5a350a9a7807490", null ]
+];

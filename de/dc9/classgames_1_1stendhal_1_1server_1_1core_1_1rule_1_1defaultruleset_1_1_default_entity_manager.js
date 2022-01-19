@@ -1,0 +1,25 @@
+var classgames_1_1stendhal_1_1server_1_1core_1_1rule_1_1defaultruleset_1_1_default_entity_manager =
+[
+    [ "DefaultEntityManager", "de/dc9/classgames_1_1stendhal_1_1server_1_1core_1_1rule_1_1defaultruleset_1_1_default_entity_manager.html#af4460bfb567a0e77fd9e657b88cb098f", null ],
+    [ "addCreature", "de/dc9/classgames_1_1stendhal_1_1server_1_1core_1_1rule_1_1defaultruleset_1_1_default_entity_manager.html#a8e5f74fb899a158f02e60037f264b786", null ],
+    [ "addItem", "de/dc9/classgames_1_1stendhal_1_1server_1_1core_1_1rule_1_1defaultruleset_1_1_default_entity_manager.html#a2aaa1d30fe752614f9352d9aea48b0cd", null ],
+    [ "addSpell", "de/dc9/classgames_1_1stendhal_1_1server_1_1core_1_1rule_1_1defaultruleset_1_1_default_entity_manager.html#afe8a8a43a8b37e37ecf090ecf0c5a390", null ],
+    [ "getConfiguredItems", "de/dc9/classgames_1_1stendhal_1_1server_1_1core_1_1rule_1_1defaultruleset_1_1_default_entity_manager.html#a3d4e633ece46760f3d126aec2a602c46", null ],
+    [ "getConfiguredSpells", "de/dc9/classgames_1_1stendhal_1_1server_1_1core_1_1rule_1_1defaultruleset_1_1_default_entity_manager.html#a6a3dc8219b8e24c54657ffaf52704eae", null ],
+    [ "getCreature", "de/dc9/classgames_1_1stendhal_1_1server_1_1core_1_1rule_1_1defaultruleset_1_1_default_entity_manager.html#a5a5bfb3d71d0388967e015082e71ecc2", null ],
+    [ "getCreature", "de/dc9/classgames_1_1stendhal_1_1server_1_1core_1_1rule_1_1defaultruleset_1_1_default_entity_manager.html#aac773d58cfc99ed436ad44f40b17c86d", null ],
+    [ "getCreatures", "de/dc9/classgames_1_1stendhal_1_1server_1_1core_1_1rule_1_1defaultruleset_1_1_default_entity_manager.html#a7dbce72c04625f5d48c44de53fb1a8b0", null ],
+    [ "getDefaultCreature", "de/dc9/classgames_1_1stendhal_1_1server_1_1core_1_1rule_1_1defaultruleset_1_1_default_entity_manager.html#a17287598c28e4515fb7c3442b01f94ae", null ],
+    [ "getDefaultCreatures", "de/dc9/classgames_1_1stendhal_1_1server_1_1core_1_1rule_1_1defaultruleset_1_1_default_entity_manager.html#a73cd259fc708fe47ce6dfef2a598f23b", null ],
+    [ "getDefaultItems", "de/dc9/classgames_1_1stendhal_1_1server_1_1core_1_1rule_1_1defaultruleset_1_1_default_entity_manager.html#a0edfde48cd6b54fad1e5c805fb95ddf1", null ],
+    [ "getEntity", "de/dc9/classgames_1_1stendhal_1_1server_1_1core_1_1rule_1_1defaultruleset_1_1_default_entity_manager.html#ab1fb1bd07bafccea5fa950cce3f95f18", null ],
+    [ "getItem", "de/dc9/classgames_1_1stendhal_1_1server_1_1core_1_1rule_1_1defaultruleset_1_1_default_entity_manager.html#a6530992376d22089c46382178797d848", null ],
+    [ "getItems", "de/dc9/classgames_1_1stendhal_1_1server_1_1core_1_1rule_1_1defaultruleset_1_1_default_entity_manager.html#a972567de516eb7875fedf7c7c6307a0d", null ],
+    [ "getSpell", "de/dc9/classgames_1_1stendhal_1_1server_1_1core_1_1rule_1_1defaultruleset_1_1_default_entity_manager.html#a7c4c1c2b2337370082645a00cb9c363e", null ],
+    [ "getSpells", "de/dc9/classgames_1_1stendhal_1_1server_1_1core_1_1rule_1_1defaultruleset_1_1_default_entity_manager.html#ada74d2f608e9e4fbaa2a3a8e922002ac", null ],
+    [ "isCreature", "de/dc9/classgames_1_1stendhal_1_1server_1_1core_1_1rule_1_1defaultruleset_1_1_default_entity_manager.html#af6cfbb9db85c10357b4125039fbd4df8", null ],
+    [ "isCreature", "de/dc9/classgames_1_1stendhal_1_1server_1_1core_1_1rule_1_1defaultruleset_1_1_default_entity_manager.html#ac76cf9f30b46a59ba379dd7939d9da5f", null ],
+    [ "isItem", "de/dc9/classgames_1_1stendhal_1_1server_1_1core_1_1rule_1_1defaultruleset_1_1_default_entity_manager.html#a19d958203ecdb95da69251a9c66e6983", null ],
+    [ "isSpell", "de/dc9/classgames_1_1stendhal_1_1server_1_1core_1_1rule_1_1defaultruleset_1_1_default_entity_manager.html#a564cdc2ca722275882e2e85c63a5a9b7", null ],
+    [ "populateCreatureList", "de/dc9/classgames_1_1stendhal_1_1server_1_1core_1_1rule_1_1defaultruleset_1_1_default_entity_manager.html#ab0337b665486fb407eef6df7adba8693", null ]
+];

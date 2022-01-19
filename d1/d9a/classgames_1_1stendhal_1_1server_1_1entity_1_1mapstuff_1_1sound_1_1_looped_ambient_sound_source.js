@@ -1,0 +1,4 @@
+var classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1sound_1_1_looped_ambient_sound_source =
+[
+    [ "LoopedAmbientSoundSource", "d1/d9a/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1sound_1_1_looped_ambient_sound_source.html#ad6a04f81df3fa74f80eec5a46f359606", null ]
+];

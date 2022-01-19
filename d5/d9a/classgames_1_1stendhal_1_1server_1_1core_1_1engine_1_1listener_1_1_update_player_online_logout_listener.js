@@ -1,0 +1,4 @@
+var classgames_1_1stendhal_1_1server_1_1core_1_1engine_1_1listener_1_1_update_player_online_logout_listener =
+[
+    [ "onLoggedOut", "d5/d9a/classgames_1_1stendhal_1_1server_1_1core_1_1engine_1_1listener_1_1_update_player_online_logout_listener.html#a83f7b6d4e66a10a070eefa3fd05209d1", null ]
+];

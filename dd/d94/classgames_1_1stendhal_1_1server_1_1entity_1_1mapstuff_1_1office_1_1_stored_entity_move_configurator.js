@@ -1,0 +1,4 @@
+var classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1office_1_1_stored_entity_move_configurator =
+[
+    [ "configureZone", "dd/d94/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1office_1_1_stored_entity_move_configurator.html#a66248b474d46b15ef97459dd5ee29492", null ]
+];

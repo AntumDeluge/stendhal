@@ -1,0 +1,5 @@
+var classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1achievement_1_1factory_1_1_ados_item_quest_achievements_factory =
+[
+    [ "createAchievements", "d7/d6a/classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1achievement_1_1factory_1_1_ados_item_quest_achievements_factory.html#aacc770823e7665baa90933a3531f8f5d", null ],
+    [ "getCategory", "d7/d6a/classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1achievement_1_1factory_1_1_ados_item_quest_achievements_factory.html#ac80fa0f20be406482cb2670ed6a91db5", null ]
+];

@@ -1,0 +1,5 @@
+var classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1pvp_1_1_player_vs_player_challenge_creator_turn_listener =
+[
+    [ "PlayerVsPlayerChallengeCreatorTurnListener", "db/d28/classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1pvp_1_1_player_vs_player_challenge_creator_turn_listener.html#a64f033a9fd5f4aaca03d229dd8f1e8ac", null ],
+    [ "onTurnReached", "db/d28/classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1pvp_1_1_player_vs_player_challenge_creator_turn_listener.html#a6bfb80d46e37d04ec1575069f708ab2a", null ]
+];
