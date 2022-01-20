@@ -1,4 +1,0 @@
-var classgames_1_1stendhal_1_1tools_1_1loganalyser_1_1itemlog_1_1contraband_1_1_do_nothing_item_event_type =
-[
-    [ "process", "d2/dbd/classgames_1_1stendhal_1_1tools_1_1loganalyser_1_1itemlog_1_1contraband_1_1_do_nothing_item_event_type.html#a33d83671c10b738c74d54d85b92b40ca", null ]
-];

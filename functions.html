@@ -9,10 +9,6 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
-<script type="text/javascript" src="navtreedata.js"></script>
-<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -53,22 +49,6 @@ $(function() {
 /* @license-end */</script>
 <div id="main-nav"></div>
 </div><!-- top -->
-<div id="side-nav" class="ui-resizable side-nav-resizable">
-  <div id="nav-tree">
-    <div id="nav-tree-contents">
-      <div id="nav-sync" class="sync"></div>
-    </div>
-  </div>
-  <div id="splitbar" style="-moz-user-select:none;" 
-       class="ui-resizable-handle">
-  </div>
-</div>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('functions.html',''); initResizable(); });
-/* @license-end */
-</script>
-<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -104,9 +84,6 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 </li>
 <li>acceptOffer()
 : <a class="el" href="db/d96/classgames_1_1stendhal_1_1server_1_1entity_1_1trade_1_1_market.html#abe9a514800cf44c259ae8792a3593df1">games.stendhal.server.entity.trade.Market</a>
-</li>
-<li>acceptQuest()
-: <a class="el" href="d1/d05/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1logic_1_1_bring_list_of_items_quest_logic.html#ae8f168f2947b8d8dd7ae2d7b6c956f98">games.stendhal.server.maps.quests.logic.BringListOfItemsQuestLogic</a>
 </li>
 <li>AccountCreator()
 : <a class="el" href="d0/d5d/classgames_1_1stendhal_1_1server_1_1core_1_1account_1_1_account_creator.html#ae23548fecc63ad9c6f79e0b8c57d434c">games.stendhal.server.core.account.AccountCreator</a>
@@ -192,7 +169,7 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 , <a class="el" href="d0/d18/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1fsm_1_1_engine.html#a51c5c7b406c1f7a56b1cadb55fcc4b79">games.stendhal.server.entity.npc.fsm.Engine</a>
 , <a class="el" href="df/d46/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1_n_p_c_list.html#aed7a52770ee14b55622ffd6e1166771f">games.stendhal.server.entity.npc.NPCList</a>
 , <a class="el" href="df/db1/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1_shop_list.html#ae6373c0605ea0517e53dfa04e8ffcf90">games.stendhal.server.entity.npc.ShopList</a>
-, <a class="el" href="d9/dda/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1_speaker_n_p_c.html#a6ed59b5dbb85794cb1736f656dd1401b">games.stendhal.server.entity.npc.SpeakerNPC</a>
+, <a class="el" href="d9/dda/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1_speaker_n_p_c.html#ab7b907677e5fd365f65b193d1a6602d2">games.stendhal.server.entity.npc.SpeakerNPC</a>
 , <a class="el" href="d7/dd2/classgames_1_1stendhal_1_1server_1_1entity_1_1slot_1_1_bank_accessor_manager.html#ae0919602e4789e7bd92845d6c33788ec">games.stendhal.server.entity.slot.BankAccessorManager</a>
 , <a class="el" href="d4/d94/classgames_1_1stendhal_1_1server_1_1script_1_1_admin_sign.html#a2f1e39f16652ea729f9a65c03f9acd32">games.stendhal.server.script.AdminSign</a>
 , <a class="el" href="da/d49/classgames_1_1stendhal_1_1server_1_1script_1_1_summon_chest.html#a2dca8cbf58d561ef01339ed6446e219a">games.stendhal.server.script.SummonChest</a>
@@ -207,9 +184,6 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 , <a class="el" href="db/d2d/classgames_1_1stendhal_1_1client_1_1_game_screen.html#ad4556debc447cccb01c78b275fb89250">games.stendhal.client.GameScreen</a>
 , <a class="el" href="d9/d44/classgames_1_1stendhal_1_1client_1_1gui_1_1j2_d_client.html#a716b6478cc52fa42487ce54f11927c87">games.stendhal.client.gui.j2DClient</a>
 , <a class="el" href="d9/dcb/interfacegames_1_1stendhal_1_1client_1_1gui_1_1_user_interface.html#a6cf4d91a677d16ed3d4f9430a39d7081">games.stendhal.client.gui.UserInterface</a>
-</li>
-<li>addAidedKill()
-: <a class="el" href="d0/d89/classgames_1_1stendhal_1_1server_1_1maps_1_1deathmatch_1_1_deathmatch_info.html#a3a236a88993c328f9ba339db5e5d704b">games.stendhal.server.maps.deathmatch.DeathmatchInfo</a>
 </li>
 <li>addAtkXP()
 : <a class="el" href="d8/d8b/classgames_1_1stendhal_1_1server_1_1entity_1_1_r_p_entity.html#ad745caecb2073e00918f440a8a1e9edf">games.stendhal.server.entity.RPEntity</a>
@@ -368,9 +342,6 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>addOutfitChanger()
 : <a class="el" href="dd/d71/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1behaviour_1_1adder_1_1_outfit_changer_adder.html#afeaa636bb8a472662322bd35a1955777">games.stendhal.server.entity.npc.behaviour.adder.OutfitChangerAdder</a>
 </li>
-<li>addPoints()
-: <a class="el" href="de/dda/classgames_1_1stendhal_1_1server_1_1maps_1_1deathmatch_1_1_deathmatch_state.html#ab7b097bf14b834d9ffdb0f4e7d3cd90c">games.stendhal.server.maps.deathmatch.DeathmatchState</a>
-</li>
 <li>addPort()
 : <a class="el" href="d5/d6c/classgames_1_1stendhal_1_1server_1_1core_1_1config_1_1zone_1_1_entity_setup_descriptor.html#a6998e907e937003e1e00ba0ed2992805">games.stendhal.server.core.config.zone.EntitySetupDescriptor</a>
 </li>
@@ -435,141 +406,6 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 , <a class="el" href="d9/de9/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1area_1_1_no_login_area_behaviour.html#a5ae34b39af27b847f08a6208d1551fdf">games.stendhal.server.entity.mapstuff.area.NoLoginAreaBehaviour</a>
 , <a class="el" href="d5/dfd/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1area_1_1_no_teleport_in_behaviour.html#a192b155d4987210c86755eaf8557c91e">games.stendhal.server.entity.mapstuff.area.NoTeleportInBehaviour</a>
 , <a class="el" href="d4/d46/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1area_1_1_no_teleport_out_behaviour.html#ace06a106cc24025c1ef4b66e2f08e9f7">games.stendhal.server.entity.mapstuff.area.NoTeleportOutBehaviour</a>
-, <a class="el" href="d8/d5f/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_abstract_quest.html#a0b6e8c4880233951c95afa794ce9967c">games.stendhal.server.maps.quests.AbstractQuest</a>
-, <a class="el" href="dc/d5a/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_ad_memoria_in_portfolio.html#a9a7283cad7fc17309b20438b16218eac">games.stendhal.server.maps.quests.AdMemoriaInPortfolio</a>
-, <a class="el" href="d7/dbb/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_ados_deathmatch.html#a10444de679048d4f952c3ad6865a4578">games.stendhal.server.maps.quests.AdosDeathmatch</a>
-, <a class="el" href="d2/d70/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_amazon_princess.html#ab24299675c5992dc5941b3456dec2334">games.stendhal.server.maps.quests.AmazonPrincess</a>
-, <a class="el" href="d0/d4c/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1antivenom__ring_1_1_antivenom_ring.html#a48b6d0b209b94209a0cf2956b11e503b">games.stendhal.server.maps.quests.antivenom_ring.AntivenomRing</a>
-, <a class="el" href="d9/d34/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_armor_for_dagobert.html#a8b0f69788f499d8dfe2e29df928ce768">games.stendhal.server.maps.quests.ArmorForDagobert</a>
-, <a class="el" href="da/d89/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_balloon_for_bobby.html#af1ccba3ed01ca3d4abfb941928bed72b">games.stendhal.server.maps.quests.BalloonForBobby</a>
-, <a class="el" href="d6/dd7/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_beer_for_hayunn.html#ae7baddc7fe2f2fa6c5f2f435309ab57c">games.stendhal.server.maps.quests.BeerForHayunn</a>
-, <a class="el" href="d7/db5/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_blackjack.html#af84221c6f0ffbf35aaec26582c5b609a">games.stendhal.server.maps.quests.Blackjack</a>
-, <a class="el" href="d1/d47/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_bows_for_ouchit.html#a7036d415d8e6e5d6b1446e3691768efe">games.stendhal.server.maps.quests.BowsForOuchit</a>
-, <a class="el" href="db/dc5/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_campfire.html#a88245be3ddff73a2b09ef206335f1274">games.stendhal.server.maps.quests.Campfire</a>
-, <a class="el" href="dd/d9c/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1captureflag_1_1_capture_flag_quest.html#a05aee3c5be32ca97a2b5edb992532719">games.stendhal.server.maps.quests.captureflag.CaptureFlagQuest</a>
-, <a class="el" href="d9/d58/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_chocolate_for_elisabeth.html#a44adaadeee9175a6b6aa72e87d91ac50">games.stendhal.server.maps.quests.ChocolateForElisabeth</a>
-, <a class="el" href="d3/d00/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_clean_athors_underground.html#a22fd0359515fdce6f1979ce7072f7a66">games.stendhal.server.maps.quests.CleanAthorsUnderground</a>
-, <a class="el" href="d5/dd7/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_clean_storage_space.html#ab556abf6615b6ae069373d0265d8ed9d">games.stendhal.server.maps.quests.CleanStorageSpace</a>
-, <a class="el" href="db/d4f/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_cloak_collector.html#ab2ae765ee18568f4e02c66689d0d5bd9">games.stendhal.server.maps.quests.CloakCollector</a>
-, <a class="el" href="d8/d5d/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_cloak_collector2.html#ab73a9740f7a667b56b10c302c48bbcff">games.stendhal.server.maps.quests.CloakCollector2</a>
-, <a class="el" href="d5/d64/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_cloaks_for_bario.html#a575beb82a169b32fc41afa62fdca811a">games.stendhal.server.maps.quests.CloaksForBario</a>
-, <a class="el" href="d8/df0/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_club_of_thorns.html#a23d5d5056b108be3d0d35fe30a88afb7">games.stendhal.server.maps.quests.ClubOfThorns</a>
-, <a class="el" href="d7/d19/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_coal_for_haunchy.html#a3ce94603576fabd1cfad2b4557b7bea7">games.stendhal.server.maps.quests.CoalForHaunchy</a>
-, <a class="el" href="d1/dd5/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_coded_message_from_finn_farmer.html#a4b06f8756184a9851846918f09043a88">games.stendhal.server.maps.quests.CodedMessageFromFinnFarmer</a>
-, <a class="el" href="d2/d9d/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_collect_enemy_data.html#a901333f5ed23258d1642bc3b404cf68c">games.stendhal.server.maps.quests.CollectEnemyData</a>
-, <a class="el" href="dd/d65/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_crown_for_the_wanna_be_king.html#a7db75ce75fd5f5f98d248da454dab1df">games.stendhal.server.maps.quests.CrownForTheWannaBeKing</a>
-, <a class="el" href="d9/dca/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_daily_item_quest.html#a25ea7bb06bd9c9a9a93a62920396aaf8">games.stendhal.server.maps.quests.DailyItemQuest</a>
-, <a class="el" href="dc/d57/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_daily_monster_quest.html#aa9fcc824b95b6e617f68bd88ccefc777">games.stendhal.server.maps.quests.DailyMonsterQuest</a>
-, <a class="el" href="db/d2d/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_dice_gambling.html#a070d693174503375910751a00631f3ad">games.stendhal.server.maps.quests.DiceGambling</a>
-, <a class="el" href="da/dfb/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_dragon_lair.html#af82452137e012b72fdc13428c09f734b">games.stendhal.server.maps.quests.DragonLair</a>
-, <a class="el" href="de/d7f/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_easter_gifts_for_children.html#a14558f95aa702ff33a5bca74b9498dab">games.stendhal.server.maps.quests.EasterGiftsForChildren</a>
-, <a class="el" href="d9/d47/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_eggs_for_marianne.html#ab8b0b471ef2c00bdfb646d768e3069ea">games.stendhal.server.maps.quests.EggsForMarianne</a>
-, <a class="el" href="d5/dbb/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_elf_princess.html#af3714dcce47e0902a30af73abb00b9d3">games.stendhal.server.maps.quests.ElfPrincess</a>
-, <a class="el" href="d1/dad/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_elvish_armor.html#ace832994a62a599571ab000b8d613970">games.stendhal.server.maps.quests.ElvishArmor</a>
-, <a class="el" href="d2/df5/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_emotion_crystals.html#a1113b54be039ba21c44b0fa6d7a02a11">games.stendhal.server.maps.quests.EmotionCrystals</a>
-, <a class="el" href="d5/d3b/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_find_ghosts.html#aa4e1c5335e416afb2a18be5385130e2c">games.stendhal.server.maps.quests.FindGhosts</a>
-, <a class="el" href="d0/dc3/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_find_jefs_mom.html#ad45a3cf99788b5f827fd9a8e445afc5e">games.stendhal.server.maps.quests.FindJefsMom</a>
-, <a class="el" href="db/d1a/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_find_rat_children.html#a931d3caca596ddba35418b9720eafc3c">games.stendhal.server.maps.quests.FindRatChildren</a>
-, <a class="el" href="db/d9e/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_fishermans_license_collector.html#a1d962b5bfc01c37cf9dc148b33754efe">games.stendhal.server.maps.quests.FishermansLicenseCollector</a>
-, <a class="el" href="d4/d9d/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_fishermans_license_quiz.html#a2673ca1c123eb1ad414942118aa1a312">games.stendhal.server.maps.quests.FishermansLicenseQuiz</a>
-, <a class="el" href="dc/da9/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_fish_soup.html#afa055bd7aadfb71792b30bf2a60ebbf3">games.stendhal.server.maps.quests.FishSoup</a>
-, <a class="el" href="d4/d3b/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_fish_soup_for_hughie.html#a80247d010c9b8aad0cbc398048cace0b">games.stendhal.server.maps.quests.FishSoupForHughie</a>
-, <a class="el" href="df/de6/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_fruits_for_coralia.html#af9b902844a8e02d0b7cfbd0534986fc1">games.stendhal.server.maps.quests.FruitsForCoralia</a>
-, <a class="el" href="de/d45/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_goodies_for_rudolph.html#aa7fcb41a585fedce308b4f524cf7c11a">games.stendhal.server.maps.quests.GoodiesForRudolph</a>
-, <a class="el" href="dc/dcd/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_guess_kills.html#a312770e7268aac36078525228b1f84db">games.stendhal.server.maps.quests.GuessKills</a>
-, <a class="el" href="dd/dd1/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_hat_for_monogenes.html#a83fe927f5b47e2363f329bfd4f9333a7">games.stendhal.server.maps.quests.HatForMonogenes</a>
-, <a class="el" href="de/dd1/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_help_mrs_yeti.html#a66721ea66707c0c5a292a87da0ee3921">games.stendhal.server.maps.quests.HelpMrsYeti</a>
-, <a class="el" href="d8/d08/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_help_tomi.html#add3db910cd08db1df8ccfbc4d86b7f5e">games.stendhal.server.maps.quests.HelpTomi</a>
-, <a class="el" href="d3/d19/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_help_with_the_harvest.html#aee5d33207fedc93033eaac9e3af87697">games.stendhal.server.maps.quests.HelpWithTheHarvest</a>
-, <a class="el" href="d9/d2b/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_herbs_for_carmen.html#a5226777915ecdfcd324b71a4c4f818dc">games.stendhal.server.maps.quests.HerbsForCarmen</a>
-, <a class="el" href="d3/d6a/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_herbs_for_jynath.html#a82cc6c1131ed76cfc53007b0c4e92030">games.stendhal.server.maps.quests.HerbsForJynath</a>
-, <a class="el" href="d0/d06/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_house_buying.html#ab96ebd1ba10f26af37864eee6195be86">games.stendhal.server.maps.quests.HouseBuying</a>
-, <a class="el" href="da/d79/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_hungry_joshua.html#ab2514044bff98ac38b5077645e86f10e">games.stendhal.server.maps.quests.HungryJoshua</a>
-, <a class="el" href="d1/d8b/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_icecream_for_annie.html#ab87e2008c6b774722e06a3d88cd56b5e">games.stendhal.server.maps.quests.IcecreamForAnnie</a>
-, <a class="el" href="d0/d0d/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_imperial_princess.html#ad6c7f1a6e11f3b9ebb014abb208e13a8">games.stendhal.server.maps.quests.ImperialPrincess</a>
-, <a class="el" href="d4/d76/interfacegames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_i_quest.html#a6183cfab72334666f308a223dfdeb5de">games.stendhal.server.maps.quests.IQuest</a>
-, <a class="el" href="d7/d70/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_jailed_barbarian.html#acb06b37b6a41ebbd1eee2f5d6c3f8124">games.stendhal.server.maps.quests.JailedBarbarian</a>
-, <a class="el" href="d7/d3b/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_jailed_dwarf.html#a1060ed00fe50c33ad2bae1f51c0c24e8">games.stendhal.server.maps.quests.JailedDwarf</a>
-, <a class="el" href="d3/db1/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_kanmararn_soldiers.html#afefa6a625d11fda3970b4d7f987e4742">games.stendhal.server.maps.quests.KanmararnSoldiers</a>
-, <a class="el" href="d5/d0e/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_kill_blordroughs.html#a73a1c8ee3e48d93872cef1185a7f1b3d">games.stendhal.server.maps.quests.KillBlordroughs</a>
-, <a class="el" href="dd/dc9/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_kill_dark_elves.html#a13e99443801c1b5fc5b571529f6bf5e4">games.stendhal.server.maps.quests.KillDarkElves</a>
-, <a class="el" href="d3/d80/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_kill_dhohr_nuggetcutter.html#a25240af4daad85da41ec4af7c6eaddfd">games.stendhal.server.maps.quests.KillDhohrNuggetcutter</a>
-, <a class="el" href="db/d0e/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_kill_enemy_army.html#ac9d2e32c2d2c2fffd4eb467518fe3062">games.stendhal.server.maps.quests.KillEnemyArmy</a>
-, <a class="el" href="d4/d4a/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_kill_gnomes.html#aceb9ad7cc7efab626d73e4f37cb37413">games.stendhal.server.maps.quests.KillGnomes</a>
-, <a class="el" href="d0/d25/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_kill_monks.html#af6f3749dc4847078f78cb50af63b9d92">games.stendhal.server.maps.quests.KillMonks</a>
-, <a class="el" href="da/d3b/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_kill_spiders.html#a35d98ba5900bd31829b9bb894534b429">games.stendhal.server.maps.quests.KillSpiders</a>
-, <a class="el" href="da/d78/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_koboldish_torcibud.html#a62e4e6df010a731a94f1011173700757">games.stendhal.server.maps.quests.KoboldishTorcibud</a>
-, <a class="el" href="dc/d50/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_learn_about_karma.html#ada8b1f9204f2139d14c98d0aaac02990">games.stendhal.server.maps.quests.LearnAboutKarma</a>
-, <a class="el" href="db/dc0/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_learn_about_orbs.html#ace6542753af143ceacbb40aacc73d2d4">games.stendhal.server.maps.quests.LearnAboutOrbs</a>
-, <a class="el" href="d1/d05/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1logic_1_1_bring_list_of_items_quest_logic.html#ad6e7cf41a1f660114f9f0150d1ce6c85">games.stendhal.server.maps.quests.logic.BringListOfItemsQuestLogic</a>
-, <a class="el" href="dd/dd2/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_look_bookfor_ceryl.html#ac806c510f8972302a4be8938b7f4a5cc">games.stendhal.server.maps.quests.LookBookforCeryl</a>
-, <a class="el" href="d6/d50/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_look_up_quote.html#ae4ae95fb98b42e90992c25eae3d868a8">games.stendhal.server.maps.quests.LookUpQuote</a>
-, <a class="el" href="d1/d9a/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_marriage.html#a02d4bfbf7bd5398f9caf753cd71e406c">games.stendhal.server.maps.quests.Marriage</a>
-, <a class="el" href="de/d88/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_maze.html#ae7bfc38b0528fdf4fe2a34dc05e92b14">games.stendhal.server.maps.quests.Maze</a>
-, <a class="el" href="d2/d07/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_mc_pegleg_i_o_u.html#adc588967a4d7bb64e7195afcc56ee4a1">games.stendhal.server.maps.quests.McPeglegIOU</a>
-, <a class="el" href="d4/d71/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_meal_for_groongo.html#a30c76b947b5e062822d60a12efa4cc83">games.stendhal.server.maps.quests.MealForGroongo</a>
-, <a class="el" href="d6/d56/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_medicine_for_tad.html#ab7d8771f65e4b22bf27695f8e308afa5">games.stendhal.server.maps.quests.MedicineForTad</a>
-, <a class="el" href="df/d81/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_meet_bunny.html#a1d3e890b1665899b67839f9248a63694">games.stendhal.server.maps.quests.MeetBunny</a>
-, <a class="el" href="d3/dc0/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_meet_hackim.html#ace51f341fb3d04e6b2ff56c74872b137">games.stendhal.server.maps.quests.MeetHackim</a>
-, <a class="el" href="d4/d3f/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_meet_hayunn.html#a6a87e94094df16dbc93a31c5fa8d6a8b">games.stendhal.server.maps.quests.MeetHayunn</a>
-, <a class="el" href="de/dff/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_meet_io.html#ac562be771d4628e01d8b2a0ff22d3424">games.stendhal.server.maps.quests.MeetIo</a>
-, <a class="el" href="d0/d05/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_meet_ketteh.html#ab36bc641c4a2a6155cce6fc8efa06a3e">games.stendhal.server.maps.quests.MeetKetteh</a>
-, <a class="el" href="d9/d76/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_meet_marie_henri.html#a98450d330aa20700f3c70dd050ba300a">games.stendhal.server.maps.quests.MeetMarieHenri</a>
-, <a class="el" href="d6/d36/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_meet_monogenes.html#a0c1ae2db5bef5cb5907107c653ad0641">games.stendhal.server.maps.quests.MeetMonogenes</a>
-, <a class="el" href="de/d5d/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_meet_santa.html#a864e70c4bc031aa964a68f843d89ab90">games.stendhal.server.maps.quests.MeetSanta</a>
-, <a class="el" href="d8/da4/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_meet_zynn.html#a5f3e0527cd9f9f9947e61c3419d7539b">games.stendhal.server.maps.quests.MeetZynn</a>
-, <a class="el" href="d1/d20/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_mine_town_revival_weeks.html#a142b2a956063d450fa2261b8c3f7fa7a">games.stendhal.server.maps.quests.MineTownRevivalWeeks</a>
-, <a class="el" href="dd/d46/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_mine_town_revival_weeks_construction.html#a82c88cbd69a12e4eeecb3bd8acc5fab2">games.stendhal.server.maps.quests.MineTownRevivalWeeksConstruction</a>
-, <a class="el" href="de/d26/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_mithril_cloak.html#ab12623b571acc506f949dbe8eb7e69cf">games.stendhal.server.maps.quests.MithrilCloak</a>
-, <a class="el" href="d0/dc3/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_mixture_for_ortiv.html#aa49e583ba4f017bdaa98c1756ea7f5de">games.stendhal.server.maps.quests.MixtureForOrtiv</a>
-, <a class="el" href="de/da7/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_museum_entrance_fee.html#a33ae6f99c5445a35c129c7a35e432cc3">games.stendhal.server.maps.quests.MuseumEntranceFee</a>
-, <a class="el" href="d0/d12/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_news_from_hackim.html#acfcc0ecbe9b9a782749e5bfed2bba9a1">games.stendhal.server.maps.quests.NewsFromHackim</a>
-, <a class="el" href="d1/de8/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_obsidian_knife.html#a2efb5f60149afdadf81500e6a301df69">games.stendhal.server.maps.quests.ObsidianKnife</a>
-, <a class="el" href="de/d67/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_paper_chase.html#aaf5645307fe03042787627a78ff47ef1">games.stendhal.server.maps.quests.PaperChase</a>
-, <a class="el" href="da/d43/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_pizza_delivery.html#a5e0125804cc9939a09cdb8ffea764f87">games.stendhal.server.maps.quests.PizzaDelivery</a>
-, <a class="el" href="dc/d7c/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_plinks_toy.html#a229dd7c6d9db8da7e3d7cdea647c2ed0">games.stendhal.server.maps.quests.PlinksToy</a>
-, <a class="el" href="d0/dde/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_rainbow_beans.html#aaeaac95030df804216f68caf78865282">games.stendhal.server.maps.quests.RainbowBeans</a>
-, <a class="el" href="de/d46/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_restock_flower_shop.html#a5c7bde4a47a89f784e1725b42824aec1">games.stendhal.server.maps.quests.RestockFlowerShop</a>
-, <a class="el" href="d4/d1f/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_reverse_arrow.html#a1c0da01bc3926825f32a2030f44045de">games.stendhal.server.maps.quests.ReverseArrow</a>
-, <a class="el" href="d8/dca/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1revivalweeks_1_1_builder_n_p_c.html#a3b75f27b72acd52da0f32dab4aa34fbe">games.stendhal.server.maps.quests.revivalweeks.BuilderNPC</a>
-, <a class="el" href="da/d73/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1revivalweeks_1_1_dad_n_p_c.html#a8cb899367f19ff5ea2b17a9be8056b32">games.stendhal.server.maps.quests.revivalweeks.DadNPC</a>
-, <a class="el" href="db/df3/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1revivalweeks_1_1_fishermans_daughter_selling_n_p_c.html#a696e299ab7b38aec4a2a69e63e69d892">games.stendhal.server.maps.quests.revivalweeks.FishermansDaughterSellingNPC</a>
-, <a class="el" href="d1/d5e/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1revivalweeks_1_1_found_girl.html#ae3ee7d29254fae451b8294e136baa674">games.stendhal.server.maps.quests.revivalweeks.FoundGirl</a>
-, <a class="el" href="d4/d5c/interfacegames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1revivalweeks_1_1_loadable_content.html#aed91d34fcbe9f9bb8adabc83bcb770fb">games.stendhal.server.maps.quests.revivalweeks.LoadableContent</a>
-, <a class="el" href="d4/d13/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1revivalweeks_1_1_makeup_artist.html#a77325162dc9b9ea3af8c8abd2edfaa47">games.stendhal.server.maps.quests.revivalweeks.MakeupArtist</a>
-, <a class="el" href="d7/d5b/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1revivalweeks_1_1_nine_switches_game.html#a7d7de7c554e916a515c2776c7705cce6">games.stendhal.server.maps.quests.revivalweeks.NineSwitchesGame</a>
-, <a class="el" href="dd/dcf/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1revivalweeks_1_1_paper_chase_sign.html#a393079d7230e76aa198fe21ea90b4843">games.stendhal.server.maps.quests.revivalweeks.PaperChaseSign</a>
-, <a class="el" href="d7/da3/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1revivalweeks_1_1_photographer_n_p_c.html#ac70a5a2cc85992eb0987c309b510d3fb">games.stendhal.server.maps.quests.revivalweeks.PhotographerNPC</a>
-, <a class="el" href="d0/df0/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1revivalweeks_1_1_sokoban_game.html#af86375c7c79f57c5579e86d7589b95ff">games.stendhal.server.maps.quests.revivalweeks.SokobanGame</a>
-, <a class="el" href="d7/d2d/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1revivalweeks_1_1_soldier_n_p_cs.html#a3994dbd708ef289adf550c0815da0217">games.stendhal.server.maps.quests.revivalweeks.SoldierNPCs</a>
-, <a class="el" href="d4/d6c/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1revivalweeks_1_1_tic_tac_toe_game.html#a1591c39cb2913709a1ca09ad327b551a">games.stendhal.server.maps.quests.revivalweeks.TicTacToeGame</a>
-, <a class="el" href="d6/dcc/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_ring_maker.html#a6a223587d1bdbd3b6f430623e0438606">games.stendhal.server.maps.quests.RingMaker</a>
-, <a class="el" href="d6/de4/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_sad_scientist.html#a9e734c6ee23c100130f502b710f49d62">games.stendhal.server.maps.quests.SadScientist</a>
-, <a class="el" href="db/d57/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_scuba_license_quiz.html#a634260f67b865767cec4c961ec1ed250">games.stendhal.server.maps.quests.ScubaLicenseQuiz</a>
-, <a class="el" href="d2/dda/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_seven_cherubs.html#abf0efd61f19552dd6aa8ec804ae716a5">games.stendhal.server.maps.quests.SevenCherubs</a>
-, <a class="el" href="d4/d9c/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_sheep_growing.html#a2f2f37c6126a44f6fb6fbcb6d783decf">games.stendhal.server.maps.quests.SheepGrowing</a>
-, <a class="el" href="d7/d29/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_simple_quest_creator_1_1_simple_quest.html#a1666b2541b6515807c896644f37949f0">games.stendhal.server.maps.quests.SimpleQuestCreator.SimpleQuest</a>
-, <a class="el" href="db/dde/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_snowballs.html#a412ac198fe5d22c065c2ddf965a192a3">games.stendhal.server.maps.quests.Snowballs</a>
-, <a class="el" href="dc/d65/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_solve_riddles.html#a9136352a0dd2e888cb9f05ee4ca835ce">games.stendhal.server.maps.quests.SolveRiddles</a>
-, <a class="el" href="de/dcc/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_soup.html#a67f0b1d36d687b6821a7960ec2f684c2">games.stendhal.server.maps.quests.Soup</a>
-, <a class="el" href="d8/d40/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_stuff_for_baldemar.html#aeebf02a8c4bce546435c638afd2d0cbe">games.stendhal.server.maps.quests.StuffForBaldemar</a>
-, <a class="el" href="d3/d30/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_stuff_for_vulcanus.html#a1395808fae82ed82b2e7e82cbd7d5377">games.stendhal.server.maps.quests.StuffForVulcanus</a>
-, <a class="el" href="d2/d52/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_suntan_cream_for_zara.html#ae3d695ccbebb2e43a2b643e75442b32b">games.stendhal.server.maps.quests.SuntanCreamForZara</a>
-, <a class="el" href="dd/d6e/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_supplies_for_phalk.html#af0605e87abab5a12c922a7842ff4ad9b">games.stendhal.server.maps.quests.SuppliesForPhalk</a>
-, <a class="el" href="df/d86/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_take_goldfor_grafindle.html#a24ced296270b27eb5479b31204442b55">games.stendhal.server.maps.quests.TakeGoldforGrafindle</a>
-, <a class="el" href="d1/d85/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_the_missing_books.html#aac710e96360d16e34481223914c9a40c">games.stendhal.server.maps.quests.TheMissingBooks</a>
-, <a class="el" href="d2/d92/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_the_pied_piper.html#ab6f2980e93ee945a256dd2d357122667">games.stendhal.server.maps.quests.ThePiedPiper</a>
-, <a class="el" href="dc/d64/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_toys_collector.html#ac13b576a607bdf348daf997787ff6397">games.stendhal.server.maps.quests.ToysCollector</a>
-, <a class="el" href="d2/d34/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_traps_for_klaas.html#ac49a660846e1883d47a87d1e068c85a6">games.stendhal.server.maps.quests.TrapsForKlaas</a>
-, <a class="el" href="d5/ddd/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_ultimate_collector.html#aa1a06a212127869898ee2baf46210a37">games.stendhal.server.maps.quests.UltimateCollector</a>
-, <a class="el" href="d5/d95/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_vampire_sword.html#a7be27eea416adca8210319ae0dd3b1b0">games.stendhal.server.maps.quests.VampireSword</a>
-, <a class="el" href="dc/d1a/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_water_for_xhiphin.html#a5e45c1bab87c00b0757846c0793f5717">games.stendhal.server.maps.quests.WaterForXhiphin</a>
-, <a class="el" href="d4/d00/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_weapons_collector.html#afd81ec13f37c4af4c8abc48016983354">games.stendhal.server.maps.quests.WeaponsCollector</a>
-, <a class="el" href="d5/dfb/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_weapons_collector2.html#a6e53aba7c3e91ea9aadd9ed96f4f6a67">games.stendhal.server.maps.quests.WeaponsCollector2</a>
-, <a class="el" href="d6/d3f/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_weekly_item_quest.html#a6460a6ba237d6d40b369f983855b5b76">games.stendhal.server.maps.quests.WeeklyItemQuest</a>
-, <a class="el" href="d6/d9a/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_wizard_bank.html#ac89f05481e5e60197b145719d7f18394">games.stendhal.server.maps.quests.WizardBank</a>
-, <a class="el" href="d0/d8a/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_zekiels_practical_test_quest.html#ac19749884e6f4fd668b549f0230b795c">games.stendhal.server.maps.quests.ZekielsPracticalTestQuest</a>
-, <a class="el" href="dc/d9b/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_zoo_food.html#a0e2ceda407b70d653b5db3399006ba70">games.stendhal.server.maps.quests.ZooFood</a>
 </li>
 <li>addValue()
 : <a class="el" href="df/d45/classgames_1_1stendhal_1_1server_1_1util_1_1_class_to_instances_map.html#a7df41b7e79586d071876a27560c5d90b">games.stendhal.server.util.ClassToInstancesMap&lt; V &gt;</a>
@@ -590,16 +426,13 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 : <a class="el" href="dd/d47/classgames_1_1stendhal_1_1common_1_1parser_1_1_expression_type.html#a9d1c4390b8b5b4ff04256573a8f01a18">games.stendhal.common.parser.ExpressionType</a>
 </li>
 <li>AdminCondition()
-: <a class="el" href="dd/d2b/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1condition_1_1_admin_condition.html#ade8b14a17ea98fa9c689739a9e7e1059">games.stendhal.server.entity.npc.condition.AdminCondition</a>
+: <a class="el" href="dd/d2b/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1condition_1_1_admin_condition.html#a71ee2dcfb644f60292d8ca91a801cb81">games.stendhal.server.entity.npc.condition.AdminCondition</a>
 </li>
 <li>adminLogin()
 : <a class="el" href="d5/d4c/classgames_1_1stendhal_1_1bot_1_1textclient_1_1_login_script.html#adf9efd9a1e4c5499fe2d108dbd1c7704">games.stendhal.bot.textclient.LoginScript</a>
 </li>
 <li>ADOS
 : <a class="el" href="d3/d0b/enumgames_1_1stendhal_1_1server_1_1entity_1_1slot_1_1_banks.html#a2b530470a2120d0090675edcffef9840">games.stendhal.server.entity.slot.Banks</a>
-</li>
-<li>AdventureIslandRemover()
-: <a class="el" href="d2/dc4/classgames_1_1stendhal_1_1server_1_1maps_1_1magic_1_1house1_1_1_adventure_island_remover.html#a7d0a779d3d2a6d6131470f6c9f89323c">games.stendhal.server.maps.magic.house1.AdventureIslandRemover</a>
 </li>
 <li>AGE
 : <a class="el" href="d0/d63/enumgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1achievement_1_1_category.html#ae170424222cd7971a779f06fb67c3910">games.stendhal.server.core.rp.achievement.Category</a>
@@ -689,10 +522,10 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 : <a class="el" href="dc/d06/classgames_1_1stendhal_1_1server_1_1util_1_1_time_util.html#a34b4fa9a340f5afadfd071cf2c9bf307">games.stendhal.server.util.TimeUtil</a>
 </li>
 <li>Area()
-: <a class="el" href="de/dac/classgames_1_1stendhal_1_1server_1_1util_1_1_area.html#a32231c9ca3b7afe7ffcccd0427410403">games.stendhal.server.util.Area</a>
+: <a class="el" href="de/dac/classgames_1_1stendhal_1_1server_1_1util_1_1_area.html#af9f00ea8682b08543d332256bd77c097">games.stendhal.server.util.Area</a>
 </li>
 <li>AreaEntity()
-: <a class="el" href="d4/df9/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1area_1_1_area_entity.html#a2b6c1c6e5da9d0f1f5709658c4985586">games.stendhal.server.entity.mapstuff.area.AreaEntity</a>
+: <a class="el" href="d4/df9/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1area_1_1_area_entity.html#a760756926376ea933a3274f6f12328ed">games.stendhal.server.entity.mapstuff.area.AreaEntity</a>
 </li>
 <li>AreaUseItem()
 : <a class="el" href="dc/d6b/classgames_1_1stendhal_1_1server_1_1entity_1_1item_1_1_area_use_item.html#af01091f24a9f0eb4a31fab72425c32f3">games.stendhal.server.entity.item.AreaUseItem</a>
@@ -790,22 +623,16 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>AvailabilityCondition()
 : <a class="el" href="d8/d3a/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1condition_1_1_availability_condition.html#aa4cf68560cbb4eb6e8ba8b38d8934bd1">games.stendhal.server.entity.npc.condition.AvailabilityCondition</a>
 </li>
-<li>AwaitingPhase()
-: <a class="el" href="d8/d31/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1piedpiper_1_1_awaiting_phase.html#a5af2f95c96177f8b4eb9cfaa2e79b86f">games.stendhal.server.maps.quests.piedpiper.AwaitingPhase</a>
-</li>
 <li>awardAchievementIfNotYetReached()
 : <a class="el" href="da/d48/classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1achievement_1_1_achievement_notifier.html#a70e26fe63cf1457bc5cf379e8f496cc3">games.stendhal.server.core.rp.achievement.AchievementNotifier</a>
 </li>
 </ul>
 </div><!-- contents -->
-</div><!-- doc-content -->
 <!-- start footer part -->
-<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
-  <ul>
-    <li class="footer">Generated by
-    <a href="http://www.doxygen.org/index.html">
-    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
-  </ul>
-</div>
+<hr class="footer"/><address class="footer"><small>
+Generated by &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
 </body>
 </html>

@@ -1,4 +1,0 @@
-var classgames_1_1stendhal_1_1server_1_1entity_1_1spell_1_1exception_1_1_level_requirement_not_fulfilled_exception =
-[
-    [ "LevelRequirementNotFulfilledException", "d6/db4/classgames_1_1stendhal_1_1server_1_1entity_1_1spell_1_1exception_1_1_level_requirement_not_fulfilled_exception.html#a1d699a8bf84b22eb8b45814a6c37ce7f", null ]
-];

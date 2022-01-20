@@ -1,4 +1,0 @@
-var classgames_1_1stendhal_1_1server_1_1maps_1_1semos_1_1tavern_1_1market_1_1_prolong_offer_handler_ffed3b84740ea0d1fa136e306d959d35 =
-[
-    [ "fire", "d1/d95/classgames_1_1stendhal_1_1server_1_1maps_1_1semos_1_1tavern_1_1market_1_1_prolong_offer_handler_ffed3b84740ea0d1fa136e306d959d35.html#ab99a51b6dc1f575f4f65c7052f4bcaef", null ]
-];

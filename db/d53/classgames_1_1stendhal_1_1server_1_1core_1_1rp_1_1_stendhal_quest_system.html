@@ -9,10 +9,6 @@
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
-<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="../../resize.js"></script>
-<script type="text/javascript" src="../../navtreedata.js"></script>
-<script type="text/javascript" src="../../navtree.js"></script>
 <link href="../../search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../search/searchdata.js"></script>
 <script type="text/javascript" src="../../search/search.js"></script>
@@ -52,23 +48,6 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-</div><!-- top -->
-<div id="side-nav" class="ui-resizable side-nav-resizable">
-  <div id="nav-tree">
-    <div id="nav-tree-contents">
-      <div id="nav-sync" class="sync"></div>
-    </div>
-  </div>
-  <div id="splitbar" style="-moz-user-select:none;" 
-       class="ui-resizable-handle">
-  </div>
-</div>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('db/d53/classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1_stendhal_quest_system.html','../../'); initResizable(); });
-/* @license-end */
-</script>
-<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -83,6 +62,11 @@ $(document).ready(function(){initNavTree('db/d53/classgames_1_1stendhal_1_1serve
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><b>games</b></li><li class="navelem"><b>stendhal</b></li><li class="navelem"><a class="el" href="../../db/d0d/namespacegames_1_1stendhal_1_1server.html">server</a></li><li class="navelem"><a class="el" href="../../d9/d63/namespacegames_1_1stendhal_1_1server_1_1core.html">core</a></li><li class="navelem"><b>rp</b></li><li class="navelem"><a class="el" href="../../db/d53/classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1_stendhal_quest_system.html">StendhalQuestSystem</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
@@ -97,9 +81,9 @@ $(document).ready(function(){initNavTree('db/d53/classgames_1_1stendhal_1_1serve
 Public Member Functions</h2></td></tr>
 <tr class="memitem:acd6f11c15d268f2fa245e7f7a9b8edfb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d53/classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1_stendhal_quest_system.html#acd6f11c15d268f2fa245e7f7a9b8edfb">init</a> ()</td></tr>
 <tr class="separator:acd6f11c15d268f2fa245e7f7a9b8edfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac01fcbdf1e712373ef8183cc20dd61d6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d53/classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1_stendhal_quest_system.html#ac01fcbdf1e712373ef8183cc20dd61d6">loadQuest</a> (final <a class="el" href="../../d4/d76/interfacegames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_i_quest.html">IQuest</a> quest)</td></tr>
+<tr class="memitem:ac01fcbdf1e712373ef8183cc20dd61d6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d53/classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1_stendhal_quest_system.html#ac01fcbdf1e712373ef8183cc20dd61d6">loadQuest</a> (final IQuest quest)</td></tr>
 <tr class="separator:ac01fcbdf1e712373ef8183cc20dd61d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5d8abbe98cc7f5dacdbf35e7209db3f1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d53/classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1_stendhal_quest_system.html#a5d8abbe98cc7f5dacdbf35e7209db3f1">cacheQuest</a> (final <a class="el" href="../../d4/d76/interfacegames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_i_quest.html">IQuest</a> quest)</td></tr>
+<tr class="memitem:a5d8abbe98cc7f5dacdbf35e7209db3f1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d53/classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1_stendhal_quest_system.html#a5d8abbe98cc7f5dacdbf35e7209db3f1">cacheQuest</a> (final IQuest quest)</td></tr>
 <tr class="separator:a5d8abbe98cc7f5dacdbf35e7209db3f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aac58d505897e6e921b47bf16f962bfdc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d53/classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1_stendhal_quest_system.html#aac58d505897e6e921b47bf16f962bfdc">loadCachedQuests</a> ()</td></tr>
 <tr class="separator:aac58d505897e6e921b47bf16f962bfdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -121,9 +105,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a5237b8be8e302d98b2d4a7b26411a47a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af06e827c5d27c60f58982e0a3a78eb7f"><td class="memItemLeft" align="right" valign="top">List&lt; String &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d53/classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1_stendhal_quest_system.html#af06e827c5d27c60f58982e0a3a78eb7f">getQuestProgressDetails</a> (final <a class="el" href="../../d9/dd5/classgames_1_1stendhal_1_1server_1_1entity_1_1player_1_1_player.html">Player</a> player, final String questName)</td></tr>
 <tr class="separator:af06e827c5d27c60f58982e0a3a78eb7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a61a0135b36442b43d156127d186efa96"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d4/d76/interfacegames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_i_quest.html">IQuest</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d53/classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1_stendhal_quest_system.html#a61a0135b36442b43d156127d186efa96">getQuest</a> (String questName)</td></tr>
+<tr class="memitem:a61a0135b36442b43d156127d186efa96"><td class="memItemLeft" align="right" valign="top">IQuest&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d53/classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1_stendhal_quest_system.html#a61a0135b36442b43d156127d186efa96">getQuest</a> (String questName)</td></tr>
 <tr class="separator:a61a0135b36442b43d156127d186efa96"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adad255e68f34744641ff3089fcc449cc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d4/d76/interfacegames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_i_quest.html">IQuest</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d53/classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1_stendhal_quest_system.html#adad255e68f34744641ff3089fcc449cc">getQuestFromSlot</a> (final String questSlot)</td></tr>
+<tr class="memitem:adad255e68f34744641ff3089fcc449cc"><td class="memItemLeft" align="right" valign="top">IQuest&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d53/classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1_stendhal_quest_system.html#adad255e68f34744641ff3089fcc449cc">getQuestFromSlot</a> (final String questSlot)</td></tr>
 <tr class="separator:adad255e68f34744641ff3089fcc449cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac29bcf34c6582d06fa034656c3e30b0e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d53/classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1_stendhal_quest_system.html#ac29bcf34c6582d06fa034656c3e30b0e">unloadQuest</a> (String questName)</td></tr>
 <tr class="separator:ac29bcf34c6582d06fa034656c3e30b0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -133,7 +117,7 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a6bd4076b33b078f84c2038c4d836c51f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa74a40e16dbce81bf3322831dc4da2a6"><td class="memItemLeft" align="right" valign="top">List&lt; String &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d53/classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1_stendhal_quest_system.html#aa74a40e16dbce81bf3322831dc4da2a6">getQuestDescriptionForUnstartedQuestInRegionFromNPCName</a> (<a class="el" href="../../d9/dd5/classgames_1_1stendhal_1_1server_1_1entity_1_1player_1_1_player.html">Player</a> player, String region, String name)</td></tr>
 <tr class="separator:aa74a40e16dbce81bf3322831dc4da2a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac3b19d8728d93f8b49e479166110a74b"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d53/classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1_stendhal_quest_system.html#ac3b19d8728d93f8b49e479166110a74b">isLoaded</a> (final <a class="el" href="../../d4/d76/interfacegames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_i_quest.html">IQuest</a> quest)</td></tr>
+<tr class="memitem:ac3b19d8728d93f8b49e479166110a74b"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d53/classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1_stendhal_quest_system.html#ac3b19d8728d93f8b49e479166110a74b">isLoaded</a> (final IQuest quest)</td></tr>
 <tr class="separator:ac3b19d8728d93f8b49e479166110a74b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
@@ -155,7 +139,7 @@ Static Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">void games.stendhal.server.core.rp.StendhalQuestSystem.cacheQuest </td>
           <td>(</td>
-          <td class="paramtype">final <a class="el" href="../../d4/d76/interfacegames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_i_quest.html">IQuest</a>&#160;</td>
+          <td class="paramtype">final IQuest&#160;</td>
           <td class="paramname"><em>quest</em></td><td>)</td>
           <td></td>
         </tr>
@@ -331,7 +315,7 @@ Static Public Member Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d4/d76/interfacegames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_i_quest.html">IQuest</a> games.stendhal.server.core.rp.StendhalQuestSystem.getQuest </td>
+          <td class="memname">IQuest games.stendhal.server.core.rp.StendhalQuestSystem.getQuest </td>
           <td>(</td>
           <td class="paramtype">String&#160;</td>
           <td class="paramname"><em>questName</em></td><td>)</td>
@@ -438,7 +422,7 @@ Static Public Member Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d4/d76/interfacegames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_i_quest.html">IQuest</a> games.stendhal.server.core.rp.StendhalQuestSystem.getQuestFromSlot </td>
+          <td class="memname">IQuest games.stendhal.server.core.rp.StendhalQuestSystem.getQuestFromSlot </td>
           <td>(</td>
           <td class="paramtype">final String&#160;</td>
           <td class="paramname"><em>questSlot</em></td><td>)</td>
@@ -584,7 +568,7 @@ Static Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">boolean games.stendhal.server.core.rp.StendhalQuestSystem.isLoaded </td>
           <td>(</td>
-          <td class="paramtype">final <a class="el" href="../../d4/d76/interfacegames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_i_quest.html">IQuest</a>&#160;</td>
+          <td class="paramtype">final IQuest&#160;</td>
           <td class="paramname"><em>quest</em></td><td>)</td>
           <td></td>
         </tr>
@@ -717,7 +701,7 @@ Static Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">void games.stendhal.server.core.rp.StendhalQuestSystem.loadQuest </td>
           <td>(</td>
-          <td class="paramtype">final <a class="el" href="../../d4/d76/interfacegames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_i_quest.html">IQuest</a>&#160;</td>
+          <td class="paramtype">final IQuest&#160;</td>
           <td class="paramname"><em>quest</em></td><td>)</td>
           <td></td>
         </tr>
@@ -795,15 +779,11 @@ Static Public Member Functions</h2></td></tr>
 <li>src/games/stendhal/server/core/rp/StendhalQuestSystem.java</li>
 </ul>
 </div><!-- contents -->
-</div><!-- doc-content -->
 <!-- start footer part -->
-<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
-  <ul>
-    <li class="navelem"><b>games</b></li><li class="navelem"><b>stendhal</b></li><li class="navelem"><a class="el" href="../../db/d0d/namespacegames_1_1stendhal_1_1server.html">server</a></li><li class="navelem"><a class="el" href="../../d9/d63/namespacegames_1_1stendhal_1_1server_1_1core.html">core</a></li><li class="navelem"><b>rp</b></li><li class="navelem"><a class="el" href="../../db/d53/classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1_stendhal_quest_system.html">StendhalQuestSystem</a></li>
-    <li class="footer">Generated by
-    <a href="http://www.doxygen.org/index.html">
-    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
-  </ul>
-</div>
+<hr class="footer"/><address class="footer"><small>
+Generated by &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="../../doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
 </body>
 </html>

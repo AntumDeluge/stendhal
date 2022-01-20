@@ -9,10 +9,6 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
-<script type="text/javascript" src="navtreedata.js"></script>
-<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -53,22 +49,6 @@ $(function() {
 /* @license-end */</script>
 <div id="main-nav"></div>
 </div><!-- top -->
-<div id="side-nav" class="ui-resizable side-nav-resizable">
-  <div id="nav-tree">
-    <div id="nav-tree-contents">
-      <div id="nav-sync" class="sync"></div>
-    </div>
-  </div>
-  <div id="splitbar" style="-moz-user-select:none;" 
-       class="ui-resizable-handle">
-  </div>
-</div>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('functions_s.html',''); initResizable(); });
-/* @license-end */
-</script>
-<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -90,9 +70,6 @@ $(document).ready(function(){initNavTree('functions_s.html',''); initResizable()
 <li>sandbox
 : <a class="el" href="d2/de6/classgames_1_1stendhal_1_1server_1_1core_1_1scripting_1_1_script_impl.html#a25a481db495347a3d42789f302dabf43">games.stendhal.server.core.scripting.ScriptImpl</a>
 </li>
-<li>santa
-: <a class="el" href="de/d5d/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_meet_santa.html#a2b491a231daf58858fb5520a09831d2c">games.stendhal.server.maps.quests.MeetSanta</a>
-</li>
 <li>save()
 : <a class="el" href="d9/d01/classgames_1_1stendhal_1_1client_1_1gui_1_1wt_1_1core_1_1_wt_window_manager.html#a40c67fc0388165985d4e3c19bbbdc595">games.stendhal.client.gui.wt.core.WtWindowManager</a>
 </li>
@@ -111,9 +88,6 @@ $(document).ready(function(){initNavTree('functions_s.html',''); initResizable()
 <li>say()
 : <a class="el" href="dd/dc4/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1_event_raiser.html#a3d1507555b3c487f3f6b8a2fbaadc7da">games.stendhal.server.entity.npc.EventRaiser</a>
 </li>
-<li>sayByeWhileInQuestion1()
-: <a class="el" href="d1/d05/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1logic_1_1_bring_list_of_items_quest_logic.html#a324ce11b687d83599364cfd0994c6ee1">games.stendhal.server.maps.quests.logic.BringListOfItemsQuestLogic</a>
-</li>
 <li>SayNPCNamesForUnstartedQuestsAction()
 : <a class="el" href="d7/d4a/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1action_1_1_say_n_p_c_names_for_unstarted_quests_action.html#a762beb9350b283b31c688301cac118ff">games.stendhal.server.entity.npc.action.SayNPCNamesForUnstartedQuestsAction</a>
 </li>
@@ -124,7 +98,7 @@ $(document).ready(function(){initNavTree('functions_s.html',''); initResizable()
 : <a class="el" href="d6/d0f/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1action_1_1_say_required_items_from_collection_action.html#acc139c444e49df1392bced4d7296c208">games.stendhal.server.entity.npc.action.SayRequiredItemsFromCollectionAction</a>
 </li>
 <li>SayTextAction()
-: <a class="el" href="d1/d91/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1action_1_1_say_text_action.html#afe6050efce47a6d6c3b0503d2beca9ca">games.stendhal.server.entity.npc.action.SayTextAction</a>
+: <a class="el" href="d1/d91/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1action_1_1_say_text_action.html#a81aaf2d29f0cd050bc53ef80a50bd271">games.stendhal.server.entity.npc.action.SayTextAction</a>
 </li>
 <li>SayTimeRemainingAction()
 : <a class="el" href="da/d7a/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1action_1_1_say_time_remaining_action.html#a4877df593f4398a0e7d1fca855068361">games.stendhal.server.entity.npc.action.SayTimeRemainingAction</a>
@@ -334,7 +308,6 @@ $(document).ready(function(){initNavTree('functions_s.html',''); initResizable()
 </li>
 <li>setCapacity()
 : <a class="el" href="df/d3d/interfacegames_1_1stendhal_1_1server_1_1entity_1_1item_1_1_stackable.html#a930ed321e84a396fab683a40f94981d0">games.stendhal.server.entity.item.Stackable&lt; T &gt;</a>
-, <a class="el" href="d3/d49/classgames_1_1stendhal_1_1server_1_1maps_1_1nalwor_1_1forest_1_1_training_area.html#a7f2d213d4c52fca3b4b4839d9ceb9815">games.stendhal.server.maps.nalwor.forest.TrainingArea</a>
 </li>
 <li>setCaseInsensitive()
 : <a class="el" href="d4/df8/classgames_1_1stendhal_1_1common_1_1parser_1_1_expression_matcher.html#a03614ae548ae941e83971dae774d7648">games.stendhal.common.parser.ExpressionMatcher</a>
@@ -478,7 +451,6 @@ $(document).ready(function(){initNavTree('functions_s.html',''); initResizable()
 </li>
 <li>setExpirationTime()
 : <a class="el" href="d5/d96/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1_expiration_tracker.html#a22eaad2a6d06c918a318ad0761baba28">games.stendhal.server.entity.mapstuff.ExpirationTracker</a>
-, <a class="el" href="d7/d91/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1allotment_1_1_allotment_utilities.html#ab728e09f2d49713ababa7df90e94c9c1">games.stendhal.server.maps.quests.allotment.AllotmentUtilities</a>
 </li>
 <li>setExpireTime()
 : <a class="el" href="da/dc4/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1portal_1_1_house_portal.html#a4664b71a0dc3faa6fcd909c75a41d2c0">games.stendhal.server.entity.mapstuff.portal.HousePortal</a>
@@ -552,9 +524,6 @@ $(document).ready(function(){initNavTree('functions_s.html',''); initResizable()
 </li>
 <li>setInvisible()
 : <a class="el" href="d9/dd5/classgames_1_1stendhal_1_1server_1_1entity_1_1player_1_1_player.html#a389665608998e56c752a00c10c26b6e2">games.stendhal.server.entity.player.Player</a>
-</li>
-<li>setItemCollector()
-: <a class="el" href="d7/d2e/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1logic_1_1_bring_ordered_list_of_items_quest_logic.html#aa7fb5f1eceeacb5ac27347f537b6c235">games.stendhal.server.maps.quests.logic.BringOrderedListOfItemsQuestLogic</a>
 </li>
 <li>setJail()
 : <a class="el" href="d4/d98/classgames_1_1stendhal_1_1server_1_1core_1_1engine_1_1_singleton_repository.html#a8ea7fd6936fb208e1ad581e07130805f">games.stendhal.server.core.engine.SingletonRepository</a>
@@ -662,9 +631,6 @@ $(document).ready(function(){initNavTree('functions_s.html',''); initResizable()
 </li>
 <li>setNewMouseHandlerState()
 : <a class="el" href="d6/dbd/classgames_1_1stendhal_1_1client_1_1gui_1_1_ground_container.html#a932057e0e87e8484b7617fc62e061fab">games.stendhal.client.gui.GroundContainer</a>
-</li>
-<li>setNewNotificationTime()
-: <a class="el" href="d2/d92/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_the_pied_piper.html#a3cb32b93833eb0cc3c16c78136bf502d">games.stendhal.server.maps.quests.ThePiedPiper</a>
 </li>
 <li>setNoises()
 : <a class="el" href="de/d75/classgames_1_1stendhal_1_1server_1_1entity_1_1creature_1_1_creature.html#ae92107fa709fd459d0b6432b9440f924">games.stendhal.server.entity.creature.Creature</a>
@@ -804,7 +770,6 @@ $(document).ready(function(){initNavTree('functions_s.html',''); initResizable()
 <li>setQuest()
 : <a class="el" href="db/df8/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1portal_1_1_quest_checking_portal_factory.html#a7cf7820b1fd845d5ccd41b5105dc50ba">games.stendhal.server.entity.mapstuff.portal.QuestCheckingPortalFactory</a>
 , <a class="el" href="d9/dd5/classgames_1_1stendhal_1_1server_1_1entity_1_1player_1_1_player.html#af607c2d63c419717641781a9963c331e">games.stendhal.server.entity.player.Player</a>
-, <a class="el" href="d7/d2e/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1logic_1_1_bring_ordered_list_of_items_quest_logic.html#a1baf3bfffd65fb253f83870288d8c33c">games.stendhal.server.maps.quests.logic.BringOrderedListOfItemsQuestLogic</a>
 </li>
 <li>SetQuestAction()
 : <a class="el" href="de/d26/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1action_1_1_set_quest_action.html#acdca300688a96c24c9e50f791c551f90">games.stendhal.server.entity.npc.action.SetQuestAction</a>
@@ -816,13 +781,13 @@ $(document).ready(function(){initNavTree('functions_s.html',''); initResizable()
 : <a class="el" href="d7/dd2/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1action_1_1_set_quest_to_future_random_time_stamp_action.html#a52d25eb4ba6eb73740b20232867ac1d3">games.stendhal.server.entity.npc.action.SetQuestToFutureRandomTimeStampAction</a>
 </li>
 <li>SetQuestToPlayerAgeAction()
-: <a class="el" href="d8/d63/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1action_1_1_set_quest_to_player_age_action.html#a52ac9a28fd4adb6c2840e62a5e0cbf08">games.stendhal.server.entity.npc.action.SetQuestToPlayerAgeAction</a>
+: <a class="el" href="d8/d63/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1action_1_1_set_quest_to_player_age_action.html#a4ec8f7332da7bafe694d1f610f3110ac">games.stendhal.server.entity.npc.action.SetQuestToPlayerAgeAction</a>
 </li>
 <li>SetQuestToTimeStampAction()
 : <a class="el" href="d5/df1/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1action_1_1_set_quest_to_time_stamp_action.html#a09024a2f2f36b6c929dbc1e2aa046c79">games.stendhal.server.entity.npc.action.SetQuestToTimeStampAction</a>
 </li>
 <li>SetQuestToYearAction()
-: <a class="el" href="d6/d95/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1action_1_1_set_quest_to_year_action.html#ad7e4540fc4accaa855d5c7568f407b35">games.stendhal.server.entity.npc.action.SetQuestToYearAction</a>
+: <a class="el" href="d6/d95/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1action_1_1_set_quest_to_year_action.html#aa7de26fc0cdb030b35f75875319226d8">games.stendhal.server.entity.npc.action.SetQuestToYearAction</a>
 </li>
 <li>setRandomMovementRadius()
 : <a class="el" href="d9/d7e/classgames_1_1stendhal_1_1server_1_1entity_1_1_guided_entity.html#ab2fa62ab773a54eed9b73216cf2c007d">games.stendhal.server.entity.GuidedEntity</a>
@@ -863,7 +828,6 @@ $(document).ready(function(){initNavTree('functions_s.html',''); initResizable()
 </li>
 <li>setRepeatable()
 : <a class="el" href="d3/d93/classgames_1_1stendhal_1_1client_1_1gui_1_1progress_1_1_progress_log_controller.html#ae90a56d1c6f95598339cfe87ae211739">games.stendhal.client.gui.progress.ProgressLogController</a>
-, <a class="el" href="d7/d29/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_simple_quest_creator_1_1_simple_quest.html#ac9881af4c31ddd9826685b8597df6e6d">games.stendhal.server.maps.quests.SimpleQuestCreator.SimpleQuest</a>
 </li>
 <li>setReplacing()
 : <a class="el" href="d8/dae/classgames_1_1stendhal_1_1server_1_1core_1_1config_1_1zone_1_1_portal_setup_descriptor.html#ad0b33916a733ae80fc65f74598f45fe9">games.stendhal.server.core.config.zone.PortalSetupDescriptor</a>
@@ -891,9 +855,6 @@ $(document).ready(function(){initNavTree('functions_s.html',''); initResizable()
 </li>
 <li>setRetracePath()
 : <a class="el" href="d9/d7e/classgames_1_1stendhal_1_1server_1_1entity_1_1_guided_entity.html#ae6e81ce1f796011bc9cd3cfc5b76a0f1">games.stendhal.server.entity.GuidedEntity</a>
-</li>
-<li>setReturnLocation()
-: <a class="el" href="d6/d66/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1maze_1_1_maze_generator.html#afa180d125dd4d345d3cc1a1ed45a3ce2">games.stendhal.server.maps.quests.maze.MazeGenerator</a>
 </li>
 <li>setRipeness()
 : <a class="el" href="d9/d73/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1spawner_1_1_grain_field.html#a4d09672565e58f06091b0325f917b834">games.stendhal.server.entity.mapstuff.spawner.GrainField</a>
@@ -924,8 +885,6 @@ $(document).ready(function(){initNavTree('functions_s.html',''); initResizable()
 </li>
 <li>setSign()
 : <a class="el" href="d7/d2c/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1action_1_1_load_sign_from_hall_of_fame_action.html#acfaaa981bcf6a5efe52fe4915b56893c">games.stendhal.server.entity.npc.action.LoadSignFromHallOfFameAction</a>
-, <a class="el" href="d6/d66/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1maze_1_1_maze_generator.html#a6ade939811f4d8c94efea8fc2b6e1662">games.stendhal.server.maps.quests.maze.MazeGenerator</a>
-, <a class="el" href="de/d67/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_paper_chase.html#a959bf6b88075ccb3496cb1aa3139967c">games.stendhal.server.maps.quests.PaperChase</a>
 </li>
 <li>setSimilarMatching()
 : <a class="el" href="d4/df8/classgames_1_1stendhal_1_1common_1_1parser_1_1_expression_matcher.html#aaafa51a14105b57e07bb90c897acd230">games.stendhal.common.parser.ExpressionMatcher</a>
@@ -1096,7 +1055,7 @@ $(document).ready(function(){initNavTree('functions_s.html',''); initResizable()
 : <a class="el" href="d6/ded/classgames_1_1stendhal_1_1tools_1_1_map_renderer.html#ae9c8eaced34ac99fe29079ff2400dd2c">games.stendhal.tools.MapRenderer</a>
 </li>
 <li>Sheep()
-: <a class="el" href="d2/d52/classgames_1_1stendhal_1_1server_1_1entity_1_1creature_1_1_sheep.html#a81967318339b360cdeec7cc9b05bb92f">games.stendhal.server.entity.creature.Sheep</a>
+: <a class="el" href="d2/d52/classgames_1_1stendhal_1_1server_1_1entity_1_1creature_1_1_sheep.html#a6955e80a19ed53ad5fcd311d6f74f0c0">games.stendhal.server.entity.creature.Sheep</a>
 </li>
 <li>SHOCKED
 : <a class="el" href="d0/d1e/enumgames_1_1stendhal_1_1server_1_1entity_1_1status_1_1_status_type.html#a94c247c090014b84bc82ccccf1a13ced">games.stendhal.server.entity.status.StatusType</a>
@@ -1125,9 +1084,6 @@ $(document).ready(function(){initNavTree('functions_s.html',''); initResizable()
 </li>
 <li>ShouterMain()
 : <a class="el" href="d7/d0f/classgames_1_1stendhal_1_1bot_1_1shouter_1_1_shouter_main.html#adfbe9255f16fcc023e786bb4c2900a2d">games.stendhal.bot.shouter.ShouterMain</a>
-</li>
-<li>shoutMessage()
-: <a class="el" href="d1/def/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1piedpiper_1_1_t_p_p_quest.html#a297a4609b587a4e0ada8d5e32df2ffc9">games.stendhal.server.maps.quests.piedpiper.TPPQuest</a>
 </li>
 <li>SHOW_ENTITY_VIEW_AREA
 : <a class="el" href="d4/dc2/classgames_1_1stendhal_1_1common_1_1_debug.html#a65ff0ca62341321ff3a60b605106a452">games.stendhal.common.Debug</a>
@@ -1204,7 +1160,7 @@ $(document).ready(function(){initNavTree('functions_s.html',''); initResizable()
 : <a class="el" href="d6/d48/classgames_1_1stendhal_1_1server_1_1actions_1_1equip_1_1_moveable_object.html#ae34d4bba5621ce9ff6e25411f207da4d">games.stendhal.server.actions.equip.MoveableObject</a>
 </li>
 <li>SlotActivatedItem()
-: <a class="el" href="dc/db1/classgames_1_1stendhal_1_1server_1_1entity_1_1item_1_1_slot_activated_item.html#a36b42540cd40d2fa899aad23e5dd8458">games.stendhal.server.entity.item.SlotActivatedItem</a>
+: <a class="el" href="dc/db1/classgames_1_1stendhal_1_1server_1_1entity_1_1item_1_1_slot_activated_item.html#a5bfec3eb81afa743ec0de7fd7c6d1525">games.stendhal.server.entity.item.SlotActivatedItem</a>
 </li>
 <li>slotIterator()
 : <a class="el" href="d4/d31/classgames_1_1stendhal_1_1server_1_1entity_1_1_entity.html#a41f8bd28e26cb2108336932218419171">games.stendhal.server.entity.Entity</a>
@@ -1237,7 +1193,7 @@ $(document).ready(function(){initNavTree('functions_s.html',''); initResizable()
 : <a class="el" href="db/d31/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1_n_p_c.html#a0a00cb58f77fb8be53976a9dcdd4b860">games.stendhal.server.entity.npc.NPC</a>
 </li>
 <li>SoundEvent()
-: <a class="el" href="dc/da2/classgames_1_1stendhal_1_1server_1_1events_1_1_sound_event.html#a812444229c3dabf7215d1524466af601">games.stendhal.server.events.SoundEvent</a>
+: <a class="el" href="dc/da2/classgames_1_1stendhal_1_1server_1_1events_1_1_sound_event.html#a491390bdaeeee6e9a31f8d68451a2b47">games.stendhal.server.events.SoundEvent</a>
 </li>
 <li>spawnNow()
 : <a class="el" href="de/da2/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1spawner_1_1_creature_respawn_point.html#a293be9ff1846b15b5c191d8a9112bb66">games.stendhal.server.entity.mapstuff.spawner.CreatureRespawnPoint</a>
@@ -1270,17 +1226,14 @@ $(document).ready(function(){initNavTree('functions_s.html',''); initResizable()
 : <a class="el" href="dd/df0/classgames_1_1stendhal_1_1client_1_1sprite_1_1_sprite_cache.html#a07b4da44417992484d1b64888cfb598f">games.stendhal.client.sprite.SpriteCache</a>
 </li>
 <li>SpriteTileset()
-: <a class="el" href="d0/da4/classgames_1_1stendhal_1_1client_1_1sprite_1_1_sprite_tileset.html#a58bcc05ce607d80f0bf523ee6b07dd7c">games.stendhal.client.sprite.SpriteTileset</a>
+: <a class="el" href="d0/da4/classgames_1_1stendhal_1_1client_1_1sprite_1_1_sprite_tileset.html#a95c4459debe0ec0182bf22a6a031d5ff">games.stendhal.client.sprite.SpriteTileset</a>
 </li>
 <li>squaredDistance()
-: <a class="el" href="d4/d31/classgames_1_1stendhal_1_1server_1_1entity_1_1_entity.html#a53fcece558ac450f0c9f53e6601834d4">games.stendhal.server.entity.Entity</a>
+: <a class="el" href="d4/d31/classgames_1_1stendhal_1_1server_1_1entity_1_1_entity.html#a3b3c63b17e18c88c1081b7897d846689">games.stendhal.server.entity.Entity</a>
 </li>
 <li>StackableItem()
 : <a class="el" href="d5/de0/classgames_1_1stendhal_1_1client_1_1entity_1_1_stackable_item.html#a1aa8070e09f66cf2841589989af85a89">games.stendhal.client.entity.StackableItem</a>
 , <a class="el" href="dd/de8/classgames_1_1stendhal_1_1server_1_1entity_1_1item_1_1_stackable_item.html#a1c3b290545440f6aa1ca48ba97385f0a">games.stendhal.server.entity.item.StackableItem</a>
-</li>
-<li>stageDeliverMeal()
-: <a class="el" href="d4/d71/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_meal_for_groongo.html#a284c604a7bb60e04ed3a7c43555795d3">games.stendhal.server.maps.quests.MealForGroongo</a>
 </li>
 <li>StandardClientFramework()
 : <a class="el" href="dd/d5c/classgames_1_1stendhal_1_1bot_1_1core_1_1_standard_client_framework.html#a9d0bb2f1a7b63305ece1bc63db3279f6">games.stendhal.bot.core.StandardClientFramework</a>
@@ -1291,15 +1244,6 @@ $(document).ready(function(){initNavTree('functions_s.html',''); initResizable()
 , <a class="el" href="dd/de3/classgames_1_1stendhal_1_1client_1_1scripting_1_1_script_recorder.html#a572c957c421635ec5a5473b0841a44f9">games.stendhal.client.scripting.ScriptRecorder</a>
 , <a class="el" href="d1/de9/classgames_1_1stendhal_1_1client_1_1sprite_1_1_animated_sprite.html#afa5b1b22dfd80ce38758770f7114632c">games.stendhal.client.sprite.AnimatedSprite</a>
 , <a class="el" href="d0/d80/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1game_1_1_game_board_timer.html#ab55a78602655dab289883e93ed5c7613">games.stendhal.server.entity.mapstuff.game.GameBoardTimer</a>
-</li>
-<li>START
-: <a class="el" href="dd/d7c/enumgames_1_1stendhal_1_1server_1_1maps_1_1deathmatch_1_1_deathmatch_lifecycle.html#ac691e5237a5c905ff6449dd68d0ab7bb">games.stendhal.server.maps.deathmatch.DeathmatchLifecycle</a>
-</li>
-<li>start()
-: <a class="el" href="d4/d1f/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_reverse_arrow.html#ad359a6e37966d2f27cf43731ecfddf01">games.stendhal.server.maps.quests.ReverseArrow</a>
-</li>
-<li>StartAction()
-: <a class="el" href="d5/d07/classgames_1_1stendhal_1_1server_1_1maps_1_1deathmatch_1_1_start_action.html#afc7b040731c6516719fdc4885d8b085e">games.stendhal.server.maps.deathmatch.StartAction</a>
 </li>
 <li>startAttack()
 : <a class="el" href="d0/d3a/classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1_stendhal_r_p_action.html#ace02c54a9967faf210f1cf51fef416f6">games.stendhal.server.core.rp.StendhalRPAction</a>
@@ -1321,16 +1265,10 @@ $(document).ready(function(){initNavTree('functions_s.html',''); initResizable()
 : <a class="el" href="de/d13/classgames_1_1stendhal_1_1server_1_1core_1_1pathfinder_1_1_pathfinder.html#ab14cd102132523f71fad30305e57f5bd">games.stendhal.server.core.pathfinder.Pathfinder</a>
 </li>
 <li>StartRecordingKillsAction()
-: <a class="el" href="d2/d03/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1action_1_1_start_recording_kills_action.html#a543f75aad12f589d11539e5975955730">games.stendhal.server.entity.npc.action.StartRecordingKillsAction</a>
+: <a class="el" href="d2/d03/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1action_1_1_start_recording_kills_action.html#a3cb7b23379d2cf3e65bf7e709be13410">games.stendhal.server.entity.npc.action.StartRecordingKillsAction</a>
 </li>
 <li>StartRecordingRandomItemCollectionAction()
 : <a class="el" href="d6/d66/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1action_1_1_start_recording_random_item_collection_action.html#ae2b62a5857f36f8909882b6e6b03d2e1">games.stendhal.server.entity.npc.action.StartRecordingRandomItemCollectionAction</a>
-</li>
-<li>startSession()
-: <a class="el" href="d3/d49/classgames_1_1stendhal_1_1server_1_1maps_1_1nalwor_1_1forest_1_1_training_area.html#a3fd32b690f1fdb50db78e0620dfd875a">games.stendhal.server.maps.nalwor.forest.TrainingArea</a>
-</li>
-<li>startTiming()
-: <a class="el" href="d6/d66/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1maze_1_1_maze_generator.html#a4980464358b0d63c4cfac4441797ae22">games.stendhal.server.maps.quests.maze.MazeGenerator</a>
 </li>
 <li>startTrade()
 : <a class="el" href="d9/dd5/classgames_1_1stendhal_1_1server_1_1entity_1_1player_1_1_player.html#a507439e3c93d5805f2e27d16c4c8f11d">games.stendhal.server.entity.player.Player</a>
@@ -1354,7 +1292,7 @@ $(document).ready(function(){initNavTree('functions_s.html',''); initResizable()
 : <a class="el" href="d1/dec/classgames_1_1stendhal_1_1server_1_1entity_1_1item_1_1_status_healer.html#ab67c402a5a0af30a1c8f5e500856508d">games.stendhal.server.entity.item.StatusHealer</a>
 </li>
 <li>StatusHealerEater()
-: <a class="el" href="d4/d02/classgames_1_1stendhal_1_1server_1_1entity_1_1item_1_1consumption_1_1_status_healer_eater.html#a4e1e766aab72bbefa0114bd29ba8150b">games.stendhal.server.entity.item.consumption.StatusHealerEater</a>
+: <a class="el" href="d4/d02/classgames_1_1stendhal_1_1server_1_1entity_1_1item_1_1consumption_1_1_status_healer_eater.html#affefa8afcd500ae2b9be47aa726c8311">games.stendhal.server.entity.item.consumption.StatusHealerEater</a>
 </li>
 <li>statusList
 : <a class="el" href="d8/d8b/classgames_1_1stendhal_1_1server_1_1entity_1_1_r_p_entity.html#a6e844643b461f8f7d40f094aa80ef828">games.stendhal.server.entity.RPEntity</a>
@@ -1382,13 +1320,13 @@ $(document).ready(function(){initNavTree('functions_s.html',''); initResizable()
 </li>
 <li>step()
 : <a class="el" href="d4/dc2/classgames_1_1stendhal_1_1client_1_1gui_1_1_progress_bar.html#a13b8ddfe59806d9eb92ec04a6f9a8de4">games.stendhal.client.gui.ProgressBar</a>
-, <a class="el" href="d0/d18/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1fsm_1_1_engine.html#aa7435916f4a47e2cd15c9cd5bc3fae58">games.stendhal.server.entity.npc.fsm.Engine</a>
+, <a class="el" href="d0/d18/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1fsm_1_1_engine.html#adc2c6feb44d2af863baa0d6c818a8e0e">games.stendhal.server.entity.npc.fsm.Engine</a>
 </li>
 <li>stepTest()
 : <a class="el" href="d0/d18/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1fsm_1_1_engine.html#a74ced5350547cec344dfec27a560d7c9">games.stendhal.server.entity.npc.fsm.Engine</a>
 </li>
 <li>Stocking()
-: <a class="el" href="de/d52/classgames_1_1stendhal_1_1server_1_1entity_1_1item_1_1_stocking.html#ac2030a8be1a93457fb8c3d1c7dd64797">games.stendhal.server.entity.item.Stocking</a>
+: <a class="el" href="de/d52/classgames_1_1stendhal_1_1server_1_1entity_1_1item_1_1_stocking.html#a8cdf770a93eac3973ced4580f27ae385">games.stendhal.server.entity.item.Stocking</a>
 </li>
 <li>stop()
 : <a class="el" href="d2/d77/classgames_1_1stendhal_1_1client_1_1_game_loop.html#af127700e2a46584f4d7284383851ac40">games.stendhal.client.GameLoop</a>
@@ -1501,13 +1439,7 @@ $(document).ready(function(){initNavTree('functions_s.html',''); initResizable()
 : <a class="el" href="dd/d47/classgames_1_1stendhal_1_1common_1_1parser_1_1_expression_type.html#ad9b499f79168bd4b96667c0444dacef0">games.stendhal.common.parser.ExpressionType</a>
 </li>
 <li>substitute()
-: <a class="el" href="d5/dd8/classgames_1_1stendhal_1_1server_1_1util_1_1_string_utils.html#aa659ecde8b38a94055f7bdefb8c14b22">games.stendhal.server.util.StringUtils</a>
-</li>
-<li>substractTradingFee()
-: <a class="el" href="d3/d83/classgames_1_1stendhal_1_1server_1_1maps_1_1semos_1_1tavern_1_1market_1_1_trading_utility.html#a70461ef8a049251da323eafc2a49c365">games.stendhal.server.maps.semos.tavern.market.TradingUtility</a>
-</li>
-<li>subtractAmount()
-: <a class="el" href="d1/d51/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1logic_1_1_item_collector_data.html#aacc059eb8855e9d01e41df4971712b29">games.stendhal.server.maps.quests.logic.ItemCollectorData</a>
+: <a class="el" href="d5/dd8/classgames_1_1stendhal_1_1server_1_1util_1_1_string_utils.html#a5c3e929b2ca51ef41ac42c68a35326ec">games.stendhal.server.util.StringUtils</a>
 </li>
 <li>SUFFIX
 : <a class="el" href="dd/d47/classgames_1_1stendhal_1_1common_1_1parser_1_1_expression_type.html#a6cb7d061d1b6c07cf2bc9b2b7f1c2b25">games.stendhal.common.parser.ExpressionType</a>
@@ -1516,10 +1448,7 @@ $(document).ready(function(){initNavTree('functions_s.html',''); initResizable()
 : <a class="el" href="d8/d5b/classgames_1_1stendhal_1_1common_1_1grammar_1_1_grammar.html#aff507fbe27a1e525c968eb55bd62d563">games.stendhal.common.grammar.Grammar</a>
 </li>
 <li>SummonPetScroll()
-: <a class="el" href="df/dac/classgames_1_1stendhal_1_1server_1_1entity_1_1item_1_1scroll_1_1_summon_pet_scroll.html#a029793d8a8ceb38fc2b8eaba99c28fdc">games.stendhal.server.entity.item.scroll.SummonPetScroll</a>
-</li>
-<li>SummonRat()
-: <a class="el" href="dc/d4d/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1piedpiper_1_1_outgoing_phase.html#aaf9b1bc51ae74a2f05b1705ec9348c32">games.stendhal.server.maps.quests.piedpiper.OutgoingPhase</a>
+: <a class="el" href="df/dac/classgames_1_1stendhal_1_1server_1_1entity_1_1item_1_1scroll_1_1_summon_pet_scroll.html#ace41dfb263fb65c6dc8deeffa840dc32">games.stendhal.server.entity.item.scroll.SummonPetScroll</a>
 </li>
 <li>SummonScroll()
 : <a class="el" href="d8/dcf/classgames_1_1stendhal_1_1server_1_1entity_1_1item_1_1scroll_1_1_summon_scroll.html#a23131527059bf93f0b68fe84d4475e33">games.stendhal.server.entity.item.scroll.SummonScroll</a>
@@ -1539,9 +1468,6 @@ $(document).ready(function(){initNavTree('functions_s.html',''); initResizable()
 <li>suspensions
 : <a class="el" href="df/d61/classgames_1_1stendhal_1_1server_1_1core_1_1pathfinder_1_1_fixed_path.html#aa22c63560d6a8cfea9bdcd31bb48c63b">games.stendhal.server.core.pathfinder.FixedPath</a>
 </li>
-<li>switchToNextPhase()
-: <a class="el" href="d2/d92/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_the_pied_piper.html#a17a281bf2bf005742929ebb5ae408d91">games.stendhal.server.maps.quests.ThePiedPiper</a>
-</li>
 <li>switchToSpellCasting()
 : <a class="el" href="db/d2d/classgames_1_1stendhal_1_1client_1_1_game_screen.html#a7689fc1502e9f54dc1b5db71d5d9af86">games.stendhal.client.GameScreen</a>
 </li>
@@ -1552,18 +1478,15 @@ $(document).ready(function(){initNavTree('functions_s.html',''); initResizable()
 : <a class="el" href="dc/d2e/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1chest_1_1_personal_chest.html#a51b47888b7d3233a885d140a0d295197">games.stendhal.server.entity.mapstuff.chest.PersonalChest</a>
 </li>
 <li>SystemPropertyCondition()
-: <a class="el" href="d2/d1b/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1condition_1_1_system_property_condition.html#ac8bb6bc05dcfa5aca1626daa58badd0c">games.stendhal.server.entity.npc.condition.SystemPropertyCondition</a>
+: <a class="el" href="d2/d1b/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1condition_1_1_system_property_condition.html#a8c9037722214c5f11fb2b169befbc2ad">games.stendhal.server.entity.npc.condition.SystemPropertyCondition</a>
 </li>
 </ul>
 </div><!-- contents -->
-</div><!-- doc-content -->
 <!-- start footer part -->
-<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
-  <ul>
-    <li class="footer">Generated by
-    <a href="http://www.doxygen.org/index.html">
-    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
-  </ul>
-</div>
+<hr class="footer"/><address class="footer"><small>
+Generated by &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
 </body>
 </html>

@@ -1,5 +1,0 @@
-var classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1achievement_1_1factory_1_1_kill_blordroughs_achievement_factory =
-[
-    [ "createAchievements", "d7/da8/classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1achievement_1_1factory_1_1_kill_blordroughs_achievement_factory.html#acc0ad1e5767c14a0ba0b6b7bc2989c34", null ],
-    [ "getCategory", "d7/da8/classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1achievement_1_1factory_1_1_kill_blordroughs_achievement_factory.html#ad2fd315cb805b01dfbad9491265854a5", null ]
-];

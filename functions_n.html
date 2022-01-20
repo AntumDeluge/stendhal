@@ -9,10 +9,6 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
-<script type="text/javascript" src="navtreedata.js"></script>
-<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -53,22 +49,6 @@ $(function() {
 /* @license-end */</script>
 <div id="main-nav"></div>
 </div><!-- top -->
-<div id="side-nav" class="ui-resizable side-nav-resizable">
-  <div id="nav-tree">
-    <div id="nav-tree-contents">
-      <div id="nav-sync" class="sync"></div>
-    </div>
-  </div>
-  <div id="splitbar" style="-moz-user-select:none;" 
-       class="ui-resizable-handle">
-  </div>
-</div>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('functions_n.html',''); initResizable(); });
-/* @license-end */
-</script>
-<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -108,15 +88,6 @@ $(document).ready(function(){initNavTree('functions_n.html',''); initResizable()
 <li>NecroStaff()
 : <a class="el" href="d2/dd9/classgames_1_1stendhal_1_1server_1_1entity_1_1item_1_1_necro_staff.html#af509abe209a55fb40db1e4c4318657fa">games.stendhal.server.entity.item.NecroStaff</a>
 </li>
-<li>NEEDED_ITEMS
-: <a class="el" href="dd/d65/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_crown_for_the_wanna_be_king.html#afb2b48d1b888c44429fccc6f3b8ebe1d">games.stendhal.server.maps.quests.CrownForTheWannaBeKing</a>
-, <a class="el" href="df/de6/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_fruits_for_coralia.html#a7ef504dd75ace696644d6f55f542ba78">games.stendhal.server.maps.quests.FruitsForCoralia</a>
-, <a class="el" href="d9/d2b/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_herbs_for_carmen.html#a770812715b9dfe11423de47096887e2e">games.stendhal.server.maps.quests.HerbsForCarmen</a>
-, <a class="el" href="d0/dc3/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_mixture_for_ortiv.html#a0e59653fe4cf61bc6507cd9f879b1d1d">games.stendhal.server.maps.quests.MixtureForOrtiv</a>
-</li>
-<li>neededItemsWithAmounts()
-: <a class="el" href="d7/d2e/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1logic_1_1_bring_ordered_list_of_items_quest_logic.html#a60a5ff0c892b92846157ace1e183dea5">games.stendhal.server.maps.quests.logic.BringOrderedListOfItemsQuestLogic</a>
-</li>
 <li>negate()
 : <a class="el" href="d7/da4/classgames_1_1stendhal_1_1common_1_1parser_1_1_expression.html#a7def70ddcaf78d4e1f93d8f9c296a64e">games.stendhal.common.parser.Expression</a>
 , <a class="el" href="dd/d47/classgames_1_1stendhal_1_1common_1_1parser_1_1_expression_type.html#a07ff26c5f0869c03aa3c98fe84c16505">games.stendhal.common.parser.ExpressionType</a>
@@ -126,9 +97,6 @@ $(document).ready(function(){initNavTree('functions_n.html',''); initResizable()
 </li>
 <li>newrelease()
 : <a class="el" href="da/d32/classgames_1_1stendhal_1_1server_1_1core_1_1events_1_1_tutorial_notifier.html#a4853237ec437a4442721b7036d583cda">games.stendhal.server.core.events.TutorialNotifier</a>
-</li>
-<li>next()
-: <a class="el" href="d8/dc4/enumgames_1_1stendhal_1_1server_1_1maps_1_1athor_1_1ship_1_1_athor_ferry_1_1_status.html#a74a2f049e510e53c764cfe1215cf3f31">games.stendhal.server.maps.athor.ship.AthorFerry.Status</a>
 </li>
 <li>nextDirection()
 : <a class="el" href="d8/d73/enumgames_1_1stendhal_1_1common_1_1_direction.html#a5b14555d174d04b2a0f0979a60e4ed7b">games.stendhal.common.Direction</a>
@@ -181,9 +149,6 @@ $(document).ready(function(){initNavTree('functions_n.html',''); initResizable()
 </li>
 <li>NORMALSTYLE
 : <a class="el" href="dc/d1f/enumgames_1_1stendhal_1_1common_1_1_notification_type.html#a72ef85dcc23a716332309b597b260459">games.stendhal.common.NotificationType</a>
-</li>
-<li>NorthpoleRemover()
-: <a class="el" href="db/d31/classgames_1_1stendhal_1_1server_1_1maps_1_1northpole_1_1_northpole_remover.html#ab0a80774956233ae78d71eb9c6413807">games.stendhal.server.maps.northpole.NorthpoleRemover</a>
 </li>
 <li>NoStatsStackableItem()
 : <a class="el" href="d8/d1c/classgames_1_1stendhal_1_1server_1_1entity_1_1item_1_1_no_stats_stackable_item.html#a128066f7f615f4b2ccea0e4b827611a1">games.stendhal.server.entity.item.NoStatsStackableItem</a>
@@ -261,18 +226,11 @@ $(document).ready(function(){initNavTree('functions_n.html',''); initResizable()
 <li>NPCOwnedChest()
 : <a class="el" href="da/d99/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1chest_1_1_n_p_c_owned_chest.html#aedee4ea24119b50b0f1020c5100d6a3d">games.stendhal.server.entity.mapstuff.chest.NPCOwnedChest</a>
 </li>
-<li>npcs
-: <a class="el" href="d8/d5f/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_abstract_quest.html#ae1a45130ae179faa5d057ff652e0e6fe">games.stendhal.server.maps.quests.AbstractQuest</a>
-</li>
 <li>NPCSetDirection()
 : <a class="el" href="da/d1b/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1action_1_1_n_p_c_set_direction.html#a6666aef77a8c8083a9ca10d724c91f3e">games.stendhal.server.entity.npc.action.NPCSetDirection</a>
 </li>
 <li>number()
 : <a class="el" href="d8/d5b/classgames_1_1stendhal_1_1common_1_1grammar_1_1_grammar.html#add3a4f35d03733ffb4114b044a499e59">games.stendhal.common.grammar.Grammar</a>
-</li>
-<li>NUMBER_OF_CREATURES
-: <a class="el" href="d4/d94/classgames_1_1stendhal_1_1server_1_1maps_1_1magic_1_1house1_1_1_adventure_island.html#a5dc6cccf1cd96deef4025d477dadeafd">games.stendhal.server.maps.magic.house1.AdventureIsland</a>
-, <a class="el" href="de/de0/classgames_1_1stendhal_1_1server_1_1maps_1_1northpole_1_1_northpole.html#a36bbc0ff39bb345abe9044daef478b09">games.stendhal.server.maps.northpole.Northpole</a>
 </li>
 <li>NumberDocumentFilter()
 : <a class="el" href="d1/d55/classgames_1_1stendhal_1_1client_1_1gui_1_1_number_document_filter.html#a0a78daa1dfef4b735c034266b5a39817">games.stendhal.client.gui.NumberDocumentFilter</a>
@@ -285,14 +243,11 @@ $(document).ready(function(){initNavTree('functions_n.html',''); initResizable()
 </li>
 </ul>
 </div><!-- contents -->
-</div><!-- doc-content -->
 <!-- start footer part -->
-<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
-  <ul>
-    <li class="footer">Generated by
-    <a href="http://www.doxygen.org/index.html">
-    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
-  </ul>
-</div>
+<hr class="footer"/><address class="footer"><small>
+Generated by &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
 </body>
 </html>

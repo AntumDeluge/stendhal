@@ -9,10 +9,6 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
-<script type="text/javascript" src="navtreedata.js"></script>
-<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -53,22 +49,6 @@ $(function() {
 /* @license-end */</script>
 <div id="main-nav"></div>
 </div><!-- top -->
-<div id="side-nav" class="ui-resizable side-nav-resizable">
-  <div id="nav-tree">
-    <div id="nav-tree-contents">
-      <div id="nav-sync" class="sync"></div>
-    </div>
-  </div>
-  <div id="splitbar" style="-moz-user-select:none;" 
-       class="ui-resizable-handle">
-  </div>
-</div>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('functions_q.html',''); initResizable(); });
-/* @license-end */
-</script>
-<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -133,20 +113,11 @@ $(document).ready(function(){initNavTree('functions_q.html',''); initResizable()
 <li>QUEST_MITHRILBOURGH_ENEMY_ARMY
 : <a class="el" href="d0/d63/enumgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1achievement_1_1_category.html#a31d534ebb5a444c7e45658c1a6f9c236">games.stendhal.server.core.rp.achievement.Category</a>
 </li>
-<li>QUEST_NAME
-: <a class="el" href="df/d81/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_meet_bunny.html#a52c70b4d2f5e6ee49a01c5206ad8b7a1">games.stendhal.server.maps.quests.MeetBunny</a>
-</li>
 <li>QUEST_OFFERED
 : <a class="el" href="de/d1d/enumgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1_conversation_states.html#a124596008c3c9092e4a05fe218bcd431">games.stendhal.server.entity.npc.ConversationStates</a>
 </li>
 <li>QUEST_SEMOS_MONSTER
 : <a class="el" href="d0/d63/enumgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1achievement_1_1_category.html#ae696b9af7fd7f03eb5befbfdb3598345">games.stendhal.server.core.rp.achievement.Category</a>
-</li>
-<li>QUEST_SLOT
-: <a class="el" href="d7/d91/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1allotment_1_1_allotment_utilities.html#aee590c3f6eebee324a790b84a8c5ae26">games.stendhal.server.maps.quests.allotment.AllotmentUtilities</a>
-, <a class="el" href="df/de6/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_fruits_for_coralia.html#a10c1cf3ea9231a38075f12b1c82067c3">games.stendhal.server.maps.quests.FruitsForCoralia</a>
-, <a class="el" href="da/d78/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_koboldish_torcibud.html#a32cbb410d5fc058a2a34b0db86227b65">games.stendhal.server.maps.quests.KoboldishTorcibud</a>
-, <a class="el" href="d4/d71/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_meal_for_groongo.html#a12cdbcf6ac88ad7f2ace207e3e46618e">games.stendhal.server.maps.quests.MealForGroongo</a>
 </li>
 <li>QUEST_STARTED
 : <a class="el" href="de/d1d/enumgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1_conversation_states.html#a3f8590b59dd69b893ca49ba718dfc738">games.stendhal.server.entity.npc.ConversationStates</a>
@@ -179,19 +150,19 @@ $(document).ready(function(){initNavTree('functions_q.html',''); initResizable()
 : <a class="el" href="d5/dbe/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1condition_1_1_quest_not_completed_condition.html#af11caaa7bd087617cc27d685bd440ba3">games.stendhal.server.entity.npc.condition.QuestNotCompletedCondition</a>
 </li>
 <li>QuestNotInStateCondition()
-: <a class="el" href="d6/d07/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1condition_1_1_quest_not_in_state_condition.html#a931966f2e45aff852157a06752bf3cff">games.stendhal.server.entity.npc.condition.QuestNotInStateCondition</a>
+: <a class="el" href="d6/d07/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1condition_1_1_quest_not_in_state_condition.html#afa9dc2bec3db8f679c7701d2175aa372">games.stendhal.server.entity.npc.condition.QuestNotInStateCondition</a>
 </li>
 <li>QuestNotStartedCondition()
 : <a class="el" href="d3/d56/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1condition_1_1_quest_not_started_condition.html#a01a93492dadae9960e92b48765043551">games.stendhal.server.entity.npc.condition.QuestNotStartedCondition</a>
 </li>
 <li>QuestRegisteredCondition()
-: <a class="el" href="d1/d55/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1condition_1_1_quest_registered_condition.html#a8ee3e1aef384eec5356963fa6774cd8d">games.stendhal.server.entity.npc.condition.QuestRegisteredCondition</a>
+: <a class="el" href="d1/d55/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1condition_1_1_quest_registered_condition.html#a458fee273484fc7734c93f15217f4eb4">games.stendhal.server.entity.npc.condition.QuestRegisteredCondition</a>
 </li>
 <li>QuestsInRegionCompletedCondition()
 : <a class="el" href="d0/d14/classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1achievement_1_1condition_1_1_quests_in_region_completed_condition.html#ae214fc7a2ff6a9f01a7633773d8ce02d">games.stendhal.server.core.rp.achievement.condition.QuestsInRegionCompletedCondition</a>
 </li>
 <li>QuestSmallerThanCondition()
-: <a class="el" href="d9/d06/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1condition_1_1_quest_smaller_than_condition.html#ac0d9501b0193c5f521f97501d6b788ac">games.stendhal.server.entity.npc.condition.QuestSmallerThanCondition</a>
+: <a class="el" href="d9/d06/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1condition_1_1_quest_smaller_than_condition.html#ae1213871b2f00c49548cc9c4086a6db4">games.stendhal.server.entity.npc.condition.QuestSmallerThanCondition</a>
 </li>
 <li>QuestStartedCondition()
 : <a class="el" href="d4/d9c/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1condition_1_1_quest_started_condition.html#a690952139db10d2597acf9de87a82994">games.stendhal.server.entity.npc.condition.QuestStartedCondition</a>
@@ -210,14 +181,11 @@ $(document).ready(function(){initNavTree('functions_q.html',''); initResizable()
 </li>
 </ul>
 </div><!-- contents -->
-</div><!-- doc-content -->
 <!-- start footer part -->
-<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
-  <ul>
-    <li class="footer">Generated by
-    <a href="http://www.doxygen.org/index.html">
-    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
-  </ul>
-</div>
+<hr class="footer"/><address class="footer"><small>
+Generated by &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
 </body>
 </html>

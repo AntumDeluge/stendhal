@@ -9,10 +9,6 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
-<script type="text/javascript" src="navtreedata.js"></script>
-<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -53,22 +49,6 @@ $(function() {
 /* @license-end */</script>
 <div id="main-nav"></div>
 </div><!-- top -->
-<div id="side-nav" class="ui-resizable side-nav-resizable">
-  <div id="nav-tree">
-    <div id="nav-tree-contents">
-      <div id="nav-sync" class="sync"></div>
-    </div>
-  </div>
-  <div id="splitbar" style="-moz-user-select:none;" 
-       class="ui-resizable-handle">
-  </div>
-</div>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('functions_u.html',''); initResizable(); });
-/* @license-end */
-</script>
-<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -189,27 +169,17 @@ $(document).ready(function(){initNavTree('functions_u.html',''); initResizable()
 <li>updateLevel()
 : <a class="el" href="d8/d8b/classgames_1_1stendhal_1_1server_1_1entity_1_1_r_p_entity.html#ab2559c4cf50f02a768abc8bb2c9111a1">games.stendhal.server.entity.RPEntity</a>
 </li>
-<li>updatePlayer()
-: <a class="el" href="d8/d5f/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_abstract_quest.html#a5be49e7cac9ebea86933d959ed8e4517">games.stendhal.server.maps.quests.AbstractQuest</a>
-, <a class="el" href="d4/d76/interfacegames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_i_quest.html#a968c9b9fc0716276f498de7df9709c6d">games.stendhal.server.maps.quests.IQuest</a>
-</li>
 <li>updatePlayerQuests()
 : <a class="el" href="db/d53/classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1_stendhal_quest_system.html#a63aa2d141635cddc9f2f89e6a60cf97c">games.stendhal.server.core.rp.StendhalQuestSystem</a>
 </li>
 <li>updatePlayerRPObject()
 : <a class="el" href="d2/db1/classgames_1_1stendhal_1_1server_1_1entity_1_1player_1_1_update_converter.html#a50af005a59450cfd69c51a1bebd49791">games.stendhal.server.entity.player.UpdateConverter</a>
 </li>
-<li>updatePlayers()
-: <a class="el" href="d6/d01/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1maze_1_1_maze_sign.html#a6a88439274f67a719e7bddd6b4174aee">games.stendhal.server.maps.quests.maze.MazeSign</a>
-</li>
 <li>UpdatePropertiesWriter()
 : <a class="el" href="d8/d46/classgames_1_1stendhal_1_1tools_1_1updateprop_1_1_update_properties_writer.html#a50f815633b4b8812a84f12386b944066">games.stendhal.tools.updateprop.UpdatePropertiesWriter</a>
 </li>
 <li>UpdatePropUpdater()
 : <a class="el" href="df/d9c/classgames_1_1stendhal_1_1tools_1_1updateprop_1_1_update_prop_updater.html#a78fda65be7b78fab9a8d05082cc7fcd6">games.stendhal.tools.updateprop.UpdatePropUpdater</a>
-</li>
-<li>updateQuantitiesInQuestStatus()
-: <a class="el" href="d7/d2e/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1logic_1_1_bring_ordered_list_of_items_quest_logic.html#a850c0e164fae150a038d7c232d957751">games.stendhal.server.maps.quests.logic.BringOrderedListOfItemsQuestLogic</a>
 </li>
 <li>updateQuests()
 : <a class="el" href="d2/db1/classgames_1_1stendhal_1_1server_1_1entity_1_1player_1_1_update_converter.html#ae58194e8c628800501756ac2bc2841e4">games.stendhal.server.entity.player.UpdateConverter</a>
@@ -248,8 +218,8 @@ $(document).ready(function(){initNavTree('functions_u.html',''); initResizable()
 , <a class="el" href="dd/d90/classgames_1_1stendhal_1_1server_1_1entity_1_1item_1_1timed_1_1_timed_stackable_item.html#aae39ff0da2804abcbc26439eb5486b26">games.stendhal.server.entity.item.timed.TimedStackableItem</a>
 </li>
 <li>useKarma()
-: <a class="el" href="d9/dd5/classgames_1_1stendhal_1_1server_1_1entity_1_1player_1_1_player.html#a9125025082111e9cd013fc8524619f7c">games.stendhal.server.entity.player.Player</a>
-, <a class="el" href="d8/d8b/classgames_1_1stendhal_1_1server_1_1entity_1_1_r_p_entity.html#ae3609702af69de76960d4da3adafce50">games.stendhal.server.entity.RPEntity</a>
+: <a class="el" href="d9/dd5/classgames_1_1stendhal_1_1server_1_1entity_1_1player_1_1_player.html#a0c62c5c949745a65916cf755c93e6043">games.stendhal.server.entity.player.Player</a>
+, <a class="el" href="d8/d8b/classgames_1_1stendhal_1_1server_1_1entity_1_1_r_p_entity.html#a7b556e936b18ee8c225ee3dd61228697">games.stendhal.server.entity.RPEntity</a>
 </li>
 <li>usePortal()
 : <a class="el" href="da/d34/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1portal_1_1_portal.html#ab66b3d7d6513c4e2ff3d06827933bd6a">games.stendhal.server.entity.mapstuff.portal.Portal</a>
@@ -281,19 +251,13 @@ $(document).ready(function(){initNavTree('functions_u.html',''); initResizable()
 , <a class="el" href="d2/d0f/classgames_1_1stendhal_1_1server_1_1entity_1_1item_1_1scroll_1_1_teleport_scroll.html#a0dbded2c0a9b7e36baae9d12be1d5db0">games.stendhal.server.entity.item.scroll.TeleportScroll</a>
 , <a class="el" href="db/dc7/classgames_1_1stendhal_1_1server_1_1entity_1_1item_1_1scroll_1_1_timed_teleport_scroll.html#a6f6ed7f61ee131732026332014e27978">games.stendhal.server.entity.item.scroll.TimedTeleportScroll</a>
 </li>
-<li>utilizes()
-: <a class="el" href="d9/dca/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_daily_item_quest.html#aac7a18857b186f1a9bed1d851e423c82">games.stendhal.server.maps.quests.DailyItemQuest</a>
-</li>
 </ul>
 </div><!-- contents -->
-</div><!-- doc-content -->
 <!-- start footer part -->
-<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
-  <ul>
-    <li class="footer">Generated by
-    <a href="http://www.doxygen.org/index.html">
-    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
-  </ul>
-</div>
+<hr class="footer"/><address class="footer"><small>
+Generated by &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
 </body>
 </html>

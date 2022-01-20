@@ -1,5 +1,0 @@
-var classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1achievement_1_1factory_1_1_underground_zone_achievement_factory =
-[
-    [ "createAchievements", "dc/da7/classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1achievement_1_1factory_1_1_underground_zone_achievement_factory.html#a29a16833364bcf1d6d635c8673a6dfab", null ],
-    [ "getCategory", "dc/da7/classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1achievement_1_1factory_1_1_underground_zone_achievement_factory.html#a991f2bec27e0e3e200975b17ee4ed3e1", null ]
-];

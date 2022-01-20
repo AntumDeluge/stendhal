@@ -1,4 +1,0 @@
-var classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1game_1_1movevalidator_1_1_player_is_pl3f903ad414787e87092a0439d7c9d386 =
-[
-    [ "validate", "d1/dc9/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1game_1_1movevalidator_1_1_player_is_pl3f903ad414787e87092a0439d7c9d386.html#a512ac76d145b6361fbd207a4443ca69a", null ]
-];

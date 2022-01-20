@@ -1,4 +1,0 @@
-var classgames_1_1stendhal_1_1server_1_1entity_1_1spell_1_1exception_1_1_spell_not_cooled_down_exception =
-[
-    [ "SpellNotCooledDownException", "da/ddc/classgames_1_1stendhal_1_1server_1_1entity_1_1spell_1_1exception_1_1_spell_not_cooled_down_exception.html#a1cc5f1a08c5f5bee12342a87cdae8333", null ]
-];

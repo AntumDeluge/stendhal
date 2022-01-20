@@ -1,4 +1,0 @@
-var classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1chest_1_1_personal_chest_1_1_sync_content =
-[
-    [ "onTurnReached", "d7/d58/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1chest_1_1_personal_chest_1_1_sync_content.html#af43a19def0e088021febcebb2ee9ebac", null ]
-];

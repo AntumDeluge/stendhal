@@ -9,10 +9,6 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
-<script type="text/javascript" src="navtreedata.js"></script>
-<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -53,22 +49,6 @@ $(function() {
 /* @license-end */</script>
 <div id="main-nav"></div>
 </div><!-- top -->
-<div id="side-nav" class="ui-resizable side-nav-resizable">
-  <div id="nav-tree">
-    <div id="nav-tree-contents">
-      <div id="nav-sync" class="sync"></div>
-    </div>
-  </div>
-  <div id="splitbar" style="-moz-user-select:none;" 
-       class="ui-resizable-handle">
-  </div>
-</div>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('functions_l.html',''); initResizable(); });
-/* @license-end */
-</script>
-<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -136,12 +116,6 @@ $(document).ready(function(){initNavTree('functions_l.html',''); initResizable()
 </li>
 <li>listAll()
 : <a class="el" href="df/d50/classgames_1_1stendhal_1_1server_1_1core_1_1scripting_1_1lua_1_1_lua_quest_helper.html#a90e44cbbf9eb587b90a9975622d1404a">games.stendhal.server.core.scripting.lua.LuaQuestHelper</a>
-</li>
-<li>listMissingItems()
-: <a class="el" href="d1/d05/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1logic_1_1_bring_list_of_items_quest_logic.html#a3890fb861c15e8880ee2fcae439e8667">games.stendhal.server.maps.quests.logic.BringListOfItemsQuestLogic</a>
-</li>
-<li>listMissingItemsDuringQuestOffer()
-: <a class="el" href="d1/d05/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1logic_1_1_bring_list_of_items_quest_logic.html#afbf3e32a210c67eeda8f6bbd93e9904a">games.stendhal.server.maps.quests.logic.BringListOfItemsQuestLogic</a>
 </li>
 <li>ListProducedItemsOfClassAction()
 : <a class="el" href="d3/da7/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1action_1_1_list_produced_items_of_class_action.html#ae74d0eeda7832601b8657d13dce968ad">games.stendhal.server.entity.npc.action.ListProducedItemsOfClassAction</a>
@@ -211,7 +185,7 @@ $(document).ready(function(){initNavTree('functions_l.html',''); initResizable()
 : <a class="el" href="d9/dd7/enumgames_1_1stendhal_1_1common_1_1_trade_state.html#a55b8d30144767f84c5d455fe3ffb93f5">games.stendhal.common.TradeState</a>
 </li>
 <li>LockedDoor()
-: <a class="el" href="da/d9f/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1portal_1_1_locked_door.html#a4b2bdd6d194cf7c3c51a4df75047e59c">games.stendhal.server.entity.mapstuff.portal.LockedDoor</a>
+: <a class="el" href="da/d9f/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1portal_1_1_locked_door.html#a64e481e55a974145e9c0fa790c80830f">games.stendhal.server.entity.mapstuff.portal.LockedDoor</a>
 </li>
 <li>lockPortal()
 : <a class="el" href="d9/dd5/classgames_1_1stendhal_1_1server_1_1entity_1_1player_1_1_player.html#a895291da9d8ef147fb47e228b4a5c02a">games.stendhal.server.entity.player.Player</a>
@@ -229,7 +203,7 @@ $(document).ready(function(){initNavTree('functions_l.html',''); initResizable()
 : <a class="el" href="d6/d55/classgames_1_1stendhal_1_1tools_1_1loganalyser_1_1itemlog_1_1consistency_1_1_log_entry.html#a398576f57ad5d4c484b94d440f66cd44">games.stendhal.tools.loganalyser.itemlog.consistency.LogEntry</a>
 </li>
 <li>LogEntryIterator()
-: <a class="el" href="da/d79/classgames_1_1stendhal_1_1tools_1_1loganalyser_1_1itemlog_1_1consistency_1_1_log_entry_iterator.html#acce29a1ba1155aa8dec7cb55a39f7a73">games.stendhal.tools.loganalyser.itemlog.consistency.LogEntryIterator</a>
+: <a class="el" href="da/d79/classgames_1_1stendhal_1_1tools_1_1loganalyser_1_1itemlog_1_1consistency_1_1_log_entry_iterator.html#abe2b6b947a1355f6845a719b5cb16db1">games.stendhal.tools.loganalyser.itemlog.consistency.LogEntryIterator</a>
 </li>
 <li>logGameEvent()
 : <a class="el" href="d6/dd9/classgames_1_1stendhal_1_1server_1_1core_1_1engine_1_1_stendhal_r_p_rule_processor.html#a7cc4fb9b41d821cf1a8ebfa7770c99df">games.stendhal.server.core.engine.StendhalRPRuleProcessor</a>
@@ -283,7 +257,7 @@ $(document).ready(function(){initNavTree('functions_l.html',''); initResizable()
 : <a class="el" href="d1/d9a/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1sound_1_1_looped_ambient_sound_source.html#ad6a04f81df3fa74f80eec5a46f359606">games.stendhal.server.entity.mapstuff.sound.LoopedAmbientSoundSource</a>
 </li>
 <li>LoopedSoundSource()
-: <a class="el" href="d9/d7b/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1sound_1_1_looped_sound_source.html#a35f4b1a227814f0676ce295e1b67fcfc">games.stendhal.server.entity.mapstuff.sound.LoopedSoundSource</a>
+: <a class="el" href="d9/d7b/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1sound_1_1_looped_sound_source.html#aeac65548d15dd1615b984015141602a0">games.stendhal.server.entity.mapstuff.sound.LoopedSoundSource</a>
 </li>
 <li>LootableSlot()
 : <a class="el" href="d0/d9c/classgames_1_1stendhal_1_1server_1_1entity_1_1slot_1_1_lootable_slot.html#a30603f7532469af79f04f04f66835927">games.stendhal.server.entity.slot.LootableSlot</a>
@@ -296,14 +270,11 @@ $(document).ready(function(){initNavTree('functions_l.html',''); initResizable()
 </li>
 </ul>
 </div><!-- contents -->
-</div><!-- doc-content -->
 <!-- start footer part -->
-<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
-  <ul>
-    <li class="footer">Generated by
-    <a href="http://www.doxygen.org/index.html">
-    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
-  </ul>
-</div>
+<hr class="footer"/><address class="footer"><small>
+Generated by &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
 </body>
 </html>

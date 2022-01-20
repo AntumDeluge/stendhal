@@ -1,4 +1,0 @@
-var classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1game_1_1movevalidator_1_1_movement_source_is_home_validator =
-[
-    [ "validate", "d0/d97/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1game_1_1movevalidator_1_1_movement_source_is_home_validator.html#a97792b6208bb6769b8427badb9f5123f", null ]
-];

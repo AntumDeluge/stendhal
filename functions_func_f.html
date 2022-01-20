@@ -9,10 +9,6 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
-<script type="text/javascript" src="navtreedata.js"></script>
-<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -53,22 +49,6 @@ $(function() {
 /* @license-end */</script>
 <div id="main-nav"></div>
 </div><!-- top -->
-<div id="side-nav" class="ui-resizable side-nav-resizable">
-  <div id="nav-tree">
-    <div id="nav-tree-contents">
-      <div id="nav-sync" class="sync"></div>
-    </div>
-  </div>
-  <div id="splitbar" style="-moz-user-select:none;" 
-       class="ui-resizable-handle">
-  </div>
-</div>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('functions_func_f.html',''); initResizable(); });
-/* @license-end */
-</script>
-<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -121,9 +101,6 @@ $(document).ready(function(){initNavTree('functions_func_f.html',''); initResiza
 <li>FieldLister()
 : <a class="el" href="dc/dec/classgames_1_1stendhal_1_1server_1_1core_1_1reflectiondebugger_1_1_field_lister.html#ab7ed5e80b861f70efec51befaf63c062">games.stendhal.server.core.reflectiondebugger.FieldLister</a>
 </li>
-<li>fillQuestInfo()
-: <a class="el" href="d8/d5f/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_abstract_quest.html#ae334b791779b77424bb5b42c4446bf32">games.stendhal.server.maps.quests.AbstractQuest</a>
-</li>
 <li>fillTargetInfo()
 : <a class="el" href="d6/d8e/enumgames_1_1stendhal_1_1client_1_1entity_1_1_action_type.html#ad01e71dca365b7cf9337598dc6418d99">games.stendhal.client.entity.ActionType</a>
 </li>
@@ -140,9 +117,6 @@ $(document).ready(function(){initNavTree('functions_func_f.html',''); initResiza
 : <a class="el" href="d5/d2d/classgames_1_1stendhal_1_1common_1_1parser_1_1_trigger_list.html#a9d87e1b015ff945ca5eab0237515130b">games.stendhal.common.parser.TriggerList</a>
 , <a class="el" href="df/dba/classgames_1_1stendhal_1_1common_1_1parser_1_1_word_list.html#a7e23e0402a28438682bf6487fb6343bd">games.stendhal.common.parser.WordList</a>
 </li>
-<li>findChest()
-: <a class="el" href="d9/d9a/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1houses_1_1_house_utilities.html#a24dc3dbc3b030e2f83681e7d58b4b7a0">games.stendhal.server.maps.quests.houses.HouseUtilities</a>
-</li>
 <li>findItem()
 : <a class="el" href="dd/d27/classgames_1_1stendhal_1_1client_1_1entity_1_1_user.html#ad1553d10fa7dd7f345e15d8a456a8ee9">games.stendhal.client.entity.User</a>
 </li>
@@ -152,7 +126,6 @@ $(document).ready(function(){initNavTree('functions_func_f.html',''); initResiza
 <li>finish()
 : <a class="el" href="d4/dc2/classgames_1_1stendhal_1_1client_1_1gui_1_1_progress_bar.html#a96fb23d7451f34c941b2741fc28cdd74">games.stendhal.client.gui.ProgressBar</a>
 , <a class="el" href="de/d9a/classgames_1_1stendhal_1_1server_1_1core_1_1pathfinder_1_1_go_to_position.html#a927c600ca4eb423ba1f0d791c7f57aec">games.stendhal.server.core.pathfinder.GoToPosition</a>
-, <a class="el" href="d4/d1f/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_reverse_arrow.html#a99d4c063b4e76603af9380326954626d">games.stendhal.server.maps.quests.ReverseArrow</a>
 </li>
 <li>fire()
 : <a class="el" href="da/d19/classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1achievement_1_1condition_1_1_bought_number_of_condition.html#a08833ba0a061bbf26831daee8d17bbf7">games.stendhal.server.core.rp.achievement.condition.BoughtNumberOfCondition</a>
@@ -296,30 +269,6 @@ $(document).ready(function(){initNavTree('functions_func_f.html',''); initResiza
 , <a class="el" href="d2/dad/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1condition_1_1_trigger_matches_quest_slot_condition.html#a0d87302aadaadba9a5e5759ddc7e9c23">games.stendhal.server.entity.npc.condition.TriggerMatchesQuestSlotCondition</a>
 , <a class="el" href="d5/dc8/interfacegames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1fsm_1_1_post_transition_action.html#a0455cbd3a18527b696919112ff433fe2">games.stendhal.server.entity.npc.fsm.PostTransitionAction</a>
 , <a class="el" href="d4/da1/interfacegames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1fsm_1_1_pre_transition_condition.html#a9e901252b9a33ba17c5680ae2d1b80e5">games.stendhal.server.entity.npc.fsm.PreTransitionCondition</a>
-, <a class="el" href="d1/d17/classgames_1_1stendhal_1_1server_1_1maps_1_1deathmatch_1_1_bail_action.html#af643c82f264974c3425869efb6611932">games.stendhal.server.maps.deathmatch.BailAction</a>
-, <a class="el" href="d7/d44/classgames_1_1stendhal_1_1server_1_1maps_1_1deathmatch_1_1_done_action.html#a20a1aec23986a3cf9ebc22f65f19316b">games.stendhal.server.maps.deathmatch.DoneAction</a>
-, <a class="el" href="da/dcb/classgames_1_1stendhal_1_1server_1_1maps_1_1deathmatch_1_1_leave_action.html#a18bcde428d68bd65c22f6e32a46befeb">games.stendhal.server.maps.deathmatch.LeaveAction</a>
-, <a class="el" href="d5/d07/classgames_1_1stendhal_1_1server_1_1maps_1_1deathmatch_1_1_start_action.html#afe011f7ce2e09fc0de4148c84084b34b">games.stendhal.server.maps.deathmatch.StartAction</a>
-, <a class="el" href="d1/db7/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1captureflag_1_1_join_capture_flag_action.html#a114391a2073080d3aafda1710585b17a">games.stendhal.server.maps.quests.captureflag.JoinCaptureFlagAction</a>
-, <a class="el" href="db/d0d/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1captureflag_1_1_leave_capture_flag_action.html#a40e151c921beefff1b67d9ba80de20c4">games.stendhal.server.maps.quests.captureflag.LeaveCaptureFlagAction</a>
-, <a class="el" href="d6/d61/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1captureflag_1_1_playing_c_t_f_condition.html#ab1d3a31740275aa7746909263a848d64">games.stendhal.server.maps.quests.captureflag.PlayingCTFCondition</a>
-, <a class="el" href="d7/d11/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1captureflag_1_1_provide_arrows_action.html#abde195d067c6d5c9f673c38bbdc9a918">games.stendhal.server.maps.quests.captureflag.ProvideArrowsAction</a>
-, <a class="el" href="d4/d47/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1captureflag_1_1_provide_c_t_f_flags_action.html#ae97141b7ce176848b06686d9bb6ed98b">games.stendhal.server.maps.quests.captureflag.ProvideCTFFlagsAction</a>
-, <a class="el" href="d5/d1c/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_coded_message_from_finn_farmer_1_1_create_and_say_coded_message.html#a6e376aa68af5301aed2588da60201b9e">games.stendhal.server.maps.quests.CodedMessageFromFinnFarmer.CreateAndSayCodedMessage</a>
-, <a class="el" href="d1/dd3/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1_coded_message_from_finn_farmer_1_1_trigge1db22581c9d9dd8ea0856eda26ee779f.html#a680f054abc216a9dec637887559f8ad9">games.stendhal.server.maps.quests.CodedMessageFromFinnFarmer.TriggerMightbeACodedMessageCondition</a>
-, <a class="el" href="dd/d76/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1piedpiper_1_1_details_killings_action.html#a32c06bad3fd54c4ec3743691d8229879">games.stendhal.server.maps.quests.piedpiper.DetailsKillingsAction</a>
-, <a class="el" href="dc/d20/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1piedpiper_1_1_reward_player_action.html#a7ecd124f3554ff39cca99fef52cf326c">games.stendhal.server.maps.quests.piedpiper.RewardPlayerAction</a>
-, <a class="el" href="d5/d67/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1piedpiper_1_1_t_p_p_quest_in_phase_condition.html#a6db51cedf0dd0570adcff85013d6d370">games.stendhal.server.maps.quests.piedpiper.TPPQuestInPhaseCondition</a>
-, <a class="el" href="da/de1/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1revivalweeks_1_1_photographer_chat_action.html#a7107d286c24e4bd479c4d0b58d7c173c">games.stendhal.server.maps.quests.revivalweeks.PhotographerChatAction</a>
-, <a class="el" href="d2/d5f/classgames_1_1stendhal_1_1server_1_1maps_1_1semos_1_1tavern_1_1market_1_1_examine_offer_chat_action.html#a37fae8005e0d5fd78fd2ea9c0355e6d0">games.stendhal.server.maps.semos.tavern.market.ExamineOfferChatAction</a>
-, <a class="el" href="de/d99/classgames_1_1stendhal_1_1server_1_1maps_1_1semos_1_1tavern_1_1market_1_1_fetch_earnings_chat_action.html#a89ff2e31d99b19c114ac9184079d3cab">games.stendhal.server.maps.semos.tavern.market.FetchEarningsChatAction</a>
-, <a class="el" href="de/df1/classgames_1_1stendhal_1_1server_1_1maps_1_1semos_1_1tavern_1_1market_1_1_player_has_earnings_to_collect_condition.html#a0deccd448813623a55c1dde3c2c9db6c">games.stendhal.server.maps.semos.tavern.market.PlayerHasEarningsToCollectCondition</a>
-, <a class="el" href="d1/d95/classgames_1_1stendhal_1_1server_1_1maps_1_1semos_1_1tavern_1_1market_1_1_prolong_offer_handler_ffed3b84740ea0d1fa136e306d959d35.html#ab99a51b6dc1f575f4f65c7052f4bcaef">games.stendhal.server.maps.semos.tavern.market.ProlongOfferHandler.ConfirmProlongOfferChatAction</a>
-, <a class="el" href="d3/dd6/classgames_1_1stendhal_1_1server_1_1maps_1_1semos_1_1tavern_1_1market_1_1_prolong_offer_handler_1_1_prolong_offer_chat_action.html#afe8cd1fbe5842b258faf4b76fd070c58">games.stendhal.server.maps.semos.tavern.market.ProlongOfferHandler.ProlongOfferChatAction</a>
-, <a class="el" href="d6/d5d/classgames_1_1stendhal_1_1server_1_1maps_1_1semos_1_1tavern_1_1market_1_1_remove_offer_handler_14a004f48874bd0f27f290be0ece812de.html#ad85d9eb104c871e9fdd777f014361042">games.stendhal.server.maps.semos.tavern.market.RemoveOfferHandler.ConfirmRemoveOfferChatAction</a>
-, <a class="el" href="dd/d7b/classgames_1_1stendhal_1_1server_1_1maps_1_1semos_1_1tavern_1_1market_1_1_remove_offer_handler_1_1_remove_offer_chat_action.html#a38daf76ae8300a75e62715731d4d01a0">games.stendhal.server.maps.semos.tavern.market.RemoveOfferHandler.RemoveOfferChatAction</a>
-, <a class="el" href="d1/d1f/classgames_1_1stendhal_1_1server_1_1maps_1_1semos_1_1tavern_1_1market_1_1_show_offer_items_chat_action.html#a7ef6196788cc8877f1e5587a025a91ae">games.stendhal.server.maps.semos.tavern.market.ShowOfferItemsChatAction</a>
-, <a class="el" href="d7/d0e/classgames_1_1stendhal_1_1server_1_1maps_1_1semos_1_1tavern_1_1market_1_1_show_offers_chat_action.html#a1bffbe2df356a47283a5760af9d32c41">games.stendhal.server.maps.semos.tavern.market.ShowOffersChatAction</a>
 , <a class="el" href="d3/df6/classgames_1_1stendhal_1_1server_1_1script_1_1_admin_maker_1_1_teleport_action.html#ab2598c2f4794f0961990a3ed1601ef63">games.stendhal.server.script.AdminMaker.TeleportAction</a>
 , <a class="el" href="db/d4a/classgames_1_1stendhal_1_1server_1_1script_1_1_admin_maker_1_1_upgrade_action.html#ae7cf85894d0cbc52223be60ff982f457">games.stendhal.server.script.AdminMaker.UpgradeAction</a>
 , <a class="el" href="df/d1a/classgames_1_1stendhal_1_1server_1_1script_1_1_bet_manager_1_1_bet_action.html#a9f7d4fb2026c165b46fc77a3c3d975f5">games.stendhal.server.script.BetManager.BetAction</a>
@@ -346,7 +295,7 @@ $(document).ready(function(){initNavTree('functions_func_f.html',''); initResiza
 : <a class="el" href="d8/d17/classgames_1_1stendhal_1_1common_1_1_rand.html#ae53cac71e2f51d0808b1d5e5c835f527">games.stendhal.common.Rand</a>
 </li>
 <li>FlowerGrower()
-: <a class="el" href="d4/d1c/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1spawner_1_1_flower_grower.html#ad190ec2f0a873aeb0a71034c1a8792ca">games.stendhal.server.entity.mapstuff.spawner.FlowerGrower</a>
+: <a class="el" href="d4/d1c/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1spawner_1_1_flower_grower.html#a67170dc5a5f2ab73111e113183d043fc">games.stendhal.server.entity.mapstuff.spawner.FlowerGrower</a>
 </li>
 <li>FlyOverArea()
 : <a class="el" href="da/dd0/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1area_1_1_fly_over_area.html#a6f03b262abd471fc861b7eff3551aa60">games.stendhal.server.entity.mapstuff.area.FlyOverArea</a>
@@ -383,14 +332,11 @@ $(document).ready(function(){initNavTree('functions_func_f.html',''); initResiza
 </li>
 </ul>
 </div><!-- contents -->
-</div><!-- doc-content -->
 <!-- start footer part -->
-<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
-  <ul>
-    <li class="footer">Generated by
-    <a href="http://www.doxygen.org/index.html">
-    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
-  </ul>
-</div>
+<hr class="footer"/><address class="footer"><small>
+Generated by &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
 </body>
 </html>

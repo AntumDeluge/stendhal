@@ -1,4 +1,0 @@
-var classgames_1_1stendhal_1_1server_1_1maps_1_1deniran_1_1cityoutside_1_1_deniran_old_witch_healer_n_p_c =
-[
-    [ "configureZone", "db/dcd/classgames_1_1stendhal_1_1server_1_1maps_1_1deniran_1_1cityoutside_1_1_deniran_old_witch_healer_n_p_c.html#a8c2ff133b28bea9660fc3900ed63a62a", null ]
-];

@@ -1,5 +1,0 @@
-var classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1achievement_1_1factory_1_1_semos_monster_quest_achievement_factory =
-[
-    [ "createAchievements", "da/de2/classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1achievement_1_1factory_1_1_semos_monster_quest_achievement_factory.html#a63eb5cadfcb9fafadc52e33423bee304", null ],
-    [ "getCategory", "da/de2/classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1achievement_1_1factory_1_1_semos_monster_quest_achievement_factory.html#a5f42ed7ed5e668a160cdf51f1576ee7b", null ]
-];

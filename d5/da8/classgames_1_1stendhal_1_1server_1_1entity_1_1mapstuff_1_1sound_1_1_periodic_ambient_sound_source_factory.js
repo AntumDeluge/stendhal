@@ -1,4 +1,0 @@
-var classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1sound_1_1_periodic_ambient_sound_source_factory =
-[
-    [ "create", "d5/da8/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1sound_1_1_periodic_ambient_sound_source_factory.html#a9c6b7eef8268bc6d4be581a8ba8e6b29", null ]
-];

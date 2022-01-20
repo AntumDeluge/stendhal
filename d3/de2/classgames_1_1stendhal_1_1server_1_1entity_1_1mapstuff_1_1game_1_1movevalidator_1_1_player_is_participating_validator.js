@@ -1,4 +1,0 @@
-var classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1game_1_1movevalidator_1_1_player_is_participating_validator =
-[
-    [ "validate", "d3/de2/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1game_1_1movevalidator_1_1_player_is_participating_validator.html#ad648919900f96e04f97e0afca9a0e932", null ]
-];

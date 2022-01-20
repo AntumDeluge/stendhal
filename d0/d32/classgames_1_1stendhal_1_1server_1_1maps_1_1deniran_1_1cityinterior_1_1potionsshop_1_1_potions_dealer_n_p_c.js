@@ -1,4 +1,0 @@
-var classgames_1_1stendhal_1_1server_1_1maps_1_1deniran_1_1cityinterior_1_1potionsshop_1_1_potions_dealer_n_p_c =
-[
-    [ "configureZone", "d0/d32/classgames_1_1stendhal_1_1server_1_1maps_1_1deniran_1_1cityinterior_1_1potionsshop_1_1_potions_dealer_n_p_c.html#aa837d9813b73f834cd876b104996a33a", null ]
-];

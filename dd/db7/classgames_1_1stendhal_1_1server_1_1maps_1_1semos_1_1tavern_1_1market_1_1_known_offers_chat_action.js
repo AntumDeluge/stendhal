@@ -1,4 +1,0 @@
-var classgames_1_1stendhal_1_1server_1_1maps_1_1semos_1_1tavern_1_1market_1_1_known_offers_chat_action =
-[
-    [ "getOfferNumberFromSentence", "dd/db7/classgames_1_1stendhal_1_1server_1_1maps_1_1semos_1_1tavern_1_1market_1_1_known_offers_chat_action.html#a7ea4c5b91ef1033fb3ec1d0245c2e920", null ]
-];
