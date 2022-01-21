@@ -64,7 +64,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="../../d5/d57/scripting.html">Scripting</a></li><li class="navelem"><a class="el" href="../../d9/deb/lua.html">Lua</a></li>  </ul>
+<li class="navelem"><a class="el" href="../../d5/d57/scripting.html">Scripting</a></li><li class="navelem"><a class="el" href="../../d9/deb/lua.html">Lua</a></li><li class="navelem"><a class="el" href="../../db/d3d/lua_objects.html">Objects</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="PageDoc"><div class="header">
@@ -73,40 +73,57 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="toc"><h3>Table of Contents</h3>
-<ul><li class="level1"><a href="#autotoc_md36">properties</a><ul><li class="level2"><a href="#autotoc_md37">getValue</a></li>
-<li class="level2"><a href="#autotoc_md38">enabled</a></li>
-<li class="level2"><a href="#autotoc_md39">equals</a></li>
+<ul><li class="level1"><a href="#autotoc_md80">properties</a><ul><li class="level2"><a href="#autotoc_md81">Public Methods:</a><ul><li class="level3"><a href="#autotoc_md83">poperties:getValue</a></li>
+<li class="level3"><a href="#autotoc_md85">poperties:enabled</a></li>
+<li class="level3"><a href="#autotoc_md87">poperties:equals</a></li>
+</ul>
+</li>
+<li class="level2"><a href="#autotoc_md88">Examples usage:</a></li>
 </ul>
 </li>
 </ul>
 </div>
-<div class="textblock"><h1><a class="anchor" id="autotoc_md36"></a>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md80"></a>
 properties</h1>
 <p>Defines functions for accessing Java system properties.</p>
-<p>Methods:</p>
-<h2><a class="anchor" id="autotoc_md37"></a>
-getValue</h2>
+<h2><a class="anchor" id="autotoc_md81"></a>
+Public Methods:</h2>
+<hr  />
+ <h3><a class="anchor" id="autotoc_md83"></a>
+poperties:getValue</h3>
 <p><span style="color:green; font-weight:bold;">properties:getValue</span>(p)</p><ul>
 <li>Retrieves the value of a property.</li>
+<li>Parameters:<ul>
 <li><em><b>p:</b></em> (string) Property name.</li>
-<li><em><b>returns:</b></em> (string) Property value or <code>nil</code>.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md38"></a>
-enabled</h2>
+</li>
+<li>Returns: (string) Property value or <code>nil</code>.</li>
+</ul>
+<hr  />
+ <h3><a class="anchor" id="autotoc_md85"></a>
+poperties:enabled</h3>
 <p><span style="color:green; font-weight:bold;">properties:enabled</span>(p)</p><ul>
 <li>Checks if a property is enabed.</li>
+<li>Parameters:<ul>
 <li><em><b>p:</b></em> (string) Property name.</li>
-<li><em><b>returns:</b></em> (boolean) <code>true</code> if enabled.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md39"></a>
-equals</h2>
+</li>
+<li>Returns: (boolean) <code>true</code> if enabled.</li>
+</ul>
+<hr  />
+ <h3><a class="anchor" id="autotoc_md87"></a>
+poperties:equals</h3>
 <p><span style="color:green; font-weight:bold;">properties:equals</span>(p, v)</p><ul>
 <li>Checks if a property is set to a specified value.</li>
+<li>Parameters:<ul>
 <li><em><b>p:</b></em> (string) Property name.</li>
 <li><em><b>v:</b></em> (string) Value to compare with.</li>
-<li><em><b>returns:</b></em> (boolean) <code>true</code> if the value of the property is the same as <code>v</code></li>
 </ul>
-<p>Examples usage:</p>
+</li>
+<li>Returns: (boolean) <code>true</code> if the value of the property is the same as <code>v</code></li>
+</ul>
+<h2><a class="anchor" id="autotoc_md88"></a>
+Examples usage:</h2>
 <div class="fragment"><div class="line">-- example of only executing script contents on test server</div>
 <div class="line"> </div>
 <div class="line">if not properties:enabed(&quot;stendhal.testserver&quot;) then</div>

@@ -73,39 +73,39 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="toc"><h3>Table of Contents</h3>
-<ul><li class="level1"><a href="#autotoc_md9">Lua Basics</a><ul><li class="level2"><a href="#autotoc_md10">Comments</a></li>
-<li class="level2"><a href="#autotoc_md11">Variables</a></li>
-<li class="level2"><a href="#autotoc_md12">Data Types</a><ul><li class="level3"><a href="#autotoc_md13">Strings</a><ul><li class="level4"><a href="#autotoc_md14">String Concatenation</a></li>
+<ul><li class="level1"><a href="#autotoc_md3">Lua Basics</a><ul><li class="level2"><a href="#autotoc_md4">Comments</a></li>
+<li class="level2"><a href="#autotoc_md5">Variables</a></li>
+<li class="level2"><a href="#autotoc_md6">Data Types</a><ul><li class="level3"><a href="#autotoc_md7">Strings</a><ul><li class="level4"><a href="#autotoc_md8">String Concatenation</a></li>
 </ul>
 </li>
-<li class="level3"><a href="#autotoc_md15">Tables</a><ul><li class="level4"><a href="#autotoc_md16">Creating Tables</a></li>
-<li class="level4"><a href="#autotoc_md17">Accessing Table Values</a></li>
-<li class="level4"><a href="#autotoc_md18">Iterating Tables</a></li>
+<li class="level3"><a href="#autotoc_md9">Tables</a><ul><li class="level4"><a href="#autotoc_md10">Creating Tables</a></li>
+<li class="level4"><a href="#autotoc_md11">Accessing Table Values</a></li>
+<li class="level4"><a href="#autotoc_md12">Iterating Tables</a></li>
 </ul>
 </li>
-<li class="level3"><a href="#autotoc_md19">Functions</a></li>
+<li class="level3"><a href="#autotoc_md13">Functions</a></li>
 </ul>
 </li>
-<li class="level2"><a href="#autotoc_md20">Comparison Operators</a><ul><li class="level3"><a href="#autotoc_md21">Logical Operators</a></li>
-<li class="level3"><a href="#autotoc_md22">Relational Operators</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="level1"><a href="#autotoc_md23">Stendhal Application</a><ul><li class="level2"><a href="#autotoc_md24">Zones</a><ul><li class="level3"><a href="#autotoc_md25">Setting Zone</a></li>
-<li class="level3"><a href="#autotoc_md26">Create New Zone</a></li>
-<li class="level3"><a href="#autotoc_md27">Add Zone Music</a></li>
-</ul>
-</li>
-<li class="level2"><a href="#autotoc_md28">Adding Entities</a><ul><li class="level3"><a href="#autotoc_md29">Signs</a></li>
-<li class="level3"><a href="#autotoc_md30">NPCs</a><ul><li class="level4"><a href="#autotoc_md31">Adding Transitions</a></li>
-<li class="level4"><a href="#autotoc_md32">Adding Merchant Behavior</a></li>
+<li class="level2"><a href="#autotoc_md14">Comparison Operators</a><ul><li class="level3"><a href="#autotoc_md15">Logical Operators</a></li>
+<li class="level3"><a href="#autotoc_md16">Relational Operators</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="level2"><a href="#autotoc_md33">System Properties</a></li>
-<li class="level2"><a href="#autotoc_md34">Misc</a><ul><li class="level3"><a href="#autotoc_md35">Typecasting</a></li>
+<li class="level1"><a href="#autotoc_md17">Stendhal Application</a><ul><li class="level2"><a href="#autotoc_md18">Zones</a><ul><li class="level3"><a href="#autotoc_md19">Setting Zone</a></li>
+<li class="level3"><a href="#autotoc_md20">Create New Zone</a></li>
+<li class="level3"><a href="#autotoc_md21">Add Zone Music</a></li>
+</ul>
+</li>
+<li class="level2"><a href="#autotoc_md22">Adding Entities</a><ul><li class="level3"><a href="#autotoc_md23">Signs</a></li>
+<li class="level3"><a href="#autotoc_md24">NPCs</a><ul><li class="level4"><a href="#autotoc_md25">Adding Transitions</a></li>
+<li class="level4"><a href="#autotoc_md26">Adding Merchant Behavior</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="level2"><a href="#autotoc_md27">System Properties</a></li>
+<li class="level2"><a href="#autotoc_md28">Misc</a><ul><li class="level3"><a href="#autotoc_md29">Typecasting</a></li>
 </ul>
 </li>
 </ul>
@@ -115,10 +115,10 @@ $(function() {
 <div class="textblock"><p><span style="color: red; font-style: italic;">this page is a work-in progress</span></p>
 <p>Stendhal supports <a href="https://www.lua.org/">Lua scripting</a> via the <a href="https://sourceforge.net/projects/luaj/">LuaJ library</a>.</p>
 <p>Lua scripts end in the <code>.lua</code> extension &amp; are stored in the <code>data/script</code> directory.</p>
-<h1><a class="anchor" id="autotoc_md9"></a>
+<h1><a class="anchor" id="autotoc_md3"></a>
 Lua Basics</h1>
 <p>For more detailed information, see the <a href="https://www.lua.org/docs.html">Lua reference manual</a>.</p>
-<h2><a class="anchor" id="autotoc_md10"></a>
+<h2><a class="anchor" id="autotoc_md4"></a>
 Comments</h2>
 <p>Lua uses double dashes (<code>--</code>) for single line comments &amp; double dashes followed by double square brackets (<code>[[</code>) &amp; closed with double square brackets (<code>]]</code>) for multi-line comments:</p>
 <div class="fragment"><div class="line">-- a single line comment</div>
@@ -126,7 +126,7 @@ Comments</h2>
 <div class="line">--[[</div>
 <div class="line">a multi-line comment</div>
 <div class="line">]]</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md11"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md5"></a>
 Variables</h2>
 <p>By default, Lua variables are set in <a href="https://en.wikipedia.org/wiki/Global_variable"><b>global</b> scope</a> (meaning it is exposed to the entire Lua engine). To create a variable in <a href="https://en.wikipedia.org/wiki/Local_variable"><b>local</b> scope</a>, the <code>local</code> keyword must be used:</p>
 <div class="fragment"><div class="line">-- a global variable</div>
@@ -134,7 +134,7 @@ Variables</h2>
 <div class="line"> </div>
 <div class="line">-- a local variable</div>
 <div class="line">local var2 = &quot;Hello world!&quot;</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md12"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md6"></a>
 Data Types</h2>
 <p>Some common data types in Lua are <em>string</em>, <em>integer</em>, <em>boolean</em>, &amp; <em>table</em>. Type names do not need to be declared when setting variables.</p>
 <p>Examples: </p><div class="fragment"><div class="line">-- string variable</div>
@@ -148,9 +148,9 @@ Data Types</h2>
 <div class="line"> </div>
 <div class="line">-- table variable</div>
 <div class="line">local var4 = {}</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md13"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md7"></a>
 Strings</h3>
-<h4><a class="anchor" id="autotoc_md14"></a>
+<h4><a class="anchor" id="autotoc_md8"></a>
 String Concatenation</h4>
 <p>String concatenation is simple, much like Java uses a plus operator (<code>+</code>) to join strings, Lua uses two periods (<code>..</code>).</p>
 <p>Example: </p><div class="fragment"><div class="line">-- create a string variable</div>
@@ -160,11 +160,11 @@ String Concatenation</h4>
 <div class="line">var = var .. &quot; world!&quot;</div>
 <div class="line"> </div>
 <div class="line">print(var) -- prints &quot;Hello world!&quot;</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md15"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md9"></a>
 Tables</h3>
 <p>A Lua table is a data type similar to a Java list or map. Tables can be indexed or use key=value pairs.</p>
 <p>(<span style="color:red; font-style:italic;">IMPORTANT NOTE: Lua table indexes begin at 1, not 0</span>)</p>
-<h4><a class="anchor" id="autotoc_md16"></a>
+<h4><a class="anchor" id="autotoc_md10"></a>
 Creating Tables</h4>
 <p>An empty table is initialized with a pair of curly braces (<code>{}</code>): </p><div class="fragment"><div class="line">local mytable = {}</div>
 </div><!-- fragment --><p>You can add values to indexed tables at initialization or with the <code>table.insert</code> method: </p><div class="fragment"><div class="line">-- create a table with values</div>
@@ -179,7 +179,7 @@ Creating Tables</h4>
 <div class="line">}</div>
 <div class="line">mytable.foo = &quot;bar&quot;</div>
 <div class="line">mytable[&quot;foo&quot;] = &quot;bar&quot;</div>
-</div><!-- fragment --><h4><a class="anchor" id="autotoc_md17"></a>
+</div><!-- fragment --><h4><a class="anchor" id="autotoc_md11"></a>
 Accessing Table Values</h4>
 <p>Square brackets (<code>[]</code>) enclosing an index number are used to access values in indexed tables (<em>remember that Lua table indexes start at "1" not "0"</em>): </p><div class="fragment"><div class="line">local mytable = {&quot;foo&quot;, &quot;bar&quot;}</div>
 <div class="line"> </div>
@@ -192,7 +192,7 @@ Accessing Table Values</h4>
 <div class="line"> </div>
 <div class="line">-- using concatenated member</div>
 <div class="line">print(mytable.foo) -- prints &quot;bar&quot;</div>
-</div><!-- fragment --><h4><a class="anchor" id="autotoc_md18"></a>
+</div><!-- fragment --><h4><a class="anchor" id="autotoc_md12"></a>
 Iterating Tables</h4>
 <p>Tables can be iterated in a <code>for</code> loop using the <code>pairs</code> or <code>ipairs</code> iterators. Loops are terminated with the <code>end</code> keyword: </p><div class="fragment"><div class="line">local mytable = {&quot;foo&quot;, &quot;bar&quot;}</div>
 <div class="line"> </div>
@@ -234,7 +234,7 @@ Iterating Tables</h4>
 <div class="line">hello</div>
 <div class="line"> world!</div>
 </div><!-- fragment --><p>See also: <a href="http://lua-users.org/wiki/TablesTutorial">Lua Tables Tutorial</a></p>
-<h3><a class="anchor" id="autotoc_md19"></a>
+<h3><a class="anchor" id="autotoc_md13"></a>
 Functions</h3>
 <p>Like normal variables, functions can be declared as <b>global</b> or <b>local</b> &amp; must be terminated with the <code>end</code> keyword.</p>
 <p>There are two ways to define functions with the <code>function</code> keyword: </p><div class="fragment"><div class="line">local function myFunction()</div>
@@ -259,9 +259,9 @@ Functions</h3>
 <div class="line"> </div>
 <div class="line">-- execute with</div>
 <div class="line">myTable.myFunction()</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md20"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md14"></a>
 Comparison Operators</h2>
-<h3><a class="anchor" id="autotoc_md21"></a>
+<h3><a class="anchor" id="autotoc_md15"></a>
 Logical Operators</h3>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -269,11 +269,11 @@ Logical Operators</h3>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">and </td><td class="markdownTableBodyNone">logical <em>and</em> </td><td class="markdownTableBodyNone">&amp;&amp;  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">or </td><td class="markdownTableBodyNone">logical <em>or</em> </td><td class="markdownTableBodyNone">&amp;#x7c;&amp;#x7c;  </td></tr>
+<td class="markdownTableBodyNone">or </td><td class="markdownTableBodyNone">logical <em>or</em> </td><td class="markdownTableBodyNone">||  </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">not </td><td class="markdownTableBodyNone">logical <em>inverse</em> </td><td class="markdownTableBodyNone">!  </td></tr>
 </table>
-<h3><a class="anchor" id="autotoc_md22"></a>
+<h3><a class="anchor" id="autotoc_md16"></a>
 Relational Operators</h3>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -291,23 +291,23 @@ Relational Operators</h3>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">~= </td><td class="markdownTableBodyNone">not equal to </td><td class="markdownTableBodyNone">!=  </td></tr>
 </table>
-<h1><a class="anchor" id="autotoc_md23"></a>
+<h1><a class="anchor" id="autotoc_md17"></a>
 Stendhal Application</h1>
-<h2><a class="anchor" id="autotoc_md24"></a>
+<h2><a class="anchor" id="autotoc_md18"></a>
 Zones</h2>
-<h3><a class="anchor" id="autotoc_md25"></a>
+<h3><a class="anchor" id="autotoc_md19"></a>
 Setting Zone</h3>
 <p>To set the zone to work with, use the <code>game</code> object:</p>
 <div class="fragment"><div class="line">game:setZone(&quot;0_semos_city&quot;)</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md26"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md20"></a>
 Create New Zone</h3>
 <p>It is recommended to create new zones in the XML configurations in <a href="https://github.com/arianne/stendhal/blob/master/data/conf/zones">data/conf/zones</a>.</p>
 <p>Currently creating new zones via Lua is not supported.</p>
-<h3><a class="anchor" id="autotoc_md27"></a>
+<h3><a class="anchor" id="autotoc_md21"></a>
 Add Zone Music</h3>
 <p>Music can be added to zones with the <code>game:setMusic</code> function. It supports the following arguments:</p><ul>
-<li>&lt;span style="color:darkgreen; font-style:italic;&gt;filename:&lt;/span&gt; Basename of the OGG audio file to use stored in {{StendhalFile|master|data/music|data/music}}.
-* &lt;span style="color:darkgreen; font-style:italic;&gt;args: A table of key=value integers.</li>
+<li><span style="color:darkgreen; font-style:italic;">filename:</span> Basename of the OGG audio file to use stored in <a href="https://github.com/arianne/stendhal/blob/master/data/music">data/music</a>.</li>
+<li><span style="color:darkgreen; font-style:italic;">args:</span> A table of key=value integers.</li>
 <li>Valid keys:<ul>
 <li><span style="color:darkblue; font-style:italic;">volume:</span> Volume level (default: 100).</li>
 <li><span style="color:darkblue; font-style:italic;">x:</span> The horizontal point for the source of the music (default: 1).</li>
@@ -319,9 +319,9 @@ Add Zone Music</h3>
 <p>Example: </p><div class="fragment"><div class="line">if game:setZone(&quot;0_semos_plains_n&quot;) then</div>
 <div class="line">    game:setMusic(&quot;pleasant_creek_loop&quot;, {volume=85, radius=100})</div>
 <div class="line">end</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md28"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md22"></a>
 Adding Entities</h2>
-<h3><a class="anchor" id="autotoc_md29"></a>
+<h3><a class="anchor" id="autotoc_md23"></a>
 Signs</h3>
 <p>Signs can be created with <code>entities:createSign</code> and <code>entities:createShopSign</code>:</p>
 <div class="fragment"><div class="line">local zone = &quot;0_semos_city&quot;</div>
@@ -337,7 +337,7 @@ Signs</h3>
 <div class="line">else</div>
 <div class="line">    logger:error(&quot;Could not set zone: &quot; .. zone)</div>
 <div class="line">end</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md30"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md24"></a>
 NPCs</h3>
 <p>Use the <code>entities:createSpeakerNPC</code> method to create an interactive NPC:</p>
 <div class="fragment"><div class="line">local zone = &quot;0_semos_city&quot;</div>
@@ -367,7 +367,7 @@ NPCs</h3>
 <div class="line">else</div>
 <div class="line">    logger:error(&quot;Could not set zone: &quot; .. zone)</div>
 <div class="line">end</div>
-</div><!-- fragment --><h4><a class="anchor" id="autotoc_md31"></a>
+</div><!-- fragment --><h4><a class="anchor" id="autotoc_md25"></a>
 Adding Transitions</h4>
 <p>A simple example of adding a chat transition can be done without any special functionality: </p><div class="fragment"><div class="line">local frank = entities:createSpeakerNPC(&quot;Frank&quot;)</div>
 <div class="line">frank:add(ConversationStates.IDLE,</div>
@@ -423,7 +423,7 @@ Adding Transitions</h4>
 <div class="line">        actions:create(&quot;SayTextAction&quot;, {&quot;Hello.&quot;}),</div>
 <div class="line">        actions:create(&quot;NPCEmoteAction&quot;, {&quot;looks greedily at your pouch of money.&quot;, false}),</div>
 <div class="line">    })</div>
-</div><!-- fragment --><h4><a class="anchor" id="autotoc_md32"></a>
+</div><!-- fragment --><h4><a class="anchor" id="autotoc_md26"></a>
 Adding Merchant Behavior</h4>
 <p>The <code>merchants</code> object is used for adding merchant behavior (buying/selling) to an NPC.</p>
 <p>Example of adding seller behavior to an NPC: </p><div class="fragment"><div class="line">if game:setZone(&quot;0_semos_city&quot;) then</div>
@@ -447,7 +447,7 @@ Adding Merchant Behavior</h4>
 <div class="line">priceList.smoked_ham = 100</div>
 <div class="line">priceList[&quot;smoked ham&quot;] = 100</div>
 </div><!-- fragment --><p>Then add the seller behavior using the custom list: </p><div class="fragment"><div class="line">merchants:addSeller(frank, priceList, true)</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md33"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md27"></a>
 System Properties</h2>
 <p>Java's system properties are exposed to Lua with the <code>properties</code> object.</p>
 <p>Examples: </p><div class="fragment"><div class="line">-- property state</div>
@@ -474,9 +474,9 @@ System Properties</h2>
 <div class="line">else</div>
 <div class="line">    print(&quot;Test server disabled&quot;)</div>
 <div class="line">end</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md34"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md28"></a>
 Misc</h2>
-<h3><a class="anchor" id="autotoc_md35"></a>
+<h3><a class="anchor" id="autotoc_md29"></a>
 Typecasting</h3>
 <p>Lua does not support typecasting (as far as I know), but if the class you want to cast to has a copy constructor, achieving the same functionality is quite simple.</p>
 <div class="fragment"><div class="line">-- &quot;entities:getItem&quot; returns an instance of Item</div>

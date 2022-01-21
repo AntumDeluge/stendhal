@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['introduction_8107',['Introduction',['../d4/d0d/lua_intro.html',1,'lua']]]
+  ['introduction_8110',['Introduction',['../d4/d0d/lua_intro.html',1,'lua']]]
 ];

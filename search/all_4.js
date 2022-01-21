@@ -138,5 +138,5 @@ var searchData=
   ['extractnounsingular_849',['extractNounSingular',['../dc/dc0/classgames_1_1stendhal_1_1common_1_1grammar_1_1_prefix_extractor.html#a71bd2d9949552300bf48ad2b4702888a',1,'games::stendhal::common::grammar::PrefixExtractor']]],
   ['eyes_850',['EYES',['../df/d20/classgames_1_1stendhal_1_1client_1_1gui_1_1_outfit_color.html#ad7ffd1304bc45875910f2bd40c9d41e7',1,'games::stendhal::client::gui::OutfitColor']]],
   ['eyes_5foutfits_851',['EYES_OUTFITS',['../d5/d96/classgames_1_1stendhal_1_1common_1_1_outfits.html#a8812ba200623228aa0053127ac2b684c',1,'games::stendhal::common::Outfits']]],
-  ['entities_852',['Entities',['../d5/db4/lua_entities.html',1,'lua']]]
+  ['entities_852',['Entities',['../d5/db4/lua_entities.html',1,'lua_objects']]]
 ];

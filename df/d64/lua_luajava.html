@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Stendhal: Lua</title>
+<title>Stendhal: luajava</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -64,24 +64,37 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="../../d5/d57/scripting.html">Scripting</a></li>  </ul>
+<li class="navelem"><a class="el" href="../../d5/d57/scripting.html">Scripting</a></li><li class="navelem"><a class="el" href="../../d9/deb/lua.html">Lua</a></li><li class="navelem"><a class="el" href="../../db/d3d/lua_objects.html">Objects</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">Lua </div>  </div>
+<div class="title">luajava </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>Contents:</p><ul>
-<li><a class="el" href="../../d4/d0d/lua_intro.html">Introduction</a></li>
-<li><a class="el" href="../../db/d3d/lua_objects.html">Objects</a><ul>
-<li><a class="el" href="../../df/d64/lua_luajava.html">luajava</a></li>
-<li><a class="el" href="../../db/d1a/lua_logger.html">Logger</a></li>
-<li><a class="el" href="../../d5/db4/lua_entities.html">Entities</a></li>
-<li><a class="el" href="../../d7/d9f/lua_properties.html">Properties</a> </li>
+<div class="toc"><h3>Table of Contents</h3>
+<ul><li class="level1"><a href="#autotoc_md79">Introduction</a></li>
 </ul>
-</li>
-</ul>
+</div>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md79"></a>
+Introduction</h1>
+<p>This is an object of the LuajavaLib library. It can be used to coerce Java static objects to Lua or create new Java object instances.</p>
+<p>Example of exposing a static object &amp; enums to Lua: </p><div class="fragment"><div class="line">-- store a Java enum in a Lua global variable</div>
+<div class="line">ConversationStates = luajava.bindClass(&quot;games.stendhal.server.entity.npc.ConversationStates&quot;)</div>
+<div class="line"> </div>
+<div class="line">-- access the enum values like so</div>
+<div class="line">ConversationStates.IDLE</div>
+</div><!-- fragment --><p>Example of creating an object instance: </p><div class="fragment"><div class="line">-- store instance in local variable</div>
+<div class="line">local dog = luajava.newInstance(&quot;games.stendhal.server.entity.npc.SilentNPC&quot;)</div>
+<div class="line">-- access object methods like so</div>
+<div class="line">dog:setEntityClass(&quot;animal/puppy&quot;)</div>
+<div class="line">dog:setPosition(2, 5)</div>
+<div class="line"> </div>
+<div class="line">-- class with constructor using parameters</div>
+<div class="line">local speaker = luajava.newInstance(&quot;games.stendhal.server.entity.npc.SpeakerNPC&quot;, &quot;Frank&quot;)</div>
+<div class="line">speaker:setOutfit(&quot;body=0,head=0,eyes=0,hair=5,dress=5&quot;)</div>
+<div class="line">speaker:setPosition(2, 6)</div>
+</div><!-- fragment --><p>To make scripting easier, Stendhal employs a <a href="https://github.com/arianne/stendhal/blob/master/src/games/stendhal/server/core/scripting/lua/init.lua">master script</a> &amp; some helper objects &amp; methods to handle the functionality mentioned above. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- start footer part -->

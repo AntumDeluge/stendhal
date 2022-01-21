@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Stendhal: Lua</title>
+<title>Stendhal: Logger</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -64,25 +64,73 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="../../d5/d57/scripting.html">Scripting</a></li>  </ul>
+<li class="navelem"><a class="el" href="../../d5/d57/scripting.html">Scripting</a></li><li class="navelem"><a class="el" href="../../d9/deb/lua.html">Lua</a></li><li class="navelem"><a class="el" href="../../db/d3d/lua_objects.html">Objects</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">Lua </div>  </div>
+<div class="title">Logger </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>Contents:</p><ul>
-<li><a class="el" href="../../d4/d0d/lua_intro.html">Introduction</a></li>
-<li><a class="el" href="../../db/d3d/lua_objects.html">Objects</a><ul>
-<li><a class="el" href="../../df/d64/lua_luajava.html">luajava</a></li>
-<li><a class="el" href="../../db/d1a/lua_logger.html">Logger</a></li>
-<li><a class="el" href="../../d5/db4/lua_entities.html">Entities</a></li>
-<li><a class="el" href="../../d7/d9f/lua_properties.html">Properties</a> </li>
+<div class="toc"><h3>Table of Contents</h3>
+<ul><li class="level1"><a href="#autotoc_md69">Introduction</a></li>
+<li class="level1"><a href="#autotoc_md70">Methods:</a><ul><ul><li class="level3"><a href="#autotoc_md72">logger:info</a></li>
+<li class="level3"><a href="#autotoc_md74">logger:warn</a></li>
+<li class="level3"><a href="#autotoc_md76">logger:error</a></li>
+</ul>
+</ul>
+</li>
+<li class="level1"><a href="#autotoc_md77">Usage</a><ul><li class="level2"><a href="#autotoc_md78">Examples</a></li>
 </ul>
 </li>
 </ul>
-</div></div><!-- contents -->
+</div>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md69"></a>
+Introduction</h1>
+<p>Manages logging in Lua via the <a href="https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/Logger.html">org.apache.log4j.Logger</a> class.</p>
+<h1><a class="anchor" id="autotoc_md70"></a>
+Methods:</h1>
+<hr  />
+ <h3><a class="anchor" id="autotoc_md72"></a>
+logger:info</h3>
+<p><span style="color:green; font-weight:bold;">logger:info</span>(message)</p><ul>
+<li>Prints an information level message to the console.</li>
+<li>Parameters:<ul>
+<li><em><b>message:</b></em> Text to be printed.</li>
+</ul>
+</li>
+</ul>
+<hr  />
+ <h3><a class="anchor" id="autotoc_md74"></a>
+logger:warn</h3>
+<p><span style="color:green; font-weight:bold;">logger:warn</span>(message)</p><ul>
+<li>Prints a warning level message to the console.</li>
+<li>Parameters:<ul>
+<li><em><b>message:</b></em> Text to be printed.</li>
+</ul>
+</li>
+</ul>
+<hr  />
+ <h3><a class="anchor" id="autotoc_md76"></a>
+logger:error</h3>
+<p><span style="color:green; font-weight:bold;">logger:error</span>(message)</p><ul>
+<li>Prints an error level message to the console.</li>
+<li>Parameters:<ul>
+<li><em><b>message:</b></em> Text to be printed.</li>
+</ul>
+</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md77"></a>
+Usage</h1>
+<h2><a class="anchor" id="autotoc_md78"></a>
+Examples</h2>
+<div class="fragment"><div class="line">local zone_name = &quot;0_semos_city&quot;</div>
+<div class="line">if game:setZone(zone_name) then</div>
+<div class="line">    -- do something</div>
+<div class="line">else</div>
+<div class="line">    logger:error(&quot;could not set zone: &quot; .. zone_name)</div>
+<div class="line">end</div>
+</div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
