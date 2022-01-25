@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['introduction_8110',['Introduction',['../d4/d0d/lua_intro.html',1,'lua']]]
+  ['deprecated_20list_0',['Deprecated List',['../da/d58/deprecated.html',1,'']]]
 ];
