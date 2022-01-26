@@ -1,3 +1,4 @@
+<!-- HTML header for doxygen 1.9.3-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -12,7 +13,8 @@
 <link href="../../search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../search/searchdata.js"></script>
 <script type="text/javascript" src="../../search/search.js"></script>
-<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+<link href="../../styles.css" rel="stylesheet" type="text/css" />
+<link rel="icon" type="image/x-icon" href="../../favicon.ico" />
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -101,21 +103,21 @@ Methods</h1>
  <h2><a class="anchor" id="autotoc_md95"></a>
 game:add</h2>
 <p ><span style="color:green; font-weight:bold;">game:add</span>(object)</p><ul>
-<li>Adds an <code><a class="el" href="../../d0/d29/classmarauroa_1_1common_1_1game_1_1_r_p_object.html">marauroa.common.game.RPObject</a></code> instance to the current zone.</li>
+<li>Adds an <code><a class="el" href="../../db/d20/classmarauroa_1_1common_1_1game_1_1RPObject.html">marauroa.common.game.RPObject</a></code> instance to the current zone.</li>
 <li>Parameters:<ul>
 <li><em><b>object:</b></em> Object to add.</li>
 </ul>
 </li>
 </ul>
 <p ><span style="color:green; font-weight:bold;">game:add</span>(npc)</p><ul>
-<li>Adds an <code><a class="el" href="../../db/d31/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1_n_p_c.html">games.stendhal.server.entity.npc.NPC</a></code> instance to the current zone.</li>
+<li>Adds an <code><a class="el" href="../../d4/d34/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1NPC.html">games.stendhal.server.entity.npc.NPC</a></code> instance to the current zone.</li>
 <li>Parameters:<ul>
 <li><em><b>npc:</b></em> NPC to add.</li>
 </ul>
 </li>
 </ul>
 <p ><span style="color:green; font-weight:bold;">game:add</span>(creature, x, y)</p><ul>
-<li>Adds a <code><a class="el" href="../../de/d75/classgames_1_1stendhal_1_1server_1_1entity_1_1creature_1_1_creature.html">games.stendhal.server.entity.creature.Creature</a></code> instance to the current zone.</li>
+<li>Adds a <code><a class="el" href="../../df/d5c/classgames_1_1stendhal_1_1server_1_1entity_1_1creature_1_1Creature.html">games.stendhal.server.entity.creature.Creature</a></code> instance to the current zone.</li>
 <li>Parameters:<ul>
 <li><em><b>creature:</b></em> Creature to add.</li>
 <li><em><b>x:</b></em> Horizontal position of where to add creature.</li>
@@ -142,7 +144,7 @@ game:remove</h2>
  <h2><a class="anchor" id="autotoc_md99"></a>
 game:addGameEvent</h2>
 <p ><span style="color:green; font-weight:bold;">game:addGameEvent</span>(source, event, params)</p><ul>
-<li>Adds a new <code><a class="el" href="../../da/db4/classgames_1_1stendhal_1_1server_1_1core_1_1engine_1_1_game_event.html">games.stendhal.server.core.engine.GameEvent</a></code>.</li>
+<li>Adds a new <code><a class="el" href="../../d6/d1e/classgames_1_1stendhal_1_1server_1_1core_1_1engine_1_1GameEvent.html">games.stendhal.server.core.engine.GameEvent</a></code>.</li>
 <li>Parameters:<ul>
 <li><em><b>source:</b></em></li>
 <li><em><b>event:</b></em></li>
@@ -164,7 +166,7 @@ game:setZone</h2>
 <p ><span style="color:green; font-weight:bold;">game:setZone</span>(zone)</p><ul>
 <li>Sets the current zone.</li>
 <li>Parameters:<ul>
-<li><em><b>zone:</b></em> <code><a class="el" href="../../d8/dbc/classgames_1_1stendhal_1_1server_1_1core_1_1engine_1_1_stendhal_r_p_zone.html">games.stendhal.server.core.engine.StendhalRPZone</a></code> instance to set as current zone.</li>
+<li><em><b>zone:</b></em> <code><a class="el" href="../../d1/d8a/classgames_1_1stendhal_1_1server_1_1core_1_1engine_1_1StendhalRPZone.html">games.stendhal.server.core.engine.StendhalRPZone</a></code> instance to set as current zone.</li>
 </ul>
 </li>
 <li>Returns: <code>true</code> if zone was successfully set.</li>
@@ -175,17 +177,17 @@ game:getZone</h2>
 <p ><span style="color:green; font-weight:bold;">game:getZone</span>(object)</p><ul>
 <li>Retrieves the zone where <code>object</code> is located.</li>
 <li>Parameters:<ul>
-<li><em><b>object:</b></em> The <code><a class="el" href="../../d0/d29/classmarauroa_1_1common_1_1game_1_1_r_p_object.html">marauroa.common.game.RPObject</a></code> from which the zone should be retrieved.</li>
+<li><em><b>object:</b></em> The <code><a class="el" href="../../db/d20/classmarauroa_1_1common_1_1game_1_1RPObject.html">marauroa.common.game.RPObject</a></code> from which the zone should be retrieved.</li>
 </ul>
 </li>
-<li>Returns: <code><a class="el" href="../../d8/dbc/classgames_1_1stendhal_1_1server_1_1core_1_1engine_1_1_stendhal_r_p_zone.html">games.stendhal.server.core.engine.StendhalRPZone</a></code> or <code>null</code> if it doesn't exists</li>
+<li>Returns: <code><a class="el" href="../../d1/d8a/classgames_1_1stendhal_1_1server_1_1core_1_1engine_1_1StendhalRPZone.html">games.stendhal.server.core.engine.StendhalRPZone</a></code> or <code>null</code> if it doesn't exists</li>
 </ul>
 <p ><span style="color:green; font-weight:bold;">game:getZone</span>(name)</p><ul>
 <li>Retrieves a zone by string ID.<ul>
 <li><em><b>zoneName:</b></em> Name of zone to retrieve.</li>
 </ul>
 </li>
-<li>Returns: <code><a class="el" href="../../d8/dbc/classgames_1_1stendhal_1_1server_1_1core_1_1engine_1_1_stendhal_r_p_zone.html">games.stendhal.server.core.engine.StendhalRPZone</a></code> or <code>null</code> if it doesn't exist.</li>
+<li>Returns: <code><a class="el" href="../../d1/d8a/classgames_1_1stendhal_1_1server_1_1core_1_1engine_1_1StendhalRPZone.html">games.stendhal.server.core.engine.StendhalRPZone</a></code> or <code>null</code> if it doesn't exist.</li>
 </ul>
 <hr  />
  <h2><a class="anchor" id="autotoc_md105"></a>
@@ -225,7 +227,7 @@ game:getCreatures</h2>
  <h2><a class="anchor" id="autotoc_md111"></a>
 game:getCreature</h2>
 <p ><span style="color:green; font-weight:bold;">game:getCreature</span>(clazz)</p><ul>
-<li>Retrieves a <code><a class="el" href="../../de/d75/classgames_1_1stendhal_1_1server_1_1entity_1_1creature_1_1_creature.html">games.stendhal.server.entity.creature.Creature</a></code> instance.<ul>
+<li>Retrieves a <code><a class="el" href="../../df/d5c/classgames_1_1stendhal_1_1server_1_1entity_1_1creature_1_1Creature.html">games.stendhal.server.entity.creature.Creature</a></code> instance.<ul>
 <li><em><b>clazz:</b></em> String name of the creature.</li>
 </ul>
 </li>
@@ -275,6 +277,7 @@ game:getMessage</h2>
 </ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
+<!-- HTML footer for doxygen 1.9.3-->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3

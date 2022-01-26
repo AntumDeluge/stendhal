@@ -24,7 +24,6 @@
 */
 var menudata={children:[
 {text:"Main Page",url:"index.html"},
-{text:"Related Pages",url:"pages.html"},
 {text:"Packages",url:"namespaces.html",children:[
 {text:"Packages",url:"namespaces.html"}]},
 {text:"Classes",url:"annotated.html",children:[
@@ -112,11 +111,7 @@ var menudata={children:[
 {text:"x",url:"functions_vars_x.html#index_x"},
 {text:"y",url:"functions_vars_y.html#index_y"},
 {text:"z",url:"functions_vars_z.html#index_z"}]}]}]},
+{text:"Deprecated List",url:"da/d58/deprecated.html"},
 {text:"Scripting",url:"d5/d57/scripting.html",children:[
 {text:"Lua",url:"d9/deb/lua.html"}]},
-{text:"Links",url:"user",children:[
-{text:"Stendhal Homepage",url:"https://stendhalgame.org/"},
-{text:"Arianne Homepage",url:"https://arianne-project.org/"},
-{text:"Wiki",url:"https://stendhalgame.org/wiki/Stendhal"},
-{text:"Sourceforge",url:"https://sourceforge.net/projects/arianne"},
-{text:"GitHub",url:"https://github.com/arianne/stendhal"}]}]}
+{text:"Links",url:"d0/d2f/links.html"}]}
