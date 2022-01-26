@@ -17,7 +17,7 @@ var searchData=
   ['hideareabehaviour_14',['HideAreaBehaviour',['../d3/d98/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1area_1_1HideAreaBehaviour.html',1,'games::stendhal::server::entity::mapstuff::area']]],
   ['horizontalalignment_15',['HorizontalAlignment',['../dd/d60/enumgames_1_1stendhal_1_1client_1_1gui_1_1j2d_1_1entity_1_1helpers_1_1HorizontalAlignment.html',1,'games::stendhal::client::gui::j2d::entity::helpers']]],
   ['housekey_16',['HouseKey',['../d3/d98/classgames_1_1stendhal_1_1server_1_1entity_1_1item_1_1HouseKey.html',1,'games::stendhal::server::entity::item']]],
-  ['houseportal_17',['HousePortal',['../d2/d1a/classgames_1_1stendhal_1_1client_1_1entity_1_1HousePortal.html',1,'HousePortal'],['../dc/d8d/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1portal_1_1HousePortal.html',1,'HousePortal']]],
+  ['houseportal_17',['HousePortal',['../d2/d1a/classgames_1_1stendhal_1_1client_1_1entity_1_1HousePortal.html',1,'games.stendhal.client.entity.HousePortal'],['../dc/d8d/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1portal_1_1HousePortal.html',1,'games.stendhal.server.entity.mapstuff.portal.HousePortal']]],
   ['houseportalfactory_18',['HousePortalFactory',['../d5/d04/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1portal_1_1HousePortalFactory.html',1,'games::stendhal::server::entity::mapstuff::portal']]],
   ['houseportaltransformer_19',['HousePortalTransformer',['../d3/dcd/classgames_1_1stendhal_1_1server_1_1core_1_1engine_1_1transformer_1_1HousePortalTransformer.html',1,'games::stendhal::server::core::engine::transformer']]],
   ['hpindicator_20',['HPIndicator',['../d0/d52/classgames_1_1stendhal_1_1client_1_1gui_1_1stats_1_1HPIndicator.html',1,'games::stendhal::client::gui::stats']]],

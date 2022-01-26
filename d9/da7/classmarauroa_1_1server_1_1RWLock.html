@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.3"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Stendhal: RWLock Class Reference</title>
+<title>Stendhal: marauroa.server.RWLock Class Reference</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -73,20 +73,20 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="../../d3/d1e/classmarauroa_1_1server_1_1RWLock-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">RWLock Class Reference</div></div>
+  <div class="headertitle"><div class="title">marauroa.server.RWLock Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:af6319f288ac2db3272c9c694b4460963"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/da7/classmarauroa_1_1server_1_1RWLock.html#af6319f288ac2db3272c9c694b4460963">RWLock</a> ()</td></tr>
-<tr class="separator:af6319f288ac2db3272c9c694b4460963"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a61a1a01cf9f9af1e7292f5408c3a0578"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/da7/classmarauroa_1_1server_1_1RWLock.html#a61a1a01cf9f9af1e7292f5408c3a0578">requestReadLock</a> ()</td></tr>
-<tr class="separator:a61a1a01cf9f9af1e7292f5408c3a0578"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a574022f7723f7f0e5158d8b7dfab4d4c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/da7/classmarauroa_1_1server_1_1RWLock.html#a574022f7723f7f0e5158d8b7dfab4d4c">requestWriteLock</a> ()</td></tr>
-<tr class="separator:a574022f7723f7f0e5158d8b7dfab4d4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4cb25493b64b68d295347ebdfd389d79"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/da7/classmarauroa_1_1server_1_1RWLock.html#a4cb25493b64b68d295347ebdfd389d79">releaseLock</a> ()</td></tr>
-<tr class="separator:a4cb25493b64b68d295347ebdfd389d79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad136704e9b37610513c3211feb35a6f8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/da7/classmarauroa_1_1server_1_1RWLock.html#ad136704e9b37610513c3211feb35a6f8">RWLock</a> ()</td></tr>
+<tr class="separator:ad136704e9b37610513c3211feb35a6f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2bf9ca9d7a19b05d282f8e1e92c82c7f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/da7/classmarauroa_1_1server_1_1RWLock.html#a2bf9ca9d7a19b05d282f8e1e92c82c7f">requestReadLock</a> ()</td></tr>
+<tr class="separator:a2bf9ca9d7a19b05d282f8e1e92c82c7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63830eca12acfcef4b0c873a50c87711"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/da7/classmarauroa_1_1server_1_1RWLock.html#a63830eca12acfcef4b0c873a50c87711">requestWriteLock</a> ()</td></tr>
+<tr class="separator:a63830eca12acfcef4b0c873a50c87711"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2e0c30ca856cd3fc01d12d5b8399544"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/da7/classmarauroa_1_1server_1_1RWLock.html#ab2e0c30ca856cd3fc01d12d5b8399544">releaseLock</a> ()</td></tr>
+<tr class="separator:ab2e0c30ca856cd3fc01d12d5b8399544"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >This class is a Reader/Writters lock A Reader Writer Lock is a synchronization mechanism allowing access to data.<br  />
@@ -94,14 +94,14 @@ Public Member Functions</h2></td></tr>
 <p >Controlling concurrent access to a shared, mutable resource is a classic problem. Clients request, and later release, either read-only or read-write access to the resource. To preserve consistency but minimize waiting, one usually wishes to allow either any number of readers or a single writer, but not both, to have access at any one time. </p>
 <p >While a thread is updating, no other thread can read the data. The name is misleading. It may cause you to think there are two locks; in reality there is a single lock that restricts both reading and writing. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="af6319f288ac2db3272c9c694b4460963" name="af6319f288ac2db3272c9c694b4460963"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af6319f288ac2db3272c9c694b4460963">&#9670;&nbsp;</a></span>RWLock()</h2>
+<a id="ad136704e9b37610513c3211feb35a6f8" name="ad136704e9b37610513c3211feb35a6f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad136704e9b37610513c3211feb35a6f8">&#9670;&nbsp;</a></span>RWLock()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d9/da7/classmarauroa_1_1server_1_1RWLock.html">RWLock</a> </td>
+          <td class="memname">marauroa.server.RWLock.RWLock </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -113,14 +113,14 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a4cb25493b64b68d295347ebdfd389d79" name="a4cb25493b64b68d295347ebdfd389d79"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4cb25493b64b68d295347ebdfd389d79">&#9670;&nbsp;</a></span>releaseLock()</h2>
+<a id="ab2e0c30ca856cd3fc01d12d5b8399544" name="ab2e0c30ca856cd3fc01d12d5b8399544"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2e0c30ca856cd3fc01d12d5b8399544">&#9670;&nbsp;</a></span>releaseLock()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void releaseLock </td>
+          <td class="memname">void marauroa.server.RWLock.releaseLock </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -131,14 +131,14 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a61a1a01cf9f9af1e7292f5408c3a0578" name="a61a1a01cf9f9af1e7292f5408c3a0578"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a61a1a01cf9f9af1e7292f5408c3a0578">&#9670;&nbsp;</a></span>requestReadLock()</h2>
+<a id="a2bf9ca9d7a19b05d282f8e1e92c82c7f" name="a2bf9ca9d7a19b05d282f8e1e92c82c7f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2bf9ca9d7a19b05d282f8e1e92c82c7f">&#9670;&nbsp;</a></span>requestReadLock()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void requestReadLock </td>
+          <td class="memname">void marauroa.server.RWLock.requestReadLock </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -150,14 +150,14 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a574022f7723f7f0e5158d8b7dfab4d4c" name="a574022f7723f7f0e5158d8b7dfab4d4c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a574022f7723f7f0e5158d8b7dfab4d4c">&#9670;&nbsp;</a></span>requestWriteLock()</h2>
+<a id="a63830eca12acfcef4b0c873a50c87711" name="a63830eca12acfcef4b0c873a50c87711"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63830eca12acfcef4b0c873a50c87711">&#9670;&nbsp;</a></span>requestWriteLock()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void requestWriteLock </td>
+          <td class="memname">void marauroa.server.RWLock.requestWriteLock </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.3"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Stendhal: DAORegister Class Reference</title>
+<title>Stendhal: marauroa.server.game.db.DAORegister Class Reference</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -74,31 +74,31 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="../../da/d83/classmarauroa_1_1server_1_1game_1_1db_1_1DAORegister-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">DAORegister Class Reference</div></div>
+  <div class="headertitle"><div class="title">marauroa.server.game.db.DAORegister Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:adc1ab9b434ac7c08f283a933d41accc8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/dea/classmarauroa_1_1server_1_1game_1_1rp_1_1RPObjectFactory.html">RPObjectFactory</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d15/classmarauroa_1_1server_1_1game_1_1db_1_1DAORegister.html#adc1ab9b434ac7c08f283a933d41accc8">getRPObjectFactory</a> ()</td></tr>
-<tr class="separator:adc1ab9b434ac7c08f283a933d41accc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9ab0d78f381de3accce97503c154e44"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/dea/classmarauroa_1_1server_1_1game_1_1rp_1_1RPObjectFactory.html">RPObjectFactory</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d15/classmarauroa_1_1server_1_1game_1_1db_1_1DAORegister.html#ae9ab0d78f381de3accce97503c154e44">getRPObjectFactory</a> ()</td></tr>
+<tr class="separator:ae9ab0d78f381de3accce97503c154e44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a6e9d78f69b3ea88bcfe1e4581f4128d4"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d6/d15/classmarauroa_1_1server_1_1game_1_1db_1_1DAORegister.html">DAORegister</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d15/classmarauroa_1_1server_1_1game_1_1db_1_1DAORegister.html#a6e9d78f69b3ea88bcfe1e4581f4128d4">get</a> ()</td></tr>
-<tr class="separator:a6e9d78f69b3ea88bcfe1e4581f4128d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf7393eb4290fb800ece8480953ff5e8"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d6/d15/classmarauroa_1_1server_1_1game_1_1db_1_1DAORegister.html">DAORegister</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d15/classmarauroa_1_1server_1_1game_1_1db_1_1DAORegister.html#abf7393eb4290fb800ece8480953ff5e8">get</a> ()</td></tr>
+<tr class="separator:abf7393eb4290fb800ece8480953ff5e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Keeps track of the DAOs (data access objects) to use. They are registered using their class name:<br  />
  <code>register(CharacterDAO.class, new CharacterDAO());</code></p>
 <p >Games can add their own DAOs. They can even replace framework DAOs with their own subclasses. Stendhal for example enhances the normal <a class="el" href="../../dc/d47/classmarauroa_1_1server_1_1game_1_1db_1_1CharacterDAO.html">CharacterDAO</a> with its own subclass to update a redundant table used by the Stendhal website: <br  />
- <code><a class="el" href="../../d6/d15/classmarauroa_1_1server_1_1game_1_1db_1_1DAORegister.html#a6e9d78f69b3ea88bcfe1e4581f4128d4">DAORegister.get()</a>.register(CharacterDAO.class, new StendhalCharacterDAO());</code></p>
+ <code><a class="el" href="../../d6/d15/classmarauroa_1_1server_1_1game_1_1db_1_1DAORegister.html#abf7393eb4290fb800ece8480953ff5e8">DAORegister.get()</a>.register(CharacterDAO.class, new StendhalCharacterDAO());</code></p>
 <p >Game should register their DAOs in the "initialize()" method of their <a class="el" href="../../dc/d91/classmarauroa_1_1server_1_1game_1_1db_1_1DatabaseFactory.html">DatabaseFactory</a>, as defined in the server.ini: <br  />
  <code>database_implementation=games.demo.server.DemoDatabaseFactory</code> </p>
 <dl class="section author"><dt>Author</dt><dd>hendrik </dd></dl>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a6e9d78f69b3ea88bcfe1e4581f4128d4" name="a6e9d78f69b3ea88bcfe1e4581f4128d4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6e9d78f69b3ea88bcfe1e4581f4128d4">&#9670;&nbsp;</a></span>get()</h2>
+<a id="abf7393eb4290fb800ece8480953ff5e8" name="abf7393eb4290fb800ece8480953ff5e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf7393eb4290fb800ece8480953ff5e8">&#9670;&nbsp;</a></span>get()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -107,7 +107,7 @@ Static Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static <a class="el" href="../../d6/d15/classmarauroa_1_1server_1_1game_1_1db_1_1DAORegister.html">DAORegister</a> get </td>
+          <td class="memname">static <a class="el" href="../../d6/d15/classmarauroa_1_1server_1_1game_1_1db_1_1DAORegister.html">DAORegister</a> marauroa.server.game.db.DAORegister.get </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -124,14 +124,14 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="adc1ab9b434ac7c08f283a933d41accc8" name="adc1ab9b434ac7c08f283a933d41accc8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adc1ab9b434ac7c08f283a933d41accc8">&#9670;&nbsp;</a></span>getRPObjectFactory()</h2>
+<a id="ae9ab0d78f381de3accce97503c154e44" name="ae9ab0d78f381de3accce97503c154e44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9ab0d78f381de3accce97503c154e44">&#9670;&nbsp;</a></span>getRPObjectFactory()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../dd/dea/classmarauroa_1_1server_1_1game_1_1rp_1_1RPObjectFactory.html">RPObjectFactory</a> getRPObjectFactory </td>
+          <td class="memname"><a class="el" href="../../dd/dea/classmarauroa_1_1server_1_1game_1_1rp_1_1RPObjectFactory.html">RPObjectFactory</a> marauroa.server.game.db.DAORegister.getRPObjectFactory </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>

@@ -22,7 +22,7 @@ var searchData=
   ['enchant_19',['Enchant',['../da/de6/classgames_1_1stendhal_1_1server_1_1script_1_1Enchant.html',1,'games::stendhal::server::script']]],
   ['encoder_20',['Encoder',['../dd/dfa/classmarauroa_1_1common_1_1net_1_1Encoder.html',1,'marauroa::common::net']]],
   ['engine_21',['Engine',['../d0/dbd/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1fsm_1_1Engine.html',1,'games::stendhal::server::entity::npc::fsm']]],
-  ['entity_22',['Entity',['../d6/d06/classgames_1_1stendhal_1_1client_1_1entity_1_1Entity.html',1,'Entity'],['../d6/d47/classgames_1_1stendhal_1_1server_1_1entity_1_1Entity.html',1,'Entity']]],
+  ['entity_22',['Entity',['../d6/d06/classgames_1_1stendhal_1_1client_1_1entity_1_1Entity.html',1,'games.stendhal.client.entity.Entity'],['../d6/d47/classgames_1_1stendhal_1_1server_1_1entity_1_1Entity.html',1,'games.stendhal.server.entity.Entity']]],
   ['entity2dview_23',['Entity2DView',['../d3/d2c/classgames_1_1stendhal_1_1client_1_1gui_1_1j2d_1_1entity_1_1Entity2DView.html',1,'games::stendhal::client::gui::j2d::entity']]],
   ['entity2dview_3c_20ientity_20_3e_24',['Entity2DView&lt; IEntity &gt;',['../d3/d2c/classgames_1_1stendhal_1_1client_1_1gui_1_1j2d_1_1entity_1_1Entity2DView.html',1,'games::stendhal::client::gui::j2d::entity']]],
   ['entity2dview_3c_20t_20_3e_25',['Entity2DView&lt; T &gt;',['../d3/d2c/classgames_1_1stendhal_1_1client_1_1gui_1_1j2d_1_1entity_1_1Entity2DView.html',1,'games::stendhal::client::gui::j2d::entity']]],

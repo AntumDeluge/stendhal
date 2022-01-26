@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['walkblocker_0',['WalkBlocker',['../d8/ddc/classgames_1_1stendhal_1_1client_1_1entity_1_1WalkBlocker.html',1,'WalkBlocker'],['../db/dc6/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1area_1_1WalkBlocker.html',1,'WalkBlocker']]],
+  ['walkblocker_0',['WalkBlocker',['../d8/ddc/classgames_1_1stendhal_1_1client_1_1entity_1_1WalkBlocker.html',1,'games.stendhal.client.entity.WalkBlocker'],['../db/dc6/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1area_1_1WalkBlocker.html',1,'games.stendhal.server.entity.mapstuff.area.WalkBlocker']]],
   ['walkblockerfactory_1',['WalkBlockerFactory',['../df/d44/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1area_1_1WalkBlockerFactory.html',1,'games::stendhal::server::entity::mapstuff::area']]],
-  ['wall_2',['Wall',['../d0/d6e/classgames_1_1stendhal_1_1client_1_1entity_1_1Wall.html',1,'Wall'],['../d9/d96/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1area_1_1Wall.html',1,'Wall']]],
+  ['wall_2',['Wall',['../d0/d6e/classgames_1_1stendhal_1_1client_1_1entity_1_1Wall.html',1,'games.stendhal.client.entity.Wall'],['../d9/d96/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1area_1_1Wall.html',1,'games.stendhal.server.entity.mapstuff.area.Wall']]],
   ['waterspringsource_3',['WaterSpringSource',['../d6/d0c/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1useable_1_1WaterSpringSource.html',1,'games::stendhal::server::entity::mapstuff::useable']]],
   ['weatherentity_4',['WeatherEntity',['../d9/d70/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1WeatherEntity.html',1,'games::stendhal::server::entity::mapstuff']]],
   ['weatherlayerrenderer_5',['WeatherLayerRenderer',['../df/d93/classgames_1_1stendhal_1_1client_1_1WeatherLayerRenderer.html',1,'games::stendhal::client']]],

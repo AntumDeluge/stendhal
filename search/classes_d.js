@@ -32,7 +32,7 @@ var searchData=
   ['noteleportoutbehaviour_29',['NoTeleportOutBehaviour',['../d5/d69/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1area_1_1NoTeleportOutBehaviour.html',1,'games::stendhal::server::entity::mapstuff::area']]],
   ['notemptyvalidator_30',['NotEmptyValidator',['../dc/df4/classgames_1_1stendhal_1_1server_1_1core_1_1account_1_1NotEmptyValidator.html',1,'games::stendhal::server::core::account']]],
   ['notificationtype_31',['NotificationType',['../d8/d97/enumgames_1_1stendhal_1_1common_1_1NotificationType.html',1,'games::stendhal::common']]],
-  ['npc_32',['NPC',['../d8/d39/classgames_1_1stendhal_1_1client_1_1entity_1_1NPC.html',1,'NPC'],['../d4/d34/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1NPC.html',1,'NPC']]],
+  ['npc_32',['NPC',['../d8/d39/classgames_1_1stendhal_1_1client_1_1entity_1_1NPC.html',1,'games.stendhal.client.entity.NPC'],['../d4/d34/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1NPC.html',1,'games.stendhal.server.entity.npc.NPC']]],
   ['npcchatting_33',['NPCChatting',['../d6/dfe/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1interaction_1_1NPCChatting.html',1,'games::stendhal::server::entity::npc::interaction']]],
   ['npcemoteaction_34',['NPCEmoteAction',['../d8/d03/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1action_1_1NPCEmoteAction.html',1,'games::stendhal::server::entity::npc::action']]],
   ['npcfollowing_35',['NPCFollowing',['../d7/da0/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1interaction_1_1NPCFollowing.html',1,'games::stendhal::server::entity::npc::interaction']]],
