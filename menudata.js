@@ -120,7 +120,7 @@ var menudata={children:[
 {text:"File Members",url:"globals.htm",children:[
 {text:"All",url:"globals.htm"},
 {text:"Variables",url:"globals_vars.htm"}]}]},
-{text:"Deprecated List",url:"da/d58/deprecated.html"},
+{text:"Deprecated List",url:"da/d58/deprecated.htm"},
 {text:"Scripting",url:"d5/d57/scripting.htm",children:[
 {text:"Lua",url:"d9/deb/lua.htm"}]},
 {text:"Links",url:"d0/d2f/links.htm"}]}
