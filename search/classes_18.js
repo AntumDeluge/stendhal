@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['yannpc_0',['YanNPC',['../d3/d67/classgames_1_1stendhal_1_1server_1_1maps_1_1athor_1_1holiday__area_1_1YanNPC.htm',1,'games::stendhal::server::maps::athor::holiday_area']]],
-  ['yellowcrystalnpc_1',['YellowCrystalNPC',['../d0/d4c/classgames_1_1stendhal_1_1server_1_1maps_1_1semos_1_1mountain_1_1YellowCrystalNPC.htm',1,'games::stendhal::server::maps::semos::mountain']]]
+  ['xmlmergerandsplitter_0',['XmlMergerAndSplitter',['../d6/d26/classgames_1_1stendhal_1_1tools_1_1xml_1_1XmlMergerAndSplitter.htm',1,'games::stendhal::tools::xml']]],
+  ['xmlutil_1',['XMLUtil',['../df/dd1/classgames_1_1stendhal_1_1server_1_1core_1_1config_1_1XMLUtil.htm',1,'games::stendhal::server::core::config']]],
+  ['xpchangelistener_2',['XPChangeListener',['../d0/dd6/classgames_1_1stendhal_1_1client_1_1gui_1_1stats_1_1StatsPanelController_1_1XPChangeListener.htm',1,'games::stendhal::client::gui::stats::StatsPanelController']]]
 ];

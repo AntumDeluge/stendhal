@@ -100,7 +100,7 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ac950396ffaa16f42edb22d88525391bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a27fabcd5c89cdb6746c767e0f3597207"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d1c/classmarauroa_1_1server_1_1net_1_1validator_1_1ConnectionValidator.htm#a27fabcd5c89cdb6746c767e0f3597207">removeBan</a> (<a class="elRef" href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/String.html">String</a> address, <a class="elRef" href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/String.html">String</a> mask)</td></tr>
 <tr class="separator:a27fabcd5c89cdb6746c767e0f3597207"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3f2f803e3ef8acc778813a4381fadc62"><td class="memItemLeft" align="right" valign="top">Iterator&lt; <a class="el" href="../../d0/d26/classmarauroa_1_1server_1_1net_1_1validator_1_1InetAddressMask.htm">InetAddressMask</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d1c/classmarauroa_1_1server_1_1net_1_1validator_1_1ConnectionValidator.htm#a3f2f803e3ef8acc778813a4381fadc62">iterator</a> ()</td></tr>
+<tr class="memitem:a3f2f803e3ef8acc778813a4381fadc62"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/util/Iterator.html">Iterator</a>&lt; <a class="el" href="../../d0/d26/classmarauroa_1_1server_1_1net_1_1validator_1_1InetAddressMask.htm">InetAddressMask</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d1c/classmarauroa_1_1server_1_1net_1_1validator_1_1ConnectionValidator.htm#a3f2f803e3ef8acc778813a4381fadc62">iterator</a> ()</td></tr>
 <tr class="separator:a3f2f803e3ef8acc778813a4381fadc62"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae552d742c9bc260a8fe4ed0ee54c1567"><td class="memItemLeft" align="right" valign="top">synchronized boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d1c/classmarauroa_1_1server_1_1net_1_1validator_1_1ConnectionValidator.htm#ae552d742c9bc260a8fe4ed0ee54c1567">checkBanned</a> (InetAddress address)</td></tr>
 <tr class="separator:ae552d742c9bc260a8fe4ed0ee54c1567"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -120,7 +120,7 @@ Package Attributes</h2></td></tr>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a37dd02c1aaed6aba1da2e1069df6192a"><td class="memItemLeft" align="right" valign="top">final <a class="elRef" href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/util/List.html">List</a>&lt; <a class="el" href="../../d0/d26/classmarauroa_1_1server_1_1net_1_1validator_1_1InetAddressMask.htm">InetAddressMask</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d1c/classmarauroa_1_1server_1_1net_1_1validator_1_1ConnectionValidator.htm#a37dd02c1aaed6aba1da2e1069df6192a">permanentBans</a></td></tr>
 <tr class="separator:a37dd02c1aaed6aba1da2e1069df6192a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa8e7662eaaa35fd1b8d1aab25cdbdeb0"><td class="memItemLeft" align="right" valign="top">final Timer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d1c/classmarauroa_1_1server_1_1net_1_1validator_1_1ConnectionValidator.htm#aa8e7662eaaa35fd1b8d1aab25cdbdeb0">timer</a></td></tr>
+<tr class="memitem:aa8e7662eaaa35fd1b8d1aab25cdbdeb0"><td class="memItemLeft" align="right" valign="top">final <a class="elRef" href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/util/Timer.html">Timer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d1c/classmarauroa_1_1server_1_1net_1_1validator_1_1ConnectionValidator.htm#aa8e7662eaaa35fd1b8d1aab25cdbdeb0">timer</a></td></tr>
 <tr class="separator:aa8e7662eaaa35fd1b8d1aab25cdbdeb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa037813be0cce3e4692b7d343bae0d8b"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d1c/classmarauroa_1_1server_1_1net_1_1validator_1_1ConnectionValidator.htm#aa037813be0cce3e4692b7d343bae0d8b">lastLoadTS</a></td></tr>
 <tr class="separator:aa037813be0cce3e4692b7d343bae0d8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -348,7 +348,7 @@ Temportal bans<br  />
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">Iterator&lt; <a class="el" href="../../d0/d26/classmarauroa_1_1server_1_1net_1_1validator_1_1InetAddressMask.htm">InetAddressMask</a> &gt; marauroa.server.net.validator.ConnectionValidator.iterator </td>
+          <td class="memname"><a class="elRef" href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/util/Iterator.html">Iterator</a>&lt; <a class="el" href="../../d0/d26/classmarauroa_1_1server_1_1net_1_1validator_1_1InetAddressMask.htm">InetAddressMask</a> &gt; marauroa.server.net.validator.ConnectionValidator.iterator </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -520,7 +520,7 @@ Temportal bans<br  />
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">final Timer marauroa.server.net.validator.ConnectionValidator.timer</td>
+          <td class="memname">final <a class="elRef" href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/util/Timer.html">Timer</a> marauroa.server.net.validator.ConnectionValidator.timer</td>
         </tr>
       </table>
   </td>
@@ -533,9 +533,6 @@ Temportal bans<br  />
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
-<li>C:/Users/Jordan/Development/Arianne/marauroa/src/marauroa/server/net/validator/<a class="el" href="../../d7/d58/ConnectionValidator_8java.htm">ConnectionValidator.java</a></li>
-</ul>
 </div><!-- contents -->
 <!-- HTML footer for doxygen 1.9.3-->
 <!-- start footer part -->
