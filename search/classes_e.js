@@ -1,73 +1,62 @@
 var searchData=
-
 [
-
-  ['object_0',['Object',['https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object',1,'java::lang']]],
-.html
-  ['objectcounter_1',['ObjectCounter',['../da/da2/classgames_1_1stendhal_1_1server_1_1util_1_1ObjectCounter.html',1,'games::stendhal::server::util']]],
-
-  ['observer_2',['Observer',['../d4/d3b/classgames_1_1stendhal_1_1server_1_1script_1_1Observer.html',1,'games::stendhal::server::script']]],
-
-  ['obtainachievementsfactory_3',['ObtainAchievementsFactory',['../d5/d02/classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1achievement_1_1factory_1_1ObtainAchievementsFactory.html',1,'games::stendhal::server::core::rp::achievement::factory']]],
-
-  ['occasion_4',['Occasion',['../d2/ddb/classgames_1_1stendhal_1_1common_1_1constants_1_1Occasion.html',1,'games::stendhal::common::constants']]],
-
-  ['occupantarea_5',['OccupantArea',['../de/d8f/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1area_1_1OccupantArea.html',1,'games::stendhal::server::entity::mapstuff::area']]],
-
-  ['occupantareafactory_6',['OccupantAreaFactory',['../d5/de5/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1area_1_1OccupantAreaFactory.html',1,'games::stendhal::server::entity::mapstuff::area']]],
-
-  ['offer_7',['Offer',['../d1/dce/classgames_1_1stendhal_1_1server_1_1entity_1_1trade_1_1Offer.html',1,'games::stendhal::server::entity::trade']]],
-
-  ['offertransformer_8',['OfferTransformer',['../d5/de8/classgames_1_1stendhal_1_1server_1_1core_1_1engine_1_1transformer_1_1OfferTransformer.html',1,'games::stendhal::server::core::engine::transformer']]],
-
-  ['offlineadminlevel_9',['OfflineAdminlevel',['../d5/d5f/classgames_1_1stendhal_1_1server_1_1script_1_1OfflineAdminlevel.html',1,'games::stendhal::server::script']]],
-
-  ['offlineclearsentence_10',['OfflineClearSentence',['../d1/d1d/classgames_1_1stendhal_1_1server_1_1script_1_1OfflineClearSentence.html',1,'games::stendhal::server::script']]],
-
-  ['oggvorbisdecoder_11',['OggVorbisDecoder',['../d0/de2/classgames_1_1stendhal_1_1client_1_1sound_1_1system_1_1processors_1_1OggVorbisDecoder.html',1,'games::stendhal::client::sound::system::processors']]],
-
-  ['oneplayerarea_12',['OnePlayerArea',['../dc/d1b/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1area_1_1OnePlayerArea.html',1,'games::stendhal::server::entity::mapstuff::area']]],
-
-  ['oneplayerareafactory_13',['OnePlayerAreaFactory',['../d7/d59/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1area_1_1OnePlayerAreaFactory.html',1,'games::stendhal::server::entity::mapstuff::area']]],
-
-  ['oneplayerroomdoor_14',['OnePlayerRoomDoor',['../dc/d6e/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1portal_1_1OnePlayerRoomDoor.html',1,'games::stendhal::server::entity::mapstuff::portal']]],
-
-  ['oneplayerroomdoorfactory_15',['OnePlayerRoomDoorFactory',['../d4/d74/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1portal_1_1OnePlayerRoomDoorFactory.html',1,'games::stendhal::server::entity::mapstuff::portal']]],
-
-  ['onewayportaldestination_16',['OneWayPortalDestination',['../d6/d39/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1portal_1_1OneWayPortalDestination.html',1,'games::stendhal::server::entity::mapstuff::portal']]],
-
-  ['oniraid_17',['OniRaid',['../d0/d14/classgames_1_1stendhal_1_1server_1_1script_1_1OniRaid.html',1,'games::stendhal::server::script']]],
-
-  ['orcondition_18',['OrCondition',['../d0/d50/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1condition_1_1OrCondition.html',1,'games::stendhal::server::entity::npc::condition']]],
-
-  ['orcraid_19',['OrcRaid',['../d1/d9f/classgames_1_1stendhal_1_1server_1_1script_1_1OrcRaid.html',1,'games::stendhal::server::script']]],
-
-  ['outfit_20',['Outfit',['../d6/d27/classgames_1_1stendhal_1_1server_1_1entity_1_1Outfit.html',1,'games::stendhal::server::entity']]],
-
-  ['outfitaction_21',['OutfitAction',['../da/d57/classgames_1_1stendhal_1_1server_1_1actions_1_1OutfitAction.html',1,'games::stendhal::server::actions']]],
-
-  ['outfitchangeradder_22',['OutfitChangerAdder',['../d7/d0d/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1behaviour_1_1adder_1_1OutfitChangerAdder.html',1,'games::stendhal::server::entity::npc::behaviour::adder']]],
-
-  ['outfitchangerbehaviour_23',['OutfitChangerBehaviour',['../de/d6f/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1behaviour_1_1impl_1_1OutfitChangerBehaviour.html',1,'games::stendhal::server::entity::npc::behaviour::impl']]],
-
-  ['outfitchangertargeter_24',['OutfitChangerTargeter',['../d5/d1e/classgames_1_1stendhal_1_1server_1_1entity_1_1creature_1_1impl_1_1attack_1_1OutfitChangerTargeter.html',1,'games::stendhal::server::entity::creature::impl::attack']]],
-
-  ['outfitcolor_25',['OutfitColor',['../d4/d3d/classgames_1_1stendhal_1_1client_1_1gui_1_1OutfitColor.html',1,'games::stendhal::client::gui']]],
-
-  ['outfitcompatiblewithclothescondition_26',['OutfitCompatibleWithClothesCondition',['../da/d24/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1condition_1_1OutfitCompatibleWithClothesCondition.html',1,'games::stendhal::server::entity::npc::condition']]],
-
-  ['outfits_27',['Outfits',['../dc/d06/classgames_1_1stendhal_1_1common_1_1Outfits.html',1,'games::stendhal::common']]],
-
-  ['outfitstore_28',['OutfitStore',['../d7/d71/classgames_1_1stendhal_1_1client_1_1OutfitStore.html',1,'games::stendhal::client']]],
-
-  ['outputquestslotaction_29',['OutputQuestSlotAction',['../d9/d0d/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1action_1_1OutputQuestSlotAction.html',1,'games::stendhal::server::entity::npc::action']]],
-
-  ['outputserializer_30',['OutputSerializer',['../d4/df6/classmarauroa_1_1common_1_1net_1_1OutputSerializer.html',1,'marauroa::common::net']]],
-
-  ['outsidezoneachievementfactory_31',['OutsideZoneAchievementFactory',['../d6/d96/classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1achievement_1_1factory_1_1OutsideZoneAchievementFactory.html',1,'games::stendhal::server::core::rp::achievement::factory']]],
-
-  ['ownaction_32',['OwnAction',['../de/dca/classgames_1_1stendhal_1_1server_1_1actions_1_1pet_1_1OwnAction.html',1,'games::stendhal::server::actions::pet']]],
-
-  ['owneditem_33',['OwnedItem',['../da/deb/classgames_1_1stendhal_1_1server_1_1entity_1_1item_1_1OwnedItem.html',1,'games::stendhal::server::entity::item']]]
-
+  ['object_0',['Object',['https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html',1,'java::lang']]],
+  ['objectchangelistener_1',['ObjectChangeListener',['../dc/d02/interfacegames_1_1stendhal_1_1client_1_1ObjectChangeListener.htm',1,'games::stendhal::client']]],
+  ['objectchangelisteneradapter_2',['ObjectChangeListenerAdapter',['../d9/d7b/classgames_1_1stendhal_1_1client_1_1ObjectChangeListenerAdapter.htm',1,'games::stendhal::client']]],
+  ['objectcounter_3',['ObjectCounter',['../da/da2/classgames_1_1stendhal_1_1server_1_1util_1_1ObjectCounter.htm',1,'games::stendhal::server::util']]],
+  ['objectfactory_4',['ObjectFactory',['../df/d06/classgames_1_1stendhal_1_1client_1_1ObjectFactory.htm',1,'games::stendhal::client']]],
+  ['observer_5',['Observer',['../d4/d3b/classgames_1_1stendhal_1_1server_1_1script_1_1Observer.htm',1,'games::stendhal::server::script']]],
+  ['obsidianknife_6',['ObsidianKnife',['../d8/dda/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1ObsidianKnife.htm',1,'games::stendhal::server::maps::quests']]],
+  ['obtainachievementsfactory_7',['ObtainAchievementsFactory',['../d5/d02/classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1achievement_1_1factory_1_1ObtainAchievementsFactory.htm',1,'games::stendhal::server::core::rp::achievement::factory']]],
+  ['occasion_8',['Occasion',['../d2/ddb/classgames_1_1stendhal_1_1common_1_1constants_1_1Occasion.htm',1,'games::stendhal::common::constants']]],
+  ['occupantarea_9',['OccupantArea',['../de/d8f/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1area_1_1OccupantArea.htm',1,'games::stendhal::server::entity::mapstuff::area']]],
+  ['occupantareafactory_10',['OccupantAreaFactory',['../d5/de5/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1area_1_1OccupantAreaFactory.htm',1,'games::stendhal::server::entity::mapstuff::area']]],
+  ['offer_11',['Offer',['../d1/dce/classgames_1_1stendhal_1_1server_1_1entity_1_1trade_1_1Offer.htm',1,'games::stendhal::server::entity::trade']]],
+  ['offerexpirer_12',['OfferExpirer',['../db/d63/classgames_1_1stendhal_1_1server_1_1maps_1_1semos_1_1tavern_1_1market_1_1OfferExpirer.htm',1,'games::stendhal::server::maps::semos::tavern::market']]],
+  ['offerhandler_13',['OfferHandler',['../d4/da6/classgames_1_1stendhal_1_1server_1_1maps_1_1semos_1_1tavern_1_1market_1_1OfferHandler.htm',1,'games::stendhal::server::maps::semos::tavern::market']]],
+  ['offertransformer_14',['OfferTransformer',['../d5/de8/classgames_1_1stendhal_1_1server_1_1core_1_1engine_1_1transformer_1_1OfferTransformer.htm',1,'games::stendhal::server::core::engine::transformer']]],
+  ['offlineadminlevel_15',['OfflineAdminlevel',['../d5/d5f/classgames_1_1stendhal_1_1server_1_1script_1_1OfflineAdminlevel.htm',1,'games::stendhal::server::script']]],
+  ['offlineclearsentence_16',['OfflineClearSentence',['../d1/d1d/classgames_1_1stendhal_1_1server_1_1script_1_1OfflineClearSentence.htm',1,'games::stendhal::server::script']]],
+  ['oggvorbisdecoder_17',['OggVorbisDecoder',['../d0/de2/classgames_1_1stendhal_1_1client_1_1sound_1_1system_1_1processors_1_1OggVorbisDecoder.htm',1,'games::stendhal::client::sound::system::processors']]],
+  ['oldfartnpc_18',['OldFartNPC',['../d0/df8/classgames_1_1stendhal_1_1server_1_1maps_1_1deniran_1_1cityoutside_1_1OldFartNPC.htm',1,'games::stendhal::server::maps::deniran::cityoutside']]],
+  ['oldfishermannpc_19',['OldFishermanNPC',['../d3/dc2/classgames_1_1stendhal_1_1server_1_1maps_1_1ados_1_1market_1_1OldFishermanNPC.htm',1,'games::stendhal::server::maps::ados::market']]],
+  ['oldratwomannpc_20',['OldRatWomanNPC',['../d8/d2f/classgames_1_1stendhal_1_1server_1_1maps_1_1ratcity_1_1house1_1_1OldRatWomanNPC.htm',1,'games::stendhal::server::maps::ratcity::house1']]],
+  ['oldwitchnpc_21',['OldWitchNPC',['../d1/d71/classgames_1_1stendhal_1_1server_1_1maps_1_1fado_1_1forest_1_1OldWitchNPC.htm',1,'games::stendhal::server::maps::fado::forest']]],
+  ['oldwomannpc_22',['OldWomanNPC',['../da/d27/classgames_1_1stendhal_1_1server_1_1maps_1_1fado_1_1forest_1_1OldWomanNPC.htm',1,'games::stendhal::server::maps::fado::forest']]],
+  ['oneplayerarea_23',['OnePlayerArea',['../dc/d1b/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1area_1_1OnePlayerArea.htm',1,'games::stendhal::server::entity::mapstuff::area']]],
+  ['oneplayerareafactory_24',['OnePlayerAreaFactory',['../d7/d59/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1area_1_1OnePlayerAreaFactory.htm',1,'games::stendhal::server::entity::mapstuff::area']]],
+  ['oneplayerroomdoor_25',['OnePlayerRoomDoor',['../dc/d6e/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1portal_1_1OnePlayerRoomDoor.htm',1,'games::stendhal::server::entity::mapstuff::portal']]],
+  ['oneplayerroomdoorfactory_26',['OnePlayerRoomDoorFactory',['../d4/d74/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1portal_1_1OnePlayerRoomDoorFactory.htm',1,'games::stendhal::server::entity::mapstuff::portal']]],
+  ['onewayportaldestination_27',['OneWayPortalDestination',['../d6/d39/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1portal_1_1OneWayPortalDestination.htm',1,'games::stendhal::server::entity::mapstuff::portal']]],
+  ['oniraid_28',['OniRaid',['../d0/d14/classgames_1_1stendhal_1_1server_1_1script_1_1OniRaid.htm',1,'games::stendhal::server::script']]],
+  ['optimizer_29',['Optimizer',['../db/d0b/classgames_1_1stendhal_1_1tools_1_1BalanceRPGame_1_1Optimizer.htm',1,'games::stendhal::tools::BalanceRPGame']]],
+  ['oraclenpc_30',['OracleNPC',['../db/d66/classgames_1_1stendhal_1_1server_1_1maps_1_1ados_1_1market_1_1OracleNPC.htm',1,'games.stendhal.server.maps.ados.market.OracleNPC'],['../d7/df9/classgames_1_1stendhal_1_1server_1_1maps_1_1kalavan_1_1citygardens_1_1OracleNPC.htm',1,'games.stendhal.server.maps.kalavan.citygardens.OracleNPC'],['../da/d67/classgames_1_1stendhal_1_1server_1_1maps_1_1nalwor_1_1forest_1_1OracleNPC.htm',1,'games.stendhal.server.maps.nalwor.forest.OracleNPC'],['../d7/d61/classgames_1_1stendhal_1_1server_1_1maps_1_1semos_1_1city_1_1OracleNPC.htm',1,'games.stendhal.server.maps.semos.city.OracleNPC']]],
+  ['orckillgiantdwarfnpc_31',['OrcKillGiantDwarfNPC',['../d8/da2/classgames_1_1stendhal_1_1server_1_1maps_1_1ados_1_1abandonedkeep_1_1OrcKillGiantDwarfNPC.htm',1,'games::stendhal::server::maps::ados::abandonedkeep']]],
+  ['orcondition_32',['OrCondition',['../d0/d50/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1condition_1_1OrCondition.htm',1,'games::stendhal::server::entity::npc::condition']]],
+  ['orcraid_33',['OrcRaid',['../d1/d9f/classgames_1_1stendhal_1_1server_1_1script_1_1OrcRaid.htm',1,'games::stendhal::server::script']]],
+  ['orcsamannpc_34',['OrcSamanNPC',['../d6/de6/classgames_1_1stendhal_1_1server_1_1maps_1_1kotoch_1_1OrcSamanNPC.htm',1,'games::stendhal::server::maps::kotoch']]],
+  ['orcweaponarmorguynpc_35',['OrcWeaponArmorGuyNPC',['../d9/d45/classgames_1_1stendhal_1_1server_1_1maps_1_1ados_1_1abandonedkeep_1_1OrcWeaponArmorGuyNPC.htm',1,'games::stendhal::server::maps::ados::abandonedkeep']]],
+  ['orientalairwizardnpc_36',['OrientalAirWizardNPC',['../db/dfe/classgames_1_1stendhal_1_1server_1_1maps_1_1semos_1_1wizardstower_1_1OrientalAirWizardNPC.htm',1,'games::stendhal::server::maps::semos::wizardstower']]],
+  ['outfit_37',['Outfit',['../d6/d27/classgames_1_1stendhal_1_1server_1_1entity_1_1Outfit.htm',1,'games::stendhal::server::entity']]],
+  ['outfitaction_38',['OutfitAction',['../da/d57/classgames_1_1stendhal_1_1server_1_1actions_1_1OutfitAction.htm',1,'games::stendhal::server::actions']]],
+  ['outfitchangeradder_39',['OutfitChangerAdder',['../d7/d0d/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1behaviour_1_1adder_1_1OutfitChangerAdder.htm',1,'games::stendhal::server::entity::npc::behaviour::adder']]],
+  ['outfitchangerbehaviour_40',['OutfitChangerBehaviour',['../de/d6f/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1behaviour_1_1impl_1_1OutfitChangerBehaviour.htm',1,'games::stendhal::server::entity::npc::behaviour::impl']]],
+  ['outfitchangertargeter_41',['OutfitChangerTargeter',['../d5/d1e/classgames_1_1stendhal_1_1server_1_1entity_1_1creature_1_1impl_1_1attack_1_1OutfitChangerTargeter.htm',1,'games::stendhal::server::entity::creature::impl::attack']]],
+  ['outfitcolor_42',['OutfitColor',['../d4/d3d/classgames_1_1stendhal_1_1client_1_1gui_1_1OutfitColor.htm',1,'games::stendhal::client::gui']]],
+  ['outfitcompatiblewithclothescondition_43',['OutfitCompatibleWithClothesCondition',['../da/d24/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1condition_1_1OutfitCompatibleWithClothesCondition.htm',1,'games::stendhal::server::entity::npc::condition']]],
+  ['outfitdialog_44',['OutfitDialog',['../dd/dfb/classgames_1_1stendhal_1_1client_1_1gui_1_1OutfitDialog.htm',1,'games::stendhal::client::gui']]],
+  ['outfitlabel_45',['OutfitLabel',['../df/d0e/classgames_1_1stendhal_1_1client_1_1gui_1_1OutfitDialog_1_1OutfitLabel.htm',1,'games::stendhal::client::gui::OutfitDialog']]],
+  ['outfitlender2npc_46',['OutfitLender2NPC',['../dc/d16/classgames_1_1stendhal_1_1server_1_1maps_1_1magic_1_1clothing__boutique_1_1OutfitLender2NPC.htm',1,'games::stendhal::server::maps::magic::clothing_boutique']]],
+  ['outfitlendernpc_47',['OutfitLenderNPC',['../d7/de7/classgames_1_1stendhal_1_1server_1_1maps_1_1deniran_1_1cityinterior_1_1dressshop_1_1OutfitLenderNPC.htm',1,'games.stendhal.server.maps.deniran.cityinterior.dressshop.OutfitLenderNPC'],['../d9/d37/classgames_1_1stendhal_1_1server_1_1maps_1_1magic_1_1clothing__boutique_1_1OutfitLenderNPC.htm',1,'games.stendhal.server.maps.magic.clothing_boutique.OutfitLenderNPC']]],
+  ['outfits_48',['Outfits',['../dc/d06/classgames_1_1stendhal_1_1common_1_1Outfits.htm',1,'games::stendhal::common']]],
+  ['outfitstore_49',['OutfitStore',['../d7/d71/classgames_1_1stendhal_1_1client_1_1OutfitStore.htm',1,'games::stendhal::client']]],
+  ['outfittype_50',['OutfitType',['../d1/dda/enumgames_1_1stendhal_1_1server_1_1maps_1_1deniran_1_1cityinterior_1_1dressshop_1_1OutfitLenderNPC_1_1OutfitType.htm',1,'games::stendhal::server::maps::deniran::cityinterior::dressshop::OutfitLenderNPC']]],
+  ['outgoingphase_51',['OutgoingPhase',['../d6/da9/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1piedpiper_1_1OutgoingPhase.htm',1,'games::stendhal::server::maps::quests::piedpiper']]],
+  ['outofsynchandler_52',['OutOfSyncHandler',['../db/dac/classmarauroa_1_1server_1_1game_1_1messagehandler_1_1OutOfSyncHandler.htm',1,'marauroa::server::game::messagehandler']]],
+  ['output_53',['Output',['../d5/d78/classgames_1_1stendhal_1_1client_1_1sound_1_1system_1_1SoundSystem_1_1Output.htm',1,'games.stendhal.client.sound.system.SoundSystem.Output'],['../d5/d15/classgames_1_1stendhal_1_1client_1_1sound_1_1system_1_1SoundSystemNG_1_1Output.htm',1,'games.stendhal.client.sound.system.SoundSystemNG.Output']]],
+  ['outputquestslotaction_54',['OutputQuestSlotAction',['../d9/d0d/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1action_1_1OutputQuestSlotAction.htm',1,'games::stendhal::server::entity::npc::action']]],
+  ['outputserializer_55',['OutputSerializer',['../d4/df6/classmarauroa_1_1common_1_1net_1_1OutputSerializer.htm',1,'marauroa::common::net']]],
+  ['outsidezoneachievementfactory_56',['OutsideZoneAchievementFactory',['../d6/d96/classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1achievement_1_1factory_1_1OutsideZoneAchievementFactory.htm',1,'games::stendhal::server::core::rp::achievement::factory']]],
+  ['ownaction_57',['OwnAction',['../de/dca/classgames_1_1stendhal_1_1server_1_1actions_1_1pet_1_1OwnAction.htm',1,'games::stendhal::server::actions::pet']]],
+  ['owneditem_58',['OwnedItem',['../da/deb/classgames_1_1stendhal_1_1server_1_1entity_1_1item_1_1OwnedItem.htm',1,'games::stendhal::server::entity::item']]]
 ];

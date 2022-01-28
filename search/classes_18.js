@@ -1,19 +1,5 @@
 var searchData=
 [
-  ['zombieraid_0',['ZombieRaid',['../d3/d70/classgames_1_1stendhal_1_1server_1_1script_1_1ZombieRaid.html',1,'games::stendhal::server::script']]],
-  ['zombiestatus_1',['ZombieStatus',['../d7/dc1/classgames_1_1stendhal_1_1server_1_1entity_1_1status_1_1ZombieStatus.html',1,'games::stendhal::server::entity::status']]],
-  ['zombiestatushandler_2',['ZombieStatusHandler',['../d0/d43/classgames_1_1stendhal_1_1server_1_1entity_1_1status_1_1ZombieStatusHandler.html',1,'games::stendhal::server::entity::status']]],
-  ['zone_3',['Zone',['../db/df6/classgames_1_1stendhal_1_1client_1_1Zone.html',1,'games::stendhal::client']]],
-  ['zoneattributes_4',['ZoneAttributes',['../d5/d6e/classgames_1_1stendhal_1_1server_1_1core_1_1engine_1_1ZoneAttributes.html',1,'games::stendhal::server::core::engine']]],
-  ['zonechangelistener_5',['ZoneChangeListener',['../dc/ddf/interfacegames_1_1stendhal_1_1client_1_1StendhalClient_1_1ZoneChangeListener.html',1,'games::stendhal::client::StendhalClient']]],
-  ['zonecollisioncheck_6',['ZoneCollisionCheck',['../d7/df2/classgames_1_1stendhal_1_1server_1_1script_1_1ZoneCollisionCheck.html',1,'games::stendhal::server::script']]],
-  ['zoneconfigurator_7',['ZoneConfigurator',['../d2/d0a/interfacegames_1_1stendhal_1_1server_1_1core_1_1config_1_1ZoneConfigurator.html',1,'games::stendhal::server::core::config']]],
-  ['zoneenterexitlistener_8',['ZoneEnterExitListener',['../d6/da1/interfacegames_1_1stendhal_1_1server_1_1core_1_1events_1_1ZoneEnterExitListener.html',1,'games::stendhal::server::core::events']]],
-  ['zoneeventtype_9',['ZoneEventType',['../d4/d2a/enumgames_1_1stendhal_1_1server_1_1core_1_1events_1_1ZoneEventType.html',1,'games::stendhal::server::core::events']]],
-  ['zonegroupsxmlloader_10',['ZoneGroupsXMLLoader',['../d0/daf/classgames_1_1stendhal_1_1server_1_1core_1_1config_1_1ZoneGroupsXMLLoader.html',1,'games::stendhal::server::core::config']]],
-  ['zoneinfo_11',['ZoneInfo',['../d1/da9/classgames_1_1stendhal_1_1client_1_1ZoneInfo.html',1,'games::stendhal::client']]],
-  ['zonenotchanged_12',['ZoneNotChanged',['../dd/d8b/classgames_1_1stendhal_1_1server_1_1actions_1_1validator_1_1ZoneNotChanged.html',1,'games::stendhal::server::actions::validator']]],
-  ['zonenotifier_13',['ZoneNotifier',['../d9/dfe/classgames_1_1stendhal_1_1server_1_1core_1_1events_1_1ZoneNotifier.html',1,'games::stendhal::server::core::events']]],
-  ['zonestatistics_14',['ZoneStatistics',['../d8/daf/classgames_1_1stendhal_1_1server_1_1script_1_1ZoneStatistics.html',1,'games::stendhal::server::script']]],
-  ['zonesxmlloader_15',['ZonesXMLLoader',['../dc/d53/classgames_1_1stendhal_1_1server_1_1core_1_1config_1_1ZonesXMLLoader.html',1,'games::stendhal::server::core::config']]]
+  ['yannpc_0',['YanNPC',['../d3/d67/classgames_1_1stendhal_1_1server_1_1maps_1_1athor_1_1holiday__area_1_1YanNPC.htm',1,'games::stendhal::server::maps::athor::holiday_area']]],
+  ['yellowcrystalnpc_1',['YellowCrystalNPC',['../d0/d4c/classgames_1_1stendhal_1_1server_1_1maps_1_1semos_1_1mountain_1_1YellowCrystalNPC.htm',1,'games::stendhal::server::maps::semos::mountain']]]
 ];

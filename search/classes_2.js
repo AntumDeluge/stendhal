@@ -1,265 +1,235 @@
 var searchData=
-
 [
-
-  ['cacheable_0',['Cacheable',['../de/d91/interfacegames_1_1stendhal_1_1client_1_1gui_1_1ComponentPaintCache_1_1Cacheable.html',1,'games::stendhal::client::gui::ComponentPaintCache']]],
-
-  ['capturetheflagflag_1',['CaptureTheFlagFlag',['../dd/d11/classgames_1_1stendhal_1_1server_1_1entity_1_1item_1_1CaptureTheFlagFlag.html',1,'games::stendhal::server::entity::item']]],
-
-  ['carrotgrower_2',['CarrotGrower',['../d9/d4c/classgames_1_1stendhal_1_1client_1_1entity_1_1CarrotGrower.html',1,'games::stendhal::client::entity']]],
-
-  ['caseinsensitiveexprmatcher_3',['CaseInsensitiveExprMatcher',['../d1/d4f/classgames_1_1stendhal_1_1common_1_1parser_1_1CaseInsensitiveExprMatcher.html',1,'games::stendhal::common::parser']]],
-
-  ['castspellaction_4',['CastSpellAction',['../da/d4d/classgames_1_1stendhal_1_1client_1_1actions_1_1CastSpellAction.html',1,'games.stendhal.client.actions.CastSpellAction'],['../de/d21/classgames_1_1stendhal_1_1server_1_1actions_1_1spell_1_1CastSpellAction.html',1,'games.stendhal.server.actions.spell.CastSpellAction']]],
-
-  ['cat_5',['Cat',['../da/d94/classgames_1_1stendhal_1_1server_1_1entity_1_1creature_1_1Cat.html',1,'games::stendhal::server::entity::creature']]],
-
-  ['category_6',['Category',['../d0/daf/enumgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1achievement_1_1Category.html',1,'games::stendhal::server::core::rp::achievement']]],
-
-  ['challengeplayeraction_7',['ChallengePlayerAction',['../df/d39/classgames_1_1stendhal_1_1server_1_1actions_1_1ChallengePlayerAction.html',1,'games::stendhal::server::actions']]],
-
-  ['changemap_8',['ChangeMap',['../db/d72/classgames_1_1stendhal_1_1server_1_1script_1_1ChangeMap.html',1,'games::stendhal::server::script']]],
-
-  ['changeplayeroutfitaction_9',['ChangePlayerOutfitAction',['../d0/dbd/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1action_1_1ChangePlayerOutfitAction.html',1,'games::stendhal::server::entity::npc::action']]],
-
-  ['changeplayeroutfitandpreservetempaction_10',['ChangePlayerOutfitAndPreserveTempAction',['../d9/dc0/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1action_1_1ChangePlayerOutfitAndPreserveTempAction.html',1,'games::stendhal::server::entity::npc::action']]],
-
-  ['changerequest_11',['ChangeRequest',['../d3/dac/classmarauroa_1_1server_1_1net_1_1nio_1_1ChangeRequest.html',1,'marauroa::server::net::nio']]],
-
-  ['channel_12',['Channel',['../d3/d9b/classmarauroa_1_1common_1_1net_1_1Channel.html',1,'marauroa::common::net']]],
-
-  ['chaosraid_13',['ChaosRaid',['../d8/da8/classgames_1_1stendhal_1_1server_1_1script_1_1ChaosRaid.html',1,'games::stendhal::server::script']]],
-
-  ['charactercreator_14',['CharacterCreator',['../db/dcd/classgames_1_1stendhal_1_1server_1_1core_1_1account_1_1CharacterCreator.html',1,'games::stendhal::server::core::account']]],
-
-  ['characterdao_15',['CharacterDAO',['../dc/d47/classmarauroa_1_1server_1_1game_1_1db_1_1CharacterDAO.html',1,'marauroa::server::game::db']]],
-
-  ['characterdialog_16',['CharacterDialog',['../df/d4b/classgames_1_1stendhal_1_1client_1_1gui_1_1login_1_1CharacterDialog.html',1,'games::stendhal::client::gui::login']]],
-
-  ['characteriterator_17',['CharacterIterator',['../d6/d6d/classgames_1_1stendhal_1_1server_1_1core_1_1engine_1_1db_1_1CharacterIterator.html',1,'games::stendhal::server::core::engine::db']]],
-
-  ['charactermap_18',['CharacterMap',['../d7/d16/classgames_1_1stendhal_1_1client_1_1gui_1_1chattext_1_1CharacterMap.html',1,'games::stendhal::client::gui::chattext']]],
-
-  ['characterresult_19',['CharacterResult',['../d9/d61/classmarauroa_1_1common_1_1game_1_1CharacterResult.html',1,'marauroa::common::game']]],
-
-  ['charasconverter_20',['CharasConverter',['../d0/dd5/classgames_1_1stendhal_1_1tools_1_1charas_1_1CharasConverter.html',1,'games::stendhal::tools::charas']]],
-
-  ['chataction_21',['ChatAction',['../dd/ddd/classgames_1_1stendhal_1_1server_1_1actions_1_1chat_1_1ChatAction.html',1,'games.stendhal.server.actions.chat.ChatAction'],['../d0/d18/interfacegames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1ChatAction.html',1,'games.stendhal.server.entity.npc.ChatAction']]],
-
-  ['chatcompletionhelper_22',['ChatCompletionHelper',['../de/d79/classgames_1_1stendhal_1_1client_1_1gui_1_1chattext_1_1ChatCompletionHelper.html',1,'games::stendhal::client::gui::chattext']]],
-
-  ['chatcondition_23',['ChatCondition',['../d2/d43/interfacegames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1ChatCondition.html',1,'games::stendhal::server::entity::npc']]],
-
-  ['chatlineparser_24',['ChatLineParser',['../d3/d31/classgames_1_1stendhal_1_1client_1_1scripting_1_1ChatLineParser.html',1,'games::stendhal::client::scripting']]],
-
-  ['chatmessage_25',['ChatMessage',['../d9/d02/classgames_1_1stendhal_1_1server_1_1core_1_1engine_1_1ChatMessage.html',1,'games::stendhal::server::core::engine']]],
-
-  ['chattestcreator_26',['ChatTestCreator',['../d0/d3c/classgames_1_1stendhal_1_1tools_1_1test_1_1ChatTestCreator.html',1,'games::stendhal::tools::test']]],
-
-  ['chattextcontroller_27',['ChatTextController',['../d6/daf/classgames_1_1stendhal_1_1client_1_1gui_1_1chattext_1_1ChatTextController.html',1,'games::stendhal::client::gui::chattext']]],
-
-  ['chattextsink_28',['ChatTextSink',['../dd/de5/classgames_1_1stendhal_1_1client_1_1gui_1_1chatlog_1_1ChatTextSink.html',1,'games::stendhal::client::gui::chatlog']]],
-
-  ['chest_29',['Chest',['../d7/d32/classgames_1_1stendhal_1_1client_1_1entity_1_1Chest.html',1,'games.stendhal.client.entity.Chest'],['../d6/dcd/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1chest_1_1Chest.html',1,'games.stendhal.server.entity.mapstuff.chest.Chest']]],
-
-  ['chestlistener_30',['ChestListener',['../d4/d12/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1chest_1_1StoredChest_1_1ChestListener.html',1,'games::stendhal::server::entity::mapstuff::chest::StoredChest']]],
-
-  ['chestslot_31',['ChestSlot',['../d4/d88/classgames_1_1stendhal_1_1server_1_1entity_1_1slot_1_1ChestSlot.html',1,'games::stendhal::server::entity::slot']]],
-
-  ['circumstancesofdeath_32',['CircumstancesOfDeath',['../d7/d3e/classgames_1_1stendhal_1_1server_1_1entity_1_1creature_1_1CircumstancesOfDeath.html',1,'games::stendhal::server::entity::creature']]],
-
-  ['class_33',['Class',['https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Class',1,'java::lang']]],
-.html
-  ['class_3c_20_3f_20_3e_34',['Class&lt; ? &gt;',['https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Class',1,'java::lang']]],
-.html
-  ['class_3c_20t_20_3e_35',['Class&lt; T &gt;',['https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Class',1,'java::lang']]],
-.html
-  ['class_3c_3f_3e_36',['Class&lt;?&gt;',['https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Class',1,'java::lang']]],
-.html
-  ['classtoinstancesmap_37',['ClassToInstancesMap',['../d9/d22/classgames_1_1stendhal_1_1server_1_1util_1_1ClassToInstancesMap.html',1,'games::stendhal::server::util']]],
-
-  ['cleanwhitespace_38',['CleanWhitespace',['../d7/d60/classgames_1_1stendhal_1_1tools_1_1CleanWhitespace.html',1,'games::stendhal::tools']]],
-
-  ['clientframework_39',['ClientFramework',['../d6/d3c/classmarauroa_1_1client_1_1ClientFramework.html',1,'marauroa::client']]],
-
-  ['clientgameconfiguration_40',['ClientGameConfiguration',['../d9/ddd/classgames_1_1stendhal_1_1client_1_1update_1_1ClientGameConfiguration.html',1,'games::stendhal::client::update']]],
-
-  ['clientscript_41',['ClientScript',['../de/d2b/interfacegames_1_1stendhal_1_1client_1_1scripting_1_1ClientScript.html',1,'games::stendhal::client::scripting']]],
-
-  ['clientscriptimpl_42',['ClientScriptImpl',['../d4/dd1/classgames_1_1stendhal_1_1client_1_1scripting_1_1ClientScriptImpl.html',1,'games::stendhal::client::scripting']]],
-
-  ['clientscriptinterface_43',['ClientScriptInterface',['../de/d6b/classgames_1_1stendhal_1_1client_1_1scripting_1_1ClientScriptInterface.html',1,'games::stendhal::client::scripting']]],
-
-  ['clientsingletonrepository_44',['ClientSingletonRepository',['../de/d89/classgames_1_1stendhal_1_1client_1_1ClientSingletonRepository.html',1,'games::stendhal::client']]],
-
-  ['clientstate_45',['ClientState',['../df/dc8/enummarauroa_1_1server_1_1game_1_1container_1_1ClientState.html',1,'marauroa::server::game::container']]],
-
-  ['clock_46',['Clock',['../d7/dc2/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1sign_1_1Clock.html',1,'games::stendhal::server::entity::mapstuff::sign']]],
-
-  ['clonemanager_47',['CloneManager',['../db/d03/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1CloneManager.html',1,'games::stendhal::server::entity::npc']]],
-
-  ['closelistener_48',['CloseListener',['../d4/d00/interfacegames_1_1stendhal_1_1client_1_1gui_1_1InternalWindow_1_1CloseListener.html',1,'games::stendhal::client::gui::InternalWindow']]],
-
-  ['coalsource_49',['CoalSource',['../d5/d32/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1useable_1_1CoalSource.html',1,'games::stendhal::server::entity::mapstuff::useable']]],
-
-  ['collectinggroupquestadder_50',['CollectingGroupQuestAdder',['../de/da7/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1behaviour_1_1adder_1_1CollectingGroupQuestAdder.html',1,'games::stendhal::server::entity::npc::behaviour::adder']]],
-
-  ['collectinggroupquestbehaviour_51',['CollectingGroupQuestBehaviour',['../d9/dcd/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1behaviour_1_1impl_1_1CollectingGroupQuestBehaviour.html',1,'games::stendhal::server::entity::npc::behaviour::impl']]],
-
-  ['collectionfilter_52',['CollectionFilter',['../d0/d5e/classgames_1_1stendhal_1_1common_1_1filter_1_1CollectionFilter.html',1,'games::stendhal::common::filter']]],
-
-  ['collectionfilter_3c_20string_20_3e_53',['CollectionFilter&lt; String &gt;',['../d0/d5e/classgames_1_1stendhal_1_1common_1_1filter_1_1CollectionFilter.html',1,'games::stendhal::common::filter']]],
-
-  ['collectrequesteditemsaction_54',['CollectRequestedItemsAction',['../da/d74/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1action_1_1CollectRequestedItemsAction.html',1,'games::stendhal::server::entity::npc::action']]],
-
-  ['collisionaction_55',['CollisionAction',['../d9/dd7/enumgames_1_1stendhal_1_1server_1_1entity_1_1CollisionAction.html',1,'games::stendhal::server::entity']]],
-
-  ['collisiondetection_56',['CollisionDetection',['../d6/d04/classgames_1_1stendhal_1_1common_1_1CollisionDetection.html',1,'games::stendhal::common']]],
-
-  ['collisionmap_57',['CollisionMap',['../d2/dfb/classgames_1_1stendhal_1_1common_1_1CollisionMap.html',1,'games::stendhal::common']]],
-
-  ['color_58',['Color',['https://docs.oracle.com/en/java/javase/16/docs/api/java.desktop/java/awt/Color',1,'java::awt']]],
-.html
-  ['colorselector_59',['ColorSelector',['../df/d21/classgames_1_1stendhal_1_1tools_1_1colorselector_1_1ColorSelector.html',1,'games::stendhal::tools::colorselector']]],
-
-  ['colorswatch_60',['ColorSwatch',['../db/d17/classgames_1_1stendhal_1_1tools_1_1colorselector_1_1ColorSwatch.html',1,'games::stendhal::tools::colorselector']]],
-
-  ['commandcenter_61',['CommandCenter',['../db/def/classgames_1_1stendhal_1_1server_1_1actions_1_1CommandCenter.html',1,'games::stendhal::server::actions']]],
-
-  ['commandlineparser_62',['CommandlineParser',['../d5/dad/classgames_1_1stendhal_1_1common_1_1CommandlineParser.html',1,'games::stendhal::common']]],
-
-  ['commerceachievementfactory_63',['CommerceAchievementFactory',['../d7/d67/classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1achievement_1_1factory_1_1CommerceAchievementFactory.html',1,'games::stendhal::server::core::rp::achievement::factory']]],
-
-  ['commonpassword_64',['CommonPassword',['../d1/da8/classgames_1_1stendhal_1_1server_1_1core_1_1account_1_1CommonPassword.html',1,'games::stendhal::server::core::account']]],
-
-  ['comparisonoperator_65',['ComparisonOperator',['../df/dc5/enumgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1condition_1_1ComparisonOperator.html',1,'games::stendhal::server::entity::npc::condition']]],
-
-  ['complainaboutsentenceerroraction_66',['ComplainAboutSentenceErrorAction',['../d4/d94/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1action_1_1ComplainAboutSentenceErrorAction.html',1,'games::stendhal::server::entity::npc::action']]],
-
-  ['componentpaintcache_67',['ComponentPaintCache',['../d5/ddd/classgames_1_1stendhal_1_1client_1_1gui_1_1ComponentPaintCache.html',1,'games::stendhal::client::gui']]],
-
-  ['compositesprite_68',['CompositeSprite',['../dd/da2/classgames_1_1stendhal_1_1client_1_1sprite_1_1CompositeSprite.html',1,'games::stendhal::client::sprite']]],
-
-  ['compoundname_69',['CompoundName',['../de/d69/classgames_1_1stendhal_1_1common_1_1parser_1_1CompoundName.html',1,'games::stendhal::common::parser']]],
-
-  ['conditionalstopaction_70',['ConditionalStopAction',['../de/d62/classgames_1_1stendhal_1_1server_1_1actions_1_1move_1_1ConditionalStopAction.html',1,'games::stendhal::server::actions::move']]],
-
-  ['conditionandactionarea_71',['ConditionAndActionArea',['../d8/d1f/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1area_1_1ConditionAndActionArea.html',1,'games::stendhal::server::entity::mapstuff::area']]],
-
-  ['conditionandactionareafactory_72',['ConditionAndActionAreaFactory',['../d3/d9f/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1area_1_1ConditionAndActionAreaFactory.html',1,'games::stendhal::server::entity::mapstuff::area']]],
-
-  ['conditionandactionportal_73',['ConditionAndActionPortal',['../d6/dc8/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1portal_1_1ConditionAndActionPortal.html',1,'games::stendhal::server::entity::mapstuff::portal']]],
-
-  ['conditionandactionportalfactory_74',['ConditionAndActionPortalFactory',['../de/d7c/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1portal_1_1ConditionAndActionPortalFactory.html',1,'games::stendhal::server::entity::mapstuff::portal']]],
-
-  ['configurablefactory_75',['ConfigurableFactory',['../dc/d1e/interfacegames_1_1stendhal_1_1server_1_1core_1_1config_1_1factory_1_1ConfigurableFactory.html',1,'games::stendhal::server::core::config::factory']]],
-
-  ['configurablefactorycontext_76',['ConfigurableFactoryContext',['../d5/da8/classgames_1_1stendhal_1_1server_1_1core_1_1config_1_1factory_1_1ConfigurableFactoryContext.html',1,'games::stendhal::server::core::config::factory']]],
-
-  ['configurablefactoryhelper_77',['ConfigurableFactoryHelper',['../df/d16/classgames_1_1stendhal_1_1server_1_1core_1_1config_1_1factory_1_1ConfigurableFactoryHelper.html',1,'games::stendhal::server::core::config::factory']]],
-
-  ['configuration_78',['Configuration',['../d6/dcb/classmarauroa_1_1common_1_1Configuration.html',1,'marauroa::common']]],
-
-  ['configurationparams_79',['ConfigurationParams',['../df/d2d/classmarauroa_1_1common_1_1ConfigurationParams.html',1,'marauroa::common']]],
-
-  ['configuratordescriptor_80',['ConfiguratorDescriptor',['../d6/ddc/classgames_1_1stendhal_1_1server_1_1core_1_1config_1_1zone_1_1ConfiguratorDescriptor.html',1,'games::stendhal::server::core::config::zone']]],
-
-  ['configuratorxmlreader_81',['ConfiguratorXMLReader',['../d5/d8c/classgames_1_1stendhal_1_1server_1_1core_1_1config_1_1zone_1_1ConfiguratorXMLReader.html',1,'games::stendhal::server::core::config::zone']]],
-
-  ['configuredsounds_82',['ConfiguredSounds',['../d2/d10/classgames_1_1stendhal_1_1client_1_1sound_1_1ConfiguredSounds.html',1,'games::stendhal::client::sound']]],
-
-  ['confusestatus_83',['ConfuseStatus',['../d0/d25/classgames_1_1stendhal_1_1server_1_1entity_1_1status_1_1ConfuseStatus.html',1,'games::stendhal::server::entity::status']]],
-
-  ['confusestatushandler_84',['ConfuseStatusHandler',['../db/dc7/classgames_1_1stendhal_1_1server_1_1entity_1_1status_1_1ConfuseStatusHandler.html',1,'games::stendhal::server::entity::status']]],
-
-  ['connectionmanager_85',['ConnectionManager',['../d1/d09/interfacemarauroa_1_1common_1_1net_1_1ConnectionManager.html',1,'marauroa::common::net']]],
-
-  ['connectionvalidator_86',['ConnectionValidator',['../da/d1c/classmarauroa_1_1server_1_1net_1_1validator_1_1ConnectionValidator.html',1,'marauroa::server::net::validator']]],
-
-  ['constants_87',['Constants',['../d5/d68/classgames_1_1stendhal_1_1common_1_1Constants.html',1,'games::stendhal::common']]],
-
-  ['consumableitem_88',['ConsumableItem',['../d0/d17/classgames_1_1stendhal_1_1server_1_1entity_1_1item_1_1ConsumableItem.html',1,'games::stendhal::server::entity::item']]],
-
-  ['container_89',['Container',['../d4/d9f/classgames_1_1stendhal_1_1server_1_1entity_1_1item_1_1Container.html',1,'games::stendhal::server::entity::item']]],
-
-  ['containeritemslot_90',['ContainerItemSlot',['../d9/d02/classgames_1_1stendhal_1_1server_1_1entity_1_1slot_1_1ContainerItemSlot.html',1,'games::stendhal::server::entity::slot']]],
-
-  ['contentchangelistener_91',['ContentChangeListener',['../d9/d86/interfacegames_1_1stendhal_1_1client_1_1entity_1_1ContentChangeListener.html',1,'games::stendhal::client::entity']]],
-
-  ['contmoveandstrengthenonlineplayers_92',['ContMoveAndStrengthenOnlinePlayers',['../de/dbf/classgames_1_1stendhal_1_1server_1_1script_1_1ContMoveAndStrengthenOnlinePlayers.html',1,'games::stendhal::server::script']]],
-
-  ['contributoravatarrenamer_93',['ContributorAvatarRenamer',['../d8/dc6/classgames_1_1stendhal_1_1tools_1_1contributors_1_1ContributorAvatarRenamer.html',1,'games::stendhal::tools::contributors']]],
-
-  ['contributorsgeneration_94',['ContributorsGeneration',['../d5/dd0/classgames_1_1stendhal_1_1tools_1_1contributors_1_1ContributorsGeneration.html',1,'games::stendhal::tools::contributors']]],
-
-  ['convctxformatcher_95',['ConvCtxForMatcher',['../d9/d4c/classgames_1_1stendhal_1_1common_1_1parser_1_1ConvCtxForMatcher.html',1,'games::stendhal::common::parser']]],
-
-  ['convctxformatchingsource_96',['ConvCtxForMatchingSource',['../d7/d4e/classgames_1_1stendhal_1_1common_1_1parser_1_1ConvCtxForMatchingSource.html',1,'games::stendhal::common::parser']]],
-
-  ['conveniencemapper_97',['ConvenienceMapper',['../d4/d4c/classgames_1_1stendhal_1_1client_1_1gui_1_1settings_1_1ConvenienceMapper.html',1,'games::stendhal::client::gui::settings']]],
-
-  ['conversationcontext_98',['ConversationContext',['../d9/d52/classgames_1_1stendhal_1_1common_1_1parser_1_1ConversationContext.html',1,'games::stendhal::common::parser']]],
-
-  ['conversationparser_99',['ConversationParser',['../d8/de5/classgames_1_1stendhal_1_1common_1_1parser_1_1ConversationParser.html',1,'games::stendhal::common::parser']]],
-
-  ['conversationphrases_100',['ConversationPhrases',['../d6/d9f/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1ConversationPhrases.html',1,'games::stendhal::server::entity::npc']]],
-
-  ['conversationstates_101',['ConversationStates',['../de/d9c/enumgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1ConversationStates.html',1,'games::stendhal::server::entity::npc']]],
-
-  ['copytable_102',['CopyTable',['../d4/db6/classgames_1_1stendhal_1_1tools_1_1copytable_1_1CopyTable.html',1,'games::stendhal::tools::copytable']]],
-
-  ['corpse_103',['Corpse',['../dd/dba/classgames_1_1stendhal_1_1client_1_1entity_1_1Corpse.html',1,'games.stendhal.client.entity.Corpse'],['../d5/d6f/classgames_1_1stendhal_1_1server_1_1entity_1_1item_1_1Corpse.html',1,'games.stendhal.server.entity.item.Corpse']]],
-
-  ['countermap_104',['CounterMap',['../da/d50/classgames_1_1stendhal_1_1server_1_1util_1_1CounterMap.html',1,'games::stendhal::server::util']]],
-
-  ['countermap_3c_20games_3a_3astendhal_3a_3aserver_3a_3aentity_3a_3aentity_20_3e_105',['CounterMap&lt; games::stendhal::server::entity::Entity &gt;',['../da/d50/classgames_1_1stendhal_1_1server_1_1util_1_1CounterMap.html',1,'games::stendhal::server::util']]],
-
-  ['countermap_3c_20string_20_3e_106',['CounterMap&lt; String &gt;',['../da/d50/classgames_1_1stendhal_1_1server_1_1util_1_1CounterMap.html',1,'games::stendhal::server::util']]],
-
-  ['countobjects_107',['CountObjects',['../de/d43/classgames_1_1stendhal_1_1server_1_1script_1_1CountObjects.html',1,'games::stendhal::server::script']]],
-
-  ['countunusedsprites_108',['CountUnusedSprites',['../d1/d63/classgames_1_1stendhal_1_1server_1_1script_1_1CountUnusedSprites.html',1,'games::stendhal::server::script']]],
-
-  ['coward_109',['Coward',['../d9/ddc/classgames_1_1stendhal_1_1server_1_1entity_1_1creature_1_1impl_1_1attack_1_1Coward.html',1,'games::stendhal::server::entity::creature::impl::attack']]],
-
-  ['crc_110',['CRC',['../d9/d1b/classgames_1_1stendhal_1_1common_1_1CRC.html',1,'games.stendhal.common.CRC'],['../db/dcd/classmarauroa_1_1common_1_1CRC.html',1,'marauroa.common.CRC']]],
-
-  ['createaccountdialog_111',['CreateAccountDialog',['../d8/d34/classgames_1_1stendhal_1_1client_1_1gui_1_1login_1_1CreateAccountDialog.html',1,'games::stendhal::client::gui::login']]],
-
-  ['createchallengeaction_112',['CreateChallengeAction',['../d8/db3/classgames_1_1stendhal_1_1client_1_1actions_1_1CreateChallengeAction.html',1,'games::stendhal::client::actions']]],
-
-  ['createraid_113',['CreateRaid',['../d2/db3/classgames_1_1stendhal_1_1server_1_1script_1_1CreateRaid.html',1,'games::stendhal::server::script']]],
-
-  ['createslotaction_114',['CreateSlotAction',['../d3/d6b/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1action_1_1CreateSlotAction.html',1,'games::stendhal::server::entity::npc::action']]],
-
-  ['creature_115',['Creature',['../d4/d5b/classgames_1_1stendhal_1_1client_1_1entity_1_1Creature.html',1,'games.stendhal.client.entity.Creature'],['../df/d5c/classgames_1_1stendhal_1_1server_1_1entity_1_1creature_1_1Creature.html',1,'games.stendhal.server.entity.creature.Creature']]],
-
-  ['creaturegroupsxmlloader_116',['CreatureGroupsXMLLoader',['../de/da3/classgames_1_1stendhal_1_1server_1_1core_1_1config_1_1CreatureGroupsXMLLoader.html',1,'games::stendhal::server::core::config']]],
-
-  ['creaturenamevalidator_117',['CreatureNameValidator',['../d3/db9/classgames_1_1stendhal_1_1server_1_1core_1_1account_1_1CreatureNameValidator.html',1,'games::stendhal::server::core::account']]],
-
-  ['creatureprotectionarea_118',['CreatureProtectionArea',['../d6/d83/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1area_1_1CreatureProtectionArea.html',1,'games::stendhal::server::entity::mapstuff::area']]],
-
-  ['creatureprotectionareafactory_119',['CreatureProtectionAreaFactory',['../db/dfb/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1area_1_1CreatureProtectionAreaFactory.html',1,'games::stendhal::server::entity::mapstuff::area']]],
-
-  ['creaturerespawnpoint_120',['CreatureRespawnPoint',['../d4/daa/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1spawner_1_1CreatureRespawnPoint.html',1,'games::stendhal::server::entity::mapstuff::spawner']]],
-
-  ['creaturesratiocalculator_121',['CreaturesRatioCalculator',['../d1/d2e/classgames_1_1stendhal_1_1server_1_1script_1_1CreaturesRatioCalculator.html',1,'games::stendhal::server::script']]],
-
-  ['creaturesxmlloader_122',['CreaturesXMLLoader',['../db/d75/classgames_1_1stendhal_1_1server_1_1core_1_1config_1_1CreaturesXMLLoader.html',1,'games::stendhal::server::core::config']]],
-
-  ['croupiernpc_123',['CroupierNPC',['../d7/d92/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1CroupierNPC.html',1,'games::stendhal::server::entity::npc']]],
-
-  ['cstatusaction_124',['CStatusAction',['../d0/d74/classgames_1_1stendhal_1_1server_1_1actions_1_1CStatusAction.html',1,'games::stendhal::server::actions']]],
-
-  ['cstatussender_125',['CStatusSender',['../d8/d04/classgames_1_1stendhal_1_1client_1_1CStatusSender.html',1,'games::stendhal::client']]],
-
-  ['cursesclient_126',['CursesClient',['../d8/de5/classgames_1_1stendhal_1_1bot_1_1curses_1_1CursesClient.html',1,'games::stendhal::bot::curses']]],
-
-  ['cursesui_127',['CursesUI',['../dd/d46/classgames_1_1stendhal_1_1bot_1_1curses_1_1CursesUI.html',1,'games::stendhal::bot::curses']]],
-
-  ['curseswindow_128',['CursesWindow',['../d3/dfa/classgames_1_1stendhal_1_1bot_1_1curses_1_1CursesWindow.html',1,'games::stendhal::bot::curses']]],
-
-  ['cursorrepository_129',['CursorRepository',['../d1/d91/classgames_1_1stendhal_1_1client_1_1gui_1_1styled_1_1cursor_1_1CursorRepository.html',1,'games::stendhal::client::gui::styled::cursor']]]
-
+  ['cache_0',['Cache',['../db/dba/classgames_1_1stendhal_1_1client_1_1Cache.htm',1,'games::stendhal::client']]],
+  ['cacheable_1',['Cacheable',['../de/d91/interfacegames_1_1stendhal_1_1client_1_1gui_1_1ComponentPaintCache_1_1Cacheable.htm',1,'games::stendhal::client::gui::ComponentPaintCache']]],
+  ['cachedcompressedperception_2',['CachedCompressedPerception',['../dc/db7/classmarauroa_1_1common_1_1net_1_1message_1_1MessageS2CPerception_1_1CachedCompressedPerception.htm',1,'marauroa::common::net::message::MessageS2CPerception']]],
+  ['cachekey_3',['CacheKey',['../de/dca/classmarauroa_1_1common_1_1net_1_1message_1_1MessageS2CPerception_1_1CachedCompressedPerception_1_1CacheKey.htm',1,'marauroa::common::net::message::MessageS2CPerception::CachedCompressedPerception']]],
+  ['cadetsnpcs_4',['CadetsNPCs',['../d4/d6a/classgames_1_1stendhal_1_1server_1_1maps_1_1semos_1_1townhall_1_1CadetsNPCs.htm',1,'games::stendhal::server::maps::semos::townhall']]],
+  ['cafesellernpc_5',['CafeSellerNPC',['../d3/ddf/classgames_1_1stendhal_1_1server_1_1maps_1_1ados_1_1market_1_1CafeSellerNPC.htm',1,'games::stendhal::server::maps::ados::market']]],
+  ['camouflagedidlebehaviour_6',['CamouflagedIdleBehaviour',['../de/db2/classgames_1_1stendhal_1_1server_1_1entity_1_1creature_1_1impl_1_1idle_1_1CamouflagedIdleBehaviour.htm',1,'games::stendhal::server::entity::creature::impl::idle']]],
+  ['campfire_7',['Campfire',['../d3/d50/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1Campfire.htm',1,'games::stendhal::server::maps::quests']]],
+  ['campinggirlnpc_8',['CampingGirlNPC',['../d3/d15/classgames_1_1stendhal_1_1server_1_1maps_1_1orril_1_1river_1_1CampingGirlNPC.htm',1,'games::stendhal::server::maps::orril::river']]],
+  ['captainnpc_9',['CaptainNPC',['../dc/d43/classgames_1_1stendhal_1_1server_1_1maps_1_1athor_1_1ship_1_1CaptainNPC.htm',1,'games::stendhal::server::maps::athor::ship']]],
+  ['captivenpc_10',['CaptiveNPC',['../d9/d9b/classgames_1_1stendhal_1_1server_1_1maps_1_1nalwor_1_1hell_1_1CaptiveNPC.htm',1,'games::stendhal::server::maps::nalwor::hell']]],
+  ['captureflagquest_11',['CaptureFlagQuest',['../da/dca/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1captureflag_1_1CaptureFlagQuest.htm',1,'games::stendhal::server::maps::quests::captureflag']]],
+  ['captureflaguselistener_12',['CaptureFlagUseListener',['../df/d3a/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1captureflag_1_1CaptureFlagUseListener.htm',1,'games::stendhal::server::maps::quests::captureflag']]],
+  ['capturetheflagflag_13',['CaptureTheFlagFlag',['../dd/d11/classgames_1_1stendhal_1_1server_1_1entity_1_1item_1_1CaptureTheFlagFlag.htm',1,'games::stendhal::server::entity::item']]],
+  ['cargoworkernpc_14',['CargoWorkerNPC',['../dd/df5/classgames_1_1stendhal_1_1server_1_1maps_1_1athor_1_1ship_1_1CargoWorkerNPC.htm',1,'games::stendhal::server::maps::athor::ship']]],
+  ['carrotgrower_15',['CarrotGrower',['../d9/d4c/classgames_1_1stendhal_1_1client_1_1entity_1_1CarrotGrower.htm',1,'games::stendhal::client::entity']]],
+  ['carrotgrower2dview_16',['CarrotGrower2DView',['../d0/d35/classgames_1_1stendhal_1_1client_1_1gui_1_1j2d_1_1entity_1_1CarrotGrower2DView.htm',1,'games::stendhal::client::gui::j2d::entity']]],
+  ['caseinsensitiveexprmatcher_17',['CaseInsensitiveExprMatcher',['../d1/d4f/classgames_1_1stendhal_1_1common_1_1parser_1_1CaseInsensitiveExprMatcher.htm',1,'games::stendhal::common::parser']]],
+  ['castspellaction_18',['CastSpellAction',['../da/d4d/classgames_1_1stendhal_1_1client_1_1actions_1_1CastSpellAction.htm',1,'games.stendhal.client.actions.CastSpellAction'],['../de/d21/classgames_1_1stendhal_1_1server_1_1actions_1_1spell_1_1CastSpellAction.htm',1,'games.stendhal.server.actions.spell.CastSpellAction']]],
+  ['cat_19',['Cat',['../da/d94/classgames_1_1stendhal_1_1server_1_1entity_1_1creature_1_1Cat.htm',1,'games::stendhal::server::entity::creature']]],
+  ['category_20',['Category',['../d4/d4f/enumgames_1_1stendhal_1_1server_1_1core_1_1config_1_1annotations_1_1Dev_1_1Category.htm',1,'games.stendhal.server.core.config.annotations.Dev.Category'],['../d0/daf/enumgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1achievement_1_1Category.htm',1,'games.stendhal.server.core.rp.achievement.Category']]],
+  ['catsellernpc_21',['CatSellerNPC',['../df/dcc/classgames_1_1stendhal_1_1server_1_1maps_1_1ados_1_1felinashouse_1_1CatSellerNPC.htm',1,'games::stendhal::server::maps::ados::felinashouse']]],
+  ['cell_22',['Cell',['../de/d95/classgames_1_1stendhal_1_1server_1_1entity_1_1player_1_1Cell.htm',1,'games::stendhal::server::entity::player']]],
+  ['challengechataction_23',['ChallengeChatAction',['../dd/d34/classgames_1_1stendhal_1_1server_1_1maps_1_1magic_1_1house1_1_1ChallengerNPC_1_1ChallengeChatAction.htm',1,'games::stendhal::server::maps::magic::house1::ChallengerNPC']]],
+  ['challengemovementlistener_24',['ChallengeMovementListener',['../db/dd8/classgames_1_1stendhal_1_1server_1_1maps_1_1magic_1_1house1_1_1AdventureIsland_1_1ChallengeMovementListener.htm',1,'games.stendhal.server.maps.magic.house1.AdventureIsland.ChallengeMovementListener'],['../db/d8b/classgames_1_1stendhal_1_1server_1_1maps_1_1northpole_1_1Northpole_1_1ChallengeMovementListener.htm',1,'games.stendhal.server.maps.northpole.Northpole.ChallengeMovementListener']]],
+  ['challengeplayeraction_25',['ChallengePlayerAction',['../df/d39/classgames_1_1stendhal_1_1server_1_1actions_1_1ChallengePlayerAction.htm',1,'games::stendhal::server::actions']]],
+  ['challengernpc_26',['ChallengerNPC',['../d6/d97/classgames_1_1stendhal_1_1server_1_1maps_1_1magic_1_1house1_1_1ChallengerNPC.htm',1,'games::stendhal::server::maps::magic::house1']]],
+  ['changelockaction_27',['ChangeLockAction',['../d2/d45/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1houses_1_1ChangeLockAction.htm',1,'games::stendhal::server::maps::quests::houses']]],
+  ['changemap_28',['ChangeMap',['../db/d72/classgames_1_1stendhal_1_1server_1_1script_1_1ChangeMap.htm',1,'games::stendhal::server::script']]],
+  ['changeplayeroutfitaction_29',['ChangePlayerOutfitAction',['../d0/dbd/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1action_1_1ChangePlayerOutfitAction.htm',1,'games::stendhal::server::entity::npc::action']]],
+  ['changeplayeroutfitandpreservetempaction_30',['ChangePlayerOutfitAndPreserveTempAction',['../d9/dc0/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1action_1_1ChangePlayerOutfitAndPreserveTempAction.htm',1,'games::stendhal::server::entity::npc::action']]],
+  ['changerequest_31',['ChangeRequest',['../d3/dac/classmarauroa_1_1server_1_1net_1_1nio_1_1ChangeRequest.htm',1,'marauroa::server::net::nio']]],
+  ['channel_32',['Channel',['../d3/d9b/classmarauroa_1_1common_1_1net_1_1Channel.htm',1,'marauroa::common::net']]],
+  ['channelchangelistener_33',['ChannelChangeListener',['../dc/d63/classgames_1_1stendhal_1_1client_1_1gui_1_1settings_1_1SoundSettings_1_1ChannelChangeListener.htm',1,'games::stendhal::client::gui::settings::SoundSettings']]],
+  ['chaosraid_34',['ChaosRaid',['../d8/da8/classgames_1_1stendhal_1_1server_1_1script_1_1ChaosRaid.htm',1,'games::stendhal::server::script']]],
+  ['character_35',['Character',['../d2/d19/classgames_1_1stendhal_1_1client_1_1gui_1_1Character.htm',1,'games::stendhal::client::gui']]],
+  ['charactercreator_36',['CharacterCreator',['../db/dcd/classgames_1_1stendhal_1_1server_1_1core_1_1account_1_1CharacterCreator.htm',1,'games::stendhal::server::core::account']]],
+  ['characterdao_37',['CharacterDAO',['../dc/d47/classmarauroa_1_1server_1_1game_1_1db_1_1CharacterDAO.htm',1,'marauroa::server::game::db']]],
+  ['characterdialog_38',['CharacterDialog',['../df/d4b/classgames_1_1stendhal_1_1client_1_1gui_1_1login_1_1CharacterDialog.htm',1,'games::stendhal::client::gui::login']]],
+  ['characteriterator_39',['CharacterIterator',['../d6/d6d/classgames_1_1stendhal_1_1server_1_1core_1_1engine_1_1db_1_1CharacterIterator.htm',1,'games::stendhal::server::core::engine::db']]],
+  ['charactermap_40',['CharacterMap',['../d7/d16/classgames_1_1stendhal_1_1client_1_1gui_1_1chattext_1_1CharacterMap.htm',1,'games::stendhal::client::gui::chattext']]],
+  ['characterresult_41',['CharacterResult',['../d9/d61/classmarauroa_1_1common_1_1game_1_1CharacterResult.htm',1,'marauroa::common::game']]],
+  ['charasconverter_42',['CharasConverter',['../d0/dd5/classgames_1_1stendhal_1_1tools_1_1charas_1_1CharasConverter.htm',1,'games::stendhal::tools::charas']]],
+  ['chataction_43',['ChatAction',['../dd/ddd/classgames_1_1stendhal_1_1server_1_1actions_1_1chat_1_1ChatAction.htm',1,'games.stendhal.server.actions.chat.ChatAction'],['../d0/d18/interfacegames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1ChatAction.htm',1,'games.stendhal.server.entity.npc.ChatAction']]],
+  ['chatcache_44',['ChatCache',['../d9/d5f/classgames_1_1stendhal_1_1client_1_1gui_1_1chattext_1_1ChatCache.htm',1,'games::stendhal::client::gui::chattext']]],
+  ['chatcompletionhelper_45',['ChatCompletionHelper',['../de/d79/classgames_1_1stendhal_1_1client_1_1gui_1_1chattext_1_1ChatCompletionHelper.htm',1,'games::stendhal::client::gui::chattext']]],
+  ['chatcondition_46',['ChatCondition',['../d2/d43/interfacegames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1ChatCondition.htm',1,'games::stendhal::server::entity::npc']]],
+  ['chatlineparser_47',['ChatLineParser',['../d3/d31/classgames_1_1stendhal_1_1client_1_1scripting_1_1ChatLineParser.htm',1,'games::stendhal::client::scripting']]],
+  ['chatlogarea_48',['ChatLogArea',['../dc/d7a/classgames_1_1stendhal_1_1client_1_1gui_1_1ChatLogArea.htm',1,'games::stendhal::client::gui']]],
+  ['chatmessage_49',['ChatMessage',['../d9/d02/classgames_1_1stendhal_1_1server_1_1core_1_1engine_1_1ChatMessage.htm',1,'games::stendhal::server::core::engine']]],
+  ['chattestcreator_50',['ChatTestCreator',['../d0/d3c/classgames_1_1stendhal_1_1tools_1_1test_1_1ChatTestCreator.htm',1,'games::stendhal::tools::test']]],
+  ['chattextcontroller_51',['ChatTextController',['../d6/daf/classgames_1_1stendhal_1_1client_1_1gui_1_1chattext_1_1ChatTextController.htm',1,'games::stendhal::client::gui::chattext']]],
+  ['chattextsink_52',['ChatTextSink',['../dd/de5/classgames_1_1stendhal_1_1client_1_1gui_1_1chatlog_1_1ChatTextSink.htm',1,'games::stendhal::client::gui::chatlog']]],
+  ['checkingredientsfordessertaction_53',['checkIngredientsForDessertAction',['../db/d76/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1MealForGroongo_1_1checkIngredientsForDessertAction.htm',1,'games::stendhal::server::maps::quests::MealForGroongo']]],
+  ['checkingredientsformaindishaction_54',['checkIngredientsForMainDishAction',['../df/de9/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1MealForGroongo_1_1checkIngredientsForMainDishAction.htm',1,'games::stendhal::server::maps::quests::MealForGroongo']]],
+  ['checkquestinprogressaction_55',['checkQuestInProgressAction',['../d4/d2a/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1MealForGroongo_1_1checkQuestInProgressAction.htm',1,'games::stendhal::server::maps::quests::MealForGroongo']]],
+  ['chefnpc_56',['ChefNPC',['../dd/d5b/classgames_1_1stendhal_1_1server_1_1maps_1_1deniran_1_1cityinterior_1_1bakery_1_1ChefNPC.htm',1,'games.stendhal.server.maps.deniran.cityinterior.bakery.ChefNPC'],['../d8/dc8/classgames_1_1stendhal_1_1server_1_1maps_1_1semos_1_1bakery_1_1ChefNPC.htm',1,'games.stendhal.server.maps.semos.bakery.ChefNPC']]],
+  ['cherubnpc_57',['CherubNPC',['../d3/d84/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1SevenCherubs_1_1CherubNPC.htm',1,'games::stendhal::server::maps::quests::SevenCherubs']]],
+  ['chest_58',['Chest',['../d7/d32/classgames_1_1stendhal_1_1client_1_1entity_1_1Chest.htm',1,'games.stendhal.client.entity.Chest'],['../d6/dcd/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1chest_1_1Chest.htm',1,'games.stendhal.server.entity.mapstuff.chest.Chest']]],
+  ['chest2dview_59',['Chest2DView',['../d9/d1b/classgames_1_1stendhal_1_1client_1_1gui_1_1j2d_1_1entity_1_1Chest2DView.htm',1,'games::stendhal::client::gui::j2d::entity']]],
+  ['chestlistener_60',['ChestListener',['../d4/d12/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1chest_1_1StoredChest_1_1ChestListener.htm',1,'games::stendhal::server::entity::mapstuff::chest::StoredChest']]],
+  ['chestslot_61',['ChestSlot',['../d4/d88/classgames_1_1stendhal_1_1server_1_1entity_1_1slot_1_1ChestSlot.htm',1,'games::stendhal::server::entity::slot']]],
+  ['chieffalatheendishwashernpc_62',['ChiefFalatheenDishwasherNPC',['../de/de0/classgames_1_1stendhal_1_1server_1_1maps_1_1nalwor_1_1assassinhq_1_1ChiefFalatheenDishwasherNPC.htm',1,'games::stendhal::server::maps::nalwor::assassinhq']]],
+  ['chocolateforelisabeth_63',['ChocolateForElisabeth',['../d3/de0/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1ChocolateForElisabeth.htm',1,'games::stendhal::server::maps::quests']]],
+  ['choosecharacterhandler_64',['ChooseCharacterHandler',['../d4/d7a/classmarauroa_1_1server_1_1game_1_1messagehandler_1_1ChooseCharacterHandler.htm',1,'marauroa::server::game::messagehandler']]],
+  ['choosedessertaction_65',['chooseDessertAction',['../d4/d34/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1MealForGroongo_1_1chooseDessertAction.htm',1,'games::stendhal::server::maps::quests::MealForGroongo']]],
+  ['choosemaindishaction_66',['chooseMainDishAction',['../d0/d61/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1MealForGroongo_1_1chooseMainDishAction.htm',1,'games::stendhal::server::maps::quests::MealForGroongo']]],
+  ['cidlistaction_67',['CIDListAction',['../d1/d3e/classgames_1_1stendhal_1_1server_1_1actions_1_1admin_1_1CIDListAction.htm',1,'games::stendhal::server::actions::admin']]],
+  ['circumstancesofdeath_68',['CircumstancesOfDeath',['../d7/d3e/classgames_1_1stendhal_1_1server_1_1entity_1_1creature_1_1CircumstancesOfDeath.htm',1,'games::stendhal::server::entity::creature']]],
+  ['class_69',['Class',['https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Class.html',1,'java::lang']]],
+  ['class_3c_20_3f_20_3e_70',['Class&lt; ? &gt;',['https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Class.html',1,'java::lang']]],
+  ['class_3c_20t_20_3e_71',['Class&lt; T &gt;',['https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Class.html',1,'java::lang']]],
+  ['class_3c_3f_3e_72',['Class&lt;?&gt;',['https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Class.html',1,'java::lang']]],
+  ['classtoinstancesmap_73',['ClassToInstancesMap',['../d9/d22/classgames_1_1stendhal_1_1server_1_1util_1_1ClassToInstancesMap.htm',1,'games::stendhal::server::util']]],
+  ['cleanathorsunderground_74',['CleanAthorsUnderground',['../df/d84/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1CleanAthorsUnderground.htm',1,'games::stendhal::server::maps::quests']]],
+  ['cleanstoragespace_75',['CleanStorageSpace',['../de/d5a/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1CleanStorageSpace.htm',1,'games::stendhal::server::maps::quests']]],
+  ['cleanwhitespace_76',['CleanWhitespace',['../d7/d60/classgames_1_1stendhal_1_1tools_1_1CleanWhitespace.htm',1,'games::stendhal::tools']]],
+  ['clearchatlogaction_77',['ClearChatLogAction',['../d1/d78/classgames_1_1stendhal_1_1client_1_1actions_1_1ClearChatLogAction.htm',1,'games::stendhal::client::actions']]],
+  ['clerknpc_78',['ClerkNPC',['../da/df8/classgames_1_1stendhal_1_1server_1_1maps_1_1ados_1_1townhall_1_1ClerkNPC.htm',1,'games::stendhal::server::maps::ados::townhall']]],
+  ['clicklistener_79',['ClickListener',['../d4/dfd/classgames_1_1stendhal_1_1client_1_1gui_1_1InternalManagedWindow_1_1ClickListener.htm',1,'games::stendhal::client::gui::InternalManagedWindow']]],
+  ['clickmodeaction_80',['ClickModeAction',['../d8/d0e/classgames_1_1stendhal_1_1client_1_1actions_1_1ClickModeAction.htm',1,'games::stendhal::client::actions']]],
+  ['clientframework_81',['ClientFramework',['../d6/d3c/classmarauroa_1_1client_1_1ClientFramework.htm',1,'marauroa::client']]],
+  ['clientgameconfiguration_82',['ClientGameConfiguration',['../d9/ddd/classgames_1_1stendhal_1_1client_1_1update_1_1ClientGameConfiguration.htm',1,'games::stendhal::client::update']]],
+  ['clientinfoaction_83',['ClientInfoAction',['../df/d62/classgames_1_1stendhal_1_1client_1_1actions_1_1ClientInfoAction.htm',1,'games::stendhal::client::actions']]],
+  ['clientrunner_84',['ClientRunner',['../d1/d9c/classgames_1_1stendhal_1_1client_1_1update_1_1ClientRunner.htm',1,'games::stendhal::client::update']]],
+  ['clientscript_85',['ClientScript',['../de/d2b/interfacegames_1_1stendhal_1_1client_1_1scripting_1_1ClientScript.htm',1,'games::stendhal::client::scripting']]],
+  ['clientscriptimpl_86',['ClientScriptImpl',['../d4/dd1/classgames_1_1stendhal_1_1client_1_1scripting_1_1ClientScriptImpl.htm',1,'games::stendhal::client::scripting']]],
+  ['clientscriptinterface_87',['ClientScriptInterface',['../de/d6b/classgames_1_1stendhal_1_1client_1_1scripting_1_1ClientScriptInterface.htm',1,'games::stendhal::client::scripting']]],
+  ['clientsingletonrepository_88',['ClientSingletonRepository',['../de/d89/classgames_1_1stendhal_1_1client_1_1ClientSingletonRepository.htm',1,'games::stendhal::client']]],
+  ['clientstate_89',['ClientState',['../df/dc8/enummarauroa_1_1server_1_1game_1_1container_1_1ClientState.htm',1,'marauroa::server::game::container']]],
+  ['cloakcollector_90',['CloakCollector',['../de/d78/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1CloakCollector.htm',1,'games::stendhal::server::maps::quests']]],
+  ['cloakcollector2_91',['CloakCollector2',['../d2/db0/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1CloakCollector2.htm',1,'games::stendhal::server::maps::quests']]],
+  ['cloakforjosephine_92',['CloakForJosephine',['../d1/d8a/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1mithrilcloak_1_1CloakForJosephine.htm',1,'games::stendhal::server::maps::quests::mithrilcloak']]],
+  ['cloakscollectornpc_93',['CloaksCollectorNPC',['../d3/d4b/classgames_1_1stendhal_1_1server_1_1maps_1_1ados_1_1outside_1_1CloaksCollectorNPC.htm',1,'games::stendhal::server::maps::ados::outside']]],
+  ['cloaksforbario_94',['CloaksForBario',['../d7/dc4/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1CloaksForBario.htm',1,'games::stendhal::server::maps::quests']]],
+  ['clock_95',['Clock',['../d7/dc2/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1sign_1_1Clock.htm',1,'games::stendhal::server::entity::mapstuff::sign']]],
+  ['clonemanager_96',['CloneManager',['../db/d03/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1CloneManager.htm',1,'games::stendhal::server::entity::npc']]],
+  ['closeactionlistener_97',['CloseActionListener',['../d9/d54/classgames_1_1stendhal_1_1client_1_1gui_1_1InternalWindow_1_1CloseActionListener.htm',1,'games::stendhal::client::gui::InternalWindow']]],
+  ['closelistener_98',['CloseListener',['../d4/d00/interfacegames_1_1stendhal_1_1client_1_1gui_1_1InternalWindow_1_1CloseListener.htm',1,'games::stendhal::client::gui::InternalWindow']]],
+  ['clubofthorns_99',['ClubOfThorns',['../dc/d9b/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1ClubOfThorns.htm',1,'games::stendhal::server::maps::quests']]],
+  ['coalforhaunchy_100',['CoalForHaunchy',['../d0/d12/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1CoalForHaunchy.htm',1,'games::stendhal::server::maps::quests']]],
+  ['coalsource_101',['CoalSource',['../d5/d32/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1useable_1_1CoalSource.htm',1,'games::stendhal::server::entity::mapstuff::useable']]],
+  ['coastconveyernpc_102',['CoastConveyerNPC',['../d9/ddf/classgames_1_1stendhal_1_1server_1_1maps_1_1athor_1_1ship_1_1CoastConveyerNPC.htm',1,'games::stendhal::server::maps::athor::ship']]],
+  ['codedmessagefromfinnfarmer_103',['CodedMessageFromFinnFarmer',['../db/dc2/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1CodedMessageFromFinnFarmer.htm',1,'games::stendhal::server::maps::quests']]],
+  ['collectallrequestedingredientsatonceaction_104',['collectAllRequestedIngredientsAtOnceAction',['../dc/de5/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1MealForGroongo_1_1collectAllRequestedIngredientsAtOnceAction.htm',1,'games::stendhal::server::maps::quests::MealForGroongo']]],
+  ['collectenemydata_105',['CollectEnemyData',['../d2/d0f/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1CollectEnemyData.htm',1,'games::stendhal::server::maps::quests']]],
+  ['collectinggroupquestadder_106',['CollectingGroupQuestAdder',['../de/da7/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1behaviour_1_1adder_1_1CollectingGroupQuestAdder.htm',1,'games::stendhal::server::entity::npc::behaviour::adder']]],
+  ['collectinggroupquestbehaviour_107',['CollectingGroupQuestBehaviour',['../d9/dcd/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1behaviour_1_1impl_1_1CollectingGroupQuestBehaviour.htm',1,'games::stendhal::server::entity::npc::behaviour::impl']]],
+  ['collectionfilter_108',['CollectionFilter',['../d0/d5e/classgames_1_1stendhal_1_1common_1_1filter_1_1CollectionFilter.htm',1,'games::stendhal::common::filter']]],
+  ['collectionfilter_3c_20string_20_3e_109',['CollectionFilter&lt; String &gt;',['../d0/d5e/classgames_1_1stendhal_1_1common_1_1filter_1_1CollectionFilter.htm',1,'games::stendhal::common::filter']]],
+  ['collectrequesteditemsaction_110',['CollectRequestedItemsAction',['../da/d74/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1action_1_1CollectRequestedItemsAction.htm',1,'games::stendhal::server::entity::npc::action']]],
+  ['collisionaction_111',['CollisionAction',['../d9/dd7/enumgames_1_1stendhal_1_1server_1_1entity_1_1CollisionAction.htm',1,'games::stendhal::server::entity']]],
+  ['collisiondetection_112',['CollisionDetection',['../d6/d04/classgames_1_1stendhal_1_1common_1_1CollisionDetection.htm',1,'games::stendhal::common']]],
+  ['collisionmap_113',['CollisionMap',['../d2/dfb/classgames_1_1stendhal_1_1common_1_1CollisionMap.htm',1,'games::stendhal::common']]],
+  ['color_114',['Color',['https://docs.oracle.com/en/java/javase/16/docs/api/java.desktop/java/awt/Color.html',1,'java::awt']]],
+  ['coloringstate_115',['ColoringState',['../d3/ded/classgames_1_1stendhal_1_1client_1_1gui_1_1textformat_1_1StringFormatter_1_1ColoringState.htm',1,'games::stendhal::client::gui::textformat::StringFormatter']]],
+  ['colorlistener_116',['ColorListener',['../d7/dc0/interfacegames_1_1stendhal_1_1tools_1_1colorselector_1_1ColorSwatch_1_1ColorListener.htm',1,'games::stendhal::tools::colorselector::ColorSwatch']]],
+  ['colorselector_117',['ColorSelector',['../de/d2c/classgames_1_1stendhal_1_1client_1_1gui_1_1ColorSelector.htm',1,'games.stendhal.client.gui.ColorSelector'],['../df/d21/classgames_1_1stendhal_1_1tools_1_1colorselector_1_1ColorSelector.htm',1,'games.stendhal.tools.colorselector.ColorSelector']]],
+  ['colorswatch_118',['ColorSwatch',['../db/d17/classgames_1_1stendhal_1_1tools_1_1colorselector_1_1ColorSwatch.htm',1,'games::stendhal::tools::colorselector']]],
+  ['column_119',['Column',['../de/d15/classgames_1_1stendhal_1_1client_1_1gui_1_1SettingsPanel_1_1Column.htm',1,'games::stendhal::client::gui::SettingsPanel']]],
+  ['commandactionlistener_120',['CommandActionListener',['../d1/d5e/classgames_1_1stendhal_1_1client_1_1gui_1_1SettingsPanel_1_1CommandActionListener.htm',1,'games::stendhal::client::gui::SettingsPanel']]],
+  ['commandcenter_121',['CommandCenter',['../db/def/classgames_1_1stendhal_1_1server_1_1actions_1_1CommandCenter.htm',1,'games::stendhal::server::actions']]],
+  ['commandlineparser_122',['CommandlineParser',['../d5/dad/classgames_1_1stendhal_1_1common_1_1CommandlineParser.htm',1,'games::stendhal::common']]],
+  ['commandlist_123',['CommandList',['../d5/da3/classgames_1_1stendhal_1_1client_1_1gui_1_1wt_1_1CommandList.htm',1,'games::stendhal::client::gui::wt']]],
+  ['commerceachievementfactory_124',['CommerceAchievementFactory',['../d7/d67/classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1achievement_1_1factory_1_1CommerceAchievementFactory.htm',1,'games::stendhal::server::core::rp::achievement::factory']]],
+  ['commonchest_125',['CommonChest',['../d5/d69/classgames_1_1stendhal_1_1server_1_1maps_1_1kalavan_1_1house_1_1CommonChest.htm',1,'games::stendhal::server::maps::kalavan::house']]],
+  ['commonpassword_126',['CommonPassword',['../d1/da8/classgames_1_1stendhal_1_1server_1_1core_1_1account_1_1CommonPassword.htm',1,'games::stendhal::server::core::account']]],
+  ['comparisonoperator_127',['ComparisonOperator',['../df/dc5/enumgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1condition_1_1ComparisonOperator.htm',1,'games::stendhal::server::entity::npc::condition']]],
+  ['complainaboutsentenceerroraction_128',['ComplainAboutSentenceErrorAction',['../d4/d94/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1action_1_1ComplainAboutSentenceErrorAction.htm',1,'games::stendhal::server::entity::npc::action']]],
+  ['completedcountcondition_129',['CompletedCountCondition',['../d2/dfb/classgames_1_1stendhal_1_1server_1_1core_1_1rp_1_1achievement_1_1factory_1_1KillBlordroughsAchie8af47393ed8c1b3a9a19f64b5a8820ab.htm',1,'games::stendhal::server::core::rp::achievement::factory::KillBlordroughsAchievementFactory']]],
+  ['componentpaintcache_130',['ComponentPaintCache',['../d5/ddd/classgames_1_1stendhal_1_1client_1_1gui_1_1ComponentPaintCache.htm',1,'games::stendhal::client::gui']]],
+  ['composer_131',['Composer',['../db/d40/interfacegames_1_1stendhal_1_1client_1_1gui_1_1j2d_1_1Blend_1_1Composer.htm',1,'games::stendhal::client::gui::j2d::Blend']]],
+  ['compositelayerrenderer_132',['CompositeLayerRenderer',['../d1/db4/classgames_1_1stendhal_1_1client_1_1CompositeLayerRenderer.htm',1,'games::stendhal::client']]],
+  ['compositeref_133',['CompositeRef',['../d6/d1c/classgames_1_1stendhal_1_1client_1_1sprite_1_1CompositeSprite_1_1CompositeRef.htm',1,'games::stendhal::client::sprite::CompositeSprite']]],
+  ['compositesprite_134',['CompositeSprite',['../dd/da2/classgames_1_1stendhal_1_1client_1_1sprite_1_1CompositeSprite.htm',1,'games::stendhal::client::sprite']]],
+  ['compoundattackstrategy_135',['CompoundAttackStrategy',['../db/d52/classgames_1_1stendhal_1_1server_1_1entity_1_1creature_1_1impl_1_1attack_1_1CompoundAttackStrategy.htm',1,'games::stendhal::server::entity::creature::impl::attack']]],
+  ['compoundname_136',['CompoundName',['../de/d69/classgames_1_1stendhal_1_1common_1_1parser_1_1CompoundName.htm',1,'games::stendhal::common::parser']]],
+  ['conditionaldelayedplayertextsender_137',['ConditionalDelayedPlayerTextSender',['../d1/df4/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1area_1_1MessagingArea_1_1ConditionalDelayedPlayerTextSender.htm',1,'games::stendhal::server::entity::mapstuff::area::MessagingArea']]],
+  ['conditionalstopaction_138',['ConditionalStopAction',['../de/d62/classgames_1_1stendhal_1_1server_1_1actions_1_1move_1_1ConditionalStopAction.htm',1,'games::stendhal::server::actions::move']]],
+  ['conditionandactionarea_139',['ConditionAndActionArea',['../d8/d1f/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1area_1_1ConditionAndActionArea.htm',1,'games::stendhal::server::entity::mapstuff::area']]],
+  ['conditionandactionareafactory_140',['ConditionAndActionAreaFactory',['../d3/d9f/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1area_1_1ConditionAndActionAreaFactory.htm',1,'games::stendhal::server::entity::mapstuff::area']]],
+  ['conditionandactionportal_141',['ConditionAndActionPortal',['../d6/dc8/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1portal_1_1ConditionAndActionPortal.htm',1,'games::stendhal::server::entity::mapstuff::portal']]],
+  ['conditionandactionportalfactory_142',['ConditionAndActionPortalFactory',['../de/d7c/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1portal_1_1ConditionAndActionPortalFactory.htm',1,'games::stendhal::server::entity::mapstuff::portal']]],
+  ['confectionerapplepienpc_143',['ConfectionerApplePieNPC',['../d8/d4e/classgames_1_1stendhal_1_1server_1_1maps_1_1kalavan_1_1cottage__2_1_1ConfectionerApplePieNPC.htm',1,'games::stendhal::server::maps::kalavan::cottage_2']]],
+  ['confectionercherrypienpc_144',['ConfectionerCherryPieNPC',['../db/db5/classgames_1_1stendhal_1_1server_1_1maps_1_1kalavan_1_1cottage__2_1_1ConfectionerCherryPieNPC.htm',1,'games::stendhal::server::maps::kalavan::cottage_2']]],
+  ['configaction_145',['ConfigAction',['../df/d9b/classgames_1_1stendhal_1_1client_1_1actions_1_1ConfigAction.htm',1,'games::stendhal::client::actions']]],
+  ['configurablefactory_146',['ConfigurableFactory',['../dc/d1e/interfacegames_1_1stendhal_1_1server_1_1core_1_1config_1_1factory_1_1ConfigurableFactory.htm',1,'games::stendhal::server::core::config::factory']]],
+  ['configurablefactorycontext_147',['ConfigurableFactoryContext',['../d5/da8/classgames_1_1stendhal_1_1server_1_1core_1_1config_1_1factory_1_1ConfigurableFactoryContext.htm',1,'games::stendhal::server::core::config::factory']]],
+  ['configurablefactoryhelper_148',['ConfigurableFactoryHelper',['../df/d16/classgames_1_1stendhal_1_1server_1_1core_1_1config_1_1factory_1_1ConfigurableFactoryHelper.htm',1,'games::stendhal::server::core::config::factory']]],
+  ['configuration_149',['Configuration',['../d6/dcb/classmarauroa_1_1common_1_1Configuration.htm',1,'marauroa::common']]],
+  ['configurationparams_150',['ConfigurationParams',['../df/d2d/classmarauroa_1_1common_1_1ConfigurationParams.htm',1,'marauroa::common']]],
+  ['configuratordescriptor_151',['ConfiguratorDescriptor',['../d6/ddc/classgames_1_1stendhal_1_1server_1_1core_1_1config_1_1zone_1_1ConfiguratorDescriptor.htm',1,'games::stendhal::server::core::config::zone']]],
+  ['configuratorxmlreader_152',['ConfiguratorXMLReader',['../d5/d8c/classgames_1_1stendhal_1_1server_1_1core_1_1config_1_1zone_1_1ConfiguratorXMLReader.htm',1,'games::stendhal::server::core::config::zone']]],
+  ['configuredsounds_153',['ConfiguredSounds',['../d2/d10/classgames_1_1stendhal_1_1client_1_1sound_1_1ConfiguredSounds.htm',1,'games::stendhal::client::sound']]],
+  ['confirmacceptofferchataction_154',['ConfirmAcceptOfferChatAction',['../d8/da5/classgames_1_1stendhal_1_1server_1_1maps_1_1semos_1_1tavern_1_1market_1_1AcceptOfferHandler_1_1ConfirmAcceptOfferChatAction.htm',1,'games::stendhal::server::maps::semos::tavern::market::AcceptOfferHandler']]],
+  ['confirmprepareofferchataction_155',['ConfirmPrepareOfferChatAction',['../d9/d51/classgames_1_1stendhal_1_1server_1_1maps_1_1semos_1_1tavern_1_1market_1_1PrepareOfferHandler_1_1ConfirmPrepareOfferChatAction.htm',1,'games::stendhal::server::maps::semos::tavern::market::PrepareOfferHandler']]],
+  ['confirmprolongallchataction_156',['ConfirmProlongAllChatAction',['../dd/d1a/classgames_1_1stendhal_1_1server_1_1maps_1_1semos_1_1tavern_1_1market_1_1ProlongOfferHandler_1_1ConfirmProlongAllChatAction.htm',1,'games::stendhal::server::maps::semos::tavern::market::ProlongOfferHandler']]],
+  ['confirmprolongofferchataction_157',['ConfirmProlongOfferChatAction',['../d9/d7d/classgames_1_1stendhal_1_1server_1_1maps_1_1semos_1_1tavern_1_1market_1_1ProlongOfferHandler_1_1ConfirmProlongOfferChatAction.htm',1,'games::stendhal::server::maps::semos::tavern::market::ProlongOfferHandler']]],
+  ['confirmremoveofferchataction_158',['ConfirmRemoveOfferChatAction',['../d8/dbc/classgames_1_1stendhal_1_1server_1_1maps_1_1semos_1_1tavern_1_1market_1_1RemoveOfferHandler_1_1ConfirmRemoveOfferChatAction.htm',1,'games::stendhal::server::maps::semos::tavern::market::RemoveOfferHandler']]],
+  ['confusestatus_159',['ConfuseStatus',['../d0/d25/classgames_1_1stendhal_1_1server_1_1entity_1_1status_1_1ConfuseStatus.htm',1,'games::stendhal::server::entity::status']]],
+  ['confusestatushandler_160',['ConfuseStatusHandler',['../db/dc7/classgames_1_1stendhal_1_1server_1_1entity_1_1status_1_1ConfuseStatusHandler.htm',1,'games::stendhal::server::entity::status']]],
+  ['connectionmanager_161',['ConnectionManager',['../d1/d09/interfacemarauroa_1_1common_1_1net_1_1ConnectionManager.htm',1,'marauroa::common::net']]],
+  ['connectionvalidator_162',['ConnectionValidator',['../da/d1c/classmarauroa_1_1server_1_1net_1_1validator_1_1ConnectionValidator.htm',1,'marauroa::server::net::validator']]],
+  ['connectrunnable_163',['ConnectRunnable',['../d3/da6/classgames_1_1stendhal_1_1client_1_1gui_1_1login_1_1LoginDialog_1_1ConnectRunnable.htm',1,'games::stendhal::client::gui::login::LoginDialog']]],
+  ['constants_164',['Constants',['../d5/d68/classgames_1_1stendhal_1_1common_1_1Constants.htm',1,'games::stendhal::common']]],
+  ['consumableitem_165',['ConsumableItem',['../d0/d17/classgames_1_1stendhal_1_1server_1_1entity_1_1item_1_1ConsumableItem.htm',1,'games::stendhal::server::entity::item']]],
+  ['consumablestatus_166',['ConsumableStatus',['../d4/dfc/classgames_1_1stendhal_1_1server_1_1entity_1_1status_1_1ConsumableStatus.htm',1,'games::stendhal::server::entity::status']]],
+  ['container_167',['Container',['../d4/d9f/classgames_1_1stendhal_1_1server_1_1entity_1_1item_1_1Container.htm',1,'games::stendhal::server::entity::item']]],
+  ['containeritemslot_168',['ContainerItemSlot',['../d9/d02/classgames_1_1stendhal_1_1server_1_1entity_1_1slot_1_1ContainerItemSlot.htm',1,'games::stendhal::server::entity::slot']]],
+  ['containerpanel_169',['ContainerPanel',['../d5/d83/classgames_1_1stendhal_1_1client_1_1gui_1_1ContainerPanel.htm',1,'games::stendhal::client::gui']]],
+  ['contentchangelistener_170',['ContentChangeListener',['../d9/d86/interfacegames_1_1stendhal_1_1client_1_1entity_1_1ContentChangeListener.htm',1,'games::stendhal::client::entity']]],
+  ['contmoveandstrengthenonlineplayers_171',['ContMoveAndStrengthenOnlinePlayers',['../de/dbf/classgames_1_1stendhal_1_1server_1_1script_1_1ContMoveAndStrengthenOnlinePlayers.htm',1,'games::stendhal::server::script']]],
+  ['contmoveandstrengthenplayersturnlistener_172',['ContMoveAndStrengthenPlayersTurnListener',['../dd/d6d/classgames_1_1stendhal_1_1server_1_1script_1_1ContMoveAndStrengthenOnlinePlayers_1_1ContMoveAndStrengthenPlayersTurnListener.htm',1,'games::stendhal::server::script::ContMoveAndStrengthenOnlinePlayers']]],
+  ['contributoravatarrenamer_173',['ContributorAvatarRenamer',['../d8/dc6/classgames_1_1stendhal_1_1tools_1_1contributors_1_1ContributorAvatarRenamer.htm',1,'games::stendhal::tools::contributors']]],
+  ['contributorsgeneration_174',['ContributorsGeneration',['../d5/dd0/classgames_1_1stendhal_1_1tools_1_1contributors_1_1ContributorsGeneration.htm',1,'games::stendhal::tools::contributors']]],
+  ['convctxformatcher_175',['ConvCtxForMatcher',['../d9/d4c/classgames_1_1stendhal_1_1common_1_1parser_1_1ConvCtxForMatcher.htm',1,'games::stendhal::common::parser']]],
+  ['convctxformatchingsource_176',['ConvCtxForMatchingSource',['../d7/d4e/classgames_1_1stendhal_1_1common_1_1parser_1_1ConvCtxForMatchingSource.htm',1,'games::stendhal::common::parser']]],
+  ['conveniencemapper_177',['ConvenienceMapper',['../d4/d4c/classgames_1_1stendhal_1_1client_1_1gui_1_1settings_1_1ConvenienceMapper.htm',1,'games::stendhal::client::gui::settings']]],
+  ['conversationcontext_178',['ConversationContext',['../d9/d52/classgames_1_1stendhal_1_1common_1_1parser_1_1ConversationContext.htm',1,'games::stendhal::common::parser']]],
+  ['conversationparser_179',['ConversationParser',['../d8/de5/classgames_1_1stendhal_1_1common_1_1parser_1_1ConversationParser.htm',1,'games::stendhal::common::parser']]],
+  ['conversationphrases_180',['ConversationPhrases',['../d6/d9f/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1ConversationPhrases.htm',1,'games::stendhal::server::entity::npc']]],
+  ['conversationstates_181',['ConversationStates',['../de/d9c/enumgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1ConversationStates.htm',1,'games::stendhal::server::entity::npc']]],
+  ['cooknpc_182',['CookNPC',['../d9/dd6/classgames_1_1stendhal_1_1server_1_1maps_1_1athor_1_1ship_1_1CookNPC.htm',1,'games::stendhal::server::maps::athor::ship']]],
+  ['copytable_183',['CopyTable',['../d4/db6/classgames_1_1stendhal_1_1tools_1_1copytable_1_1CopyTable.htm',1,'games::stendhal::tools::copytable']]],
+  ['corpse_184',['Corpse',['../dd/dba/classgames_1_1stendhal_1_1client_1_1entity_1_1Corpse.htm',1,'games.stendhal.client.entity.Corpse'],['../d5/d6f/classgames_1_1stendhal_1_1server_1_1entity_1_1item_1_1Corpse.htm',1,'games.stendhal.server.entity.item.Corpse']]],
+  ['corpse2dview_185',['Corpse2DView',['../d0/d8d/classgames_1_1stendhal_1_1client_1_1gui_1_1j2d_1_1entity_1_1Corpse2DView.htm',1,'games::stendhal::client::gui::j2d::entity']]],
+  ['corpserefiller_186',['CorpseRefiller',['../dc/d30/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1KanmararnSoldiers_1_1CorpseRefiller.htm',1,'games::stendhal::server::maps::quests::KanmararnSoldiers']]],
+  ['corpsereleaserewardingforeveryoneturnlistener_187',['CorpseReleaseRewardingForEveryoneTurnListener',['../d7/dd6/classgames_1_1stendhal_1_1server_1_1entity_1_1item_1_1Corpse_1_1CorpseReleaseRewardingForEveryoneTurnListener.htm',1,'games::stendhal::server::entity::item::Corpse']]],
+  ['corpserottingturnlistener_188',['CorpseRottingTurnListener',['../da/dd9/classgames_1_1stendhal_1_1server_1_1entity_1_1item_1_1Corpse_1_1CorpseRottingTurnListener.htm',1,'games::stendhal::server::entity::item::Corpse']]],
+  ['countcreature_189',['CountCreature',['../d0/d44/classgames_1_1stendhal_1_1server_1_1script_1_1CreaturesRatioCalculator_1_1CountCreature.htm',1,'games.stendhal.server.script.CreaturesRatioCalculator.CountCreature'],['../d6/d4c/classgames_1_1stendhal_1_1server_1_1script_1_1ItemRarity_1_1CountCreature.htm',1,'games.stendhal.server.script.ItemRarity.CountCreature']]],
+  ['countermap_190',['CounterMap',['../da/d50/classgames_1_1stendhal_1_1server_1_1util_1_1CounterMap.htm',1,'games::stendhal::server::util']]],
+  ['countermap_3c_20games_3a_3astendhal_3a_3aserver_3a_3aentity_3a_3aentity_20_3e_191',['CounterMap&lt; games::stendhal::server::entity::Entity &gt;',['../da/d50/classgames_1_1stendhal_1_1server_1_1util_1_1CounterMap.htm',1,'games::stendhal::server::util']]],
+  ['countermap_3c_20string_20_3e_192',['CounterMap&lt; String &gt;',['../da/d50/classgames_1_1stendhal_1_1server_1_1util_1_1CounterMap.htm',1,'games::stendhal::server::util']]],
+  ['countobjects_193',['CountObjects',['../de/d43/classgames_1_1stendhal_1_1server_1_1script_1_1CountObjects.htm',1,'games::stendhal::server::script']]],
+  ['countunusedsprites_194',['CountUnusedSprites',['../d1/d63/classgames_1_1stendhal_1_1server_1_1script_1_1CountUnusedSprites.htm',1,'games::stendhal::server::script']]],
+  ['coward_195',['Coward',['../d9/ddc/classgames_1_1stendhal_1_1server_1_1entity_1_1creature_1_1impl_1_1attack_1_1Coward.htm',1,'games::stendhal::server::entity::creature::impl::attack']]],
+  ['cowardsoldiernpc_196',['CowardSoldierNPC',['../d6/d27/classgames_1_1stendhal_1_1server_1_1maps_1_1semos_1_1kanmararn_1_1CowardSoldierNPC.htm',1,'games::stendhal::server::maps::semos::kanmararn']]],
+  ['craftsmannpc_197',['CraftsmanNPC',['../d5/dfe/classgames_1_1stendhal_1_1server_1_1maps_1_1fado_1_1forest_1_1CraftsmanNPC.htm',1,'games::stendhal::server::maps::fado::forest']]],
+  ['crc_198',['CRC',['../d9/d1b/classgames_1_1stendhal_1_1common_1_1CRC.htm',1,'games.stendhal.common.CRC'],['../db/dcd/classmarauroa_1_1common_1_1CRC.htm',1,'marauroa.common.CRC']]],
+  ['createaccountdialog_199',['CreateAccountDialog',['../d8/d34/classgames_1_1stendhal_1_1client_1_1gui_1_1login_1_1CreateAccountDialog.htm',1,'games::stendhal::client::gui::login']]],
+  ['createaccounthandler_200',['CreateAccountHandler',['../d4/d12/classmarauroa_1_1server_1_1game_1_1messagehandler_1_1CreateAccountHandler.htm',1,'marauroa::server::game::messagehandler']]],
+  ['createandsaycodedmessage_201',['CreateAndSayCodedMessage',['../d7/d7d/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1CodedMessageFromFinnFarmer_1_1CreateAndSayCodedMessage.htm',1,'games::stendhal::server::maps::quests::CodedMessageFromFinnFarmer']]],
+  ['createchallengeaction_202',['CreateChallengeAction',['../d8/db3/classgames_1_1stendhal_1_1client_1_1actions_1_1CreateChallengeAction.htm',1,'games::stendhal::client::actions']]],
+  ['createcharacteraction_203',['CreateCharacterAction',['../de/d98/classgames_1_1stendhal_1_1client_1_1gui_1_1login_1_1CharacterDialog_1_1CreateCharacterAction.htm',1,'games::stendhal::client::gui::login::CharacterDialog']]],
+  ['createcharacterhandler_204',['CreateCharacterHandler',['../da/d73/classmarauroa_1_1server_1_1game_1_1messagehandler_1_1CreateCharacterHandler.htm',1,'marauroa::server::game::messagehandler']]],
+  ['createindexstatementparser_205',['CreateIndexStatementParser',['../dd/d5b/classmarauroa_1_1server_1_1db_1_1adapter_1_1CreateIndexStatementParser.htm',1,'marauroa::server::db::adapter']]],
+  ['createraid_206',['CreateRaid',['../d2/db3/classgames_1_1stendhal_1_1server_1_1script_1_1CreateRaid.htm',1,'games::stendhal::server::script']]],
+  ['createslotaction_207',['CreateSlotAction',['../d3/d6b/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1action_1_1CreateSlotAction.htm',1,'games::stendhal::server::entity::npc::action']]],
+  ['creature_208',['Creature',['../d4/d5b/classgames_1_1stendhal_1_1client_1_1entity_1_1Creature.htm',1,'games.stendhal.client.entity.Creature'],['../df/d5c/classgames_1_1stendhal_1_1server_1_1entity_1_1creature_1_1Creature.htm',1,'games.stendhal.server.entity.creature.Creature']]],
+  ['creature2dview_209',['Creature2DView',['../db/dd3/classgames_1_1stendhal_1_1client_1_1gui_1_1j2d_1_1entity_1_1Creature2DView.htm',1,'games::stendhal::client::gui::j2d::entity']]],
+  ['creaturegroupsxmlloader_210',['CreatureGroupsXMLLoader',['../de/da3/classgames_1_1stendhal_1_1server_1_1core_1_1config_1_1CreatureGroupsXMLLoader.htm',1,'games::stendhal::server::core::config']]],
+  ['creatureinfo_211',['CreatureInfo',['../da/d35/classgames_1_1stendhal_1_1server_1_1maps_1_1semos_1_1plains_1_1CreatureInfo.htm',1,'games::stendhal::server::maps::semos::plains']]],
+  ['creaturenamevalidator_212',['CreatureNameValidator',['../d3/db9/classgames_1_1stendhal_1_1server_1_1core_1_1account_1_1CreatureNameValidator.htm',1,'games::stendhal::server::core::account']]],
+  ['creatureprotectionarea_213',['CreatureProtectionArea',['../d6/d83/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1area_1_1CreatureProtectionArea.htm',1,'games::stendhal::server::entity::mapstuff::area']]],
+  ['creatureprotectionareafactory_214',['CreatureProtectionAreaFactory',['../db/dfb/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1area_1_1CreatureProtectionAreaFactory.htm',1,'games::stendhal::server::entity::mapstuff::area']]],
+  ['creaturerespawnpoint_215',['CreatureRespawnPoint',['../d4/daa/classgames_1_1stendhal_1_1server_1_1entity_1_1mapstuff_1_1spawner_1_1CreatureRespawnPoint.htm',1,'games::stendhal::server::entity::mapstuff::spawner']]],
+  ['creaturespawner_216',['CreatureSpawner',['../d6/de9/classgames_1_1stendhal_1_1server_1_1maps_1_1deathmatch_1_1CreatureSpawner.htm',1,'games::stendhal::server::maps::deathmatch']]],
+  ['creaturesratiocalculator_217',['CreaturesRatioCalculator',['../d1/d2e/classgames_1_1stendhal_1_1server_1_1script_1_1CreaturesRatioCalculator.htm',1,'games::stendhal::server::script']]],
+  ['creaturesxmlloader_218',['CreaturesXMLLoader',['../db/d75/classgames_1_1stendhal_1_1server_1_1core_1_1config_1_1CreaturesXMLLoader.htm',1,'games::stendhal::server::core::config']]],
+  ['creditsdialog_219',['CreditsDialog',['../db/d5a/classgames_1_1stendhal_1_1client_1_1gui_1_1CreditsDialog.htm',1,'games::stendhal::client::gui']]],
+  ['croupiernpc_220',['CroupierNPC',['../d7/d92/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1CroupierNPC.htm',1,'games::stendhal::server::entity::npc']]],
+  ['crownforthewannabeking_221',['CrownForTheWannaBeKing',['../de/d3d/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1CrownForTheWannaBeKing.htm',1,'games::stendhal::server::maps::quests']]],
+  ['crulaminnpc_222',['CrulaminNPC',['../dd/d01/classgames_1_1stendhal_1_1server_1_1maps_1_1ados_1_1tunnel_1_1CrulaminNPC.htm',1,'games::stendhal::server::maps::ados::tunnel']]],
+  ['cstatusaction_223',['CStatusAction',['../d0/d74/classgames_1_1stendhal_1_1server_1_1actions_1_1CStatusAction.htm',1,'games::stendhal::server::actions']]],
+  ['cstatussender_224',['CStatusSender',['../d8/d04/classgames_1_1stendhal_1_1client_1_1CStatusSender.htm',1,'games::stendhal::client']]],
+  ['curatornpc_225',['CuratorNPC',['../d2/d8d/classgames_1_1stendhal_1_1server_1_1maps_1_1kirdneh_1_1museum_1_1CuratorNPC.htm',1,'games::stendhal::server::maps::kirdneh::museum']]],
+  ['cursesclient_226',['CursesClient',['../d8/de5/classgames_1_1stendhal_1_1bot_1_1curses_1_1CursesClient.htm',1,'games::stendhal::bot::curses']]],
+  ['cursesui_227',['CursesUI',['../dd/d46/classgames_1_1stendhal_1_1bot_1_1curses_1_1CursesUI.htm',1,'games::stendhal::bot::curses']]],
+  ['curseswindow_228',['CursesWindow',['../d3/dfa/classgames_1_1stendhal_1_1bot_1_1curses_1_1CursesWindow.htm',1,'games::stendhal::bot::curses']]],
+  ['cursorrepository_229',['CursorRepository',['../d1/d91/classgames_1_1stendhal_1_1client_1_1gui_1_1styled_1_1cursor_1_1CursorRepository.htm',1,'games::stendhal::client::gui::styled::cursor']]],
+  ['customeradvisornpc_230',['CustomerAdvisorNPC',['../dd/d87/classgames_1_1stendhal_1_1server_1_1maps_1_1semos_1_1bank_1_1CustomerAdvisorNPC.htm',1,'games::stendhal::server::maps::semos::bank']]],
+  ['customerdata_231',['CustomerData',['../d3/d8a/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1PizzaDelivery_1_1CustomerData.htm',1,'games::stendhal::server::maps::quests::PizzaDelivery']]]
 ];

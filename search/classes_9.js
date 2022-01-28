@@ -1,11 +1,20 @@
 var searchData=
 [
-  ['j2dclient_0',['j2DClient',['../db/d85/classgames_1_1stendhal_1_1client_1_1gui_1_1j2DClient.html',1,'games::stendhal::client::gui']]],
-  ['j2dclientgui_1',['J2DClientGUI',['../de/d52/interfacegames_1_1stendhal_1_1client_1_1gui_1_1J2DClientGUI.html',1,'games::stendhal::client::gui']]],
-  ['jail_2',['Jail',['../d2/de8/classgames_1_1stendhal_1_1server_1_1entity_1_1player_1_1Jail.html',1,'games::stendhal::server::entity::player']]],
-  ['jailaction_3',['JailAction',['../d4/dc4/classgames_1_1stendhal_1_1server_1_1actions_1_1admin_1_1JailAction.html',1,'games.stendhal.server.actions.admin.JailAction'],['../de/dfe/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1action_1_1JailAction.html',1,'games.stendhal.server.entity.npc.action.JailAction']]],
-  ['jailreportaction_4',['JailReportAction',['../d3/d69/classgames_1_1stendhal_1_1server_1_1actions_1_1admin_1_1JailReportAction.html',1,'games::stendhal::server::actions::admin']]],
-  ['javaclasswriter_5',['JavaClassWriter',['../da/df0/classgames_1_1stendhal_1_1tools_1_1rpclassdumper_1_1JavaClassWriter.html',1,'games::stendhal::tools::rpclassdumper']]],
-  ['jdbcsqlhelper_6',['JDBCSQLHelper',['../d8/d3d/classmarauroa_1_1server_1_1db_1_1JDBCSQLHelper.html',1,'marauroa::server::db']]],
-  ['jokerexprmatcher_7',['JokerExprMatcher',['../d3/d76/classgames_1_1stendhal_1_1common_1_1parser_1_1JokerExprMatcher.html',1,'games::stendhal::common::parser']]]
+  ['j2dclient_0',['j2DClient',['../db/d85/classgames_1_1stendhal_1_1client_1_1gui_1_1j2DClient.htm',1,'games::stendhal::client::gui']]],
+  ['j2dclientgui_1',['J2DClientGUI',['../de/d52/interfacegames_1_1stendhal_1_1client_1_1gui_1_1J2DClientGUI.htm',1,'games::stendhal::client::gui']]],
+  ['jail_2',['Jail',['../d2/de8/classgames_1_1stendhal_1_1server_1_1entity_1_1player_1_1Jail.htm',1,'games::stendhal::server::entity::player']]],
+  ['jailaction_3',['JailAction',['../d3/dd8/classgames_1_1stendhal_1_1client_1_1actions_1_1JailAction.htm',1,'games.stendhal.client.actions.JailAction'],['../d4/dc4/classgames_1_1stendhal_1_1server_1_1actions_1_1admin_1_1JailAction.htm',1,'games.stendhal.server.actions.admin.JailAction'],['../de/dfe/classgames_1_1stendhal_1_1server_1_1entity_1_1npc_1_1action_1_1JailAction.htm',1,'games.stendhal.server.entity.npc.action.JailAction']]],
+  ['jailedbarbarian_4',['JailedBarbarian',['../d2/d52/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1JailedBarbarian.htm',1,'games::stendhal::server::maps::quests']]],
+  ['jailedbarbnpc_5',['JailedBarbNPC',['../d1/d12/classgames_1_1stendhal_1_1server_1_1maps_1_1amazon_1_1hut_1_1JailedBarbNPC.htm',1,'games::stendhal::server::maps::amazon::hut']]],
+  ['jaileddwarf_6',['JailedDwarf',['../df/d75/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1JailedDwarf.htm',1,'games::stendhal::server::maps::quests']]],
+  ['jailer_7',['Jailer',['../db/d47/classgames_1_1stendhal_1_1server_1_1entity_1_1player_1_1Jail_1_1Jailer.htm',1,'games::stendhal::server::entity::player::Jail']]],
+  ['jailkeepernpc_8',['JailKeeperNPC',['../de/dc6/classgames_1_1stendhal_1_1server_1_1maps_1_1semos_1_1jail_1_1JailKeeperNPC.htm',1,'games::stendhal::server::maps::semos::jail']]],
+  ['jailreportaction_9',['JailReportAction',['../d3/d69/classgames_1_1stendhal_1_1server_1_1actions_1_1admin_1_1JailReportAction.htm',1,'games::stendhal::server::actions::admin']]],
+  ['javaclasswriter_10',['JavaClassWriter',['../da/df0/classgames_1_1stendhal_1_1tools_1_1rpclassdumper_1_1JavaClassWriter.htm',1,'games::stendhal::tools::rpclassdumper']]],
+  ['javawriter_11',['JavaWriter',['../df/dee/classgames_1_1stendhal_1_1tools_1_1test_1_1JavaWriter.htm',1,'games::stendhal::tools::test']]],
+  ['jdbcsqlhelper_12',['JDBCSQLHelper',['../d8/d3d/classmarauroa_1_1server_1_1db_1_1JDBCSQLHelper.htm',1,'marauroa::server::db']]],
+  ['jesternpc_13',['JesterNPC',['../df/d91/classgames_1_1stendhal_1_1server_1_1maps_1_1ados_1_1castle_1_1JesterNPC.htm',1,'games::stendhal::server::maps::ados::castle']]],
+  ['joincaptureflagaction_14',['JoinCaptureFlagAction',['../d5/d80/classgames_1_1stendhal_1_1server_1_1maps_1_1quests_1_1captureflag_1_1JoinCaptureFlagAction.htm',1,'games::stendhal::server::maps::quests::captureflag']]],
+  ['jokerexprmatcher_15',['JokerExprMatcher',['../d3/d76/classgames_1_1stendhal_1_1common_1_1parser_1_1JokerExprMatcher.htm',1,'games::stendhal::common::parser']]],
+  ['jollyoldmanatnorthpolenpc_16',['JollyOldManAtNorthpoleNPC',['../d8/d0c/classgames_1_1stendhal_1_1server_1_1maps_1_1northpole_1_1JollyOldManAtNorthpoleNPC.htm',1,'games::stendhal::server::maps::northpole']]]
 ];
