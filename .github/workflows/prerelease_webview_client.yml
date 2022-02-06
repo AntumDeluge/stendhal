@@ -25,6 +25,7 @@ jobs:
 
       - name: Set up Android SDK
         uses: android-actions/setup-android@v2
+        run: sdkmanager --install platforms\;android-32
 
       - name: Build APKs
         run: >
