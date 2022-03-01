@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://stendhalgame.org/lua/objects/quests/">
+        <link rel="shortcut icon" href="../../../img/favicon.ico">
+        <title>Quests - Stendhal Reference Documentation</title>
+        <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../../..">Stendhal Reference Documentation</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../../.." class="nav-link">Readme</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../../javadocs/" class="nav-link">Java</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../" class="nav-link">Lua</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="https://stendhalgame.org/" class="nav-link">Stendhal Homepage</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#introduction" class="nav-link">Introduction</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#quests" class="nav-link">quests</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#methods" class="nav-link">Methods</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#classes" class="nav-link">Classes</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#luaquest" class="nav-link">LuaQuest</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#questssimple" class="nav-link">quests.simple</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#simplequest-object" class="nav-link">SimpleQuest Object</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<div class="toc">
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#quests">quests</a><ul>
+<li><a href="#methods">Methods</a><ul>
+<li><a href="#questscreate">quests:create</a></li>
+<li><a href="#questsload">quests:load</a></li>
+<li><a href="#questsunload">quests:unload</a></li>
+<li><a href="#questscache">quests:cache</a></li>
+<li><a href="#questsisloaded">quests:isLoaded</a></li>
+<li><a href="#questslistall">quests:listAll</a></li>
+<li><a href="#questslist">quests:list</a></li>
+<li><a href="#questsliststates">quests:listStates</a></li>
+<li><a href="#questsgetquest">quests:getQuest</a></li>
+<li><a href="#questsgetquestfromslot">quests:getQuestFromSlot</a></li>
+<li><a href="#questsgetopen">quests:getOpen</a></li>
+<li><a href="#questsgetcompleted">quests:getCompleted</a></li>
+<li><a href="#questsgetincomplete">quests:getIncomplete</a></li>
+<li><a href="#questsgetrepeatable">quests:getRepeatable</a></li>
+<li><a href="#questsgetdescription">quests:getDescription</a></li>
+<li><a href="#questsgetlevelwarning">quests:getLevelWarning</a></li>
+<li><a href="#questsgetprogressdetails">quests:getProgressDetails</a></li>
+<li><a href="#questsgetnpcnamesforunstartedinregionforlevel">quests:getNPCNamesForUnstartedInRegionForLevel</a></li>
+<li><a href="#questsgetdescriptionforunstartedinregionfromnpcname">quests:getDescriptionForUnstartedInRegionFromNPCName</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#classes">Classes</a><ul>
+<li><a href="#luaquest">LuaQuest</a><ul>
+<li><a href="#public-members">Public Members</a><ul>
+<li><a href="#luaquestinit">LuaQuest.init</a></li>
+</ul>
+</li>
+<li><a href="#public-methods">Public Methods</a></li>
+<li><a href="#usage">Usage</a></li>
+</ul>
+</li>
+<li><a href="#questssimple">quests.simple</a><ul>
+<li><a href="#methods_1">Methods:</a><ul>
+<li><a href="#questssimplecreate">quests.simple:create</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#simplequest-object">SimpleQuest Object</a><ul>
+<li><a href="#methods_2">Methods</a><ul>
+<li><a href="#setdescription">setDescription</a></li>
+<li><a href="#setrepeatable">setRepeatable</a></li>
+<li><a href="#setitemtocollect">setItemToCollect</a></li>
+<li><a href="#setxpreward">setXPReward</a></li>
+<li><a href="#setkarmareward">setKarmaReward</a></li>
+<li><a href="#setkarmaacceptreward">setKarmaAcceptReward</a></li>
+<li><a href="#setkarmarejectreward">setKarmaRejectReward</a></li>
+<li><a href="#additemreward">addItemReward</a></li>
+<li><a href="#addstatreward">addStatReward</a></li>
+<li><a href="#setverbosereward">setVerboseReward</a></li>
+<li><a href="#setreply">setReply</a></li>
+<li><a href="#setregion">setRegion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="introduction">Introduction</h1>
+<p>Adds helper functions for creating &amp; manipulating quests &amp; exposes select public methods of the {@link games.stendhal.server.core.rp.StendhalQuestSystem} class.</p>
+<h1 id="quests">quests</h1>
+<h2 id="methods">Methods</h2>
+<hr />
+<h3 id="questscreate">quests:create</h3>
+<p><span style="color:green; font-weight:bold;">quests:create</span>(slotName, name)</p>
+<ul>
+<li>Creates a new quest.</li>
+<li>Parameters:<ul>
+<li><strong><em>slotName:</em></strong> (optional) The string identifier for the quest.</li>
+<li><strong><em>name:</em></strong> (optional) The human-readable name that can be shown in travel log.</li>
+</ul>
+</li>
+<li>Returns: New {@link games.stendhal.server.core.scripting.lua.LuaQuestHelper.LuaQuest LuaQuest} instance.</li>
+</ul>
+<hr />
+<h3 id="questsload">quests:load</h3>
+<p><span style="color:green; font-weight:bold;">quests:load</span>(quest)</p>
+<ul>
+<li>Adds a quest to the world.</li>
+<li>Parameters:<ul>
+<li><strong><em>quest:</em></strong> The {@link games.stendhal.server.maps.quests.IQuest IQuest} instance to be loaded.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="questsunload">quests:unload</h3>
+<p><span style="color:green; font-weight:bold;">quests:unload</span>(questName)</p>
+<ul>
+<li>Removes a quest from the world.</li>
+<li>Parameters:<ul>
+<li><strong><em>questName:</em></strong> String name of the quest to be removed.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="questscache">quests:cache</h3>
+<p><span style="color:green; font-weight:bold;">quests:cache</span>(quest)</p>
+<ul>
+<li>Caches a quest for loading at server startup.</li>
+<li>Parameters:<ul>
+<li><strong><em>quest:</em></strong> {@link games.stendhal.server.maps.quests.IQuest IQuest} instance to be loaded.</li>
+</ul>
+</li>
+<li>Aliases:<ul>
+<li><span style="color:green; font-style:italic;">quests:register</span></li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="questsisloaded">quests:isLoaded</h3>
+<p><span style="color:green; font-weight:bold;">quests:isLoaded</span>(quest)</p>
+<ul>
+<li>Checks if a quest has been loaded.</li>
+<li>Parameters:<ul>
+<li><strong><em>quest:</em></strong> {@link games.stendhal.server.maps.quests.IQuest IQuest} instance to check.</li>
+</ul>
+</li>
+<li>Returns: <code>true</code> if the instance matches stored quests.</li>
+</ul>
+<hr />
+<h3 id="questslistall">quests:listAll</h3>
+<p><span style="color:green; font-weight:bold;">quests:listAll</span>(player)</p>
+<ul>
+<li>List all quests the player knows about.</li>
+<li>Parameters:<ul>
+<li><strong><em>player:</em></strong> Player to create the report for.</li>
+</ul>
+</li>
+<li>Returns: String report.</li>
+</ul>
+<hr />
+<h3 id="questslist">quests:list</h3>
+<p><span style="color:green; font-weight:bold;">quests:list</span>(player, questName)j</p>
+<ul>
+<li>Creates a report on a specified quest for a player.</li>
+<li>Parameters:<ul>
+<li><strong><em>player:</em></strong> Player to create the report for.</li>
+<li><strong><em>questName:</em></strong> Name of quest to be reported.</li>
+</ul>
+</li>
+<li>Returns: String report.</li>
+</ul>
+<hr />
+<h3 id="questsliststates">quests:listStates</h3>
+<p><span style="color:green; font-weight:bold;">quests:listStates</span>(player)</p>
+<ul>
+<li>Dumps the internal quest states for the specified player. This is used for the {@link games.stendhal.server.action.admin.InspectAction InspectAction}.</li>
+<li>Parameters:<ul>
+<li><strong><em>player:</em></strong> Player to create the report for.</li>
+</ul>
+</li>
+<li>Returns: String report.</li>
+</ul>
+<hr />
+<h3 id="questsgetquest">quests:getQuest</h3>
+<p><span style="color:green; font-weight:bold;">quests:getQuest</span>(questName)</p>
+<ul>
+<li>Retrieves the {@link games.stendhal.server.maps.quests.IQuest IQuest} object for a named quest.</li>
+<li>Parameters:<ul>
+<li><strong><em>questName:</em></strong> Name of quest.</li>
+</ul>
+</li>
+<li>Returns: <code>IQuest</code> or <code>null</code> if doesn't exist.</li>
+</ul>
+<hr />
+<h3 id="questsgetquestfromslot">quests:getQuestFromSlot</h3>
+<p><span style="color:green; font-weight:bold;">quests:getQuestFromSlot</span>(questSlot)</p>
+<ul>
+<li>Retrieves the {@link games.stendhal.server.maps.quests.IQuest IQuest} object for a quest.</li>
+<li>Parameters:<ul>
+<li><strong><em>questSlot:</em></strong> Quest identifier string.</li>
+</ul>
+</li>
+<li>Returns: <code>IQuest</code> or <code>null</code> if doesn't exist.</li>
+</ul>
+<hr />
+<h3 id="questsgetopen">quests:getOpen</h3>
+<p><span style="color:green; font-weight:bold;">quests:getOpen</span>(player)</p>
+<ul>
+<li>Retrieves a list of open quests from a player.</li>
+<li>Parameters:<ul>
+<li><strong><em>player:</em></strong> {@link games.stendhal.server.entity.player.Player Player} instance to be checked.</li>
+</ul>
+</li>
+<li>Returns: List of string identifiers for open quests.</li>
+</ul>
+<hr />
+<h3 id="questsgetcompleted">quests:getCompleted</h3>
+<p><span style="color:green; font-weight:bold;">quests:getCompleted</span>(player)</p>
+<ul>
+<li>Retrieves a list of completed quests from a player.</li>
+<li>Parameters:<ul>
+<li><strong><em>player:</em></strong> {@link games.stendhal.server.entity.player.Player Player} instance to be checked.</li>
+</ul>
+</li>
+<li>Returns: List of string identifiers for completed quests.</li>
+</ul>
+<hr />
+<h3 id="questsgetincomplete">quests:getIncomplete</h3>
+<p><span style="color:green; font-weight:bold;">quests:getIncomplete</span>(player, region)</p>
+<ul>
+<li>Retrieves a list of incomplete quests in a specified region.</li>
+<li>Parameters:<ul>
+<li><strong><em>player:</em></strong> {@link games.stendhal.server.entity.player.Player Player} instance to be checked.</li>
+<li><strong><em>region:</em></strong> Region name/identifier.</li>
+</ul>
+</li>
+<li>Returns: List of string identifiers of incomplete quests in region.</li>
+</ul>
+<hr />
+<h3 id="questsgetrepeatable">quests:getRepeatable</h3>
+<p><span style="color:green; font-weight:bold;">quests:getRepeatable</span>(player)</p>
+<ul>
+<li>Retrieves a list of quests a player has completed, and can now do again.</li>
+<li>Parameters:<ul>
+<li><strong><em>player:</em></strong> {@link games.stendhal.server.entity.player.Player Player} instance to be checked.</li>
+</ul>
+</li>
+<li>Returns:</li>
+</ul>
+<hr />
+<h3 id="questsgetdescription">quests:getDescription</h3>
+<p><span style="color:green; font-weight:bold;">quests:getDescription</span>(player, questName)</p>
+<ul>
+<li>Retrieves the description of a quest.</li>
+<li>Parameters:<ul>
+<li><strong><em>player:</em></strong> {@link games.stendhal.server.entity.player.Player Player} instance to be checked.</li>
+<li><strong><em>questName:</em></strong> Name of the quest.</li>
+</ul>
+</li>
+<li>Returns: <code>{@link java.lang.String String}</code> description.</li>
+</ul>
+<hr />
+<h3 id="questsgetlevelwarning">quests:getLevelWarning</h3>
+<p><span style="color:green; font-weight:bold;">quests:getLevelWarning</span>(player, questName)</p>
+<ul>
+<li>If the quest is too dangerous, add a warning unless the player has already completed it.</li>
+<li>Parameters:<ul>
+<li><strong><em>player:</em></strong> {@link games.stendhal.server.entity.player.Player Player} instance to be checked.</li>
+<li><strong><em>questName:</em></strong> Name of the quest.</li>
+</ul>
+</li>
+<li>Returns: <code>{@link java.lang.String String}</code></li>
+</ul>
+<hr />
+<h3 id="questsgetprogressdetails">quests:getProgressDetails</h3>
+<p><span style="color:green; font-weight:bold;">quests:getProgressDetails</span>(player, questeName)</p>
+<ul>
+<li>Retrieves details on the progress of the quest.</li>
+<li>Parameters:<ul>
+<li><strong><em>player:</em></strong> {@link games.stendhal.server.entity.player.Player Player} instance to be checked.</li>
+<li><strong><em>questName:</em></strong> Name of the quest.</li>
+</ul>
+</li>
+<li>Returns: <code>{@link java.util.List List}&lt;{@link java.lang.String String}&gt;</code></li>
+</ul>
+<hr />
+<h3 id="questsgetnpcnamesforunstartedinregionforlevel">quests:getNPCNamesForUnstartedInRegionForLevel</h3>
+<p><span style="color:green; font-weight:bold;">quests:getNPCNamesForUnstartedInRegionForLevel</span>(player, region)</p>
+<ul>
+<li>Retrieves a list of the unique npc names for unstarted quests in a specified region.</li>
+<li>Parameters:<ul>
+<li><strong><em>player:</em></strong> {@link games.stendhal.server.entity.player.Player Player} instance to be checked.</li>
+<li><strong><em>region:</em></strong> Region to check in.</li>
+</ul>
+</li>
+<li>Returns: <code>{@link java.util.List List}&lt;{@link java.lang.String String}&gt;</code></li>
+</ul>
+<hr />
+<h3 id="questsgetdescriptionforunstartedinregionfromnpcname">quests:getDescriptionForUnstartedInRegionFromNPCName</h3>
+<p><span style="color:green; font-weight:bold;">quests:getDescriptionForUnstartedInRegionFromNPCName</span>(player, region, name)</p>
+<ul>
+<li>Retrieves quest descriptions for unstarted quests in a specified region matching a specific NPC name.</li>
+<li>Parameters:<ul>
+<li><strong><em>player:</em></strong> {@link games.stendhal.server.entity.player.Player Player} instance to be checked.</li>
+<li><strong><em>region:</em></strong> Region to check in.</li>
+<li><strong><em>name:</em></strong> Name of NPC.</li>
+</ul>
+</li>
+<li>Returns: <code>{@link java.util.List List}&lt;{@link java.lang.String String}&gt;</code></li>
+</ul>
+<h1 id="classes">Classes</h1>
+<h2 id="luaquest">LuaQuest</h2>
+<p>See: {@link games.stendhal.server.core.scripting.lua.LuaQuestHelper.LuaQuest LuaQuest}</p>
+<h3 id="public-members">Public Members</h3>
+<h4 id="luaquestinit">LuaQuest.init</h4>
+<p><span style="color:darkblue; font-weight:bold;">LuaQuest.init</span></p>
+<ul>
+<li>Called by {@link games.stendhal.server.maps.quests.IQuest#addToWorld}.</li>
+<li>Type: function</li>
+</ul>
+<h3 id="public-methods">Public Methods</h3>
+<h3 id="usage">Usage</h3>
+<pre><code>local loadStep1 = function()
+    ...
+end
+
+local loadStep2 = function()
+    ...
+end
+
+local myQuest = quests:create(&quot;my_quest&quot;, &quot;My Quest&quot;)
+myQuest.init = function()
+    loadStep1()
+    loadStep2()
+end
+
+quests:register(myQuest)
+</code></pre>
+<h2 id="questssimple">quests.simple</h2>
+<p>A special class for creating a simple collect single item quest.</p>
+<h3 id="methods_1">Methods:</h3>
+<hr />
+<h4 id="questssimplecreate">quests.simple:create</span></h4>
+<p><span style="color:green; font-weight:bold;">quests.simple:create</span></span>(slotName, properName, npcName)</p>
+<ul>
+<li>Parameters:<ul>
+<li><strong><em>slotName:</em></strong> <code>String</code> identifier to be used for quest.</li>
+<li><strong><em>properName:</em></strong> Human-readable name to be displayed in travel log.</li>
+<li><strong><em>npcName:</em></strong> The NPC associated with the quest.</li>
+</ul>
+</li>
+<li>Returns: {@link games.stendhal.server.maps.quests.SimpleQuestCreator} instance.</li>
+</ul>
+<h2 id="simplequest-object">SimpleQuest Object</h2>
+<p>{@link games.stendhal.server.maps.quests.SimpleQuestCreator.SimpleQuest}</p>
+<h3 id="methods_2">Methods</h3>
+<hr />
+<h4 id="setdescription">setDescription</h4>
+<p><span style="color:green; font-weight:bold;">setDescription</span>(descr)</p>
+<ul>
+<li>Parameters:<ul>
+<li><strong><em>descr:</em></strong> (<code>String</code>)</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h4 id="setrepeatable">setRepeatable</h4>
+<p><span style="color:green; font-weight:bold;">setRepeatable</span>(delay)</p>
+<ul>
+<li>Parameters:<ul>
+<li><strong><em>delay:</em></strong> (<code>Integer</code>)</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h4 id="setitemtocollect">setItemToCollect</h4>
+<p><span style="color:green; font-weight:bold;">setItemToCollect</span>(itemName, quantity)</p>
+<ul>
+<li>Parameters:<ul>
+<li><strong><em>itemName:</em></strong> (<code>String</code>)</li>
+<li><strong><em>quantity:</em></strong> (<code>int</code>)</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h4 id="setxpreward">setXPReward</h4>
+<p><span style="color:green; font-weight:bold;">setXPReward</span>(xp)</p>
+<ul>
+<li>Parameters:<ul>
+<li><strong><em>xp:</em></strong> (<code>int</code>)</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h4 id="setkarmareward">setKarmaReward</h4>
+<p><span style="color:green; font-weight:bold;">setKarmaReward</span>(karma)</p>
+<ul>
+<li>Parameters:<ul>
+<li><strong><em>karma:</em></strong> (<code>double</code>)</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h4 id="setkarmaacceptreward">setKarmaAcceptReward</h4>
+<p><span style="color:green; font-weight:bold;">setKarmaAcceptReward</span>(karma)</p>
+<ul>
+<li>Parameters:<ul>
+<li><strong><em>karma:</em></strong> (<code>double</code>)</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h4 id="setkarmarejectreward">setKarmaRejectReward</h4>
+<p><span style="color:green; font-weight:bold;">setKarmaRejectReward</span>(karma)</p>
+<ul>
+<li>Parameters:<ul>
+<li><strong><em>karma:</em></strong> (<code>double</code>)</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h4 id="additemreward">addItemReward</h4>
+<p><span style="color:green; font-weight:bold;">addItemReward</span>(itemName, quantity)</p>
+<ul>
+<li>Parameters:<ul>
+<li><strong><em>itemName:</em></strong> (<code>String</code>)</li>
+<li><strong><em>quantity:</em></strong> (<code>int</code>) (optional)</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h4 id="addstatreward">addStatReward</h4>
+<p><span style="color:green; font-weight:bold;">addStatReward</span>(id, amount)</p>
+<ul>
+<li>Parameters:<ul>
+<li><strong><em>id:</em></strong> (<code>String</code>) See IDs below.</li>
+<li><strong><em>amount:</em></strong> (<code>int</code>)</li>
+</ul>
+</li>
+<li>IDs:<ul>
+<li><strong><em>xp:</em></strong></li>
+<li><strong><em>def:</em></strong></li>
+<li><strong><em>atk:</em></strong></li>
+<li><strong><em>ratk:</em></strong></li>
+</ul>
+</li>
+</ul>
+<hr />
+<h4 id="setverbosereward">setVerboseReward</h4>
+<p><span style="color:green; font-weight:bold;">setVerboseReward</span>(verbose)</p>
+<ul>
+<li>Parameters:<ul>
+<li><strong><em>verbose:</em></strong> (<code>boolean</code>)</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h4 id="setreply">setReply</h4>
+<p><span style="color:green; font-weight:bold;">setReply</span>(id, reply)</p>
+<ul>
+<li>Parameters:<ul>
+<li><strong><em>id:</em></strong> (<code>String</code>) See IDs below.</li>
+<li><strong><em>reply:</em></strong> (<code>String</code>)</li>
+</ul>
+</li>
+</ul>
+<p>:; ''IDs:''
+:: '''''request:'''''
+:: '''''accept:'''''
+:: '''''reject:'''''
+:: '''''reward:'''''
+:: '''''verbose_reward_prefix:'''''
+:: '''''already_active:'''''
+:: '''''missing:'''''
+:: '''''no_repeat:'''''
+:: '''''cooldown_prefix:'''''</p>
+<hr />
+<h4 id="setregion">setRegion</h4>
+<p><span style="color:green; font-weight:bold;">setRegion</span>(regionName)</p>
+<ul>
+<li>Parameters:<ul>
+<li><strong><em>regionName:</em></strong> (<code>String</code>)</li>
+</ul>
+</li>
+</ul>
+<p>Also inherits methods from {@link games.stendhal.server.maps.quests.AbstractQuest}:</p>
+<p>Example:</p>
+<pre><code>-- create SimpleQuest instance
+local quest = simpleQuest:create(&quot;wood_for_lua&quot;, &quot;Wood for Lua&quot;, &quot;Lua&quot;)
+
+quest:setDescription(&quot;Lua needs help gathering wood.&quot;)
+quest:setRequestReply(&quot;I need help gathering some wood. Will you help me?&quot;)
+quest:setAcceptReply(&quot;Great!&quot;)
+quest:setRewardReply(&quot;Thank a bunch!&quot;)
+quest:setRejectReply(&quot;Fine! I don't need your help anyway.&quot;)
+quest:setItemToCollect(&quot;wood&quot;, 5)
+quest:setRepeatable(true)
+quest:setRepeatDelay(10)
+quest:setXPReward(50)
+quest:setKarmaReward(5.0)
+quest:addItemReward(&quot;rose&quot;, 3)
+quest:addItemReward(&quot;money&quot;, 100)
+quest:setRegion(Region.SEMOS_CITY)
+
+quests:register(quest)
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p>Copyright © 2003-2022 Arianne</p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../../js/base.js" defer></script>
+        <script src="../../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

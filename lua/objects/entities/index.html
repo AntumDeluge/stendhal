@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://stendhalgame.org/lua/objects/entities/">
+        <link rel="shortcut icon" href="../../../img/favicon.ico">
+        <title>Entities - Stendhal Reference Documentation</title>
+        <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../../..">Stendhal Reference Documentation</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../../.." class="nav-link">Readme</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../../javadocs/" class="nav-link">Java</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../" class="nav-link">Lua</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="https://stendhalgame.org/" class="nav-link">Stendhal Homepage</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#entities-lua_entities" class="nav-link">entities {#lua_entities}</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#introduction" class="nav-link">Introduction</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#methods" class="nav-link">Methods</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#members" class="nav-link">Members:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#luaspeakernpc" class="nav-link">LuaSpeakerNPC</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#public-methods" class="nav-link">Public methods:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#luasilentnpc" class="nav-link">LuaSilentNPC</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#public-methods_1" class="nav-link">Public methods:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="entities-lua_entities">entities {#lua_entities}</h1>
+<div class="toc">
+<ul>
+<li><a href="#entities-lua_entities">entities {#lua_entities}</a><ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#methods">Methods</a><ul>
+<li><a href="#entitiescreate">entities:create</a></li>
+<li><a href="#entitiesgetplayer">entities:getPlayer</a></li>
+<li><a href="#entitiesgetnpc">entities:getNPC</a></li>
+<li><a href="#entitiesgetitem">entities:getItem</a></li>
+<li><a href="#entitiesgetstackableitem">entities:getStackableItem</a></li>
+<li><a href="#entitiescreatespeakernpc">entities:createSpeakerNPC</a></li>
+<li><a href="#entitiescreatesilentnpc">entities:createSilentNPC</a></li>
+<li><a href="#entitiessetpath">entities:setPath</a></li>
+<li><a href="#entitiessetpathandposition">entities:setPathAndPosition</a></li>
+<li><a href="#entitiescreatesign">entities:createSign</a></li>
+<li><a href="#entitiescreateshopsign">entities:createShopSign</a></li>
+<li><a href="#entitiessummoncreature">entities:summonCreature</a></li>
+</ul>
+</li>
+<li><a href="#members">Members:</a><ul>
+<li><a href="#entitiesmanager">entities.manager</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#luaspeakernpc">LuaSpeakerNPC</a><ul>
+<li><a href="#public-methods">Public methods:</a><ul>
+<li><a href="#luaspeakernpcadd">LuaSpeakerNPC:add</a></li>
+<li><a href="#luaspeakernpcsetpath">LuaSpeakerNPC:setPath</a></li>
+<li><a href="#luaspeakernpcsetpathandposition">LuaSpeakerNPC:setPathAndPosition</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#luasilentnpc">LuaSilentNPC</a><ul>
+<li><a href="#public-methods_1">Public methods:</a><ul>
+<li><a href="#luasilentnpcsetpath">LuaSilentNPC:setPath</a></li>
+<li><a href="#luasilentnpcsetpathandposition">LuaSilentNPC:setPathAndPosition</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<h2 id="introduction">Introduction</h2>
+<p>See also: <a href="https://stendhalgame.org/wiki/StendhalAPI#Entities">StendhalAPI#Entities</a> for public methods that can be performed on <code>Entity</code> objects.</p>
+<h2 id="methods">Methods</h2>
+<hr />
+<h3 id="entitiescreate">entities:create</h3>
+<p><span style="color:green; font-weight:bold;">entities:create</span>(name)
+- Creates a new entity.
+- Parameters:
+  - <strong><em>def:</em></strong> Entity definition table.
+- Returns: games.stendhal.server.entity.Entity New entity instance.
+- See also: @ref games.stendhal.server.core.scripting.lua.LuaEntityHelper#create</p>
+<p>Options for <code>def</code> table:</p>
+<p>General:</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>"SpeakerNPC", "SilentNPC", "Sign", "ShopSign", or "Reader".</td>
+</tr>
+<tr>
+<td>pos</td>
+<td>table</td>
+<td>Entity position relative to zone ({x, y}).</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>Information for "look" command.</td>
+</tr>
+<tr>
+<td>class</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>subclass</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>resistance</td>
+<td>int</td>
+<td></td>
+</tr>
+<tr>
+<td>size</td>
+<td>table</td>
+<td>{w, h}</td>
+</tr>
+<tr>
+<td>cursor</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>visibility</td>
+<td>int</td>
+<td></td>
+</tr>
+<tr>
+<td>menu</td>
+<td>string</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>SpeakerNPC &amp; SilentNPC types:</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dir</td>
+<td>Direction</td>
+<td>Entity's initial facing direction.</td>
+</tr>
+<tr>
+<td>ignoresCollision</td>
+<td>boolean</td>
+<td></td>
+</tr>
+<tr>
+<td>path</td>
+<td>table</td>
+<td></td>
+</tr>
+<tr>
+<td>path.nodes</td>
+<td>table</td>
+<td></td>
+</tr>
+<tr>
+<td>path.loop</td>
+<td>boolean</td>
+<td></td>
+</tr>
+<tr>
+<td>path.retrace</td>
+<td>boolean</td>
+<td></td>
+</tr>
+<tr>
+<td>path.collisionAction</td>
+<td>CollisionAction</td>
+<td></td>
+</tr>
+<tr>
+<td>speed</td>
+<td>double</td>
+<td></td>
+</tr>
+<tr>
+<td>basehp</td>
+<td>int</td>
+<td></td>
+</tr>
+<tr>
+<td>hp</td>
+<td>int</td>
+<td></td>
+</tr>
+<tr>
+<td>outfit</td>
+<td>table</td>
+<td></td>
+</tr>
+<tr>
+<td>outfit.layers</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>outfit.colors</td>
+<td>table</td>
+<td></td>
+</tr>
+<tr>
+<td>idea</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>sounds</td>
+<td>table<string></td>
+<td></td>
+</tr>
+<tr>
+<td>teleports</td>
+<td>boolean</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>SpeakerNPC type:</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>idleDir</td>
+<td>Direction</td>
+<td></td>
+</tr>
+<tr>
+<td>chatTimeout</td>
+<td>long</td>
+<td></td>
+</tr>
+<tr>
+<td>perceptionRange</td>
+<td>int</td>
+<td></td>
+</tr>
+<tr>
+<td>currentState</td>
+<td>ConversationStates</td>
+<td></td>
+</tr>
+<tr>
+<td>greeting</td>
+<td>table</td>
+<td></td>
+</tr>
+<tr>
+<td>greeting.text</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>greeting.action</td>
+<td>ChatAction</td>
+<td></td>
+</tr>
+<tr>
+<td>replies</td>
+<td>table</td>
+<td></td>
+</tr>
+<tr>
+<td>replies.quest</td>
+<td>string</td>
+<td>Reply to "quest"/"task".</td>
+</tr>
+<tr>
+<td>replies.job</td>
+<td>string</td>
+<td>Reply to "job".</td>
+</tr>
+<tr>
+<td>replies.help</td>
+<td>string</td>
+<td>Reply to "help".</td>
+</tr>
+<tr>
+<td>replies.offer</td>
+<td>string</td>
+<td>Reply to "offer".</td>
+</tr>
+<tr>
+<td>replies.bye</td>
+<td>string</td>
+<td>Reply to "bye"/"goodbye".</td>
+</tr>
+<tr>
+<td>alternativeImage</td>
+<td>string</td>
+<td>Image that will be displayed on NPCs webpage.</td>
+</tr>
+</tbody>
+</table>
+<p>Sign type:</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>text</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>visible</td>
+<td>boolean</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>ShopSign type:</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>title</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>caption</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>seller</td>
+<td>boolean</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="entitiesgetplayer">entities:getPlayer</h3>
+<p><span style="color:green; font-weight:bold;">entities:getPlayer</span>(name)
+- Retrieves a logged in Player.
+- Parameters:
+  - <strong><em>name:</em></strong> (<code>string</code>) Name of player.
+- Returns:
+  - Logged in {@link games.stendhal.server.entity.player.Player} or <code>nil</code>.
+- Usage:</p>
+<pre><code>    local player = entities:getPlayer("foo")
+</code></pre>
+<hr />
+<h3 id="entitiesgetnpc">entities:getNPC</h3>
+<p><span style="color:green; font-weight:bold;">entities:getNPC</span>(name)
+- Retrieves an existing SpeakerNPC.
+- Parameters:
+  - <strong><em>name:</em></strong> (<code>String</code>) Name of NPC.
+- Returns:
+  - {@link games.stendhal.server.entity.npc.SpeakerNPC} instance or <code>null</code>.</p>
+<hr />
+<h3 id="entitiesgetitem">entities:getItem</h3>
+<p><span style="color:green; font-weight:bold;">entities:getItem</span>(name)
+- Retrieves a registered Item.
+- Parameters:
+  - <strong><em>name:</em></strong> (<code>String</code>) Name of the item.
+- Returns:
+  - {@link games.stendhal.server.entity.item.Item} instance or <code>null</code> if not a registered item.</p>
+<hr />
+<h3 id="entitiesgetstackableitem">entities:getStackableItem</h3>
+<p><span style="color:green; font-weight:bold;">entities:getStackableItem</span>(name)
+- Retrieves a registered StackableItem.
+- Parameters:
+  - <strong><em>name:</em></strong> (<code>String</code>) Name of the item.
+- Returns:
+  - {@link games.stendhal.server.entity.item.StackableItem} instance or <code>null</code> if not a registered stackable item.</p>
+<hr />
+<h3 id="entitiescreatespeakernpc">entities:createSpeakerNPC</h3>
+<p><span style="color:green; font-weight:bold;">entities:createSpeakerNPC</span>(name)
+- <strong><em>DEPRECATED:</em></strong> Use <a href="#entities:create">entities:create</a>.
+- Creates an interactive NPC.
+- <strong><em>name:</em></strong> (<code>String</code>) Name of new NPC.
+- Returns:
+  - New {@link games.stendhal.server.core.scripting.lua.LuaEntityHelper#LuaSpeakerNPC} instance.</p>
+<hr />
+<h3 id="entitiescreatesilentnpc">entities:createSilentNPC</h3>
+<p><span style="color:green; font-weight:bold;">entities:createSilentNPC</span>()
+- <strong><em>DEPRECATED:</em></strong> <em>Use <a href="#entities:create">entities:create</a>.</em>
+- Creates a non-interactive NPC.
+- Returns:
+  - New {@link games.stendhal.server.core.scripting.lua.LuaEntityHelper#LuaSilentNPC} instance.</p>
+<hr />
+<h3 id="entitiessetpath">entities:setPath</h3>
+<p><span style="color:green; font-weight:bold;">entities:setPath</span>(entity, table, loop)
+- <strong><em>DEPRECATED:</em></strong> <em>path can now be set by directly calling the NPC's <code>setPath</code> method</em>
+- Helper method for setting an NPC's path.
+- Parameters:
+  - <strong><em>entity:</em></strong> (<code>RPEntity</code>) Then entity whose path is being set.
+  - <strong><em>table:</em></strong> (<code>LuaTable</code>) Table with list of coordinates representing nodes.
+  - <strong><em>loop:</em></strong> (<code>boolean</code>) If <code>true</code>, the entity's path should loop.</p>
+<hr />
+<h3 id="entitiessetpathandposition">entities:setPathAndPosition</h3>
+<p><span style="color:green; font-weight:bold;">entities:setPathAndPosition</span>(entity, table, loop)
+- <strong><em>DEPRECATED:</em></strong> <em>path can now be set by directly by calling the NPC's <code>setPath</code> method</em>
+- Helper function for setting an NPC's path &amp; starting position.
+- Parameters:
+  - <strong><em>entity:</em></strong> (<code>RPEntity</code>) The entity whose path is being set.
+  - <strong><em>table:</em></strong> (<code>LuaTable</code>) Table with list of coordinates representing nodes.
+  - <strong><em>loop:</em></strong> (<code>boolean</code>) If <code>true</code>, the entity's path should loop.</p>
+<hr />
+<h3 id="entitiescreatesign">entities:createSign</h3>
+<p><span style="color:green; font-weight:bold;">entities:createSign</span>(visible)
+- <strong><em>DEPRECATED:</em></strong> <em>Use <a href="#entities:create">entities:create</a>.</em>
+- Creates a new {@link games.stendhal.server.entity.sign.Sign} entity.
+- Parameters:
+  - <strong><em>visible:</em></strong> (<code>boolean</code>) (optional) If <code>false</code>, the sign will not have a visual representation (default: <code>true</code>).
+- Returns:
+  - New {@link games.stendhal.server.entities.mapstuff.Sign} instance or {@link games.stendhal.server.entities.mapstuff.Reader} (visible=false).</p>
+<hr />
+<h3 id="entitiescreateshopsign">entities:createShopSign</h3>
+<p><span style="color:green; font-weight:bold;">entities:createShopSign</span>(name, title, caption, seller)
+- <strong><em>DEPRECATED:</em></strong> <em>Use <a href="#entities:create">entities:create</a>.</em>
+- Creates a new {@link games.stendhal.server.entity.sign.ShopSign} entity.
+- Parameters:
+  - <strong><em>name:</em></strong> (<code>String</code>) The shop name.
+  - <strong><em>title:</em></strong> (<code>String</code>) The sign title.
+  - <strong><em>caption:</em></strong> (<code>String</code>) The caption above the table.
+  - <strong><em>seller:</em></strong> (<code>boolean</code>) <code>true</code>, if this sign is for items sold by an NPC (default: <code>true</code>).
+- Returns:
+  - New {@link games.stendhal.server.entity.mapstuff.sign.ShopSign} instance.</p>
+<hr />
+<h3 id="entitiessummoncreature">entities:summonCreature</h3>
+<p><span style="color:green; font-weight:bold;">entities:summonCreature</span>(table)
+- Summons a creature into the area.
+- Parameters:
+  - <strong><em>table:</em></strong> Key-value table containing parameters for summoning creature.
+    - <em>keys:</em>
+      - <span style="color:blue;"><em>name:</em></span> (<code>string</code>) Name of creature to be summoned.
+      - <span style="color:blue;"><em>zone:</em></span> (<code>string</code>) Name of zone where creature should be summoned.
+      - <span style="color:blue;"><em>x:</em></span> (<code>int</code>) Horizontal position of summon location.
+      - <span style="color:blue;"><em>y:</em></span> (<code>int</code>) Vertical position of summon location.
+      - <span style="color:blue;"><em>summoner:</em></span> (<code>string</code>) (optional) Name of entity doing the summoning (used for logging game events).
+      - <span style="color:blue;"><em>raid:</em></span> (<code>bool</code>) (optional) Whether or not the creature should be a {@link games.stendhal.server.entity.creature.RaidCreature} instance (default: true).</p>
+<h2 id="members">Members:</h2>
+<h3 id="entitiesmanager">entities.manager</h3>
+<p>This is simply the {@link games.stendhal.server.core.rule.defaultruleset.DefaultEntityManager entity manager} instance.</p>
+<h1 id="luaspeakernpc">LuaSpeakerNPC</h1>
+<ul>
+<li>Inherits: {@link games.stendhal.server.entity.npc.SpeakerNPC}</li>
+</ul>
+<h2 id="public-methods">Public methods:</h2>
+<hr />
+<h3 id="luaspeakernpcadd">LuaSpeakerNPC:add</h3>
+<p><span style="color:darkgreen; font-weight:bold;">LuaSpeakerNPC:add</span>(states, triggers, conditions, nextState, reply, actions)
+- Additional method to support passing Lua data types as parameters.
+- Parameters:
+  - <strong><em>states:</em></strong> The conversation state(s) the entity should be in to trigger response. Can be <a href="https://stendhalgame.org/wiki/StendhalAPI#ConversationStates">ConversationStates enum</a> value or <code>LuaTable</code> of ConversationStates.
+  - <strong><em>triggers:</em></strong> <code>String</code> or <code>LuaTable</code> of strings to trigger response.
+  - <strong><em>conditions:</em></strong> Conditions to check for this response. Can be [[StendhalAPI#ChatCondition|ChatCondition instance]], a <code>LuaTable</code> of ChatCondition instances, or a function.
+  - <strong><em>nextState:</em></strong> (<code>ConversationState</code>) Conversation state to set entity to after response.
+  - <strong><em>reply:</em></strong> (<code>string</code>) The NPC's response or <code>null</code>.
+  - <strong><em>actions:</em></strong> Actions to execute. Can be <a href="https://stendhalgame.org/wiki/StendhalAPI#ChatAction">ChatAction instance</a>, a <code>LuaTable</code> of ChatAction instances, or a function.</p>
+<hr />
+<h3 id="luaspeakernpcsetpath">LuaSpeakerNPC:setPath</h3>
+<p><span style="color:darkgreen; font-weight:bold;">entities:setPath</span>(table, loop)
+- Set a path for this entity to follow.
+- Parameters:
+  - <strong>table:</strong> (<code>table</code>) Table of coordinates to set as path. Example: <code>{{35, 79}, {35, 89}, {40, 89}}</code>
+  - <strong>loop:</strong> (<code>boolean</code>) <em>(optional)</em> If <code>true</code>, entity should loop around to restart path when reaching the end.</p>
+<hr />
+<h3 id="luaspeakernpcsetpathandposition">LuaSpeakerNPC:setPathAndPosition</h3>
+<p><span style="color:darkgreen; font-weight:bold;">entities:setPathAndPosition</span>(table, loop)
+- Set path &amp; starting position for entity. The starting position is the first node in the path.
+- Parameters:
+  - <strong>table:</strong> (<code>table</code>) Table of coordinates to set as path. Example: <code>{{35, 79}, {35, 89}, {40, 89}}</code>
+  - <strong>loop:</strong> (<code>boolean</code>) <em>(optional)</em> If <code>true</code>, entity should loop around to restart path when reaching the end.</p>
+<h1 id="luasilentnpc">LuaSilentNPC</h1>
+<ul>
+<li>Inherits: {@link games.stendhal.server.entity.npc.SilentNPC}</li>
+</ul>
+<h2 id="public-methods_1">Public methods:</h2>
+<hr />
+<h3 id="luasilentnpcsetpath">LuaSilentNPC:setPath</h3>
+<p><span style="color:darkgreen; font-weight:bold;">entities:setPath</span>(table, loop)
+- Set a path for this entity to follow.
+- Parameters:
+  - <strong>table:</strong> (<code>table</code>) Table of coordinates to set as path. Example: <code>{{35, 79}, {35, 89}, {40, 89}}</code>
+  - <strong>loop:</strong> (<code>boolean</code>) <em>(optional)</em> If <code>true</code>, entity should loop around to restart path when reaching the end.</p>
+<hr />
+<h3 id="luasilentnpcsetpathandposition">LuaSilentNPC:setPathAndPosition</h3>
+<p><span style="color:darkgreen; font-weight:bold;">entities:setPathAndPosition</span>(table, loop)
+- Set path &amp; starting position for entity. The starting position is the first node in the path.
+- Parameters:
+  - <strong>table:</strong> (<code>table</code>) Table of coordinates to set as path. Example: <code>{{35, 79}, {35, 89}, {40, 89}}</code>
+  - <strong>loop:</strong> (<code>boolean</code>) <em>(optional)</em> If <code>true</code>, entity should loop around to restart path when reaching the end.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p>Copyright © 2003-2022 Arianne</p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../../js/base.js" defer></script>
+        <script src="../../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
