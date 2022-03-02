@@ -1,108 +1,108 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://stendhalgame.org/</loc>
-         <lastmod>2022-03-01</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://stendhalgame.org/links/</loc>
-         <lastmod>2022-03-01</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://stendhalgame.org/reference/</loc>
-         <lastmod>2022-03-01</lastmod>
+         <lastmod>2022-03-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://stendhalgame.org/lua/</loc>
-         <lastmod>2022-03-01</lastmod>
+         <loc>https://stendhalgame.org/reference/links/</loc>
+         <lastmod>2022-03-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://stendhalgame.org/lua/intro/</loc>
-         <lastmod>2022-03-01</lastmod>
+         <loc>https://stendhalgame.org/reference/reference/</loc>
+         <lastmod>2022-03-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://stendhalgame.org/lua/exposed_classes/</loc>
-         <lastmod>2022-03-01</lastmod>
+         <loc>https://stendhalgame.org/reference/lua/</loc>
+         <lastmod>2022-03-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://stendhalgame.org/lua/objects/</loc>
-         <lastmod>2022-03-01</lastmod>
+         <loc>https://stendhalgame.org/reference/lua/intro/</loc>
+         <lastmod>2022-03-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://stendhalgame.org/lua/objects/actions/</loc>
-         <lastmod>2022-03-01</lastmod>
+         <loc>https://stendhalgame.org/reference/lua/exposed_classes/</loc>
+         <lastmod>2022-03-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://stendhalgame.org/lua/objects/conditions/</loc>
-         <lastmod>2022-03-01</lastmod>
+         <loc>https://stendhalgame.org/reference/lua/objects/</loc>
+         <lastmod>2022-03-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://stendhalgame.org/lua/objects/entities/</loc>
-         <lastmod>2022-03-01</lastmod>
+         <loc>https://stendhalgame.org/reference/lua/objects/actions/</loc>
+         <lastmod>2022-03-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://stendhalgame.org/lua/objects/game/</loc>
-         <lastmod>2022-03-01</lastmod>
+         <loc>https://stendhalgame.org/reference/lua/objects/conditions/</loc>
+         <lastmod>2022-03-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://stendhalgame.org/lua/objects/grammar/</loc>
-         <lastmod>2022-03-01</lastmod>
+         <loc>https://stendhalgame.org/reference/lua/objects/entities/</loc>
+         <lastmod>2022-03-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://stendhalgame.org/lua/objects/logger/</loc>
-         <lastmod>2022-03-01</lastmod>
+         <loc>https://stendhalgame.org/reference/lua/objects/game/</loc>
+         <lastmod>2022-03-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://stendhalgame.org/lua/objects/luajava/</loc>
-         <lastmod>2022-03-01</lastmod>
+         <loc>https://stendhalgame.org/reference/lua/objects/grammar/</loc>
+         <lastmod>2022-03-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://stendhalgame.org/lua/objects/merchants/</loc>
-         <lastmod>2022-03-01</lastmod>
+         <loc>https://stendhalgame.org/reference/lua/objects/logger/</loc>
+         <lastmod>2022-03-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://stendhalgame.org/lua/objects/properties/</loc>
-         <lastmod>2022-03-01</lastmod>
+         <loc>https://stendhalgame.org/reference/lua/objects/luajava/</loc>
+         <lastmod>2022-03-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://stendhalgame.org/lua/objects/quests/</loc>
-         <lastmod>2022-03-01</lastmod>
+         <loc>https://stendhalgame.org/reference/lua/objects/merchants/</loc>
+         <lastmod>2022-03-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://stendhalgame.org/lua/supplemental_methods/</loc>
-         <lastmod>2022-03-01</lastmod>
+         <loc>https://stendhalgame.org/reference/lua/objects/properties/</loc>
+         <lastmod>2022-03-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://stendhalgame.org/lua/supplemental_methods/arrays/</loc>
-         <lastmod>2022-03-01</lastmod>
+         <loc>https://stendhalgame.org/reference/lua/objects/quests/</loc>
+         <lastmod>2022-03-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://stendhalgame.org/lua/supplemental_methods/strings/</loc>
-         <lastmod>2022-03-01</lastmod>
+         <loc>https://stendhalgame.org/reference/lua/supplemental_methods/</loc>
+         <lastmod>2022-03-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://stendhalgame.org/lua/supplemental_methods/tables/</loc>
-         <lastmod>2022-03-01</lastmod>
+         <loc>https://stendhalgame.org/reference/lua/supplemental_methods/arrays/</loc>
+         <lastmod>2022-03-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://stendhalgame.org/reference/lua/supplemental_methods/strings/</loc>
+         <lastmod>2022-03-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://stendhalgame.org/reference/lua/supplemental_methods/tables/</loc>
+         <lastmod>2022-03-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
