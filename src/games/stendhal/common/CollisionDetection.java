@@ -12,10 +12,11 @@
  ***************************************************************************/
 package games.stendhal.common;
 
-
 import java.awt.geom.Rectangle2D;
 
+import games.stendhal.common.constants.CollisionType;
 import games.stendhal.common.tiled.LayerDefinition;
+
 
 /**
  * This class loads the map and allow you to determine if a player collides or
@@ -25,8 +26,10 @@ public class CollisionDetection {
 	private CollisionMap map;
 
 	private int width;
-
 	private int height;
+
+	private final boolean testserver = System.getProperty("stendhal.testserver") != null;
+
 
 	/**
 	 * Clear the collision map.
@@ -57,16 +60,43 @@ public class CollisionDetection {
 	}
 
 	/**
+	 * Set a position in the collision map to collision type.
+	 *
+	 * @param x
+	 *     X coordinate.
+	 * @param y
+	 *     Y coordinate.
+	 * @param t
+	 *     Collision type.
+	 */
+	public void setCollide(final int x, final int y, final CollisionType t) {
+		if ((x < 0) || (x >= width) || (y < 0) || (y >= height)) {
+			return;
+		}
+
+		if (!testserver) {
+			map.set(x, y);
+		} else {
+			map.set(x, y, t);
+		}
+	}
+
+	/**
 	 * Set a position in the collision map to static collision.
 	 *
-	 * @param x x coordinate
-	 * @param y y coordinate
+	 * @param x
+	 *     X coordinate.
+	 * @param y
+	 *     Y coordinate.
 	 */
 	public void setCollide(final int x, final int y) {
+		setCollide(x, y, CollisionType.NORMAL);
+		/*
 		if ((x < 0) || (x >= width) || (y < 0) || (y >= height)) {
 			return;
 		}
 		map.set(x, y);
+		*/
 	}
 
 	/**
@@ -81,12 +111,38 @@ public class CollisionDetection {
 
 		for (int y = 0; y < height; y++) {
 			for (int x = 0; x < width; x++) {
-				/*
-				 * NOTE: Right now our collision detection system is binary, so
-				 * something or is blocked or is not.
-				 */
-				if (collisionLayer.getTileAt(x, y) != 0) {
-					map.set(x, y);
+				final int collisionType = collisionLayer.getTileAt(x, y);
+
+				// DEBUG:
+				//System.out.println("\nCollsion tile: " + collisionType);
+
+				if (!testserver) {
+					/*
+					 * NOTE: Right now our collision detection system is binary, so
+					 * something is blocked or is not.
+					 */
+					if (collisionType != 0) {
+						map.set(x, y);
+					}
+				} else {
+					// DEBUG:
+					//System.out.println("Collision type: " + (byte) collisionType);
+					/*
+					if (collisionType > 0) {
+						System.out.println("\nNon-standard collision: " + (collisionType + 1) + "\n");
+					}
+					*/
+
+					if (collisionType > 0) {
+						// DEBUG:
+						/*
+						if (collisionType > 1) {
+							System.out.println("\nNon-standard collision: " + collisionType + "\n");
+						}
+						*/
+
+						map.set(x, y, (byte) collisionType);
+					}
 				}
 			}
 		}
@@ -133,6 +189,24 @@ public class CollisionDetection {
 	}
 
 	/**
+	 * Get the width of the collision map.
+	 *
+	 * @return width
+	 */
+	public int getWidth() {
+		return width;
+	}
+
+	/**
+	 * Get the height of the collision map.
+	 *
+	 * @return height
+	 */
+	public int getHeight() {
+		return height;
+	}
+
+	/**
 	 * Check if a rectangle overlaps colliding areas.
 	 *
 	 * @param shape checked area
@@ -146,7 +220,6 @@ public class CollisionDetection {
 		final double h = shape.getHeight();
 		return collides(x, y, w, h);
 	}
-
 
 	/**
 	 * Check if a rectangle overlaps colliding areas.
@@ -191,24 +264,33 @@ public class CollisionDetection {
 		if ((y < 0) || (y >= height)) {
 			return true;
 		}
-		return map.get(x, y);
+
+		if (!testserver) {
+			return map.get(x, y);
+		} else {
+			return map.getCollision(x, y) > 0;
+		}
+	}
+
+	public CollisionType getCollisionType(final int x, final int y) {
+		return map.getCollisionType(x, y);
 	}
 
 	/**
-	 * Get the width of the collision map.
-	 *
-	 * @return width
+	 * Checks if projectiles can traverse this node.
 	 */
-	public int getWidth() {
-		return width;
+	public boolean canShootOver(final int x, final int y) {
+		if (!testserver) {
+			return map.get(x, y);
+		} else {
+			return map.getCollision(x, y) != CollisionType.NORMAL.getValue();
+		}
 	}
 
 	/**
-	 * Get the height of the collision map.
-	 *
-	 * @return height
+	 * Checks if an entity can traverse this node.
 	 */
-	public int getHeight() {
-		return height;
+	public boolean canFlyOver(final int x, final int y) {
+		return canShootOver(x, y);
 	}
 }

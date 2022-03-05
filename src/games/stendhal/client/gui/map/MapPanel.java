@@ -27,6 +27,7 @@ import javax.swing.SwingUtilities;
 
 import games.stendhal.client.StendhalClient;
 import games.stendhal.common.CollisionDetection;
+import games.stendhal.common.constants.CollisionType;
 import marauroa.common.game.RPAction;
 
 class MapPanel extends JComponent {
@@ -47,6 +48,10 @@ class MapPanel extends JComponent {
 	 * The color of protected areas (palest green).
 	 */
 	private static final Color COLOR_PROTECTION = new Color(202, 230, 202);
+	/** Walk blocker collision (dark pink). */
+	private static final Color COLOR_WALKBLOCK = new Color(209, 144, 224);
+	/** Color for collision nodes that can be flown over (burnt orange). */
+	private static final Color COLOR_FLYOVER = new Color(0xcc, 0x55, 0x00);
 	/**
 	 * The color of other players (white).
 	 */
@@ -95,6 +100,8 @@ class MapPanel extends JComponent {
 	 * thread.
 	 */
 	private Image mapImage;
+
+	private static final boolean testserver = System.getProperty("stendhal.testserver") != null;
 
 	/**
 	 * Create a new MapPanel.
@@ -277,7 +284,18 @@ class MapPanel extends JComponent {
 		for (int x = 0; x < mapWidth; x++) {
 			for (int y = 0; y < mapHeight; y++) {
 				if (cd.collides(x, y)) {
-					g.setColor(COLOR_BLOCKED);
+					if (!testserver) {
+						g.setColor(COLOR_BLOCKED);
+					} else {
+						final CollisionType t = cd.getCollisionType(x, y);
+						if (t.equals(CollisionType.WALKBLOCK)) {
+							g.setColor(COLOR_WALKBLOCK);
+						} else if (t.equals(CollisionType.FLYOVER)) {
+							g.setColor(COLOR_FLYOVER);
+						} else {
+							g.setColor(COLOR_BLOCKED);
+						}
+					}
 					g.fillRect(x * scale, y * scale, scale, scale);
 				} else if (pd != null && pd.collides(x, y)) {
 					// draw protection only if there is no collision to draw

@@ -55,6 +55,9 @@ public class TMXLoader {
 
 	private String xmlPath;
 
+	// DEBUG:
+	private String currentFilename = "";
+
 	private static String makeUrl(final String filename) throws MalformedURLException {
 		final String url;
 		if ((filename.indexOf("://") > -1) || filename.startsWith("file:")) {
@@ -154,6 +157,22 @@ public class TMXLoader {
 		}
 
 		layer.setName(getAttributeValue(t, "name"));
+
+		// DEBUG:
+		final boolean semos_collsion = currentFilename.endsWith("semos/city.tmx")
+			&& layer.getName().equals("collision");
+		/*
+		if (currentFilename.endsWith("semos/city.tmx")) {
+			final String layerName = layer.getName();
+			System.out.println("\nReading Semos City layer: " + layerName);
+			if (layerName.equals("collision")) {
+				System.out.println("collision layer");
+			}
+		}
+		*/
+		if (semos_collsion) {
+			System.out.println("Reading Semos City collision layer\n");
+		}
 
 		for (Node child = t.getFirstChild(); child != null; child = child.getNextSibling()) {
 			if ("data".equalsIgnoreCase(child.getNodeName())) {
@@ -294,6 +313,9 @@ public class TMXLoader {
 	public StendhalMapStructure readMap(final String filename) throws Exception {
 		xmlPath = filename.substring(0,
 				filename.lastIndexOf(File.separatorChar) + 1);
+
+		// DEBUG:
+		currentFilename = filename;
 
 		InputStream is = getClass().getClassLoader().getResourceAsStream(
 				filename);

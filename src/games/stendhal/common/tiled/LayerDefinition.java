@@ -69,6 +69,9 @@ public class LayerDefinition implements Serializable {
 	 */
 	private byte[] raw;
 
+	private final boolean testserver = System.getProperty("stendhal.testserver") != null;
+
+
 	/**
 	 * Constructor.
 	 *
