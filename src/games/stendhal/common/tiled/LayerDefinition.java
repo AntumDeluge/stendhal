@@ -37,7 +37,7 @@ import marauroa.common.net.Serializable;
  */
 public class LayerDefinition implements Serializable {
 	/** To which map this layer belong. */
-	private StendhalMapStructure map = null;
+	protected StendhalMapStructure map = null;
 
 	/** Width of the layer that SHOULD be the same that the width of the map. */
 	private int width;
@@ -68,6 +68,8 @@ public class LayerDefinition implements Serializable {
 	 * serialization.
 	 */
 	private byte[] raw;
+
+	protected Byte[][] collisionInfo = null;
 
 	private final boolean testserver = System.getProperty("stendhal.testserver") != null;
 
@@ -263,6 +265,20 @@ public class LayerDefinition implements Serializable {
 	 */
 	public String getName() {
 		return name;
+	}
+
+	/**
+	 * Checks if this layer has collision information.
+	 */
+	public boolean hasCollisionInfo() {
+		return collisionInfo != null;
+	}
+
+	/**
+	 * Retrievies collision information for this layer.
+	 */
+	public Byte[][] getCollisionInfo() {
+		return collisionInfo;
 	}
 
 	@Override
