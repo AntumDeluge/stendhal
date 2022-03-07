@@ -50,8 +50,8 @@ class MapPanel extends JComponent {
 	private static final Color COLOR_PROTECTION = new Color(202, 230, 202);
 	/** Walk blocker collision (dark pink). */
 	private static final Color COLOR_WALKBLOCK = new Color(209, 144, 224);
-	/** Color for collision nodes that can be flown over (burnt orange). */
-	private static final Color COLOR_FLYOVER = new Color(0xcc, 0x55, 0x00);
+	/** Color for collision nodes that can be flown over (carolina blue). */
+	private static final Color COLOR_FLYOVER = new Color(0x56, 0xA0, 0xD3);
 	/**
 	 * The color of other players (white).
 	 */
