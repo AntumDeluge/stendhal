@@ -169,6 +169,9 @@ public class StendhalRPZone extends MarauroaRPZone {
 	private String associatedZones;
 
 
+	private static final boolean testserver = System.getProperty("stendhal.testserver") != null;
+
+
 	public StendhalRPZone(final String name) {
 		super(name);
 
@@ -450,17 +453,41 @@ public class StendhalRPZone extends MarauroaRPZone {
 		attributes = attr;
 	}
 
+	/**
+	 * Sets collision information for this zone.
+	 *
+	 * @param name
+	 * @param collisionLayer
+	 *     Layer definition.
+	 */
 	public void addCollisionLayer(final String name, final LayerDefinition collisionLayer)
 			throws IOException {
-		// DEBUG:
-		if (getName().equals("0_semos_city")) {
-			System.out.println("\nAdding collision layer to Semos City\n");
-		}
-
 		addToContent(name, collisionLayer.encode());
 		collisionMap.setCollisionData(collisionLayer);
 	}
 
+	/**
+	 * Sets collision information for this zone.
+	 *
+	 * @param name
+	 * @param collisionLayer
+	 *     Layer definition.
+	 * @param gid
+	 *     Tileset GID offset.
+	 */
+	public void addCollisionLayer(final String name, final LayerDefinition collisionLayer,
+			final Integer gid) throws IOException {
+		addToContent(name, collisionLayer.encode());
+		collisionMap.setCollisionData(collisionLayer, gid);
+	}
+
+	/**
+	 * Sets protection information for this zone.
+	 *
+	 * @param name
+	 * @param protectionLayer
+	 *     Layer definition.
+	 */
 	public void addProtectionLayer(final String name, final LayerDefinition protectionLayer)
 			throws IOException {
 		addToContent(name, protectionLayer.encode());
@@ -1152,7 +1179,13 @@ public class StendhalRPZone extends MarauroaRPZone {
 	public synchronized boolean collides(final Entity entity, final double x, final double y,
 			final boolean checkObjects) {
 
-		if (collisionMap.collides(x, y, entity.getWidth(), entity.getHeight())) {
+		//if (entity instanceof ActiveEntity && ((ActiveEntity) entity).isFlying()) {
+		if (entity.has("flying")) {
+			if (!collisionMap.canFlyOver((int) x, (int) y, (int) entity.getWidth(),
+					(int) entity.getHeight())) {
+				return true;
+			}
+		} else if (collisionMap.collides(x, y, entity.getWidth(), entity.getHeight())) {
 			return true;
 		}
 

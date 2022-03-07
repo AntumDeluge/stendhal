@@ -40,10 +40,10 @@ public class LayerDefinition implements Serializable {
 	protected StendhalMapStructure map = null;
 
 	/** Width of the layer that SHOULD be the same that the width of the map. */
-	private int width;
+	protected int width;
 
 	/** Height of the layer that SHOULD be the same that the height of the map. */
-	private int height;
+	protected int height;
 
 	/**
 	 * Name of the layer that MUST be one of the available:
@@ -61,15 +61,13 @@ public class LayerDefinition implements Serializable {
 	private String name;
 
 	/** The data encoded as int in a array of size width*height .*/
-	private int[] data = null;
+	protected int[] data = null;
 
 	/**
 	 * The same data in a raw byte array, so we save reencoding it again for
 	 * serialization.
 	 */
-	private byte[] raw;
-
-	protected Byte[][] collisionInfo = null;
+	protected byte[] raw;
 
 	private final boolean testserver = System.getProperty("stendhal.testserver") != null;
 
@@ -265,20 +263,6 @@ public class LayerDefinition implements Serializable {
 	 */
 	public String getName() {
 		return name;
-	}
-
-	/**
-	 * Checks if this layer has collision information.
-	 */
-	public boolean hasCollisionInfo() {
-		return collisionInfo != null;
-	}
-
-	/**
-	 * Retrievies collision information for this layer.
-	 */
-	public Byte[][] getCollisionInfo() {
-		return collisionInfo;
 	}
 
 	@Override

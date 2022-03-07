@@ -23,7 +23,7 @@ public enum CollisionType {
 
 	private final byte byteValue;
 
-	public static final int COLLISION_TYPES = 2;
+	public static final int COLLISION_TYPES = 3;
 
 
 	private CollisionType(final byte bv) {

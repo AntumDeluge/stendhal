@@ -132,7 +132,13 @@ public class CollisionMap {
 	public CollisionType getCollisionType(final int x, final int y) {
 		final byte ctype = nodes[x][y];
 
-		return CollisionType.fromByte(ctype);
+		//return CollisionType.fromByte(ctype);
+		final CollisionType type = CollisionType.fromByte(ctype);
+
+		// DEBUG:
+		//System.out.println("type: " + type);
+
+		return type != null ? type : CollisionType.NONE;
 	}
 
 	/**
@@ -227,16 +233,6 @@ public class CollisionMap {
 	 */
 	public void set(final Rectangle2D shape) {
 		set(shape, CollisionType.NORMAL);
-	}
-
-	/**
-	 * Sets all collision info for map at once.
-	 *
-	 * @param collisionInfo
-	 *     Map collision information.
-	 */
-	public void set(final byte[][] collisionInfo) {
-		nodes = collisionInfo;
 	}
 
 	/**

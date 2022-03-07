@@ -12,7 +12,11 @@
  ***************************************************************************/
 package games.stendhal.common;
 
+import static games.stendhal.common.constants.CollisionType.COLLISION_TYPES;
+
 import java.awt.geom.Rectangle2D;
+
+import org.apache.log4j.Logger;
 
 import games.stendhal.common.constants.CollisionType;
 import games.stendhal.common.tiled.LayerDefinition;
@@ -23,6 +27,9 @@ import games.stendhal.common.tiled.LayerDefinition;
  * not with any of the non trespasable areas of the world.
  */
 public class CollisionDetection {
+
+	private static final Logger logger = Logger.getLogger(CollisionDetection.class);
+
 	private CollisionMap map;
 
 	private int width;
@@ -102,7 +109,8 @@ public class CollisionDetection {
 	/**
 	 * Fill the collision map from layer data.
 	 *
-	 * @param collisionLayer static collision information
+	 * @param collisionLayer
+	 *     Static collision information.
 	 */
 	public void setCollisionData(final LayerDefinition collisionLayer) {
 		// First we build the int array.
@@ -111,38 +119,57 @@ public class CollisionDetection {
 
 		for (int y = 0; y < height; y++) {
 			for (int x = 0; x < width; x++) {
-				final int collisionType = collisionLayer.getTileAt(x, y);
+				/*
+				 * NOTE: Right now our collision detection system is binary, so
+				 * something is blocked or is not.
+				 */
+				//if (collisionLayer.getTileAt(x, y) != 0) {
+					//map.set(x, y);
+				final int tileId = collisionLayer.getTileAt(x, y);
+				if (tileId != 0) {
+					setCollide(x, y, CollisionType.fromByte((byte) tileId));
+				}
+			}
+		}
+	}
 
-				// DEBUG:
-				//System.out.println("\nCollsion tile: " + collisionType);
+	/**
+	 * Fill the collision map from layer data.
+	 *
+	 * @param collisionLayer
+	 *     Static collision information.
+	 * @param gid
+	 *     Tileset GID offset.
+	 */
+	public void setCollisionData(final LayerDefinition collisionLayer, final Integer gid) {
+		// First we build the int array.
+		collisionLayer.build();
+		init(collisionLayer.getWidth(), collisionLayer.getHeight());
 
-				if (!testserver) {
-					/*
-					 * NOTE: Right now our collision detection system is binary, so
-					 * something is blocked or is not.
-					 */
-					if (collisionType != 0) {
-						map.set(x, y);
-					}
-				} else {
-					// DEBUG:
-					//System.out.println("Collision type: " + (byte) collisionType);
-					/*
-					if (collisionType > 0) {
-						System.out.println("\nNon-standard collision: " + (collisionType + 1) + "\n");
-					}
-					*/
+		if (gid == null) {
+			logger.debug("collision tileset not found, no collision data available");
+			return;
+		}
 
-					if (collisionType > 0) {
-						// DEBUG:
-						/*
-						if (collisionType > 1) {
-							System.out.println("\nNon-standard collision: " + collisionType + "\n");
-						}
-						*/
+		for (int y = 0; y < height; y++) {
+			for (int x = 0; x < width; x++) {
+				final int tileId = collisionLayer.getTileAt(x, y);
 
-						map.set(x, y, (byte) collisionType);
-					}
+				byte collType = (byte) (tileId - gid + 1);
+				if (collType < 0x00) {
+					logger.debug("non-standard collision type: " + collType);
+
+					// no collision
+					collType = 0x00;
+				} else if (collType > COLLISION_TYPES) {
+					logger.debug("non-standard collision type: " + collType);
+
+					// default to normal collision
+					collType = 0x01;
+				}
+
+				if (collType > 0x00) {
+					map.set(x, y, collType);
 				}
 			}
 		}
@@ -300,7 +327,8 @@ public class CollisionDetection {
 		if (!testserver) {
 			return map.get(x, y);
 		} else {
-			return !map.getCollisionType(x, y).equals(CollisionType.NORMAL);
+			//return !map.getCollisionType(x, y).equals(CollisionType.NORMAL);
+			return !map.getCollisionType(x, y).equals(CollisionType.NONE);
 		}
 	}
 

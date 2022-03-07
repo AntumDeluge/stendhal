@@ -160,7 +160,7 @@ public class TMXLoader {
 
 		// DEBUG:
 		final boolean semos_collsion = currentFilename.endsWith("semos/city.tmx")
-			&& layer.getName().equals("collision");
+			&& "collision".equals(layer.getName());
 		/*
 		if (currentFilename.endsWith("semos/city.tmx")) {
 			final String layerName = layer.getName();
@@ -270,6 +270,9 @@ public class TMXLoader {
 
 		// Load the tilesets, properties, layers and objectgroups
 		for (Node sibs = mapNode.getFirstChild(); sibs != null; sibs = sibs.getNextSibling()) {
+			final LayerDefinition currentLayer = readLayer(sibs);
+			//final boolean collisionFlag = ;
+
 			if ("tileset".equals(sibs.getNodeName())) {
 				stendhalMap.addTileset(unmarshalTileset(sibs));
 			} else if ("layer".equals(sibs.getNodeName())) {
@@ -278,7 +281,7 @@ public class TMXLoader {
 					// ignore invisible locked layers (marked for non-use)
 					logger.info("Ignoring layer \"" + attributes.getNamedItem("name").getNodeValue() + "\"");
 				} else {
-					stendhalMap.addLayer(readLayer(sibs));
+					stendhalMap.addLayer(currentLayer);
 				}
 			}
 		}

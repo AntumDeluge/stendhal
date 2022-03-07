@@ -542,8 +542,10 @@ public abstract class ActiveEntity extends Entity {
 		area.setRect(x, y, getWidth(), getHeight());
 
 		final boolean collidesObjects = zone.collidesObjects(this, area) && getResistance() > 95;
+		final boolean collidesNodes = zone.collides(this, x, y, false);
 
-		return !zone.collides(area) && !collidesObjects;
+		//return !zone.collides(area) && !collidesObjects;
+		return !collidesNodes && !collidesObjects;
 	}
 
 	/**
