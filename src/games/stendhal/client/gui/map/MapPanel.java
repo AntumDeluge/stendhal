@@ -36,17 +36,11 @@ class MapPanel extends JComponent {
 	 */
 	private static final long serialVersionUID = -6471592733173102868L;
 
-	/**
-	 * The color of the background (palest grey).
-	 */
+	/** The color of the background (palest grey). */
 	private static final Color COLOR_BACKGROUND = new Color(0.8f, 0.8f, 0.8f);
-	/**
-	 * The color of blocked areas (red).
-	 */
+	/** The color of blocked areas (red). */
 	public static final Color COLOR_BLOCKED = new Color(1.0f, 0.0f, 0.0f);
-	/**
-	 * The color of protected areas (palest green).
-	 */
+	/** The color of protected areas (palest green). */
 	private static final Color COLOR_PROTECTION = new Color(202, 230, 202);
 	/** Walk blocker collision (dark pink). */
 	private static final Color COLOR_WALKBLOCK = new Color(209, 144, 224);
