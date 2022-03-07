@@ -272,25 +272,93 @@ public class CollisionDetection {
 		}
 	}
 
+	/**
+	 * Retrieves collision type for a node.
+	 */
 	public CollisionType getCollisionType(final int x, final int y) {
 		return map.getCollisionType(x, y);
 	}
 
 	/**
-	 * Checks if projectiles can traverse this node.
+	 * Checks if items can be placed on this node.
+	 */
+	public boolean canSetItemOn(final int x, final int y) {
+		return !map.getCollisionType(x, y).equals(CollisionType.NORMAL);
+	}
+
+	/**
+	 * Checks if projectiles can traverse a node.
+	 *
+	 * @param x
+	 *     Node X coordinate.
+	 * @param y
+	 *     Node Y coordinate.
+	 * @return
+	 *     <code>true</code> if node collision does not interfere with projectiles.
 	 */
 	public boolean canShootOver(final int x, final int y) {
 		if (!testserver) {
 			return map.get(x, y);
 		} else {
-			return map.getCollision(x, y) != CollisionType.NORMAL.getValue();
+			return !map.getCollisionType(x, y).equals(CollisionType.NORMAL);
 		}
 	}
 
 	/**
-	 * Checks if an entity can traverse this node.
+	 * Checks if projectiles can traverse an area of nodes.
+	 *
+	 * @param x
+	 *     First node X coordinate.
+	 * @param y
+	 *     First node Y coordinate.
+	 * @param w
+	 *     Horizontal number of nodes in area.
+	 * @param h
+	 *     Vertical number of nodes in area.
+	 * @return
+	 *     <code>true</code> if nodes collision does not interfere with projectiles.
+	 */
+	public boolean canShootOver(final int x, final int y, final int w, final int h) {
+		for (int ix = x; ix < x + w; ix++) {
+			for (int iy = y; iy < y + h; iy++) {
+				if (!canShootOver(ix, iy)) {
+					return false;
+				}
+			}
+		}
+
+		return true;
+	}
+
+	/**
+	 * Checks if a flying entity can traverse a node.
+	 *
+	 * @param x
+	 *     Node X coordinate.
+	 * @param y
+	 *     Node Y coordinate.
+	 * @return
+	 *     <code>true</code> if node collision does not interfere with flying entities.
 	 */
 	public boolean canFlyOver(final int x, final int y) {
 		return canShootOver(x, y);
+	}
+
+	/**
+	 * Checks if a flying entity can traverse an area of nodes.
+	 *
+	 * @param x
+	 *     Node X coordinate.
+	 * @param y
+	 *     Node Y coordinate.
+	 * @param w
+	 *     Horizontal number of nodes in area.
+	 * @param h
+	 *     Vertical number of nodes in area.
+	 * @return
+	 *     <code>true</code> if nodes collision does not interfere with flying entities.
+	 */
+	public boolean canFlyOver(final int x, final int y, final int w, final int h) {
+		return canShootOver(x, y, w, h);
 	}
 }
