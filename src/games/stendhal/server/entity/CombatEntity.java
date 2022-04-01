@@ -150,6 +150,9 @@ public abstract class CombatEntity extends GuidedEntity {
 		return true;
 	}
 
+	/**
+	 * UNUSED
+	 */
 	public boolean isGuaranteedAtkXpFrom(final CombatEntity defender) {
 		if (defender instanceof Player) {
 			return false;

@@ -348,16 +348,6 @@ public class StendhalRPAction {
 		// equipment that are broken are added to this list
 		final List<BreakableItem> broken = new ArrayList<>();
 
-		boolean atkXpAdded = false;
-		if (player.isGuaranteedAtkXpFrom(defender)) {
-			if (Testing.COMBAT && isRanged) {
-				player.incRatkXP();
-			} else {
-				player.incAtkXP();
-			}
-			atkXpAdded = true;
-		}
-
 		if (beaten) {
 			final List<Item> weapons = player.getWeapons();
 			final float itemAtk;
@@ -375,7 +365,7 @@ public class StendhalRPAction {
 			if (defender.getsDefXpFrom(player)) {
 				defender.incDefXP();
 			}
-			if (!atkXpAdded && player.getsAtkXpFrom(defender)) {
+			if (player.getsAtkXpFrom(defender)) {
 				if (Testing.COMBAT && isRanged) {
 					player.incRatkXP();
 				} else {
