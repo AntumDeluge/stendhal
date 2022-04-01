@@ -375,15 +375,15 @@ public class StendhalRPAction {
 			if (defender.getsDefXpFrom(player)) {
 				defender.incDefXP();
 			}
+			if (!atkXpAdded && player.getsAtkXpFrom(defender)) {
+				if (Testing.COMBAT && isRanged) {
+					player.incRatkXP();
+				} else {
+					player.incAtkXP();
+				}
+			}
 
 			if (didDamage && !usesTrainingDummy) {
-				if (!atkXpAdded && player.getsAtkXpFrom(defender)) {
-					if (Testing.COMBAT && isRanged) {
-						player.incRatkXP();
-					} else {
-						player.incAtkXP();
-					}
-				}
 
 				// limit damage to target HP
 				damage = Math.min(damage, defender.getHP());
