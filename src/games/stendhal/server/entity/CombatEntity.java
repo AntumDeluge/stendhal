@@ -130,34 +130,21 @@ public abstract class CombatEntity extends GuidedEntity {
 	}
 
 	private boolean getsFightXpFrom(final CombatEntity opponent) {
-		return this instanceof Player && !(opponent instanceof PassiveNPC)
-				&& !(opponent instanceof Player);
+		return this instanceof Player && !(opponent instanceof PassiveNPC);
 	}
 
 	public boolean getsAtkXpFrom(final CombatEntity defender) {
-		if (!getsFightXpFrom(defender)) {
-			return false;
-		}
-
-		return true;
+		return getsFightXpFrom(defender);
 	}
 
 	public boolean getsDefXpFrom(final CombatEntity attacker) {
-		if (!getsFightXpFrom(attacker)) {
-			return false;
-		}
-
-		return true;
+		return getsFightXpFrom(attacker);
 	}
 
 	/**
 	 * UNUSED
 	 */
 	public boolean isGuaranteedAtkXpFrom(final CombatEntity defender) {
-		if (defender instanceof Player) {
-			return false;
-		}
-
 		final Integer turnWhenLastDamaged = enemiesThatGiveFightXP.get(defender);
 		if (turnWhenLastDamaged == null) {
 			return false;
