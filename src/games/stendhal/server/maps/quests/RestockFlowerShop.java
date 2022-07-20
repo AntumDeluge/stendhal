@@ -88,15 +88,31 @@ public class RestockFlowerShop extends AbstractQuest {
 	// Quest NPC
 	private final SpeakerNPC npc = npcs.get("Seremela");
 
+
+	private int getCompletedCount(final Player player, final int idx) {
+		int completedCount = 0;
+		try {
+			completedCount = Integer.parseInt(player.getQuest(QUEST_SLOT, idx));
+		} catch (final NumberFormatException e) {
+			// do nothing
+		}
+
+		return completedCount;
+	}
+
 	@Override
 	public List<String> getHistory(final Player player) {
 		final List<String> res = new ArrayList<>();
 		if (!player.hasQuest(QUEST_SLOT)) {
 			return res;
 		}
-		String npcName = npc.getName();
+
+		final String npcName = npc.getName();
+		int completedCount = 0;
+
 		if (player.isQuestInState(QUEST_SLOT, 0, "rejected")) {
 			res.add("Flowers make me sneeze.");
+			completedCount = getCompletedCount(player, 1);
 		} else if (!player.isQuestInState(QUEST_SLOT, 0, "done")) {
 			res.add("I have offered to help " + npcName + " restock the flower shop.");
 
@@ -107,12 +123,20 @@ public class RestockFlowerShop extends AbstractQuest {
 				String requestedFlowers = "I still need to bring the following flowers: " + Grammar.enumerateCollection(remaining.toStringList()) + ".";
 				res.add(requestedFlowers);
 			}
+
+			completedCount = getCompletedCount(player, 1);
 		} else {
 			if (isRepeatable(player)) {
 				res.add("It has been a while since I helped " + npcName + ". Perhaps she could use my help again.");
 			} else {
 				res.add(npcName + " now has a good supply of flowers.");
 			}
+
+			completedCount = getCompletedCount(player, 2);
+		}
+
+		if (completedCount > 0) {
+			res.add("I have helped restock the flower shop " + completedCount + "times.");
 		}
 
 		return res;
