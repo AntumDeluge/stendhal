@@ -36,6 +36,8 @@ public class StartItemsCollectionWithLimitAction implements ChatAction {
 	private final String questSlot;
 	/** Index of sub state. */
 	private int itemIndex = 1;
+	//private Boolean commaSeparated = false;
+	private String delim = ";";
 
 	/**
 	 * Creates a new StartItemsCollectionWithLimitsAction.
@@ -72,6 +74,32 @@ public class StartItemsCollectionWithLimitAction implements ChatAction {
 		this.itemIndex = index;
 	}
 
+	/**
+	 * Creates a new StartItemsCollectionWithLimitsAction.
+	 *
+	 * @param quest
+	 *     Quest slot name.
+	 * @param index
+	 *     Index of sub state
+	 * @param items
+	 *     List of items required.
+	 * @param limit
+	 *     The sum of all items.
+	 * @param commaSeparated
+	 *     List should be separated with comma (,) instead of semi-colon (;).
+	 */
+	public StartItemsCollectionWithLimitAction(final String quest, final int index,
+			final List<String> items, final int limit, final boolean commaSeparated) {
+		this.questSlot = checkNotNull(quest);
+		this.items = new LinkedList<String>(items);
+		this.limit = limit;
+		this.itemIndex = index;
+
+		if (commaSeparated) {
+			this.delim = ",";
+		}
+	}
+
 	@Override
 	public void fire(final Player player, final Sentence sentence, final EventRaiser npc) {
 		int[] requestedQuantities = randomVector(items.size(), limit);
@@ -81,7 +109,7 @@ public class StartItemsCollectionWithLimitAction implements ChatAction {
 		for (int i = 0; i < items.size(); i++) {
 			int quantity = requestedQuantities[i];
 			if (quantity != 0) {
-				sb.append(items.get(i) + "=" + quantity + ";");
+				sb.append(items.get(i) + "=" + quantity + this.delim);
 			}
 		}
 

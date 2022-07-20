@@ -42,6 +42,7 @@ public final class CollectRequestedItemsAction implements ChatAction {
 	private final ChatAction toExecuteOnCompletion;
 	private final String questSlot;
 	private final ConversationStates stateAfterCompletion;
+	private final Boolean commaSeparated;
 
 	/**
 	 * create a new CollectRequestedItemsAction
@@ -60,6 +61,39 @@ public final class CollectRequestedItemsAction implements ChatAction {
 		this.alreadyBrought = checkNotNull(alreadyBrought);
 		this.toExecuteOnCompletion = checkNotNull(completionAction);
 		this.stateAfterCompletion = checkNotNull(stateAfterCompletion);
+		this.commaSeparated = false;
+	}
+
+	/**
+	 * Create a new CollectRequestedItemsAction.
+	 *
+	 * @param itemName
+	 *     Name of the item to process.
+	 * @param quest
+	 *     The quest to deal with
+	 * @param questionForMore
+	 *     How shall the affected NPC ask for more brought items?
+	 * @param alreadyBrought
+	 *     What shall the affected NPC say about an already brought item?
+	 * @param completionAction
+	 *     Action to execute after the complete list was brought.
+	 * @param stateAfterCompletion
+	 *     State to change to after completion.
+	 * @param commaSeparated
+	 *     Item list separator is comma (,) instead of semi-colon (;).
+	 */
+	public CollectRequestedItemsAction(final String itemName, final String quest,
+			final String questionForMore, final String alreadyBrought,
+			final ChatAction completionAction, final ConversationStates stateAfterCompletion,
+			final boolean commaSeparated) {
+
+		this.itemName = checkNotNull(itemName);
+		this.questSlot = checkNotNull(quest);
+		this.questionForMore = checkNotNull(questionForMore);
+		this.alreadyBrought = checkNotNull(alreadyBrought);
+		this.toExecuteOnCompletion = checkNotNull(completionAction);
+		this.stateAfterCompletion = checkNotNull(stateAfterCompletion);
+		this.commaSeparated = commaSeparated;
 	}
 
 	@Override
@@ -99,7 +133,7 @@ public final class CollectRequestedItemsAction implements ChatAction {
 		// parse the quest state into a list of still missing items
 		final ItemCollection itemsTodo = new ItemCollection();
 
-		itemsTodo.addFromQuestStateString(player.getQuest(questSlot));
+		itemsTodo.addFromQuestStateString(player.getQuest(questSlot), 0, commaSeparated);
 
 		if (player.drop(itemName, itemCount)) {
 			if (itemsTodo.removeItem(itemName, itemCount)) {
@@ -134,7 +168,7 @@ public final class CollectRequestedItemsAction implements ChatAction {
 
 		 // update the quest state if some items are handed over
 		if (result) {
-			player.setQuest(questSlot, itemsTodo.toStringForQuestState());
+			player.setQuest(questSlot, itemsTodo.toStringForQuestState(commaSeparated));
 		}
 
 		return result;
@@ -149,7 +183,7 @@ public final class CollectRequestedItemsAction implements ChatAction {
 	ItemCollection getMissingItems(final Player player) {
 		final ItemCollection missingItems = new ItemCollection();
 
-		missingItems.addFromQuestStateString(player.getQuest(questSlot));
+		missingItems.addFromQuestStateString(player.getQuest(questSlot), 0, commaSeparated);
 
 		return missingItems;
 	}
@@ -161,7 +195,8 @@ public final class CollectRequestedItemsAction implements ChatAction {
 				+ 5077 * (questionForMore.hashCode()
 				+ 5081 * (alreadyBrought.hashCode()
 				+ 5087 * (toExecuteOnCompletion.hashCode()
-				+ 5099 * stateAfterCompletion.hashCode())))));
+				+ 5099 * (stateAfterCompletion.hashCode()
+				+ commaSeparated.hashCode()))))));
 	}
 
 	@Override
@@ -175,7 +210,8 @@ public final class CollectRequestedItemsAction implements ChatAction {
 			&& questionForMore.equals(other.questionForMore)
 			&& alreadyBrought.equals(other.alreadyBrought)
 			&& toExecuteOnCompletion.equals(other.toExecuteOnCompletion)
-			&& stateAfterCompletion.equals(other.stateAfterCompletion);
+			&& stateAfterCompletion.equals(other.stateAfterCompletion)
+			&& commaSeparated.equals(other.commaSeparated);
 	}
 
 	@Override
