@@ -562,6 +562,13 @@ public abstract class UpdateConverter {
 		fixMazeQuestSlot(player);
 
 		fixQuestDoneState(player);
+
+		// convert Restock Flower Shop item list to comma-separated
+		final String flowershopSlot = "restock_flowershop";
+		// FIXME: don't update if list is already using commas so completions count isn't lost
+		if (player.hasQuest(flowershopSlot) && !"done".equals(player.getQuest(flowershopSlot, 0))) {
+			player.setQuest(flowershopSlot, player.getQuest(flowershopSlot).replace(";", ","));
+		}
 	}
 
 
