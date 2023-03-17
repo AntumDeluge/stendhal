@@ -1716,4 +1716,65 @@ d = 9017093486007323270605414717455737376618092805104733236083857811315606869372
     </delete>
   </target> <!-- report_test -->
 
+  <target name="spotbugs" description="Analyze Java code" depends="compile_tests">
+    <property name="build_code_analysis" value="${buildroot}/build_code_analysis"/>
+
+    <taskdef resource="edu/umd/cs/findbugs/anttask/tasks.properties"
+        classpath="buildtools/spotbugs/lib/spotbugs-ant.jar"/>
+
+    <mkdir dir="${build_code_analysis}"/>
+
+    <spotbugs
+        home="buildtools/spotbugs/"
+        failOnError="true"
+        output="html"
+        stylesheet="default.xsl"
+        outputFile="${build_code_analysis}/spotbugs_server_report.html">
+      <class location="${build_server}"/>
+      <class location="${build_server_maps}"/>
+      <class location="${build_server_script}"/>
+      <auxClasspath>
+        <fileset dir="${libdir}">
+          <include name="**/*.jar"/>
+        </fileset>
+      </auxClasspath>
+      <sourcePath path="${src}"/>
+    </spotbugs>
+
+    <spotbugs
+        home="buildtools/spotbugs/"
+        failOnError="true"
+        output="html"
+        stylesheet="default.xsl"
+        outputFile="${build_code_analysis}/spotbugs_client_report.html">
+      <class location="${build_client}"/>
+      <auxClasspath>
+        <fileset dir="${libdir}">
+          <include name="**/*.jar"/>
+        </fileset>
+      </auxClasspath>
+      <sourcePath path="${src}"/>
+    </spotbugs>
+
+    <spotbugs
+        home="buildtools/spotbugs/"
+        failOnError="true"
+        output="html"
+        stylesheet="default.xsl"
+        outputFile="${build_code_analysis}/spotbugs_tests_report.html">
+      <class location="${build_stendhaltools}"/>
+      <class location="${build_tests}"/>
+      <auxClasspath>
+        <pathelement path="${build_server}"/>
+        <pathelement path="${build_server_maps}"/>
+        <pathelement path="${build_server_script}"/>
+        <pathelement path="${build_client}"/>
+        <fileset dir="${libdir}">
+          <include name="**/*.jar"/>
+        </fileset>
+      </auxClasspath>
+      <sourcePath path="${testsrc}"/>
+    </spotbugs>
+  </target> <!-- spotbugs -->
+
 </project>
