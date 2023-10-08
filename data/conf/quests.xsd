@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="stendhal"
+    xmlns:tns="http://www.example.org/zones" elementFormDefault="qualified"
+    xmlns:Q1="stendhal">
+
+  <element name="quest" type="Q1:QuestType"/>
+
+  <complexType name="QuestType">
+    <sequence>
+      <element name="slot" type="Q1:StringType" minOccurs="1" maxOccurs="1"/>
+      <element name="name" type="Q1:StringType" minOccurs="1" maxOccurs="1"/>
+      <element name="npc" type="Q1:StringType" minOccurs="0" maxOccurs="1"/>
+      <element name="actor" type="Q1:ActorType" minOccurs="0" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+
+  <complexType name="ActorType">
+    <sequence>
+      <element name="addGreeting" type="Q1:OptReplyType" minOccurs="0" maxOccurs="1"/>
+      <element name="addGoodbye" type="Q1:OptReplyType" minOccurs="0" maxOccurs="1"/>
+      <element name="addHelp" type="Q1:ReplyType" minOccurs="0" maxOccurs="1"/>
+      <element name="addJob" type="Q1:ReplyType" minOccurs="0" maxOccurs="1"/>
+      <element name="addOffer" type="Q1:ReplyType" minOccurs="0" maxOccurs="1"/>
+      <element name="addQuest" type="Q1:ReplyType" minOccurs="0" maxOccurs="1"/>
+      <element name="addReply" type="Q1:TriggerReplyType" minOccurs="0" maxOccurs="unbounded"/>
+      <element name="transition" type="Q1:TransitionType" minOccurs="0" maxOccurs="unbounded"/>
+    </sequence>
+    <attribute name="name" type="string" use="required"/>
+  </complexType>
+
+  <complexType name="TriggersGroup">
+    <sequence>
+      <element name="word" type="Q1:StringType" minOccurs="0" maxOccurs="unbounded"/>
+      <element name="ConversationPhrases" type="Q1:StringType" minOccurs="0" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+
+  <complexType name="ConditionsGroup">
+    <sequence>
+      <element name="ChatCondition" type="Q1:StringType" minOccurs="0" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+
+  <complexType name="ActionsGroup">
+    <sequence>
+      <element name="setQuest" type="Q1:SetQuestAction" minOccurs="0" maxOccurs="1"/>
+      <element name="incXP" type="integer" minOccurs="0" maxOccurs="1"/>
+      <element name="incKarma" type="decimal" minOccurs="0" maxOccurs="1"/>
+      <element name="incAtk" type="integer" minOccurs="0" maxOccurs="1"/>
+      <element name="incDef" type="integer" minOccurs="0" maxOccurs="1"/>
+      <element name="emote" type="Q1:NPCEmoteAction" minOccurs="0" maxOccurs="1"/>
+      <element name="sound" type="Q1:PlaySoundAction" minOccurs="0" maxOccurs="1"/>
+      <element name="teleport" type="Q1:TeleportAction" minOccurs="0" maxOccurs="1"/>
+      <element name="ChatAction" type="Q1:StringType" minOccurs="0" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+
+  <complexType name="StringType">
+    <attribute name="value" type="string" use="required"/>
+  </complexType>
+
+  <complexType name="OptStringType">
+    <attribute name="value" type="string" use="optional"/>
+  </complexType>
+
+  <simpleType name="DirectionAttr">
+    <restriction base="string">
+      <enumeration value="up"/>
+      <enumeration value="down"/>
+      <enumeration value="left"/>
+      <enumeration value="right"/>
+    </restriction>
+  </simpleType>
+
+  <complexType name="DirectionType">
+    <attribute name="value" type="Q1:DirectionAttr" use="required"/>
+  </complexType>
+
+  <!-- TODO: support list of triggers & ChatAction execution -->
+
+  <complexType name="ReplyType">
+    <attribute name="reply" type="string" use="required"/>
+  </complexType>
+
+  <complexType name="OptReplyType">
+    <attribute name="reply" type="string" use="optional"/>
+  </complexType>
+
+  <complexType name="TriggerReplyType">
+    <attribute name="trigger" type="string" use="required"/>
+    <attribute name="reply" type="string" use="required"/>
+  </complexType>
+
+  <complexType name="OptTriggerReplyType">
+    <attribute name="trigger" type="string" use="optional"/>
+    <attribute name="reply" type="string" use="required"/>
+  </complexType>
+
+  <complexType name="TransitionType">
+    <sequence>
+      <!-- TODO: support multiple starting states -->
+      <element name="state" type="Q1:StringType" minOccurs="0" maxOccurs="1"/>
+      <element name="nextState" type="Q1:StringType" minOccurs="0" maxOccurs="1"/>
+      <element name="triggers" type="Q1:TriggersGroup" minOccurs="1" maxOccurs="1"/>
+      <element name="conditions" type="Q1:ConditionsGroup" minOccurs="0" maxOccurs="1"/>
+      <element name="reply" type="Q1:StringType" minOccurs="0" maxOccurs="1"/>
+      <element name="actions" type="Q1:ActionsGroup" minOccurs="0" maxOccurs="1"/>
+    </sequence>
+  </complexType>
+
+
+  <!-- chat actions -->
+
+  <complexType name="NPCEmoteAction">
+    <attribute name="text" type="string" use="required"/>
+    <attribute name="towardPlayer" type="boolean" use="optional"/>
+    <attribute name="suffix" type="string" use="optional"/>
+  </complexType>
+
+  <complexType name="PlaySoundAction">
+    <attribute name="sound" type="string" use="required"/>
+    <attribute name="delay" type="boolean" use="optional"/>
+  </complexType>
+
+  <complexType name="SetQuestAction">
+    <attribute name="value" type="string" use="required"/>
+    <attribute name="index" type="integer" use="optional"/>
+  </complexType>
+
+  <complexType name="TeleportAction">
+    <attribute name="zone" type="string" use="required"/>
+    <attribute name="x" type="integer" use="required"/>
+    <attribute name="y" type="integer" use="required"/>
+    <attribute name="dir" type="Q1:DirectionAttr" use="optional"/>
+  </complexType>
+
+</schema>

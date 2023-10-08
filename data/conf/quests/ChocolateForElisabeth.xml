@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<quest xmlns="stendhal" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="stendhal ../quests.xsd">
+
+  <!-- TODO: replace Java quest source -->
+
+  <slot value="chocolate_for_elisabeth"/>
+  <name value="ChocolateForElisabeth"/>
+  <npc value="Elisabeth"/>
+
+  <actor name="Elisabeth">
+    <!-- TODO: -->
+
+    <addReply trigger="chocolate" reply="My mom told me, that chocolate can be found in an assassin school, which is quite #dangerous. She said also that someone sells it in Ados..."/>
+    <addReply trigger="dangerous" reply="Some bandits wait on the road to the school and assassins guard the way there, so mom and I have to stay in Kirdneh because it's safe here..."/>
+    <transition>
+      <state value="IDLE"/>
+      <nextState value="ATTENDING"/>
+      <triggers>
+        <ConversationPhrases value="GREETING_MESSAGES"/>
+      </triggers>
+      <conditions>
+      </conditions>
+      <reply value="I can't remember when I smelt the good taste of #chocolate the last time..."/>
+    </transition>
+  </actor>
+
+</quest>

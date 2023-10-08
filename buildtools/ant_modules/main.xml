@@ -139,6 +139,10 @@
         <include name="*.xml"/>
       </fileset>
     </schemavalidate>
+    <schemavalidate>
+      <schema namespace="stendhal" file="${config_dir}/quests.xsd"/>
+      <fileset dir="${config_dir}/quests" includes="*.xml"/>
+    </schemavalidate>
   </target> <!-- checkxml -->
 
 
