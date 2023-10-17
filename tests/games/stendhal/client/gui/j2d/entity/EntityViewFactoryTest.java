@@ -25,11 +25,16 @@ import org.junit.Before;
 import org.junit.Test;
 
 import games.stendhal.client.Triple;
+import games.stendhal.server.core.engine.SingletonRepository;
+import games.stendhal.server.core.rule.EntityManager;
+import games.stendhal.server.core.rule.defaultruleset.DefaultItem;
 import marauroa.common.Log4J;
 
 public class EntityViewFactoryTest {
 
 	private static final Logger logger = Logger.getLogger(EntityViewFactoryTest.class);
+
+	private static final EntityManager em = SingletonRepository.getEntityManager();
 
 	/**
 	 * Entity representation.
@@ -104,6 +109,33 @@ public class EntityViewFactoryTest {
 			final Triple<String, String, String> key = entry.getKey();
 			entities.add(new EntityRep(key.getFirst(), key.getSecond(), key.getThird(), entry.getValue()));
 		}
+
+		// items configured in xml
+		for (final DefaultItem item: em.getDefaultItems()) {
+			final String class_name = item.getItemClass();
+			final String item_name = item.getItemName();
+			final String subclass = item.getItemSubclass();
+			Class base_implementation = EntityViewFactory.getViewClass("item", class_name, null);
+			if (base_implementation == null) {
+				base_implementation = getImplementation("item", class_name, null, Item2DView.class);
+			}
+			Class implementation = getImplementation("item", class_name, item_name, null);
+			if (implementation == null) {
+				// fallback to lookup via subclass instead of name & default to item class type
+				implementation = getImplementation("item", class_name, subclass, base_implementation);
+			}
+
+			// item base class
+			EntityRep erep = new EntityRep("item", class_name, null, base_implementation);
+			if (!entities.contains(erep)) {
+				entities.add(erep);
+			}
+
+			erep = new EntityRep("item", class_name, item_name, implementation);
+			if (!entities.contains(erep) && !entities.contains(new EntityRep("item", class_name, subclass, implementation))) {
+				entities.add(erep);
+			}
+		}
 	}
 
 	private Class getImplementation(final String type_name, final String class_name, final String name, final Class def) {
@@ -121,6 +153,287 @@ public class EntityViewFactoryTest {
 	 */
 	@Test
 	public void testAll() {
+
+		/* *** ITEMS LOADED FROM XML *** */
+
+		checkImplementation("item", "armor", null, Item2DView.class);
+		checkImplementation("item", "armor", "blue armor", Item2DView.class);
+		checkImplementation("item", "armor", "dress", Item2DView.class);
+		checkImplementation("item", "armor", "dwarvish armor", Item2DView.class);
+		checkImplementation("item", "armor", "elvish armor", Item2DView.class);
+		checkImplementation("item", "armor", "golden armor", Item2DView.class);
+		checkImplementation("item", "armor", "leather armor", Item2DView.class);
+		checkImplementation("item", "armor", "mainio armor", Item2DView.class);
+		checkImplementation("item", "armor", "mithril armor", Item2DView.class);
+		checkImplementation("item", "armor", "pauldroned iron cuirass", Item2DView.class);
+		checkImplementation("item", "armor", "pauldroned leather cuirass", Item2DView.class);
+		checkImplementation("item", "armor", "red armor", Item2DView.class);
+		checkImplementation("item", "armor", "xeno armor", Item2DView.class);
+
+		checkImplementation("item", "axe", null, Item2DView.class);
+		checkImplementation("item", "axe", "durin axe", Item2DView.class);
+		checkImplementation("item", "axe", "halberd", Item2DView.class);
+
+		checkImplementation("item", "boots", null, Item2DView.class);
+		checkImplementation("item", "boots", "blue boots", Item2DView.class);
+		checkImplementation("item", "boots", "elvish boots", Item2DView.class);
+		checkImplementation("item", "boots", "golden boots", Item2DView.class);
+		checkImplementation("item", "boots", "leather boots", Item2DView.class);
+		checkImplementation("item", "boots", "mainio boots", Item2DView.class);
+		checkImplementation("item", "boots", "mithril boots", Item2DView.class);
+		checkImplementation("item", "boots", "red boots", Item2DView.class);
+		checkImplementation("item", "boots", "xeno boots", Item2DView.class);
+
+		checkImplementation("item", "book", null, Item2DView.class);
+		checkImplementation("item", "book", "black book", Item2DView.class);
+		checkImplementation("item", "book", "blue book", Item2DView.class);
+
+		checkImplementation("item", "box", "basket", Box2DView.class);
+		checkImplementation("item", "box", "present", Box2DView.class);
+		checkImplementation("item", "box", "stocking", Box2DView.class);
+
+		checkImplementation("item", "cloak", null, Item2DView.class);
+		checkImplementation("item", "cloak", "blue elf cloak", Item2DView.class);
+		checkImplementation("item", "cloak", "blue striped cloak", Item2DView.class);
+		checkImplementation("item", "cloak", "bone dragon cloak", Item2DView.class);
+		checkImplementation("item", "cloak", "dwarf cloak", Item2DView.class);
+		checkImplementation("item", "cloak", "elf cloak", Item2DView.class);
+		checkImplementation("item", "cloak", "elvish cloak", Item2DView.class);
+		checkImplementation("item", "cloak", "golden cloak", Item2DView.class);
+		checkImplementation("item", "cloak", "lich cloak", Item2DView.class);
+		checkImplementation("item", "cloak", "mainio cloak", Item2DView.class);
+		checkImplementation("item", "cloak", "mithril cloak", Item2DView.class);
+		checkImplementation("item", "cloak", "red cloak", Item2DView.class);
+		checkImplementation("item", "cloak", "stone cloak", Item2DView.class);
+		checkImplementation("item", "cloak", "xeno cloak", Item2DView.class);
+
+		checkImplementation("item", "club", null, Item2DView.class);
+		checkImplementation("item", "club", "flail", Item2DView.class);
+		checkImplementation("item", "club", "golden hammer", Item2DView.class);
+		checkImplementation("item", "club", "hammer", Item2DView.class);
+		checkImplementation("item", "club", "ice war hammer", Item2DView.class);
+		checkImplementation("item", "club", "rod of the gm", Item2DView.class);
+		checkImplementation("item", "club", "ugmash", Item2DView.class);
+
+		checkImplementation("item", "container", "empty sack", StackableItem2DView.class);
+
+		checkImplementation("item", "crystal", null, Item2DView.class);
+		checkImplementation("item", "crystal", "blue emotion crystal", Item2DView.class);
+		checkImplementation("item", "crystal", "pink emotion crystal", Item2DView.class);
+		checkImplementation("item", "crystal", "purple emotion crystal", Item2DView.class);
+		checkImplementation("item", "crystal", "red emotion crystal", Item2DView.class);
+		checkImplementation("item", "crystal", "yellow emotion crystal", Item2DView.class);
+
+		checkImplementation("item", "documents", null, Item2DView.class);
+		checkImplementation("item", "documents", "assassins id", Item2DView.class);
+		checkImplementation("item", "documents", "closed envelope", Item2DView.class);
+		checkImplementation("item", "documents", "coupon", Item2DView.class);
+		checkImplementation("item", "documents", "map", Item2DView.class);
+		checkImplementation("item", "documents", "note", Item2DView.class);
+		checkImplementation("item", "documents", "opened envelope", Item2DView.class);
+		checkImplementation("item", "documents", "sealed envelope", Item2DView.class);
+		checkImplementation("item", "documents", "unsealed envelope", Item2DView.class);
+
+		checkImplementation("item", "drink", "antidote", UseableItem2DView.class);
+		checkImplementation("item", "drink", "cobra venom", UseableItem2DView.class);
+		checkImplementation("item", "drink", "deadly poison", UseableItem2DView.class);
+		checkImplementation("item", "drink", "disease poison", UseableItem2DView.class);
+		checkImplementation("item", "drink", "fish soup", UseableItem2DView.class);
+		checkImplementation("item", "drink", "greater antidote", UseableItem2DView.class);
+		checkImplementation("item", "drink", "greater potion", UseableItem2DView.class);
+		checkImplementation("item", "drink", "love potion", UseableItem2DView.class);
+		checkImplementation("item", "drink", "mega potion", UseableItem2DView.class);
+		checkImplementation("item", "drink", "minor potion", UseableItem2DView.class);
+		checkImplementation("item", "drink", "pina colada", UseableItem2DView.class);
+		checkImplementation("item", "drink", "potion", UseableItem2DView.class);
+		checkImplementation("item", "drink", "sedative", UseableItem2DView.class);
+		checkImplementation("item", "drink", "soup", UseableItem2DView.class);
+		checkImplementation("item", "drink", "tea", UseableItem2DView.class);
+		checkImplementation("item", "drink", "twilight elixir", UseableItem2DView.class);
+		checkImplementation("item", "drink", "water", UseableItem2DView.class);
+
+		checkImplementation("item", "flower", "daisies", StackableItem2DView.class);
+		checkImplementation("item", "flower", "lilia", StackableItem2DView.class);
+		checkImplementation("item", "flower", "pansy", StackableItem2DView.class);
+		checkImplementation("item", "flower", "rhosyd", StackableItem2DView.class);
+		checkImplementation("item", "flower", "rose", StackableItem2DView.class);
+		checkImplementation("item", "flower", "zantedeschia", StackableItem2DView.class);
+
+		checkImplementation("item", "food", "apple", UseableItem2DView.class);
+		checkImplementation("item", "food", "apple pie", UseableItem2DView.class);
+		//~ checkImplementation("item", "food", "avocado", UseableItem2DView.class);
+		checkImplementation("item", "food", "banana", UseableItem2DView.class);
+		checkImplementation("item", "food", "black apple", UseableItem2DView.class);
+		checkImplementation("item", "food", "butter", UseableItem2DView.class);
+		checkImplementation("item", "food", "carrot", UseableItem2DView.class);
+		checkImplementation("item", "food", "cauliflower", UseableItem2DView.class);
+		checkImplementation("item", "food", "char", UseableItem2DView.class);
+		checkImplementation("item", "food", "cheeseydog", UseableItem2DView.class);
+		checkImplementation("item", "food", "chocolate bar", UseableItem2DView.class);
+		checkImplementation("item", "food", "clownfish", UseableItem2DView.class);
+		checkImplementation("item", "food", "cod", UseableItem2DView.class);
+		checkImplementation("item", "food", "collard", UseableItem2DView.class);
+		checkImplementation("item", "food", "corn", UseableItem2DView.class);
+		checkImplementation("item", "food", "courgette", UseableItem2DView.class);
+		checkImplementation("item", "food", "crepes suzette", UseableItem2DView.class);
+		checkImplementation("item", "food", "fish pie", UseableItem2DView.class);
+		checkImplementation("item", "food", "gumdrops", UseableItem2DView.class);
+		checkImplementation("item", "food", "ham", UseableItem2DView.class);
+		checkImplementation("item", "food", "leek", UseableItem2DView.class);
+		checkImplementation("item", "food", "licorice", UseableItem2DView.class);
+		checkImplementation("item", "food", "mackerel", UseableItem2DView.class);
+		checkImplementation("item", "food", "mauve apple", UseableItem2DView.class);
+		checkImplementation("item", "food", "meat", UseableItem2DView.class);
+		checkImplementation("item", "food", "olive", UseableItem2DView.class);
+		checkImplementation("item", "food", "onion", UseableItem2DView.class);
+		checkImplementation("item", "food", "pear", UseableItem2DView.class);
+		checkImplementation("item", "food", "potato", UseableItem2DView.class);
+		checkImplementation("item", "food", "purple apple", UseableItem2DView.class);
+		checkImplementation("item", "food", "red lionfish", UseableItem2DView.class);
+		checkImplementation("item", "food", "salad", UseableItem2DView.class);
+		checkImplementation("item", "food", "sandwich", UseableItem2DView.class);
+		checkImplementation("item", "food", "sausage", UseableItem2DView.class);
+		checkImplementation("item", "food", "small easter egg", UseableItem2DView.class);
+		checkImplementation("item", "food", "smoked cod", UseableItem2DView.class);
+		checkImplementation("item", "food", "smoked ham", UseableItem2DView.class);
+		checkImplementation("item", "food", "smoked meat", UseableItem2DView.class);
+		checkImplementation("item", "food", "spinach", UseableItem2DView.class);
+		checkImplementation("item", "food", "spotted egg", UseableItem2DView.class);
+		checkImplementation("item", "food", "sugar", UseableItem2DView.class);
+		checkImplementation("item", "food", "surgeonfish", UseableItem2DView.class);
+		checkImplementation("item", "food", "toadstool", UseableItem2DView.class);
+
+		checkImplementation("item", "furniture", null, Item2DView.class);
+
+		checkImplementation("item", "helmet", null, Item2DView.class);
+		checkImplementation("item", "helmet", "blue helmet", Item2DView.class);
+		checkImplementation("item", "helmet", "chain helmet", Item2DView.class);
+		checkImplementation("item", "helmet", "chaos helmet", Item2DView.class);
+		checkImplementation("item", "helmet", "golden helmet", Item2DView.class);
+		checkImplementation("item", "helmet", "magic chain helmet", Item2DView.class);
+		checkImplementation("item", "helmet", "mainio helmet", Item2DView.class);
+		checkImplementation("item", "helmet", "mithril helmet", Item2DView.class);
+		checkImplementation("item", "helmet", "red helmet", Item2DView.class);
+		checkImplementation("item", "helmet", "viking helmet", Item2DView.class);
+		checkImplementation("item", "helmet", "xeno helmet", Item2DView.class);
+
+		checkImplementation("item", "herb", "arandula", StackableItem2DView.class);
+		checkImplementation("item", "herb", "kekik", StackableItem2DView.class);
+		checkImplementation("item", "herb", "kokuda", StackableItem2DView.class);
+		checkImplementation("item", "herb", "mandragora", StackableItem2DView.class);
+		//~ checkImplementation("item", "herb", "reindeer moss", Item2DView.class);
+		checkImplementation("item", "herb", "sclaria", StackableItem2DView.class);
+
+		checkImplementation("item", "jewellery", "amethyst", StackableItem2DView.class);
+		checkImplementation("item", "jewellery", "black pearl", StackableItem2DView.class);
+		checkImplementation("item", "jewellery", "carbuncle", StackableItem2DView.class);
+		checkImplementation("item", "jewellery", "diamond", StackableItem2DView.class);
+		checkImplementation("item", "jewellery", "emerald", StackableItem2DView.class);
+		checkImplementation("item", "jewellery", "obsidian", StackableItem2DView.class);
+		checkImplementation("item", "jewellery", "sapphire", StackableItem2DView.class);
+
+		checkImplementation("item", "key", null, Item2DView.class);
+		checkImplementation("item", "key", "dungeon silver key", Item2DView.class);
+		checkImplementation("item", "key", "gate key", Item2DView.class);
+		checkImplementation("item", "key", "house key", Item2DView.class);
+		checkImplementation("item", "key", "kanmararn prison key", Item2DView.class);
+		checkImplementation("item", "key", "kotoch prison key", Item2DView.class);
+		checkImplementation("item", "key", "lich gold key", Item2DView.class);
+		checkImplementation("item", "key", "master key", Item2DView.class);
+		checkImplementation("item", "key", "minotaur key", Item2DView.class);
+		checkImplementation("item", "key", "nalwor bank key", Item2DView.class);
+		checkImplementation("item", "key", "pet sanctuary key", Item2DView.class);
+		checkImplementation("item", "key", "sedah gate key", Item2DView.class);
+		checkImplementation("item", "key", "small key", Item2DView.class);
+
+		checkImplementation("item", "legs", null, Item2DView.class);
+		checkImplementation("item", "legs", "blue legs", Item2DView.class);
+		checkImplementation("item", "legs", "dwarvish legs", Item2DView.class);
+		checkImplementation("item", "legs", "elvish legs", Item2DView.class);
+		checkImplementation("item", "legs", "golden legs", Item2DView.class);
+		checkImplementation("item", "legs", "jewelled legs", Item2DView.class);
+		checkImplementation("item", "legs", "leather legs", Item2DView.class);
+		checkImplementation("item", "legs", "mainio legs", Item2DView.class);
+		checkImplementation("item", "legs", "mithril legs", Item2DView.class);
+		checkImplementation("item", "legs", "red legs", Item2DView.class);
+		checkImplementation("item", "legs", "xeno legs", Item2DView.class);
+
+		checkImplementation("item", "misc", "canned tuna", StackableItem2DView.class);
+		checkImplementation("item", "misc", "dice", StackableItem2DView.class);
+
+		checkImplementation("item", "missile", "fire shuriken", StackableItem2DView.class);
+
+		checkImplementation("item", "money", "money", StackableItem2DView.class);
+
+		checkImplementation("item", "relic", null, Item2DView.class);
+		checkImplementation("item", "relic", "skull ring", Item2DView.class);
+
+		checkImplementation("item", "resource", "candle", StackableItem2DView.class);
+		checkImplementation("item", "resource", "cloth", StackableItem2DView.class);
+		checkImplementation("item", "resource", "flour", StackableItem2DView.class);
+		checkImplementation("item", "resource", "horse hair", StackableItem2DView.class);
+		checkImplementation("item", "resource", "iron", StackableItem2DView.class);
+		checkImplementation("item", "resource", "silk gland", StackableItem2DView.class);
+		checkImplementation("item", "resource", "silk thread", StackableItem2DView.class);
+		checkImplementation("item", "resource", "yarn", StackableItem2DView.class);
+
+		checkImplementation("item", "ring", "engagement ring", Ring2DView.class);
+		checkImplementation("item", "ring", "insulated ring", Ring2DView.class);
+		checkImplementation("item", "ring", "turtle shell ring", Ring2DView.class);
+
+		checkImplementation("item", "scroll", "balloon", UseableItem2DView.class);
+		checkImplementation("item", "scroll", "ados city scroll", UseableItem2DView.class);
+		checkImplementation("item", "scroll", "deniran city scroll", UseableItem2DView.class);
+		checkImplementation("item", "scroll", "fado city scroll", UseableItem2DView.class);
+		checkImplementation("item", "scroll", "home scroll", UseableItem2DView.class);
+		checkImplementation("item", "scroll", "kalavan city scroll", UseableItem2DView.class);
+		checkImplementation("item", "scroll", "kirdneh city scroll", UseableItem2DView.class);
+		checkImplementation("item", "scroll", "nalwor city scroll", UseableItem2DView.class);
+		checkImplementation("item", "scroll", "rainbow beans", UseableItem2DView.class);
+		checkImplementation("item", "scroll", "summon pet scroll", UseableItem2DView.class);
+		checkImplementation("item", "scroll", "twilight moss", UseableItem2DView.class);
+
+		checkImplementation("item", "shield", null, Item2DView.class);
+		checkImplementation("item", "shield", "blue shield", Item2DView.class);
+		checkImplementation("item", "shield", "elvish shield", Item2DView.class);
+		checkImplementation("item", "shield", "golden shield", Item2DView.class);
+		checkImplementation("item", "shield", "mainio shield", Item2DView.class);
+		checkImplementation("item", "shield", "mithril shield", Item2DView.class);
+		checkImplementation("item", "shield", "red shield", Item2DView.class);
+		checkImplementation("item", "shield", "wooden shield", Item2DView.class);
+		checkImplementation("item", "shield", "xeno shield", Item2DView.class);
+
+		checkImplementation("item", "sword", null, Item2DView.class);
+		checkImplementation("item", "sword", "assassin dagger", Item2DView.class);
+		checkImplementation("item", "sword", "black sword", Item2DView.class);
+		checkImplementation("item", "sword", "chaos dagger", Item2DView.class);
+		checkImplementation("item", "sword", "dagger", Item2DView.class);
+		checkImplementation("item", "sword", "elvish sword", Item2DView.class);
+		checkImplementation("item", "sword", "fire sword", Item2DView.class);
+		checkImplementation("item", "sword", "imperator sword", Item2DView.class);
+		checkImplementation("item", "sword", "katana", Item2DView.class);
+		checkImplementation("item", "sword", "nihonto", Item2DView.class);
+		checkImplementation("item", "sword", "obsidian knife", Item2DView.class);
+		checkImplementation("item", "sword", "soul dagger", Item2DView.class);
+		checkImplementation("item", "sword", "sword", Item2DView.class);
+		checkImplementation("item", "sword", "xeno sword", Item2DView.class);
+
+		checkImplementation("item", "token", null, Item2DView.class);
+		checkImplementation("item", "token", "arrow game token", Item2DView.class);
+		checkImplementation("item", "token", "o board token", Item2DView.class);
+		checkImplementation("item", "token", "x board token", Item2DView.class);
+
+		checkImplementation("item", "tool", null, Item2DView.class);
+		checkImplementation("item", "tool", "fishing rod", Item2DView.class);
+		checkImplementation("item", "tool", "magical needle", Item2DView.class);
+		checkImplementation("item", "tool", "pick", Item2DView.class);
+
+		checkImplementation("item", "whip", null, Item2DView.class);
+		checkImplementation("item", "whip", "venom whip", Item2DView.class);
+
+
+		/* *** ENTITIES LOADED FROM ENTITYVIEW FACTORY *** */
+
 		// item
 		checkImplementation("item", null, null, Item2DView.class);
 		checkImplementation("item", "ammunition", null, StackableItem2DView.class);
@@ -128,9 +441,6 @@ public class EntityViewFactoryTest {
 		checkImplementation("item", "box", null, Box2DView.class);
 		checkImplementation("item", "club", "wizard_staff", UseableItem2DView.class);
 		checkImplementation("item", "container", null, StackableItem2DView.class);
-		//~ checkImplementation("item", "crystal", null, Item2DView.class);
-		// FIXME: `games.stendhal.server.entity.item.ItemTest` copy constructor test fails
-		//~ checkImplementation("item", "documents", "coupon", StackableItem2DView.class);
 		checkImplementation("item", "drink", null, UseableItem2DView.class);
 		checkImplementation("item", "flower", null, StackableItem2DView.class);
 		checkImplementation("item", "food", null, UseableItem2DView.class);
