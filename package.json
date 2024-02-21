@@ -29,6 +29,7 @@
   "homepage": "https://arianne-project.org",
   "private": true,
   "dependencies": {
+    "imagemagick": "^0.1.3",
     "typescript": "^5.2.0"
   },
   "devDependencies": {
