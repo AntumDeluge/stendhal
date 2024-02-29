@@ -1772,6 +1772,7 @@ Mature sheep wanted: please speak to Sato.
 			<parameter name="file" condition="stendhal.minetown">Level 0/semos/city_halloween.tmx</parameter>
 			<parameter name="file" condition="stendhal.easter">Level 0/semos/city_easter.tmx</parameter>
 			<parameter name="weather" condition="stendhal.christmas">snow</parameter>
+			<parameter name="music">dark_quest</parameter>
 		</attributes>
 		<configurator
 			class-name="games.stendhal.server.entity.mapstuff.office.StoredEntityMoveConfigurator">
@@ -2784,6 +2785,7 @@ Holy mackerel! These chips are tasty.
 	<zone name="int_semos_bank" file="interiors/semos/bank.tmx">
 		<attributes>
 			<parameter name="file" condition="stendhal.christmas">interiors/semos/bank_xmas.tmx</parameter>
+			<parameter name="music">dark_quest</parameter>
 		</attributes>
 		<!-- to disallow making or using marked scrolls for getting to trading
 			table area -->

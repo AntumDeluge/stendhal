@@ -105,6 +105,9 @@ export class LoopedSoundSourceManager {
 					source["radius"], layer, source["sound"], source["volume"]);
 		}
 
+		// DEBUG:
+		console.log("adding looped sound: " + snd.basename);
+
 		if (!snd) {
 			console.error("failed to add looped sound source with ID '" + id + "'");
 			return false;
@@ -205,17 +208,18 @@ export class LoopedSoundSourceManager {
 	/**
 	 * Adjusts volume level for each looped sound source in current zone.
 	 *
-	 * @param x
-	 *     The new X coordinate of listening entity.
-	 * @param y
-	 *     The new Y coordinate of listening entity.
+	 * @param x {number}
+	 *   The new X coordinate of listening entity.
+	 * @param y {number}
+	 *   The new Y coordinate of listening entity.
 	 */
 	onDistanceChanged(x: number, y: number) {
 		for (const ent of this.getZoneEntities()) {
 			if (ent.isLoaded()) {
-				const layername = this.sndMan.getLayerName(ent["layer"]);
+				//~ const layerName = this.sndMan.getlayerName(ent["layer"]);
+				const layerName = this.sndMan.checkLayer(ent["layer"]);
 				const snd = this.sources[ent["id"]].sound;
-				this.sndMan.adjustForDistance(layername, snd, ent["radius"],
+				this.sndMan.adjustForDistance(layerName, snd, ent["radius"],
 						ent["x"], ent["y"], x, y);
 			}
 		}

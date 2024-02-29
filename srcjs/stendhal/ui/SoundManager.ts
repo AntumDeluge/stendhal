@@ -9,11 +9,11 @@
  *                                                                         *
  ***************************************************************************/
 
-import { ui } from "./UI";
-import { singletons } from "../SingletonRepo";
-
 declare var marauroa: any;
 declare var stendhal: any;
+
+import { ui } from "./UI";
+import { singletons } from "../SingletonRepo";
 
 
 export interface Sound extends HTMLAudioElement {
@@ -21,13 +21,20 @@ export interface Sound extends HTMLAudioElement {
 	radius: number;
 	x: number;
 	y: number;
+	basename: string;
 }
 
 export class SoundManager {
 
-	public readonly layers: string[] = ["music", "ambient", "creature", "sfx", "gui"];
-	private cacheGlobal: {[source: string]: HTMLAudioElement} = {};
-	private cache: {[source: string]: HTMLAudioElement} = {};
+	/** Layer names & ordering. */
+	readonly layers: string[];
+	/** Session cache. */
+	private cacheGlobal: {[source: string]: HTMLAudioElement};
+	/** Cache for current map. */
+	private cache: {[source: string]: HTMLAudioElement};
+	/** Actively playing sounds. */
+	private active: {[layer: string]: Sound[]};
+	/*
 	private active: {[layer: string]: Sound[]} = {
 		["music"]: [],
 		["ambient"]: [],
@@ -35,6 +42,10 @@ export class SoundManager {
 		["sfx"]: [],
 		["gui"]: []
 	};
+	*/
+
+	/** Music instance played globally. */
+	private globalMusic?: Sound;
 
 	/** Singleton instance. */
 	private static instance: SoundManager;
@@ -54,14 +65,22 @@ export class SoundManager {
 	 * Hidden singleton constructor.
 	 */
 	private constructor() {
-		// do nothing
+		this.layers = ["music", "ambient", "creature", "sfx", "gui"];
+		this.cacheGlobal = {};
+		this.cache = {};
+		this.active = {};
+		for (const layerName of this.layers) {
+			this.active[layerName] = [];
+		}
 	}
 
 	/**
 	 * Retrieves active sounds.
 	 *
-	 * @param includeGui
-	 *     Will include sounds from the gui layer (default: false).
+	 * @param includeGui {boolean}
+	 *   Will include sounds from the gui layer (default: false).
+	 * @return {Sound[]}
+	 *   Array of active sounds.
 	 */
 	getActive(includeGui=false): Sound[] {
 		const active: Sound[] = [];
@@ -74,6 +93,24 @@ export class SoundManager {
 			}
 		}
 		return active;
+	}
+
+	/**
+	 * Retrieves a single active sound.
+	 *
+	 * @param soundName {string}
+	 *   Basename of sound file.
+	 * @param includeGui {boolean}
+	 *   Will include sounds from the gui layer (default: false).
+	 * @return {ui.SoundManager.Sound}
+	 *   Active sound instance or `undefined`.
+	 */
+	getActiveByName(soundName: string, includeGui=false): Sound|undefined {
+		for (const sound of this.getActive(includeGui)) {
+			if (soundName === sound.basename) {
+				return sound;
+			}
+		}
 	}
 
 	/**
@@ -104,14 +141,48 @@ export class SoundManager {
 	/**
 	 * Retrieves list of valid layer string identifiers.
 	 */
-	public getLayerNames(): string[] {
+	getLayerNames(): string[] {
 		return this.layers;
 	}
 
 	/**
-	 * Retrieves the string identifier of the associated layer index.
+	 * Checks for valid layer.
+	 *
+	 * @param layer {any}
+	 *   Layer name or index.
+	 * @return {string}
+	 *   Layer name or `undefined`.
 	 */
-	public getLayerName(layer: number): string {
+	checkLayer(layer: any): string {
+		let layerIndex = -1;
+		const ltype = typeof(layer);
+		if (ltype === "number") {
+			layerIndex = layer;
+		} else if (ltype === "string") {
+			if (this.layers.indexOf(layer) > -1) {
+				return layer;
+			}
+			if (!Number.isNaN(layer)) {
+				layerIndex = parseInt(layer, 10);
+			}
+		}
+		const layerName = this.layers[layerIndex];
+		if (!layerName) {
+			throw new Error("invalid layer: " + layer);
+		}
+		return layerName;
+	}
+
+	/**
+	 * Retrieves the string identifier of the associated layer index.
+	 *
+	 * @deprecated
+	 */
+	getLayerName(layer: number): string {
+		// DEBUG:
+		console.log("getLayerName: " + layer);
+
+		console.warn("SoundManager.getLayerName is deprecated");
 		// default to GUI
 		let layername = "gui";
 		if (layer >= 0 && layer < this.layers.length) {
@@ -120,6 +191,26 @@ export class SoundManager {
 			console.warn("unknown layer index: " + layer);
 		}
 		return layername;
+	}
+
+	/**
+	 * Retrieves array index value of layer name.
+	 *
+	 * @param layerName {string}
+	 *   Name of layer or index representation as string.
+	 * @return {number}
+	 *   Index or -1 if not found.
+	 * @deprecated
+	 */
+	getLayerIndex(layerName: string): number {
+		// DEBUG:
+		console.log("layer name: " + layerName + " (" + typeof(layerName) + ", NaN: " + Number.isNaN(layerName) + ")");
+
+		console.warn("SoundManager.getLayerIndex is deprecated");
+		if (!Number.isNaN(layerName)) {
+			return parseInt(layerName, 10);
+		}
+		return this.layers.indexOf(layerName);
 	}
 
 	/**
@@ -138,26 +229,24 @@ export class SoundManager {
 				this.active[layername].splice(idx, 1);
 			}
 		};
-		// FIXME: loops should be preserved if sound continues on map change
 		this.active[layername].push(sound);
 	}
 
 	/**
 	 * Plays a sound.
 	 *
-	 * @param soundname
-	 *     Sound file basename.
-	 * @param layername
-	 *     Name of layer sound will play on.
-	 * @param volume
-	 *     Volume level between 0.0 and 1.0.
-	 * @param loop
-	 *     Whether or not sound should be looped.
-	 * @return
-	 *     The new sound instance.
+	 * @param soundname {string}
+	 *   Sound file basename.
+	 * @param layername {string}
+	 *   Name of layer sound will play on.
+	 * @param volume {number}
+	 *   Volume level between 0.0 and 1.0.
+	 * @param loop {boolean}
+	 *   Whether or not sound should be looped.
+	 * @return {ui.SoundManager.Sound}
+	 *   The new sound instance.
 	 */
-	private playEffect(soundname: string, layername: string, volume=1.0,
-			loop=false): any {
+	private playEffect(soundname: string, layername: string, volume=1.0, loop=false): Sound|undefined {
 		const muted = !stendhal.config.getBoolean("sound");
 		if (muted && !loop) {
 			// don't add non-looping sounds when muted
@@ -173,8 +262,7 @@ export class SoundManager {
 		let snd = this.cache[soundname] || this.cacheGlobal[soundname];
 		if (!snd) {
 			// add new sound to cache
-			snd = this.load(soundname,
-					stendhal.paths.sounds + "/" + soundname + ".ogg");
+			snd = this.load(soundname, stendhal.paths.sounds + "/" + soundname + ".ogg");
 		}
 
 		if (!this.cache[soundname]) {
@@ -188,12 +276,13 @@ export class SoundManager {
 		}
 
 		// create a copy so multiple instances can be played simultaneously
-		const scopy = <Sound> snd.cloneNode();
+		const scopy = snd.cloneNode() as Sound;
 		scopy.autoplay = true;
 		scopy.basevolume = volume;
 		scopy.volume = Math.min(actualvolume, volume);
 		scopy.loop = loop;
 		scopy.muted = muted;
+		scopy.basename = soundname;
 
 		this.onSoundAdded(layername, scopy);
 		return scopy;
@@ -219,10 +308,15 @@ export class SoundManager {
 	 * @return
 	 *     The new sound instance.
 	 */
-	playLocalizedEffect(x: number, y: number, radius: number,
-			layer: number, soundname: string, volume=1.0, loop=false): any {
-		const layername = this.getLayerName(layer);
-		const snd = this.playEffect(soundname, layername, volume, loop);
+	playLocalizedEffect(x: number, y: number, radius: number, layer: number, soundname: string,
+			volume=1.0, loop=false): Sound|undefined {
+		//~ const layerName = this.getLayerName(layer);
+		const layerName = this.checkLayer(layer);
+		//~ if (!layerName) {
+			//~ console.error("invalid sound layer:", layer, new Error());
+			//~ return;
+		//~ }
+		const snd = this.playEffect(soundname, layerName, volume, loop);
 		if (!snd) {
 			return;
 		}
@@ -233,8 +327,7 @@ export class SoundManager {
 				// can't calculate distance yet
 				snd.volume = 0.0;
 			} else {
-				this.adjustForDistance(layername, snd, radius, x, y,
-						marauroa.me["_x"], marauroa.me["_y"]);
+				this.adjustForDistance(layerName, snd, radius, x, y, marauroa.me["_x"], marauroa.me["_y"]);
 			}
 		}
 
@@ -261,9 +354,14 @@ export class SoundManager {
 	playGlobalizedEffect(soundname: string, layer?: number, volume=1.0, loop=false): any {
 		// default to gui layer
 		if (typeof(layer) === "undefined") {
-			layer = this.layers.indexOf("gui");
+			layer = this.getLayerIndex("gui");
 		}
-		return this.playEffect(soundname, this.getLayerName(layer), volume, loop);
+		const layerName = this.checkLayer(layer);
+		//~ if (!layerName) {
+			//~ console.error("invalid sound layer:", layer, new Error());
+			//~ return;
+		//~ }
+		return this.playEffect(soundname, layerName, volume, loop);
 	}
 
 	/**
@@ -317,70 +415,121 @@ export class SoundManager {
 	 *     Radius at which sound can be heard.
 	 * @param layer
 	 *     Channel on which to be played (currently not supported).
-	 * @param musicname
+	 * @param musicName
 	 *     Sound file basename.
 	 * @param volume
 	 *     Volume level between 0.0 and 1.0.
 	 * @return
 	 *     The new sound instance.
 	 */
-	playLocalizedMusic(x: number, y: number, radius: number,
-			layer: number, musicname: string, volume=1.0): any {
+	playLocalizedMusic(x: number, y: number, radius: number, layer: number, musicName: string,
+			volume=1.0): Sound|undefined {
 		// load into cache so playEffect doesn't look in "data/sounds"
-		if (!this.cache[musicname]) {
-			this.load(musicname,
-					stendhal.paths.music + "/" + musicname + ".ogg");
+		if (!this.cache[musicName]) {
+			this.load(musicName,
+					stendhal.paths.music + "/" + musicName + ".ogg");
 		}
-		return this.playLocalizedLoop(x, y, radius, layer, musicname, volume);
+		return this.playLocalizedLoop(x, y, radius, layer, musicName, volume);
 	}
 
 	/**
 	 * Loops a sound with uniform volume.
 	 *
-	 * @param musicname
+	 * @param musicName
 	 *     Sound file basename.
 	 * @param volume
 	 *     Volume level between 0.0 and 1.0.
-	 * @return
-	 *     The new sound instance.
+	 * @return {ui.SoundManager.Sound}
+	 *   The new sound instance or `undefined`.
 	 */
-	playGlobalizedMusic(musicname: string, volume=1.0): any {
+	playGlobalizedMusic(musicName: string, volume=1.0): Sound|undefined {
 		// load into cache so playEffect doesn't look in "data/sounds"
-		if (!this.cache[musicname]) {
-			this.load(musicname,
-					stendhal.paths.music + "/" + musicname + ".ogg");
+		if (!this.cache[musicName]) {
+			this.load(musicName, stendhal.paths.music + "/" + musicName + ".ogg");
 		}
-		return this.playGlobalizedLoop(musicname,
-				this.layers.indexOf("music"), volume);
+		return this.playGlobalizedLoop(musicName, this.getLayerIndex("music"), volume);
+	}
+
+	/**
+	 * Loops a sound with uniform volume & stops previous instance.
+	 *
+	 * @param musicName {string}
+	 *   Sound file basename (can be `undefined` or `null`).
+	 * @param volume {number}
+	 *   Volume level between 0.0 & 1.0.
+	 * @return {ui.SoundManager.Sound}
+	 *   The new sound instance or `undefined`.
+	 */
+	playSingleGlobalizedMusic(musicName: string, volume=1.0) {
+		// DEBUG:
+		console.log("playing global music: " + musicName
+				+ "\nold: " + (this.globalMusic ? this.globalMusic.basename : this.globalMusic));
+
+		if (this.globalMusic && musicName === this.globalMusic.basename) {
+			// don't stop & restart music when changing maps if the same
+			return;
+		}
+		if (this.globalMusic) {
+			this.stop("music", this.globalMusic);
+			if (!musicName) {
+				// just stop if name not provided
+				this.globalMusic = undefined;
+				return;
+			}
+		}
+		if (musicName) {
+			this.globalMusic = this.playGlobalizedMusic(musicName, volume);
+		}
 	}
 
 	/**
 	 * Stops a sound & removes it from active group.
 	 *
-	 * @param layer
-	 *     Channel index sound is playing on.
-	 * @param sound
-	 *     The sound to be stopped.
-	 * @return
-	 *     <code>true</code> if succeeded.
+	 * @param layer {number|string}
+	 *   Channel index or name sound is playing on.
+	 * @param sound {ui.SoundManager.Sound|string}
+	 *   The sound or name of sound to be stopped.
+	 * @return {boolean}
+	 *   `true` if succeeded.
 	 */
-	stop(layer: number, sound: Sound): boolean {
+	stop(layer: number|string, sound: Sound|string): boolean {
+		// DEBUG:
+		const lname = layer;
+
+		if (typeof(layer) === "string") {
+			layer = this.getLayerIndex(layer);
+		}
+
+		// DEBUG:
+		console.log("(SoundManager.stop) layer index: " + layer + " (" + lname + ")");
+
 		if (layer < 0 || layer >= this.layers.length) {
 			console.error("cannot stop sound on non-existent layer: " + layer);
+			return false;
+		}
+		let soundName = "unknown";
+		if (typeof(sound) === "string") {
+			soundName = sound;
+			sound = this.getActiveByName(soundName)!;
+		}
+		if (!sound) {
+			console.error("sound \"" + soundName + "\" not playing");
 			return false;
 		}
 
 		const layerName = this.layers[layer];
 		const group = this.active[layerName];
-		const idx = group.indexOf(sound);
+		// use this value to avoid error "Argument of type 'string | Sound' is not assignable to parameter of type 'Sound'"
+		const sSound = sound as Sound;
+		const idx = group.indexOf(sSound);
 		if (sound && idx > -1) {
-			sound.pause();
-			sound.currentTime = 0;
-			if (sound.onended) {
-				sound.onended(new Event("stopsound"));
+			sSound.pause();
+			sSound.currentTime = 0;
+			if (sSound.onended) {
+				sSound.onended(new Event("stopsound"));
 			}
 		}
-		return this.active[layerName].indexOf(sound) < 0;
+		return this.active[layerName].indexOf(sSound) < 0;
 	}
 
 	/**
@@ -401,7 +550,7 @@ export class SoundManager {
 			const curLayer = this.active[layerName];
 			// XXX: just iterating over indexes doesn't remove all sounds. async issue?
 			while (curLayer.length > 0) {
-				this.stop(this.layers.indexOf(layerName), curLayer[0]);
+				this.stop(layerName, curLayer[0]);
 			}
 			stopped = stopped && this.active[layerName].length == 0;
 		}
@@ -585,7 +734,7 @@ export class SoundManager {
 	/**
 	 * Toggles muted state of sound system.
 	 */
-	public toggleSound() {
+	toggleSound() {
 		const enabled = !stendhal.config.getBoolean("sound");
 		stendhal.config.set("sound", enabled);
 

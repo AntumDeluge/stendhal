@@ -1,5 +1,6 @@
 /***************************************************************************
- *                   (C) Copyright 2003-2023 - Stendhal                    *
+ *                    Copyright © 2024 - Faiumoni e. V.                    *
+ ***************************************************************************
  ***************************************************************************
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -9,21 +10,33 @@
  *                                                                         *
  ***************************************************************************/
 
-"use strict";
+declare global {
+	interface Window { defined: Function; }
+}
 
-var marauroa = window.marauroa = window.marauroa || {};
-var stendhal = window.stendhal = window.stendhal || {};
 
+export class Globals {
 
-// DEBUG:
-console.log("window.defined: " + typeof(window.defined));
-console.log("window.undefined: " + typeof(window.undefined));
+	private static initialized = false;
 
-stendhal.main = require("../../build/ts/Client").Client.get();
-stendhal.main.init();
+	/**
+	 * Static properties & methods only.
+	 */
+	private constructor() {
+		// do nothing
+	}
 
-// DEBUG:
-console.log("window.defined: " + typeof(window.defined));
+	static init() {
+		if (Globals.initialized) {
+			console.warn("tried to re-initialize globals");
+			return;
+		}
+		Globals.initialized = true;
 
-document.addEventListener('DOMContentLoaded', stendhal.main.startup);
-window.addEventListener('error', stendhal.main.onerror);
+		window.defined = window.defined || Globals.defined;
+	}
+
+	private static defined(x: any): boolean {
+		return typeof(x) !== "undefined";
+	}
+}

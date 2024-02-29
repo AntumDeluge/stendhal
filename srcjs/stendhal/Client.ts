@@ -40,6 +40,7 @@ import { SingletonFloatingWindow } from "./ui/toolkit/SingletonFloatingWindow";
 import { Chat } from "./util/Chat";
 import { Color } from "./util/Color";
 import { DialogHandler } from "./util/DialogHandler";
+import { Globals } from "./util/Globals";
 
 
 /**
@@ -90,6 +91,8 @@ export class Client {
 			return;
 		}
 		this.initialized = true;
+
+		Globals.init();
 
 		// add version & build info to DOM for retrieval by browser
 		document.documentElement.setAttribute("data-build-version", stendhal.data.build.version);
@@ -489,6 +492,7 @@ export class Client {
 		(ui.get(UIComponentEnum.ZoneInfo) as ZoneInfoComponent).zoneChange(zoneinfo);
 		// Object { file: "Level 0/semos/city_easter.tmx", danger_level: "0.036429932929822995", zoneid: "", readable_name: "Semos city", id: "-1", color_method: "multiply" }
 
+		stendhal.ui.soundMan.playSingleGlobalizedMusic(zoneinfo["music"]);
 		if (zoneinfo["color"]) {
 			const hsl = Color.hexToHSL(Color.numToHex(Number(zoneinfo["color"])));
 			// workaround until able to get right saturation level from color methods
