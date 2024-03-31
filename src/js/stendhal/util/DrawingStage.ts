@@ -10,6 +10,8 @@
  *                                                                         *
  ***************************************************************************/
 
+import { Color } from "../data/color/Color";
+
 
 /**
  * Hidden canvas for manipulating images before they are displayed.
@@ -19,7 +21,9 @@ export class DrawingStage {
 	/** Hidden canvas element. */
 	private canvas: HTMLCanvasElement;
 	/** Canvas's drawing context. */
-	private ctx: CanvasRenderingContext2D;
+	private ctx: any;
+	/** Property denoting WebGL support from browser. */
+	private gl: boolean;
 
 	/** Singleton instance. */
 	private static instance: DrawingStage;
@@ -42,8 +46,22 @@ export class DrawingStage {
 	 * Hidden singleton constructor.
 	 */
 	private constructor() {
+		this.gl = false;
 		this.canvas = document.getElementById("drawing-stage")! as HTMLCanvasElement;
 		this.ctx = this.canvas.getContext("2d")!;
+		/*
+		this.ctx = this.canvas.getContext("webgl");
+		if (!this.ctx) {
+			console.warn("WebGL not supported, falling back to standard 2d context");
+			this.gl = false;
+			this.ctx = this.canvas.getContext("2d")!;
+		} else {
+			// DEBUG:
+			console.log("Using WebGL");
+
+			this.gl = true;
+		}
+		*/
 		this.reset();
 	}
 
@@ -51,7 +69,11 @@ export class DrawingStage {
 	 * Clears canvas & resets dimensions to 0x0.
 	 */
 	reset() {
-		this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+		if (this.gl) {
+			// TODO:
+		} else {
+			this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+		}
 		this.setSize(0, 0);
 	}
 
@@ -140,5 +162,99 @@ export class DrawingStage {
 		this.ctx.translate(-this.canvas.width / 2, -this.canvas.height / 2);
 		// NOTE: do we need to set canvas size again in case of non-square image?
 		this.ctx.drawImage(image, 0, 0);
+	}
+
+	/**
+	 * Creates a speech bubble image.
+	 *
+	 * @param {number} width
+	 *   Image width.
+	 * @param {number} height
+	 *   Image height.
+	 * @returns {HTMLImageElement}
+	 *   New image element.
+	 */
+	createSpeechBubble(width: number, height: number): HTMLImageElement {
+		this.reset();
+		this.gl ? this.drawWebGLSpeechBubble(width, height) : this.draw2DSpeechBubble(width, height);
+		return this.toImage();
+	}
+
+	/**
+	 * Draws a speech bubble on canvas.
+	 *
+	 * @param {number} width
+	 *   Canvas width.
+	 * @param {number} height
+	 *   Canvas height.
+	 */
+	private draw2DSpeechBubble(width: number, height: number) {
+		this.ctx.save();
+
+		// DEBUG:
+		console.log("width: " + width + "\nheight: " + height);
+
+		const arc = 3;
+		const lineWidth = 1; // width of line on single edge
+		this.ctx.lineWidth = lineWidth * 2;
+		const tail = 8;
+		const x = tail + this.ctx.lineWidth, y = lineWidth;
+		width += x; // compensate for tail
+		// adjust canvas dimensions to compensate for stroke & tail
+		const canvasWidth = width + (lineWidth * 2) + tail + lineWidth;
+		const canvasHeight = height + (lineWidth * 2);
+		this.setSize(canvasWidth, canvasHeight);
+
+		// DEBUG:
+		this.ctx.fillStyle = Color.GREEN;
+		this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
+		// DEBUG:
+		console.log("width: " + width + "\nheight: " + height + "\nline width: " + lineWidth + "\nctx line width: " + this.ctx.lineWidth);
+
+		const fontsize = 14;
+		//~ const lheight = fontsize + 6;
+		this.ctx.font = fontsize + "px Arial";
+		this.ctx.fillStyle = Color.WHITE;
+		this.ctx.strokeStyle = Color.BLACK;
+
+		this.ctx.beginPath();
+		this.ctx.moveTo(x + arc, y);
+		this.ctx.lineTo(x + width - arc, y);
+		this.ctx.quadraticCurveTo(x + width, y, x + width, y + arc);
+		this.ctx.lineTo(x + width, y + height - arc);
+		this.ctx.quadraticCurveTo(x + width, y + height, x + width - arc, y + height);
+		this.ctx.lineTo(x + arc, y + height);
+		this.ctx.quadraticCurveTo(x, y + height, x, y + height - arc);
+		this.ctx.lineTo(x, y + 8);
+
+		// tail
+		this.ctx.lineTo(x - 8, y + 11);
+		this.ctx.lineTo(x, y + 3);
+
+		this.ctx.lineTo(x, y + arc);
+		this.ctx.quadraticCurveTo(x, y, x + arc, y);
+		this.ctx.stroke();
+		this.ctx.closePath();
+		this.ctx.fill();
+
+		this.ctx.restore();
+	}
+
+	/**
+	 * Draws a speech bubble on GL canvas.
+	 *
+	 * TODO: doesn't do anything yet
+	 *
+	 * @param {number} width
+	 *   Canvas width.
+	 * @param {number} height
+	 *   Canvas height.
+	 */
+	private drawWebGLSpeechBubble(width: number, height: number) {
+		// DEBUG:
+		console.log("drawing WebGL");
+
+		// TODO:
 	}
 }
