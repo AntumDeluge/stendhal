@@ -1,6 +1,6 @@
 /* $Id$ */
 /***************************************************************************
- *                   (C) Copyright 2003-2010 - Stendhal                    *
+ *                   (C) Copyright 2003-2024 - Stendhal                    *
  ***************************************************************************
  ***************************************************************************
  *                                                                         *
@@ -26,6 +26,7 @@ import games.stendhal.server.core.engine.SingletonRepository;
 import games.stendhal.server.entity.item.StackableItem;
 import games.stendhal.server.entity.npc.SpeakerNPC;
 import games.stendhal.server.entity.npc.fsm.Engine;
+import games.stendhal.server.entity.npc.quest.BuiltQuest;
 import games.stendhal.server.entity.player.Player;
 import games.stendhal.server.maps.ados.outside.AnimalKeeperNPC;
 import games.stendhal.server.maps.ados.outside.VeterinarianNPC;
@@ -55,7 +56,7 @@ public class ZooFoodTest extends ZonePlayerAndNPCTestImpl {
 	public void setUp() throws Exception {
 		super.setUp();
 
-		final ZooFood zf = new ZooFood();
+		final AbstractQuest zf = new BuiltQuest(new ZooFood().story());
 		zf.addToWorld();
 	}
 
@@ -127,7 +128,8 @@ public class ZooFoodTest extends ZonePlayerAndNPCTestImpl {
 		assertTrue(enKatinka.step(player, "bye"));
 		assertEquals("Goodbye!", getReply(katinkaNpc));
 		assertTrue(player.hasQuest("zoo_food"));
-		assertTrue(player.getQuest("zoo_food").startsWith("start;"));
+		//assertTrue(player.getQuest("zoo_food").startsWith("start;"));
+		assertEquals("start", player.getQuest("zoo_food", 0));
 		// feelgood is still in sorrow
 		assertTrue(enFeelgood.step(player, "hi"));
 		assertFalse(feelgoodNpc.isTalking());

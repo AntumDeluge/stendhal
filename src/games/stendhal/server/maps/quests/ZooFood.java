@@ -12,39 +12,30 @@
  ***************************************************************************/
 package games.stendhal.server.maps.quests;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-
 import games.stendhal.common.grammar.Grammar;
-import games.stendhal.server.entity.npc.ChatAction;
+import games.stendhal.server.core.engine.SingletonRepository;
 import games.stendhal.server.entity.npc.ConversationPhrases;
 import games.stendhal.server.entity.npc.ConversationStates;
+import games.stendhal.server.entity.npc.NPCList;
 import games.stendhal.server.entity.npc.SpeakerNPC;
-import games.stendhal.server.entity.npc.action.DropRecordedItemAction;
+import games.stendhal.server.entity.npc.action.IncreaseKarmaAction;
 import games.stendhal.server.entity.npc.action.IncreaseXPAction;
-import games.stendhal.server.entity.npc.action.MultipleActions;
 import games.stendhal.server.entity.npc.action.SayRequiredItemAction;
 import games.stendhal.server.entity.npc.action.SayTimeRemainingAction;
 import games.stendhal.server.entity.npc.action.SetQuestAction;
-import games.stendhal.server.entity.npc.action.SetQuestAndModifyKarmaAction;
-import games.stendhal.server.entity.npc.action.SetQuestToTimeStampAction;
-import games.stendhal.server.entity.npc.action.StartRecordingRandomItemCollectionAction;
 import games.stendhal.server.entity.npc.condition.AndCondition;
 import games.stendhal.server.entity.npc.condition.GreetingMatchesNameCondition;
 import games.stendhal.server.entity.npc.condition.NotCondition;
 import games.stendhal.server.entity.npc.condition.OrCondition;
 import games.stendhal.server.entity.npc.condition.PlayerHasRecordedItemWithHimCondition;
-import games.stendhal.server.entity.npc.condition.QuestActiveCondition;
 import games.stendhal.server.entity.npc.condition.QuestCompletedCondition;
 import games.stendhal.server.entity.npc.condition.QuestInStateCondition;
 import games.stendhal.server.entity.npc.condition.QuestNotCompletedCondition;
 import games.stendhal.server.entity.npc.condition.QuestNotStartedCondition;
 import games.stendhal.server.entity.npc.condition.QuestStateStartsWithCondition;
 import games.stendhal.server.entity.npc.condition.TimePassedCondition;
-import games.stendhal.server.entity.player.Player;
+import games.stendhal.server.entity.npc.quest.BringItemQuestBuilder;
+import games.stendhal.server.entity.npc.quest.QuestManuscript;
 import games.stendhal.server.maps.Region;
 import games.stendhal.server.util.TimeUtil;
 
@@ -73,13 +64,143 @@ import games.stendhal.server.util.TimeUtil;
  * </ul>
  * REPETITIONS: - Once per week.
  */
-public class ZooFood extends AbstractQuest {
+public class ZooFood implements QuestManuscript {
 
 	private static final int REQUIRED_HAM = 10;
 	private static final int DELAY = TimeUtil.MINUTES_IN_WEEK;
 
 	private static final String QUEST_SLOT = "zoo_food";
 
+
+	@Override
+	public BringItemQuestBuilder story() {
+		final BringItemQuestBuilder quest = new BringItemQuestBuilder();
+
+		quest.info()
+			.name("Zoo Food")
+			.description("The animals at the zoo are hungry and need some food!")
+			.internalName(QUEST_SLOT)
+			.repeatableAfterMinutes(DELAY)
+			.region(Region.ADOS_SURROUNDS)
+			.questGiverNpc("Katinka");
+
+		quest.history()
+			.whenNpcWasMet("I have met Katinka at the zoo.")
+			.whenQuestWasRejected("I do not have the time for smelly animals and their food issues.")
+			.whenQuestWasAccepted("I don't want to see those poor animals die! I'll help get the food!")
+			.whenQuestWasAccepted("I have been asked to fetch [item] for the animals.")
+			//.whenTaskWasCompleted("I have [item] to feed the animals, and should deliver " + Grammar.itthem(amount) + " to Katinka.")
+			.whenTaskWasCompleted("I have [item] to feed the animals, and should deliver [itthem] to Katinka.")
+			.whenQuestWasCompleted("The animals are not hungry! Yay, me!")
+			.whenQuestCanBeRepeated("The animals are hungry again! I need to ask Katinka what they need.");
+			//.whenCompletionsShown("I have helped to feed the animals [count] [time].");
+
+		quest.offer()
+			/*
+			.begOnGreeting("Welcome to the Ados Wildlife Refuge! We rescue animals from being"
+					+ " slaughtered by evil adventurers. But we need help... maybe you could do a"
+					+ " #task for us?")
+			*/
+			.respondToRequest("Our animals are hungry. We need more food to feed them. Can you help us?")
+			//.respondToUnrepeatableRequest("Thanks, we have enough food to feed the animals here for another")
+			//.respondToRepeatedRequest("Our animals are hungry. We need more food to feed them. Can you help us?")
+			.respondToAccept("Oh, thank you! Please help us by bringing [item] as soon as you can.")
+			.respondToReject("Oh dear... I guess we're going to have to feed them with the deer...")
+			//.respondTo().saying()
+			.remind("You are already on a quest to fetch [item].")
+			.rejectionKarmaPenalty(5.0);
+
+		quest.task()
+			.requestItem(5, "apple")
+			.alternativeItem(3, "bread")
+			.alternativeItem(5, "button mushroom")
+			.alternativeItem(5, "carrot")
+			.alternativeItem(10, "cheese")
+			.alternativeItem(5, "cherry")
+			.alternativeItem(5, "egg")
+			.alternativeItem(20, "grain")
+			.alternativeItem(10, "ham")
+			.alternativeItem(5, "honey")
+			.alternativeItem(15, "meat")
+			.alternativeItem(5, "porcini")
+			.alternativeItem(3, "roach")
+			.alternativeItem(10, "lettuce")
+			.alternativeItem(5, "spinach");
+
+		quest.complete()
+			//.greet("Welcome back! Have you brought the [item]?")
+			.respondToReject("Well, hurry up! These rare animals are starving!")
+			.respondToAccept("Thank you! You have rescued our rare animals.")
+			.rewardWith(new IncreaseXPAction(200))
+			.rewardWith(new IncreaseKarmaAction(5.0));
+
+		final NPCList npcs = SingletonRepository.getNPCList();
+		final SpeakerNPC katinka = npcs.get("Katinka");
+
+		// player has never done the zoo quest
+		katinka.add(ConversationStates.IDLE, ConversationPhrases.GREETING_MESSAGES,
+				new AndCondition(new GreetingMatchesNameCondition(katinka.getName()),
+						new QuestNotStartedCondition(QUEST_SLOT)),
+				ConversationStates.ATTENDING,
+				"Welcome to the Ados Wildlife Refuge! We rescue animals from being slaughtered by evil adventurers. But we need help... maybe you could do a #task for us?",
+				null);
+
+		// compatibility with old quests:
+		// player returns while initial quest is still active, set it to match the new way
+		katinka.add(ConversationStates.IDLE, ConversationPhrases.GREETING_MESSAGES,
+				new AndCondition(new GreetingMatchesNameCondition(katinka.getName()),
+						new QuestInStateCondition(QUEST_SLOT, "start")),
+				ConversationStates.QUEST_ITEM_BROUGHT,
+				"Welcome back! Have you brought the " + Grammar.quantityplnoun(REQUIRED_HAM, "ham", "") + "?",
+				new SetQuestAction(QUEST_SLOT,"start;ham=10"));
+
+		// player returns while quest is active
+		katinka.add(ConversationStates.IDLE, ConversationPhrases.GREETING_MESSAGES,
+				new AndCondition(new GreetingMatchesNameCondition(katinka.getName()),
+						new QuestStateStartsWithCondition(QUEST_SLOT, "start;")),
+				ConversationStates.QUEST_ITEM_BROUGHT,
+				null,
+				new SayRequiredItemAction(QUEST_SLOT, 1, "Welcome back! Have you brought the [item]?"));
+
+		// player returns within one week of completing quest
+		katinka.add(ConversationStates.ATTENDING, ConversationPhrases.QUEST_MESSAGES,
+				new AndCondition(new QuestCompletedCondition(QUEST_SLOT),
+						new NotCondition(new TimePassedCondition(QUEST_SLOT, 1, DELAY))),
+				ConversationStates.ATTENDING, null,
+				new SayTimeRemainingAction(QUEST_SLOT, 1, DELAY, "Thanks, we have enough food to feed the animals here for another"));
+
+		katinka.add(ConversationStates.QUEST_ITEM_BROUGHT,
+				ConversationPhrases.YES_MESSAGES,
+				new NotCondition(new PlayerHasRecordedItemWithHimCondition(QUEST_SLOT,1)),
+				ConversationStates.ATTENDING, null,
+				new SayRequiredItemAction(QUEST_SLOT, 1, "*sigh* I SPECIFICALLY said that we need [item]!"));
+
+		final SpeakerNPC doctor = npcs.get("Dr. Feelgood");
+
+		// player returns while quest is still active
+		doctor.add(ConversationStates.IDLE, ConversationPhrases.GREETING_MESSAGES,
+				new AndCondition(new GreetingMatchesNameCondition(doctor.getName()),
+						new QuestCompletedCondition(QUEST_SLOT),
+						new NotCondition(new TimePassedCondition(QUEST_SLOT, 1, DELAY))),
+				ConversationStates.ATTENDING,
+				"Hello! Now that the animals have enough food, they don't get sick that easily, and I have time for other things. How can I help you?",
+				null);
+
+		doctor.add(ConversationStates.IDLE, ConversationPhrases.GREETING_MESSAGES,
+				new AndCondition(new GreetingMatchesNameCondition(doctor.getName()),
+						new OrCondition(new QuestNotCompletedCondition(QUEST_SLOT),
+								new AndCondition(new QuestCompletedCondition(QUEST_SLOT), new TimePassedCondition(QUEST_SLOT, 1, DELAY))
+						)),
+				ConversationStates.IDLE, "Sorry, can't stop to chat. The animals are all sick because they don't have enough food. See yourself out, won't you?",
+				null);
+
+		// completions count is stored in 2nd index of quest slot
+		quest.setCompletionsIndexes(2);
+
+		return quest;
+	}
+
+	/*
 	@Override
 	public String getSlotName() {
 		return QUEST_SLOT;
@@ -311,4 +432,5 @@ public class ZooFood extends AbstractQuest {
 	public String getRegion() {
 		return Region.ADOS_SURROUNDS;
 	}
+	*/
 }

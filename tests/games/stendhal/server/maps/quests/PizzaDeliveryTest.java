@@ -1,6 +1,6 @@
 /* $Id$ */
 /***************************************************************************
- *                   (C) Copyright 2003-2010 - Stendhal                    *
+ *                   (C) Copyright 2003-2024 - Stendhal                    *
  ***************************************************************************
  ***************************************************************************
  *                                                                         *
@@ -103,7 +103,7 @@ public class PizzaDeliveryTest {
 
 
 		// katinka's hi response is defined here
-		final AbstractQuest zooquest = new ZooFood();
+		final AbstractQuest zooquest = new BuiltQuest(new ZooFood().story());
 		zooquest.addToWorld();
 	}
 
