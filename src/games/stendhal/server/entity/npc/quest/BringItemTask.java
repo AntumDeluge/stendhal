@@ -1,5 +1,5 @@
 /***************************************************************************
- *                   (C) Copyright 2022 - Faiumoni e.V.                    *
+ *                 (C) Copyright 2022-2024 - Faiumoni e.V.                 *
  ***************************************************************************
  ***************************************************************************
  *                                                                         *
@@ -57,6 +57,25 @@ public class BringItemTask extends QuestTaskBuilder {
 	public BringItemTask alternativeItem(int quantity, String name) {
 		alternativeItems.add(new Pair<String, Integer>(name, quantity));
 		return this;
+	}
+
+	public int getRequestedAmount(final String itemName) {
+		if (requestItem != null && requestItem.first().equals(itemName)) {
+			return requestItem.second();
+		}
+		for (final Pair<String, Integer> pair: alternativeItems) {
+			if (pair.first().equals(itemName)) {
+				return pair.second();
+			}
+		}
+		return 1;
+	}
+
+	public int getRequestedAmount() {
+		if (requestItem != null) {
+			return requestItem.second();
+		}
+		return 1;
 	}
 
 	@Override

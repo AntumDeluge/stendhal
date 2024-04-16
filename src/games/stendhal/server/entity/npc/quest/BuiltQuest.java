@@ -62,8 +62,13 @@ public class BuiltQuest extends AbstractQuest {
 			res.addAll(progress);
 		}
 		if ("done".equals(questState) || questBuilder.task().isCompleted(player, questSlot)) {
-			if (history.getWhenTaskWasCompleted() != null) {
-				res.add(history.getWhenTaskWasCompleted());
+			final String whenTaskWasCompleted = history.getWhenTaskWasCompleted();
+			if (whenTaskWasCompleted != null) {
+				if (questBuilder.task() instanceof BringItemTask) {
+					res.add(whenTaskWasCompleted.replace("[itthem]", Grammar.itthem(((BringItemTask) questBuilder.task()).getRequestedAmount())));
+				} else {
+					res.add(whenTaskWasCompleted);
+				}
 			}
 		}
 		if ("done".equals(questState)) {
