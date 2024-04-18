@@ -1,5 +1,5 @@
 /***************************************************************************
- *                    (C) Copyright 2003-2019 - Stendhal                   *
+ *                    (C) Copyright 2003-2024 - Stendhal                   *
  ***************************************************************************
  ***************************************************************************
  *                                                                         *
@@ -15,7 +15,7 @@ import java.util.Map;
 
 import games.stendhal.server.core.config.ZoneConfigurator;
 import games.stendhal.server.core.engine.StendhalRPZone;
-import games.stendhal.server.entity.npc.SpeakerNPC;
+import games.stendhal.server.entity.npc.HealerNPC;
 import games.stendhal.server.entity.npc.behaviour.adder.HealerAdder;
 import games.stendhal.server.entity.npc.behaviour.impl.MonologueBehaviour;
 
@@ -37,8 +37,9 @@ public class DeniranOldWitchHealerNPC implements ZoneConfigurator {
 		new MonologueBehaviour(buildNPC(zone), mumbles, 1);
 	}
 
-	private SpeakerNPC buildNPC(final StendhalRPZone zone) {
-		final SpeakerNPC npc = new SpeakerNPC("Ermenegilda") {
+	private HealerNPC buildNPC(final StendhalRPZone zone) {
+		//final SpeakerNPC npc = new SpeakerNPC("Ermenegilda") {
+		final HealerNPC npc = new HealerNPC("Ermenegilda") {
 
 			@Override
 			public void createDialog() {
@@ -54,7 +55,9 @@ public class DeniranOldWitchHealerNPC implements ZoneConfigurator {
 		npc.setDescription("You see Ermenegilda... Maybe she can heal you!");
 		npc.setPosition(18, 105);
 		//heal according to player level (cost -1)
-		new HealerAdder().addHealer(npc, -1);
+		//new HealerAdder().addHealer(npc, -1);
+		npc.setLevelPriceFactor(100);
+		new HealerAdder().addHealer(npc);
 		npc.initHP(100);
 		zone.add(npc);
 		return npc;
