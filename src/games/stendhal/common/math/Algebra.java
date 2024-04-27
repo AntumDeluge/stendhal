@@ -47,6 +47,21 @@ public final class Algebra
 		return Math.abs(a - b) <= EPSILON;
 	}
 
+	/**
+	 * Checks if two double values are approximately equal within a small tolerance.
+	 *
+	 * @param a
+	 *   First value to compare.
+	 * @param b
+	 *   Second value to compare.
+	 * @return
+	 *   {@code true} if the difference between {@code a} and {@code b} is less than or equal to the
+	 *   level of tolerance.
+	 */
+	public static boolean isEqual_Scald(double a, double b) {
+		return Math.abs(a - b) <= EPSILON;
+	}
+
 	public static boolean isEqual_Vecf(float[] a, float[] b)
 	{
 		assert a.length == b.length;
