@@ -1,6 +1,6 @@
 /* $Id$ */
 /***************************************************************************
- *                      (C) Copyright 2003 - Marauroa                      *
+ *                   (C) Copyright 2003-2024 - Marauroa                    *
  ***************************************************************************
  ***************************************************************************
  *                                                                         *
@@ -130,6 +130,39 @@ public class Level {
 			return xp[level];
 		}
 		return -1;
+	}
+
+	/**
+	 * Calculates the XP difference between two levels.
+	 *
+	 * @param start
+	 *   Starting level.
+	 * @param target
+	 *   Target level.
+	 * @return
+	 *   Amount of XP needed from {@code first} to {@code second}.
+	 */
+	public static int getXPDiff(final int start, final int target) {
+		if (target > start) {
+			final int xpStart = Level.getXP(start);
+			final int xpTarget = Level.getXP(target);
+			if (xpStart > -1 && xpTarget > xpStart) {
+				return xpTarget - xpStart;
+			}
+		}
+		return 0;
+	}
+
+	/**
+	 * Calculates the XP difference from one level to the next.
+	 *
+	 * @param level
+	 *   Starting level.
+	 * @return
+	 *   Amount of XP needed from {@code level} to the next.
+	 */
+	public static int getXPDiff(final int level) {
+		return Level.getXPDiff(level, level+1);
 	}
 
 	/**
