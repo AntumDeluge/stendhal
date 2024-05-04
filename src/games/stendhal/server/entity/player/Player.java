@@ -57,11 +57,11 @@ import games.stendhal.server.core.events.TutorialNotifier;
 import games.stendhal.server.core.events.UseListener;
 import games.stendhal.server.core.rp.StendhalRPAction;
 import games.stendhal.server.core.rp.achievement.AchievementNotifier;
-import games.stendhal.server.entity.DressedEntity;
 import games.stendhal.server.entity.Entity;
 import games.stendhal.server.entity.Killer;
 import games.stendhal.server.entity.Outfit;
 import games.stendhal.server.entity.RPEntity;
+import games.stendhal.server.entity.TransferableEntity;
 import games.stendhal.server.entity.creature.DomesticAnimal;
 import games.stendhal.server.entity.creature.Pet;
 import games.stendhal.server.entity.creature.Sheep;
@@ -78,7 +78,7 @@ import marauroa.common.game.RPObject;
 import marauroa.common.game.RPSlot;
 import marauroa.common.game.SyntaxException;
 
-public class Player extends DressedEntity implements UseListener {
+public class Player extends TransferableEntity implements UseListener {
 
 	private static final String LAST_PLAYER_KILL_TIME = "last_player_kill_time";
 
@@ -1664,65 +1664,6 @@ public class Player extends DressedEntity implements UseListener {
 		}
 
 		return sb.toString();
-	}
-
-	/**
-	 * Teleports this player to the given destination.
-	 *
-	 * @param zone
-	 *            The zone where this player should be teleported to.
-	 * @param x
-	 *            The destination's x coordinate
-	 * @param y
-	 *            The destination's y coordinate
-	 * @param dir
-	 *            The direction in which the player should look after
-	 *            teleporting, or null if the direction shouldn't change
-	 * @param teleporter
-	 *            The player who initiated the teleporting, or null if no player
-	 *            is responsible. This is only to give feedback if something
-	 *            goes wrong. If no feedback is wanted, use null.
-	 * @return <code>true</code> if teleporting was successful.
-	 */
-	public boolean teleport(final StendhalRPZone zone, final int x,
-			final int y, final Direction dir, final Player teleporter) {
-		if (StendhalRPAction.placeat(zone, this, x, y)) {
-			if (dir != null) {
-				this.setDirection(dir);
-			}
-			notifyWorldAboutChanges();
-			return true;
-		} else {
-			final String text = "Position [" + x + "," + y + "] is occupied";
-			if (teleporter != null) {
-				teleporter.sendPrivateText(text);
-			} else {
-				this.sendPrivateText(text);
-			}
-			return false;
-		}
-	}
-
-	/**
-	 * Teleports player to given destination using zoneid string.
-	 *
-	 * @param zoneid
-	 * 		<code>String</code> name/ID of zone.
-	 * @param x
-	 * 		Destination's horizontal coordinate.
-	 * @param y
-	 * 		Distination's vertical coordinate.
-	 * @param dir
-	 * 		The direction in which the player should look after
-	 * 		teleporting, or null if the direction shouldn't change.
-	 * @param teleporter
-	 * @return
-	 * 		<code>true</code> if teleporting was successful.
-	 */
-	public boolean teleport(final String zoneid, final int x,
-			final int y, final Direction dir, final Player teleporter) {
-		final StendhalRPZone zone = SingletonRepository.getRPWorld().getZone(zoneid);
-		return teleport(zone, x, y, dir, teleporter);
 	}
 
 	/**
