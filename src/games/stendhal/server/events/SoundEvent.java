@@ -1,6 +1,6 @@
 /* $Id$ */
 /***************************************************************************
- *                   (C) Copyright 2003-2014 - Stendhal                    *
+ *                   (C) Copyright 2003-2024 - Stendhal                    *
  ***************************************************************************
  ***************************************************************************
  *                                                                         *
@@ -37,6 +37,7 @@ public class SoundEvent extends RPEvent {
 		rpclass.add(DefinitionClass.ATTRIBUTE, "radius", Type.INT);
 		rpclass.add(DefinitionClass.ATTRIBUTE, "volume", Type.INT);
 		rpclass.add(DefinitionClass.ATTRIBUTE, "layer", Type.BYTE);
+		rpclass.add(DefinitionClass.ATTRIBUTE, "persistent", Type.FLAG);
 	}
 
 	/**
@@ -129,5 +130,12 @@ public class SoundEvent extends RPEvent {
 	public SoundEvent(final SoundID id, final int radius, final int volume, final SoundLayer layer) {
 		this(id, volume, layer);
 		put("radius", radius);
+	}
+
+	/**
+	 * Make this sound persist after zone change.
+	 */
+	public void setPersistent() {
+		put("persistent", "");
 	}
 }

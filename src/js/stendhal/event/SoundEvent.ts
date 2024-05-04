@@ -1,5 +1,5 @@
 /***************************************************************************
- *                    Copyright © 2024 - Faiumoni e. V.                    *
+ *                 Copyright © 2024-2025 - Faiumoni e. V.                  *
  ***************************************************************************
  ***************************************************************************
  *                                                                         *
@@ -26,6 +26,7 @@ export class SoundEvent extends RPEvent {
 	volume!: number;
 	radius?: number;
 	layer!: string;
+	persistent?: any;
 
 
 	execute(entity: any) {
@@ -54,7 +55,8 @@ export class SoundEvent extends RPEvent {
 			sound = SoundID[this["sound_id"]];
 		}
 
-		stendhal.sound.playLocalizedEffect(entity["_x"], entity["_y"], radius, this["layer"], sound,
-				volume);
+		const soundObject = stendhal.sound.playLocalizedEffect(entity["_x"], entity["_y"], radius,
+				this["layer"], sound, volume);
+		soundObject.persistent = typeof(this["persistent"]) !== "undefined";
 	}
 }

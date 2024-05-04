@@ -511,22 +511,31 @@ export class SoundManager {
 	 * NOTE: this if for map changes & should not include single global music instance
 	 *
 	 * @param includeGui {boolean}
-	 *   If `true`, sounds on the gui layer will stopped as well (default: false).
+	 *   If `true`, sounds on the gui layer will stopped as well (default: `false`).
+	 * @param includePersistent {boolean}
+	 *   If `true`, stops persistent sounds (defalut: `false`);.
 	 * @return {boolean}
 	 *   `true` if all sounds were aborted or paused.
 	 */
-	stopAll(includeGui=false): boolean {
+	stopAll(includeGui=false, includePersistent=false): boolean {
 		let stopped = true;
+		let persistCount = 0;
 		for (const layerName of this.layers) {
 			if (layerName === "gui" && !includeGui) {
 				continue;
 			}
 			const curLayer = this.active[layerName];
 			// XXX: just iterating over indexes doesn't remove all sounds. async issue?
-			while (curLayer.length > 0) {
-				this.stop(layerName, curLayer[0]);
+			while (curLayer.length > persistCount) {
+				const sound = curLayer[0];
+				if (sound.persistent && !includePersistent) {
+					// don't stop persistent sounds
+					persistCount++;
+				} else {
+					this.stop(layerName, sound);
+				}
 			}
-			stopped = stopped && this.active[layerName].length == 0;
+			stopped = stopped && this.active[layerName].length == persistCount;
 		}
 		return stopped;
 	}

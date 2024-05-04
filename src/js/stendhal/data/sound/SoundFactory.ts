@@ -25,6 +25,8 @@ export interface SoundObject extends HTMLAudioElement {
 	y?: number;
 	/** String identifier. */
 	basename?: string;
+	/** Property denoting whether sound should be removed on zone change. */
+	persistent: boolean;
 }
 
 /**
@@ -44,10 +46,13 @@ export class SoundFactory {
 	 *
 	 * @param src {string}
 	 *   Sound filename path (default: `undefined`).
+	 * @param persistent {boolean}
+	 *   `true` if sound should not be removed on zone change (default: `false`).
 	 */
-	static create(src?: string): SoundObject {
+	static create(src?: string, persistent=false): SoundObject {
 		const sound = new Audio(src) as SoundObject;
 		sound.basevolume = sound.volume;
+		sound.persistent = persistent;
 		return sound;
 	}
 }
