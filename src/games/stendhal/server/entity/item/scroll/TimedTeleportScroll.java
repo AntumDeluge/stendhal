@@ -2,7 +2,7 @@
  * $Id$
  */
 /***************************************************************************
- *                   (C) Copyright 2003-2023 - Stendhal                    *
+ *                   (C) Copyright 2003-2024 - Stendhal                    *
  ***************************************************************************
  ***************************************************************************
  *                                                                         *
@@ -233,7 +233,7 @@ public class TimedTeleportScroll extends TeleportScroll {
 	 * @param targetZone the zone to teleport to.
 	 * @return true if successful
 	 */
-	private boolean teleportPlayer(final Player player, final int targetX,
+	protected boolean teleportPlayer(final Player player, final int targetX,
 			final int targetY, final StendhalRPZone targetZone) {
 
 		return player.teleport(targetZone, targetX, targetY, null, player);

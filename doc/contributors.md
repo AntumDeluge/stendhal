@@ -998,6 +998,8 @@ The following people released their work to the public with a suitable license f
 * [Inchadney](http://inchadney.com/sounds.html)
 * [Bart Kelsey](https://opengameart.org/users/bart)
 * [Aidan Walker](https://opengameart.org/users/aidanwalker)
+* [David Kvistorf (fluffclipse)](https://soundcloud.com/david-kvistorf)
+* [Dan Nicholls (d.n.audio.uk)](https://audiary.co.uk/)
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
