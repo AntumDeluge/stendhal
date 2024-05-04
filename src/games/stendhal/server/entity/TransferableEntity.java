@@ -14,8 +14,10 @@ package games.stendhal.server.entity;
 import games.stendhal.common.Direction;
 import games.stendhal.server.core.engine.SingletonRepository;
 import games.stendhal.server.core.engine.StendhalRPZone;
+import games.stendhal.server.core.events.TurnListener;
 import games.stendhal.server.core.rp.StendhalRPAction;
 import games.stendhal.server.entity.player.Player;
+import games.stendhal.server.events.SoundEvent;
 import marauroa.common.game.RPObject;
 
 
@@ -213,5 +215,199 @@ public abstract class TransferableEntity extends DressedEntity {
 	 */
 	public boolean teleport(final String id, final int x, final int y) {
 		return teleport(id, x, y, null, null);
+	}
+
+	/**
+	 * Teleports entity to given destination and plays a sound.
+	 *
+	 * @param zone
+	 *   Destination zone.
+	 * @param x
+	 *   X coordinate of destination zone.
+	 * @param y
+	 *   Y coordinate of destination zone.
+	 * @param dir
+	 *   Direction entity should face after teleport or {@code null} for no change.
+	 * @param sound
+	 *   Sound event to be executed.
+	 * @param teleporter
+	 *   Player who initiated the teleport or {@code null} if no player is responsible. This is only
+	 *   to give feedback if something goes wrong. If no feedback is wanted use {@code null}.
+	 * @return
+	 *   {@code true} if teleport was successful.
+	 */
+	public boolean teleportWithSound(final StendhalRPZone zone, final int x, final int y,
+			final Direction dir, final SoundEvent sound, final Player teleporter) {
+		sound.setPersistent();
+
+		/*
+		addEvent(sound);
+		// play before teleport so entities at origin can hear it.
+		notifyWorldAboutChanges();
+		return teleport(zone, x, y, dir, teleporter);
+		*/
+
+		// workaround: there currently isn't any way to send a sound event without attaching to an
+		// entity so we delay the teleport so sound can be heard in origin zone
+		addEvent(sound);
+		notifyWorldAboutChanges();
+
+		SingletonRepository.getTurnNotifier().notifyInTurns(1, new TurnListener() {
+			@Override
+			public void onTurnReached(int currentTurn) {
+				teleport(zone, x, y, dir, teleporter);
+			}
+		});
+		// FIXME: can't return delayed result
+		return true;
+	}
+
+	/**
+	 * Teleports entity to given destination and plays a sound.
+	 *
+	 * @param zone
+	 *   Destination zone.
+	 * @param x
+	 *   X coordinate of destination zone.
+	 * @param y
+	 *   Y coordinate of destination zone.
+	 * @param dir
+	 *   Direction entity should face after teleport or {@code null} for no change.
+	 * @param sound
+	 *   Sound event to be executed.
+	 * @return
+	 *   {@code true} if teleport was successful.
+	 */
+	public boolean teleportWithSound(final StendhalRPZone zone, final int x, final int y,
+			final Direction dir, final SoundEvent sound) {
+		return teleportWithSound(zone, x, y, dir, sound, null);
+	}
+
+	/**
+	 * Teleports entity to given destination and plays a sound.
+	 *
+	 * @param zone
+	 *   Destination zone.
+	 * @param x
+	 *   X coordinate of destination zone.
+	 * @param y
+	 *   Y coordinate of destination zone.
+	 * @param sound
+	 *   Sound event to be executed.
+	 * @param teleporter
+	 *   Player who initiated the teleport or {@code null} if no player is responsible. This is only
+	 *   to give feedback if something goes wrong. If no feedback is wanted use {@code null}.
+	 * @return
+	 *   {@code true} if teleport was successful.
+	 */
+	public boolean teleportWithSound(final StendhalRPZone zone, final int x, final int y,
+			final SoundEvent sound, final Player teleporter) {
+		return teleportWithSound(zone, x, y, null, sound, teleporter);
+	}
+
+	/**
+	 * Teleports entity to given destination and plays a sound.
+	 *
+	 * @param zone
+	 *   Destination zone.
+	 * @param x
+	 *   X coordinate of destination zone.
+	 * @param y
+	 *   Y coordinate of destination zone.
+	 * @param sound
+	 *   Sound event to be executed.
+	 * @return
+	 *   {@code true} if teleport was successful.
+	 */
+	public boolean teleportWithSound(final StendhalRPZone zone, final int x, final int y,
+			final SoundEvent sound) {
+		return teleportWithSound(zone, x, y, null, sound, null);
+	}
+
+	/**
+	 * Teleports entity to given destination and plays a sound.
+	 *
+	 * @param id
+	 *   Destination zone name/ID.
+	 * @param x
+	 *   X coordinate of destination zone.
+	 * @param y
+	 *   Y coordinate of destination zone.
+	 * @param dir
+	 *   Direction entity should face after teleport or {@code null} for no change.
+	 * @param sound
+	 *   Sound event to be executed.
+	 * @param teleporter
+	 *   Player who initiated the teleport or {@code null} if no player is responsible. This is only
+	 *   to give feedback if something goes wrong. If no feedback is wanted use {@code null}.
+	 * @return
+	 *   {@code true} if teleport was successful.
+	 */
+	public boolean teleportWithSound(final String id, final int x, final int y, final Direction dir,
+			final SoundEvent sound, final Player teleporter) {
+		return teleportWithSound(SingletonRepository.getRPWorld().getZone(id), x, y, dir, sound,
+				teleporter);
+	}
+
+	/**
+	 * Teleports entity to given destination and plays a sound.
+	 *
+	 * @param id
+	 *   Destination zone name/ID.
+	 * @param x
+	 *   X coordinate of destination zone.
+	 * @param y
+	 *   Y coordinate of destination zone.
+	 * @param dir
+	 *   Direction entity should face after teleport or {@code null} for no change.
+	 * @param sound
+	 *   Sound event to be executed.
+	 * @return
+	 *   {@code true} if teleport was successful.
+	 */
+	public boolean teleportWithSound(final String id, final int x, final int y, final Direction dir,
+			final SoundEvent sound) {
+		return teleportWithSound(id, x, y, dir, sound, null);
+	}
+
+	/**
+	 * Teleports entity to given destination and plays a sound.
+	 *
+	 * @param id
+	 *   Destination zone name/ID.
+	 * @param x
+	 *   X coordinate of destination zone.
+	 * @param y
+	 *   Y coordinate of destination zone.
+	 * @param sound
+	 *   Sound event to be executed.
+	 * @param teleporter
+	 *   Player who initiated the teleport or {@code null} if no player is responsible. This is only
+	 *   to give feedback if something goes wrong. If no feedback is wanted use {@code null}.
+	 * @return
+	 *   {@code true} if teleport was successful.
+	 */
+	public boolean teleportWithSound(final String id, final int x, final int y,
+			final SoundEvent sound, final Player teleporter) {
+		return teleportWithSound(id, x, y, null, sound, teleporter);
+	}
+
+	/**
+	 * Teleports entity to given destination and plays a sound.
+	 *
+	 * @param id
+	 *   Destination zone name/ID.
+	 * @param x
+	 *   X coordinate of destination zone.
+	 * @param y
+	 *   Y coordinate of destination zone.
+	 * @param sound
+	 *   Sound event to be executed.
+	 * @return
+	 *   {@code true} if teleport was successful.
+	 */
+	public boolean teleportWithSound(final String id, final int x, final int y,
+			final SoundEvent sound) {
+		return teleportWithSound(id, x, y, null, sound, null);
 	}
 }
