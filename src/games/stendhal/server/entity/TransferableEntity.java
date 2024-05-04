@@ -89,6 +89,60 @@ public abstract class TransferableEntity extends DressedEntity {
 	/**
 	 * Teleports entity to given destination.
 	 *
+	 * @param zone
+	 *   Destination zone.
+	 * @param x
+	 *   X coordinate of destination zone.
+	 * @param y
+	 *   Y coordinate of destination zone.
+	 * @param dir
+	 *   Direction entity should face after teleport or {@code null} for no change.
+	 * @return
+	 *   {@code true} if teleport was successful.
+	 */
+	public boolean teleport(final StendhalRPZone zone, final int x, final int y, final Direction dir) {
+		return teleport(zone, x, y, dir, null);
+	}
+
+	/**
+	 * Teleports entity to given destination.
+	 *
+	 * @param zone
+	 *   Destination zone.
+	 * @param x
+	 *   X coordinate of destination zone.
+	 * @param y
+	 *   Y coordinate of destination zone.
+	 * @param teleporter
+	 *   Player who initiated the teleport or {@code null} if no player is responsible. This is only
+	 *   to give feedback if something goes wrong. If no feedback is wanted use {@code null}.
+	 * @return
+	 *   {@code true} if teleport was successful.
+	 */
+	public boolean teleport(final StendhalRPZone zone, final int x, final int y,
+			final Player teleporter) {
+		return teleport(zone, x, y, null, teleporter);
+	}
+
+	/**
+	 * Teleports entity to given destination.
+	 *
+	 * @param zone
+	 *   Destination zone.
+	 * @param x
+	 *   X coordinate of destination zone.
+	 * @param y
+	 *   Y coordinate of destination zone.
+	 * @return
+	 *   {@code true} if teleport was successful.
+	 */
+	public boolean teleport(final StendhalRPZone zone, final int x, final int y) {
+		return teleport(zone, x, y, null, null);
+	}
+
+	/**
+	 * Teleports entity to given destination.
+	 *
 	 * @param id
 	 *   Destination zone name/ID.
 	 * @param x
@@ -106,5 +160,58 @@ public abstract class TransferableEntity extends DressedEntity {
 	public boolean teleport(final String id, final int x, final int y, final Direction dir,
 			final Player teleporter) {
 		return teleport(SingletonRepository.getRPWorld().getZone(id), x, y, dir, teleporter);
+	}
+
+	/**
+	 * Teleports entity to given destination.
+	 *
+	 * @param id
+	 *   Destination zone name/ID.
+	 * @param x
+	 *   X coordinate of destination zone.
+	 * @param y
+	 *   Y coordinate of destination zone.
+	 * @param dir
+	 *   Direction entity should face after teleport or {@code null} for no change.
+	 * @return
+	 *   {@code true} if teleport was successful.
+	 */
+	public boolean teleport(final String id, final int x, final int y, final Direction dir) {
+		return teleport(id, x, y, dir, null);
+	}
+
+	/**
+	 * Teleports entity to given destination.
+	 *
+	 * @param id
+	 *   Destination zone name/ID.
+	 * @param x
+	 *   X coordinate of destination zone.
+	 * @param y
+	 *   Y coordinate of destination zone.
+	 * @param teleporter
+	 *   Player who initiated the teleport or {@code null} if no player is responsible. This is only
+	 *   to give feedback if something goes wrong. If no feedback is wanted use {@code null}.
+	 * @return
+	 *   {@code true} if teleport was successful.
+	 */
+	public boolean teleport(final String id, final int x, final int y, final Player teleporter) {
+		return teleport(id, x, y, null, teleporter);
+	}
+
+	/**
+	 * Teleports entity to given destination.
+	 *
+	 * @param id
+	 *   Destination zone name/ID.
+	 * @param x
+	 *   X coordinate of destination zone.
+	 * @param y
+	 *   Y coordinate of destination zone.
+	 * @return
+	 *   {@code true} if teleport was successful.
+	 */
+	public boolean teleport(final String id, final int x, final int y) {
+		return teleport(id, x, y, null, null);
 	}
 }
