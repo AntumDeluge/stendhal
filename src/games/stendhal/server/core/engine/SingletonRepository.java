@@ -1,6 +1,6 @@
 /* $Id$ */
 /***************************************************************************
- *                   (C) Copyright 2003-2023 - Stendhal                    *
+ *                   (C) Copyright 2003-2024 - Stendhal                    *
  ***************************************************************************
  ***************************************************************************
  *                                                                         *
@@ -13,6 +13,7 @@
 package games.stendhal.server.core.engine;
 
 import games.stendhal.server.core.config.ShopsXMLLoader;
+import games.stendhal.server.core.events.DailyNotifier;
 import games.stendhal.server.core.events.LoginNotifier;
 import games.stendhal.server.core.events.LogoutNotifier;
 import games.stendhal.server.core.events.TurnNotifier;
@@ -273,5 +274,12 @@ public class SingletonRepository {
 	 */
 	public static ShopsXMLLoader getShopsXMLLoader() {
 		return ShopsXMLLoader.get();
+	}
+
+	/**
+	 * Retrieves daily notifier instance.
+	 */
+	public static DailyNotifier getDailyNotifier() {
+		return DailyNotifier.get();
 	}
 }
