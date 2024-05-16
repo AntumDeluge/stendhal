@@ -78,6 +78,8 @@ export class ViewPort {
 	/** Styles to be applied when chat panel is not floating. */
 	private readonly initialStyle: {[prop: string]: string};
 
+	private torchlight? = stendhal.data.sprites.get(stendhal.paths.maps + "/effect/torchlight.png");
+
 	/** Singleton instance. */
 	private static instance: ViewPort;
 
@@ -152,6 +154,11 @@ export class ViewPort {
 				this.applyHSLFilter();
 				this.drawEntitiesTop();
 				this.drawEmojiSprites();
+
+				if (this.torchlight && this.torchlight.height) {
+					this.ctx.drawImage(this.torchlight, this.offsetX, this.offsetY);
+				}
+
 				this.drawTextSprites();
 				this.drawTextSprites(this.notifSprites);
 
