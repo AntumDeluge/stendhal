@@ -68,6 +68,10 @@ data/maps/parallax/
 
 stars  Jordan Irwin (AntumDeluge); CC0; Stendhal
 
+data/maps/effect/
+
+torchlight  Jordan Irwin (AntumDeluge); CC0; Stendhal
+
 data/sprites/
 
 baby_dragon.png           Kimmo Rundelin (kiheru); CC BY-SA 3.0; Stendhal
