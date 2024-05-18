@@ -20,6 +20,7 @@ import { RPObject } from "./entity/RPObject";
 
 import { ChatOptionsEvent } from "./event/ChatOptionsEvent";
 import { ExamineEvent } from "./event/ExamineEvent";
+import { GenericEvent } from "./event/GenericEvent";
 import { GroupChangeEvent } from "./event/GroupChangeEvent";
 import { GroupInviteEvent } from "./event/GroupInviteEvent";
 import { PlayerLoggedOnEvent } from "./event/PlayerLoggedOnEvent";
@@ -70,6 +71,8 @@ export class EventRegistry {
 			return;
 		}
 		this.initialized = true;
+
+		this.register("generic_event", new GenericEvent());
 
 		this.register("chat_options", new ChatOptionsEvent());
 		this.register("examine", new ExamineEvent());
