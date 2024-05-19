@@ -31,6 +31,8 @@ import { SpeechBubble } from "../sprite/SpeechBubble";
 import { TextBubble } from "../sprite/TextBubble";
 
 import { Point } from "../util/Point";
+import { Runnable } from "../util/Runnable";
+import { Runner } from "../util/Runnable";
 
 
 /**
@@ -49,11 +51,11 @@ export class ViewPort {
 
 	// dimensions
 	// TODO: remove & use CSS style instead
-	private readonly width: number;
-	private readonly height: number;
+	private readonly width: number|null;
+	private readonly height: number|null;
 
 	/** Drawing context. */
-	private ctx: CanvasRenderingContext2D;
+	private readonly ctx: CanvasRenderingContext2D;
 	/** Map tile pixel width. */
 	private readonly targetTileWidth = 32;
 	/** Map tile pixel height. */
@@ -78,6 +80,11 @@ export class ViewPort {
 	/** Styles to be applied when chat panel is not floating. */
 	private readonly initialStyle: {[prop: string]: string};
 
+	/**
+	 * Callback for instructions to execute when scene drawing is complete for a cycle.
+	 */
+	public onSceneComplete?: SceneCompleteRunnable;
+
 	/** Singleton instance. */
 	private static instance: ViewPort;
 
@@ -98,8 +105,13 @@ export class ViewPort {
 	private constructor() {
 		const element = this.getElement() as HTMLCanvasElement;
 		this.ctx = element.getContext("2d")!;
+		// TODO: remove as we can use `HTMLCanvasElement.[width|height]`
+		/*
 		this.width = element.width;
 		this.height = element.height;
+		*/
+		this.width = null;
+		this.height = null;
 
 		this.initialStyle = {};
 		//~ const stylesheet = getComputedStyle(element);
@@ -109,6 +121,15 @@ export class ViewPort {
 		// NOTE: this doesn't work if properties set in css
 		this.initialStyle["max-width"] = "calc((100dvh - 5em) * 640 / 480)";
 		this.initialStyle["max-height"] = "calc(100dvh - 5em)";
+
+		// DEBUG:
+		/*
+		this.onSceneComplete = new ViewPort.SceneCompleteRunnable(function(
+				ctx: CanvasRenderingContext2D, x: number, y: number) {
+			console.log("scene complete!");
+		});
+		this.onSceneComplete.run(undefined as any, 1, 2);
+		*/
 	}
 
 	/**
@@ -119,6 +140,56 @@ export class ViewPort {
 	 */
 	public getElement(): HTMLElement {
 		return document.getElementById("viewport")!;
+	}
+
+	/**
+	 * Retrieves the viewport drawing context.
+	 *
+	 * @return {CanvasRenderingContext2D}
+	 *   Viewport `CanvasRenderingContext2D`.
+	 */
+	public getContext(): CanvasRenderingContext2D {
+		return (this.getElement() as HTMLCanvasElement).getContext("2d")!;
+	}
+
+	/**
+	 * Retrieves the viewport width.
+	 *
+	 * @return {number}
+	 *   Pixel width of canvas.
+	 */
+	public getWidth(): number {
+		return (this.getElement() as HTMLCanvasElement).width;
+	}
+
+	/**
+	 * Retrieves the viewport height.
+	 *
+	 * @return {number}
+	 *   Pixel height of canvas.
+	 */
+	public getHeight(): number {
+		return (this.getElement() as HTMLCanvasElement).height;
+	}
+
+	/**
+	 * Retrieves screen horizontal offset.
+	 *
+	 * @return {number}
+	 *   Horizontal pixel offset.
+	 */
+	public getOffsetX(): number {
+		return this.offsetX;
+	}
+
+	/**
+	 * Retrieves screen vertical offset.
+	 *
+	 * @return {number}
+	 *   Vertical pixel offset.
+	 */
+	public getOffsetY(): number {
+		return this.offsetY;
 	}
 
 	/**
@@ -158,6 +229,10 @@ export class ViewPort {
 				// redraw inventory sprites
 				stendhal.ui.equip.update();
 				(ui.get(UIComponentEnum.PlayerEquipment) as PlayerEquipmentComponent).update();
+
+				if (this.onSceneComplete) {
+					this.onSceneComplete.run(this.ctx, this.offsetX, this.offsetY);
+				}
 			}
 		}
 		window.setTimeout(function() {
@@ -783,4 +858,56 @@ export class ViewPort {
 			}
 		}
 	}
+
+
+	/**
+	 * Property containing class for executing instructions after scene is complete in a draw cycle.
+	 *
+	 * Setting as a property of `ViewPort` allows access in a way similar to nested classes in other
+	 * languages such as Java.
+	 *
+	 * Example usage:
+	 * ```
+	 * const sceneCompleteRunnable = new ViewPort.SceneCompleteRunnable(function);
+	 * ```
+	 */
+	static SceneCompleteRunnable: typeof SceneCompleteRunnable;
 }
+
+
+//type SceneCompleteRunner = (ctx: CanvasRenderingContext2D, x: number, y: number) => void;
+interface SceneCompleteRunner extends Runner {
+	(ctx: CanvasRenderingContext2D, x: number, y: number): void;
+}
+
+/**
+ * Class for executing instructions after scene is complete in a draw cycle.
+ */
+class SceneCompleteRunnable extends Runnable {
+
+	override readonly run!: SceneCompleteRunner;
+
+
+	/**
+	 * Creates a new runnable instance.
+	 *
+	 * @param run {Function}
+	 *   Instructions to be executed when `SceneCompleteRunnable.run` is called.
+	 */
+	constructor(run: SceneCompleteRunner) {
+		super(run);
+		if (!(run instanceof SceneCompleteRunner)) {
+			throw new Error("`run` must be a function comaptible with `" + SceneCompleteRunner + "`");
+		}
+		// check parameter count
+		// FIXME: compiler is changing `Function.length` to "0"
+		/*
+		if (run.length !== 3) {
+			throw new Error("Parameter count mismatch, `run` must contain 3 parameters, detected "
+					+ run.length);
+		}
+		*/
+	}
+}
+
+ViewPort.SceneCompleteRunnable = SceneCompleteRunnable;
