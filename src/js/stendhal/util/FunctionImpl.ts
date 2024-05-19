@@ -17,6 +17,7 @@
  */
 export abstract class FunctionImpl<T extends Array<any>> extends Function {
 
+	/** Parameters passed to the constructor. */
 	protected readonly args: T;
 
 
@@ -44,6 +45,49 @@ export abstract class FunctionImpl<T extends Array<any>> extends Function {
 		console.log("parent:", this.getParentClass());
 		console.log("class:", this.getClass());
 		console.log("name:", this.getName());
+	}
+
+	/**
+	 * Creates a new instance of this class copied from another object.
+	 *
+	 * NOTE: would it be better to return `any`?
+	 *
+	 * @param {any} obj
+	 *   Compatible object or an array of argument values.
+	 * @returns {FunctionImpl<T>}
+	 *   New `FunctionImpl<T>` or inheriting class instance.
+	 */
+	static create(obj: any): FunctionImpl<Array<any>> {
+		let args: any[];
+		if (Array.isArray(obj)) {
+			args = obj;
+		} else {
+			args = typeof(obj.args) !== "undefined" ? obj.args : new Array<any>();
+		}
+		const constructIt = this;
+		return new constructIt(args);
+	}
+
+	/**
+	 * Creates a new instance of this object's class copied from another object.
+	 *
+	 * NOTE: would it be better to return `any`?
+	 *
+	 * @param {any} obj
+	 *   Object to be copied.
+	 * @returns {FunctionImpl<T>}
+	 *   New `FunctionImpl<T>` or inheriting class instance.
+	 */
+	copy(obj: any): FunctionImpl<Array<any>> {
+		let args: any[];
+		if (Array.isArray(obj)) {
+			//return this.copyArgs(obj);
+			args = obj;
+		} else {
+			args = typeof(obj.args) !== "undefined" ? obj.args : new Array<any>();
+		}
+		const constructIt = Object.getPrototypeOf(this).constructor;
+		return new constructIt(args);
 	}
 
 	/**
