@@ -32,7 +32,7 @@ import { TextBubble } from "../sprite/TextBubble";
 
 import { Point } from "../util/Point";
 import { Runnable } from "../util/Runnable";
-import { Runner } from "../util/Runnable";
+import { Runner } from "../util/Runner";
 
 
 /**
