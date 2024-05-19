@@ -1064,6 +1064,16 @@ public final class GameScreen extends JComponent implements IGameScreen, DropTar
 	 * Class for executing instructions after scene is complete in a draw cycle.
 	 */
 	public static abstract class SceneCompleteRunnable {
+		/**
+		 * Called when scene drawing is complete.
+		 *
+		 * @param ctx
+		 *   Viewport drawing context.
+		 * @param offsetX
+		 *   Horizontal screen offset in pixels.
+		 * @param offsetY
+		 *   Vertical screen offset in pixels.
+		 */
 		public abstract void run(Graphics2D ctx, int offsetX, int offsetY);
 	}
 }
