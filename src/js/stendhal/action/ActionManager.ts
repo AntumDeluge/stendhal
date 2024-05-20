@@ -44,7 +44,9 @@ interface Action {
  * Registered slash actions.
  */
 export class ActionManager {
-	[index: string]: any;
+	[index: string]: any; // FIXME: not necessary?
+
+	private aliases: string[];
 
 	/** Singleton instance. */
 	private static instance: ActionManager;
@@ -64,7 +66,47 @@ export class ActionManager {
 	 * Hidden singleton constructor.
 	 */
 	private constructor() {
-		// do nothing
+		this.aliases = [];
+		this.initActions();
+	}
+
+	private initActions() {
+		// *** user actions *** //
+
+		// *** admin/GM actions *** //
+	}
+
+	/**
+	 * Registers a new action.
+	 *
+	 * @param {string} _type
+	 *   Action type name/identifier.
+	 * @param {ActionBaseImple} action
+	 *   Action instance.
+	 * @param {boolean} [parseAliases=false]
+	 *   Set to `false` to exclude registering aliases.
+	 * @return {boolean}
+	 *   `true` for registration success.
+	 */
+	private register(_type: string, action: ActionBaseImpl, parseAliases=true): boolean {
+		if (typeof(this[_type]) !== "undefined") {
+			console.warn("Action \"" + _type + "\" already registered");
+			return false;
+		}
+		this[_type] = action;
+		if (parseAliases && typeof(action.aliases) !== "undefined") {
+			for (const alias of action.aliases) {
+				if (this.aliases.indexOf(alias) > -1) {
+					console.warn("Action alias \"" + alias + "\" already registered");
+					continue;
+				}
+				if (!this.register(alias, action, false)) {
+					continue;
+				}
+				this.aliases.push(alias);
+			}
+		}
+		return true;
 	}
 
 	/**
