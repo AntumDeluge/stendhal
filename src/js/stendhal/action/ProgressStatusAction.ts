@@ -12,7 +12,7 @@
 
 import { ParamList } from "./ParamList";
 
-import { ClientActionImpl } from "./impl/ClientActionImpl";
+import { RelayActionImpl } from "./impl/RelayActionImpl";
 
 import { ui } from "../ui/UI";
 import { UIComponentEnum } from "../ui/UIComponentEnum";
@@ -28,13 +28,14 @@ import { Pair } from "../util/Pair";
 /**
  * Requests progress status info from server.
  */
-export class ProgressStatusAction extends ClientActionImpl {
+export class ProgressStatusAction extends RelayActionImpl {
 
+	readonly type = "progressstatus";
 	readonly minParams = 0;
 	readonly maxParams = 0;
 
 
-	override execute(_type: string, _params: string[], _remainder: string): boolean {
+	executeInterim(params: string[], remainder=""): boolean {
 		let travelLogDialog = ui.get(UIComponentEnum.TravelLogDialog) as TravelLogDialog;
 		if (!travelLogDialog) {
 			// display travel log dialog before sending request so player knows action executed correctly
@@ -44,22 +45,22 @@ export class ProgressStatusAction extends ClientActionImpl {
 			new FloatingWindow("Travel Log", travelLogDialog, dstate.x, dstate.y).setId("travel-log");
 		}
 
-		const action: any = {"type": _type};
-		if (_remainder.length > 0) {
-			if (_remainder.indexOf("Open Quests") > -1) {
+		const action: any = {"type": this.type};
+		if (remainder.length > 0) {
+			if (remainder.indexOf("Open Quests") > -1) {
 				action["progress_type"] = "Open Quests";
-				_remainder = _remainder.substring(12);
-			} else if (_remainder.indexOf("Completed Quests") > -1) {
+				remainder = remainder.substring(12);
+			} else if (remainder.indexOf("Completed Quests") > -1) {
 				action["progress_type"] = "Completed Quests";
-				_remainder = _remainder.substring(17);
-			} else if (_remainder.indexOf("Production") > -1) {
+				remainder = remainder.substring(17);
+			} else if (remainder.indexOf("Production") > -1) {
 				action["progress_type"] = "Production";
-				_remainder = _remainder.substring(11);
+				remainder = remainder.substring(11);
 			} else {
 
 			}
-			if (_remainder) {
-				action["item"] = _remainder;
+			if (remainder) {
+				action["item"] = remainder;
 			}
 		}
 		this.send(action);

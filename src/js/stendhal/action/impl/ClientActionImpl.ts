@@ -67,14 +67,4 @@ export abstract class ClientActionImpl extends ActionBaseImpl {
 		}
 		return new ParamList(params).toString(namesOnly);
 	}
-
-	/**
-	 * Forwards action information to server.
-	 *
-	 * @param {object} action
-	 *   Action object.
-	 */
-	protected send(action: object) {
-		marauroa.clientFramework.sendAction(action);
-	}
 }
