@@ -14,6 +14,9 @@ import { ParamList } from "../ParamList";
 
 /**
  * Base slash action implementation.
+ *
+ * TODO:
+ * - check that `maxParams` is handled correctly if set to -1 (no limit)
  */
 export abstract class ActionBaseImpl {
 	[key: string|symbol]: any;
