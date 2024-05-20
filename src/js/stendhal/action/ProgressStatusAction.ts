@@ -11,7 +11,8 @@
  ***************************************************************************/
 
 import { ParamList } from "./ParamList";
-import { SlashAction } from "./SlashAction";
+
+import { ClientActionImpl } from "./impl/ClientActionImpl";
 
 import { ui } from "../ui/UI";
 import { UIComponentEnum } from "../ui/UIComponentEnum";
@@ -27,7 +28,7 @@ import { Pair } from "../util/Pair";
 /**
  * Requests progress status info from server.
  */
-export class ProgressStatusAction extends SlashAction {
+export class ProgressStatusAction extends ClientActionImpl {
 
 	readonly minParams = 0;
 	readonly maxParams = 0;

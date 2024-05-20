@@ -13,7 +13,8 @@
 declare var stendhal: any;
 
 import { ParamList } from "./ParamList";
-import { SlashAction } from "./SlashAction";
+
+import { ClientActionImpl } from "./impl/ClientActionImpl";
 
 import { ui } from "../ui/UI";
 
@@ -22,7 +23,7 @@ import { AboutDialog } from "../ui/dialog/AboutDialog";
 import { Pair } from "../util/Pair";
 
 
-export class AboutAction extends SlashAction {
+export class AboutAction extends ClientActionImpl {
 	readonly minParams = 0;
 	readonly maxParams = 0;
 

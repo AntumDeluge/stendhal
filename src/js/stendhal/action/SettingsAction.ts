@@ -12,14 +12,15 @@
 
 declare var stendhal: any;
 
-import { SlashAction } from "./SlashAction";
+import { ClientActionImpl } from "./impl/ClientActionImpl";
 
 import { ui } from "../ui/UI";
 
 import { SettingsDialog } from "../ui/dialog/SettingsDialog";
 
 
-export class SettingsAction extends SlashAction {
+export class SettingsAction extends ClientActionImpl {
+
 	readonly minParams = 0;
 	readonly maxParams = 0;
 

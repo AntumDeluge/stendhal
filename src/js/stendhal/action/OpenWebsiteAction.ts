@@ -1,5 +1,5 @@
 /***************************************************************************
- *                   (C) Copyright 2003-2023 - Stendhal                    *
+ *                   (C) Copyright 2003-2024 - Stendhal                    *
  ***************************************************************************
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -9,12 +9,12 @@
  *                                                                         *
  ***************************************************************************/
 
-import { SlashAction } from "./SlashAction";
+import { ClientActionImpl } from "./impl/ClientActionImpl";
 
 /**
  * opens the specified website in the browser
  */
-export class OpenWebsiteAction extends SlashAction {
+export class OpenWebsiteAction extends ClientActionImpl {
 	readonly minParams = 0;
 	readonly maxParams = 0;
 
