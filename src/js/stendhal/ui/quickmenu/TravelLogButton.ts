@@ -27,6 +27,6 @@ export class TravelLogButton extends QuickMenuButton {
 	 * Opens travel log window when clicked/tapped.
 	 */
 	protected override onClick(evt: Event) {
-		ActionManager.get().execute("/progressstatus");
+		ActionManager.get().executeLine("/progressstatus");
 	}
 }

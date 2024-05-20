@@ -1515,7 +1515,7 @@ export class ActionManager {
 	 * @return {boolean}
 	 *   `true` to represent successful execution.
 	 */
-	execute(line: string): boolean {
+	executeLine(line: string): boolean {
 		line = line.trim();
 
 		// double slash is a special command, that should work without

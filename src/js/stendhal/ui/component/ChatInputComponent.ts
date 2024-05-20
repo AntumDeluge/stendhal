@@ -218,7 +218,7 @@ export class ChatInputComponent extends Component {
 		} else if (val === '/close') {
 			marauroa.clientFramework.close();
 		} else {
-			if (stendhal.actions.execute(val)) {
+			if (stendhal.actions.executeLine(val)) {
 				this.remember(val);
 			}
 		}

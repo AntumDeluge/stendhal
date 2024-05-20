@@ -26,6 +26,6 @@ export class SettingsButton extends QuickMenuButton {
 	 * Opens settings window when clicked/tapped.
 	 */
 	protected override onClick(evt: Event) {
-		singletons.getActionManager().execute("/settings");
+		singletons.getActionManager().executeLine("/settings");
 	}
 }

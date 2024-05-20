@@ -79,6 +79,6 @@ export class GroupManager {
 	 */
 	refresh() {
 		// NOTE: sending action directly with `marauroa.clientFramework.sendAction` doesn't work here???
-		ActionManager.get().execute("/group status");
+		ActionManager.get().executeLine("/group status");
 	}
 }
