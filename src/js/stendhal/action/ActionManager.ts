@@ -33,7 +33,10 @@ import { Chat } from "../util/Chat";
 
 
 /**
- * Action type representation.
+ * Action type representation for sending to server.
+ *
+ * TODO:
+ * - use type from `action.impl.RelayActionImpl`
  */
 interface Action {
 	[key: string]: string;
@@ -42,6 +45,9 @@ interface Action {
 
 /**
  * Registered slash actions.
+ *
+ * TODO:
+ * - add `register` method
  */
 export class ActionManager {
 	[index: string]: any; // FIXME: not necessary?
@@ -145,6 +151,9 @@ export class ActionManager {
 
 	/**
 	 * Retrieves help data for standard user actions.
+	 *
+	 * TODO:
+	 * - maybe move help handling to separate class
 	 *
 	 * @return {any}
 	 */
@@ -274,6 +283,9 @@ export class ActionManager {
 
 	/**
 	 * Retrieves help data for game master actions.
+	 *
+	 * TODO:
+	 * - maybe move help handling to separate class
 	 *
 	 * @return {any}
 	 */
@@ -543,6 +555,7 @@ export class ActionManager {
 
 
 	// *** registered actions *** //
+	// TODO: maybe move to separate class
 
 	"about" = new AboutAction();
 
@@ -1630,6 +1643,8 @@ export class ActionManager {
 
 	/**
 	 * Checks for quoted whitepace to be included in parameter.
+	 *
+	 * NOTE: can this be made private?
 	 *
 	 * @param p {string}
 	 *   The parameter to be amended.

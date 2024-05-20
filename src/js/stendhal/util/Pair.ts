@@ -13,6 +13,8 @@
 
 /**
  * Class representing a pair of objects.
+ *
+ * TODO: maybe move to data directory
  */
 export class Pair<T1, T2> {
 	constructor(readonly first: T1, readonly second: T2) {}

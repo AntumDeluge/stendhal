@@ -15,6 +15,8 @@ import { Pair } from "../util/Pair";
 
 /**
  * Represents a list of parameter names with descriptions for actions & chat commands.
+ *
+ * TODO: maybe move to data directory
  */
 export class ParamList {
 
