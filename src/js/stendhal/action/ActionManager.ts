@@ -13,7 +13,6 @@ declare var marauroa: any;
 declare var stendhal: any;
 
 import { AboutAction } from "./AboutAction";
-import { Actions } from "./Actions";
 import { DebugAction } from "./DebugAction";
 import { OpenWebsiteAction } from "./OpenWebsiteAction";
 import { ProgressStatusAction } from "./ProgressStatusAction";
@@ -83,6 +82,22 @@ export class ActionManager {
 
 	private initActions() {
 		// *** user actions *** //
+
+		this.register("/", new ReTellAction(), false);
+		this.register("about", new AboutAction());
+		this.register("debug", new DebugAction());
+		this.register("progressstatus", new ProgressStatusAction());
+		this.register("settings", new SettingsAction());
+		this.register("tell", new TellAction());
+
+		this.register("changepassword", new OpenWebsiteAction("https://stendhalgame.org/account/change-password.html"));
+		this.register("characterselector", new OpenWebsiteAction("https://stendhalgame.org/account/mycharacters.html"));
+		this.register("faq", new OpenWebsiteAction("https://stendhalgame.org/wiki/Stendhal_FAQ"));
+		this.register("halloffame", new OpenWebsiteAction("https://stendhalgame.org/world/hall-of-fame/active_overview.html"));
+		this.register("loginhistory", new OpenWebsiteAction("https://stendhalgame.org/account/history.html"));
+		this.register("logout", new OpenWebsiteAction("/account/logout.html"));
+		this.register("manual", new OpenWebsiteAction("https://stendhalgame.org/wiki/Stendhal_Manual/Controls_and_Game_Settings"));
+		this.register("rules", new OpenWebsiteAction("https://stendhalgame.org/wiki/Stendhal_Rules"));
 
 		// *** admin/GM actions *** //
 	}
@@ -581,8 +596,6 @@ export class ActionManager {
 	// *** registered actions *** //
 	// TODO: maybe move to separate class
 
-	"about" = new AboutAction();
-
 	"add": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
 			if (params == null) {
@@ -855,7 +868,6 @@ export class ActionManager {
 	};
 	*/
 
-	"debug" = new DebugAction();
 
 	"drop": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
@@ -1134,10 +1146,6 @@ export class ActionManager {
 		}
 	};
 
-	"tell" = new TellAction();
-	"msg" = this["tell"];
-	"/" = new ReTellAction();
-
 	"mute": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
 			singletons.getSoundManager().toggleSound();
@@ -1170,8 +1178,6 @@ export class ActionManager {
 			return ["<message>", "Send a message to group members."];
 		}
 	};
-
-	"progressstatus" = new ProgressStatusAction();
 
 	"remove": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
@@ -1228,8 +1234,6 @@ export class ActionManager {
 			];
 		}
 	};
-
-	[Actions.SETTINGS] = new SettingsAction();
 
 	"stopwalk": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
@@ -1513,12 +1517,6 @@ export class ActionManager {
 		}
 	};
 
-	"characterselector" = new OpenWebsiteAction("https://stendhalgame.org/account/mycharacters.html");
-
-	"faq" = new OpenWebsiteAction("https://stendhalgame.org/wiki/Stendhal_FAQ");
-
-	"manual" = new OpenWebsiteAction("https://stendhalgame.org/wiki/Stendhal_Manual/Controls_and_Game_Settings");
-
 	"profile": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
 			var url = "https://stendhalgame.org/character/";
@@ -1543,16 +1541,6 @@ export class ActionManager {
 			return ["[<name>]", "Opens a player profile page on stendhalgame.org."];
 		}
 	};
-
-	"rules" = new OpenWebsiteAction("https://stendhalgame.org/wiki/Stendhal_Rules");
-
-	"changepassword" = new OpenWebsiteAction("https://stendhalgame.org/account/change-password.html");
-
-	"loginhistory" = new OpenWebsiteAction("https://stendhalgame.org/account/history.html");
-
-	"logout" = new OpenWebsiteAction("/account/logout.html");
-
-	"halloffame" = new OpenWebsiteAction("https://stendhalgame.org/world/hall-of-fame/active_overview.html");
 
 	"storemessage": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
