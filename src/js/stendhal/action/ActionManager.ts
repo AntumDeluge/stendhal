@@ -13,6 +13,7 @@ declare var marauroa: any;
 declare var stendhal: any;
 
 import { AboutAction } from "./AboutAction";
+import { Actions } from "./Actions";
 import { DebugAction } from "./DebugAction";
 import { OpenWebsiteAction } from "./OpenWebsiteAction";
 import { ProgressStatusAction } from "./ProgressStatusAction";
@@ -1205,7 +1206,7 @@ export class ActionManager {
 		}
 	};
 
-	"settings" = new SettingsAction();
+	[Actions.SETTINGS] = new SettingsAction();
 
 	"stopwalk": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {

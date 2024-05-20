@@ -10,6 +10,7 @@
  *                                                                         *
  ***************************************************************************/
 
+import { Actions } from "./Actions";
 import { ParamList } from "./ParamList";
 
 import { RelayActionImpl } from "./impl/RelayActionImpl";
@@ -30,7 +31,7 @@ import { Pair } from "../util/Pair";
  */
 export class ProgressStatusAction extends RelayActionImpl {
 
-	readonly type = "progressstatus";
+	readonly type = Actions.PROGRESS_STATUS;
 	readonly minParams = 0;
 	readonly maxParams = 0;
 
