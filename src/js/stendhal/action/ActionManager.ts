@@ -12,23 +12,23 @@
 declare var marauroa: any;
 declare var stendhal: any;
 
-import { singletons } from "./SingletonRepo";
+import { AboutAction } from "./AboutAction";
+import { DebugAction } from "./DebugAction";
+import { OpenWebsiteAction } from "./OpenWebsiteAction";
+import { ProgressStatusAction } from "./ProgressStatusAction";
+import { ReTellAction } from "./ReTellAction";
+import { SettingsAction } from "./SettingsAction";
+import { SlashActionImpl } from "./SlashAction";
+import { TellAction } from "./TellAction";
 
-import { AboutAction } from "./action/AboutAction";
-import { DebugAction } from "./action/DebugAction";
-import { OpenWebsiteAction } from "./action/OpenWebsiteAction";
-import { ProgressStatusAction } from "./action/ProgressStatusAction";
-import { ReTellAction } from "./action/ReTellAction";
-import { SettingsAction } from "./action/SettingsAction";
-import { SlashActionImpl } from "./action/SlashAction";
-import { TellAction } from "./action/TellAction";
+import { singletons } from "../SingletonRepo";
 
-import { ui } from "./ui/UI";
-import { UIComponentEnum } from "./ui/UIComponentEnum";
+import { ui } from "../ui/UI";
+import { UIComponentEnum } from "../ui/UIComponentEnum";
 
-import { ChatLogComponent } from "./ui/component/ChatLogComponent";
+import { ChatLogComponent } from "../ui/component/ChatLogComponent";
 
-import { Chat } from "./util/Chat";
+import { Chat } from "../util/Chat";
 
 
 /**
@@ -42,21 +42,21 @@ interface Action {
 /**
  * Registered slash actions.
  */
-export class SlashActionRepo {
+export class ActionManager {
 	[index: string]: any;
 
 	/** Singleton instance. */
-	private static instance: SlashActionRepo;
+	private static instance: ActionManager;
 
 
 	/**
 	 * Retrieves singleton instance.
 	 */
-	static get(): SlashActionRepo {
-		if (!SlashActionRepo.instance) {
-			SlashActionRepo.instance = new SlashActionRepo();
+	static get(): ActionManager {
+		if (!ActionManager.instance) {
+			ActionManager.instance = new ActionManager();
 		}
-		return SlashActionRepo.instance;
+		return ActionManager.instance;
 	}
 
 	/**
@@ -69,7 +69,7 @@ export class SlashActionRepo {
 	/**
 	 * Forwards action information to server.
 	 *
-	 * @param action {SlashActionRepo.Action}
+	 * @param action {ActionManager.Action}
 	 *   Action object.
 	 */
 	private sendAction(action: Action) {

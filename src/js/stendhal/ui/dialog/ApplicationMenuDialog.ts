@@ -129,7 +129,7 @@ export class ApplicationMenuDialog extends DialogContentComponent {
 	private onClick(event: Event) {
 		var cmd = (event.target as HTMLInputElement).id?.substring(11);
 		if (cmd) {
-			singletons.getSlashActionRepo().execute("/" + cmd);
+			singletons.getActionManager().execute("/" + cmd);
 			this.componentElement.dispatchEvent(new Event("close"));
 		}
 		event.preventDefault();

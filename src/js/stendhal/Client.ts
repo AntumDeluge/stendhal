@@ -97,7 +97,7 @@ export class Client {
 		stendhal.paths = singletons.getPaths();
 		stendhal.config = singletons.getConfigManager();
 		stendhal.session = singletons.getSessionManager();
-		stendhal.actions = singletons.getSlashActionRepo();
+		stendhal.actions = singletons.getActionManager();
 
 		this.initData();
 		this.initUI();

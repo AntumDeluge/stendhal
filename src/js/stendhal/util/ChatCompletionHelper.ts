@@ -13,7 +13,7 @@
 declare var marauroa: any;
 declare var stendhal: any;
 
-import { SlashActionRepo } from "../SlashActionRepo";
+import { ActionManager } from "../action/ActionManager";
 
 import { ui } from "../ui/UI";
 import { UIComponentEnum } from "../ui/UIComponentEnum";
@@ -51,7 +51,7 @@ export class ChatCompletionHelper {
 		"teleclickmode", "teleport", "teleportto", "tellall"
 	];
 
-	/** Chat commands not explicitly registered in SlashActionRepo. */
+	/** Chat commands not explicitly registered in ActionManager. */
 	private readonly unlistedCommands: string[] = [
 		"destroy",
 		"ghostmode",
@@ -212,7 +212,7 @@ export class ChatCompletionHelper {
 		}
 		const excludes: string[] = ["/", "_default"];
 		const admin = marauroa.me && marauroa.me.isAdmin();
-		for (const cmd of [...Object.getOwnPropertyNames(SlashActionRepo.get()), ...this.unlistedCommands].sort()) {
+		for (const cmd of [...Object.getOwnPropertyNames(ActionManager.get()), ...this.unlistedCommands].sort()) {
 			if (excludes.indexOf(cmd) > -1 || (this.adminCommands.indexOf(cmd) > -1 && !admin)) {
 				continue;
 			}

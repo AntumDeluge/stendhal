@@ -11,7 +11,8 @@
 
 import { Client } from "./Client";
 import { EventRegistry } from "./EventRegistry";
-import { SlashActionRepo } from "./SlashActionRepo";
+
+import { ActionManager } from "./action/ActionManager";
 
 import { Zone } from "./entity/Zone";
 
@@ -48,6 +49,10 @@ import { ChatInputComponent } from "./ui/component/ChatInputComponent";
 
 
 export class SingletonRepo {
+
+	static getActionManager(): ActionManager {
+		return ActionManager.get();
+	}
 
 	static getCStatus(): CStatus {
 		return CStatus.get();
@@ -127,10 +132,6 @@ export class SingletonRepo {
 
 	static getSessionManager(): SessionManager {
 		return SessionManager.get();
-	}
-
-	static getSlashActionRepo(): SlashActionRepo {
-		return SlashActionRepo.get();
 	}
 
 	static getSoundManager(): SoundManager {

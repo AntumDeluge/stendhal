@@ -1,5 +1,5 @@
 /***************************************************************************
- *                (C) Copyright 2017-2023 - Faiumoni e. V.                 *
+ *                (C) Copyright 2017-2024 - Faiumoni e. V.                 *
  ***************************************************************************
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -11,7 +11,7 @@
 
 declare var stendhal: any;
 
-import { SlashActionRepo } from "../SlashActionRepo";
+import { ActionManager } from "../action/ActionManager";
 
 
 export class GroupManager {
@@ -79,6 +79,6 @@ export class GroupManager {
 	 */
 	refresh() {
 		// NOTE: sending action directly with `marauroa.clientFramework.sendAction` doesn't work here???
-		SlashActionRepo.get().execute("/group status");
+		ActionManager.get().execute("/group status");
 	}
 }

@@ -11,7 +11,7 @@
 
 import { QuickMenuButton } from "./QuickMenuButton";
 
-import { SlashActionRepo } from "../../SlashActionRepo";
+import { ActionManager } from "../../action/ActionManager";
 
 
 /**
@@ -27,6 +27,6 @@ export class TravelLogButton extends QuickMenuButton {
 	 * Opens travel log window when clicked/tapped.
 	 */
 	protected override onClick(evt: Event) {
-		SlashActionRepo.get().execute("/progressstatus");
+		ActionManager.get().execute("/progressstatus");
 	}
 }
