@@ -1,6 +1,6 @@
 /* $Id$ */
 /***************************************************************************
- *                   (C) Copyright 2003-2023 - Stendhal                    *
+ *                   (C) Copyright 2003-2024 - Stendhal                    *
  ***************************************************************************
  ***************************************************************************
  *                                                                         *
@@ -208,6 +208,9 @@ public final class Actions {
 	// PvP
 	public static final String ACCEPT = "accept";
 	public static final String CHALLENGE = "challenge";
+
+	// commerce
+	public static final String SHOP_INVENTORY = "shop_inventory";
 
 	private Actions() {
 		// hide constructor
