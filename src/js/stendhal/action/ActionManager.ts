@@ -1507,6 +1507,38 @@ export class ActionManager {
 		maxParams: 1
 	};
 
+
+	// *** methods for executing actions *** //
+
+	/**
+	 * Executes a registered action.
+	 *
+	 * @param {string} _type
+	 *   Action type name/identifier.
+	 * @param {string[]} params
+	 *   Parameters passed to action command.
+	 * @returns {boolean}
+	 *   `true` to represent successful execution.
+	 */
+	execute(_type: string, params: string[]): boolean {
+		let action = this[_type];
+		if (typeof(action) === "undefined") {
+			action = this["_default"];
+		}
+		if (action.minParams <= params.length) {
+			let remainder = "";
+			for (let i = action.maxParams; i < params.length; i++) {
+				remainder = remainder + params[i] + " ";
+			}
+			params.slice(action.maxParams);
+			return action.execute(_type, params, remainder.trim());
+		} else {
+			Chat.log("error", "Missing arguments. Try /help");
+			return false;
+		}
+		return true;
+	}
+
 	/**
 	 * Parses a slash action formatted string & executes the registered action.
 	 *
@@ -1542,30 +1574,12 @@ export class ActionManager {
 			array.shift();
 		}
 		name = name.substr(1);
-		var action: SlashActionImpl;
-		if (typeof(this[name]) == "undefined") {
-			action = this["_default"];
-		} else {
-			action = this[name];
-		}
 
 		// use executing character if name parameter not supplied
 		if (name == "where" && array.length == 0) {
 			array[0] = marauroa.me["_name"];
 		}
-
-		if (action.minParams <= array.length) {
-			var remainder = "";
-			for (var i = action.maxParams; i < array.length; i++) {
-				remainder = remainder + array[i] + " ";
-			}
-			array.slice(action.maxParams);
-			return action.execute(name, array, remainder.trim());
-		} else {
-			Chat.log("error", "Missing arguments. Try /help");
-			return false;
-		}
-		return true;
+		return this.execute(name, array);
 	}
 
 	/**
