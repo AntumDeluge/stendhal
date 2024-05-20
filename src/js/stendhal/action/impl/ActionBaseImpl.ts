@@ -9,13 +9,13 @@
  *                                                                         *
  ***************************************************************************/
 
-import { ParamList } from "./ParamList";
+import { ParamList } from "../ParamList";
 
 
 /**
  * Base slash action implementation.
  */
-export abstract class SlashActionImpl {
+export abstract class ActionBaseImpl {
 	[key: string|symbol]: any;
 
 	/** Minimum required number of parameters. */
@@ -33,13 +33,16 @@ export abstract class SlashActionImpl {
 	/**
 	 * Instructions to be executed for command.
 	 *
-	 * @param _type {string}
+	 * TODO:
+	 * - remove `_type` parameter
+	 *
+	 * @param {string} _type
 	 *   Command name.
-	 * @param params {string[]}
+	 * @param {string[]} params
 	 *   Parameters passed to command.
-	 * @param remainder {string}
+	 * @param {string} remainder
 	 *   Any remaining data after parameters have been parsed.
-	 * @return boolean
+	 * @return {boolean}
 	 *   `true` to represent successful execution.
 	 */
 	abstract execute(_type: string, params: string[], remainder: string): boolean;

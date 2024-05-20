@@ -18,8 +18,9 @@ import { OpenWebsiteAction } from "./OpenWebsiteAction";
 import { ProgressStatusAction } from "./ProgressStatusAction";
 import { ReTellAction } from "./ReTellAction";
 import { SettingsAction } from "./SettingsAction";
-import { SlashActionImpl } from "./SlashAction";
 import { TellAction } from "./TellAction";
+
+import { ActionBaseImpl } from "./impl/ActionBaseImpl";
 
 import { singletons } from "../SingletonRepo";
 
@@ -88,7 +89,7 @@ export class ActionManager {
 		// type names
 		const types: string[] = [];
 		// excludes including alias duplicates
-		const actions: SlashActionImpl[] = [this["_default"], this["debug"]];
+		const actions: ActionBaseImpl[] = [this["_default"], this["debug"]];
 		for (const t of Object.keys(this)) {
 			const action = this[t];
 			if (actions.indexOf(action) > -1) {
@@ -415,7 +416,7 @@ export class ActionManager {
 		return help.info;
 	}
 
-	"help": SlashActionImpl = {
+	"help": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
 			const msg = this.getHelp();
 			for (var i = 0; i < msg.length; i++) {
@@ -430,7 +431,7 @@ export class ActionManager {
 		}
 	};
 
-	"gmhelp": SlashActionImpl = {
+	"gmhelp": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
 			var msg = null;
 			if (params[0] == null) {
@@ -498,9 +499,12 @@ export class ActionManager {
 		}
 	};
 
+
+	// *** registered actions *** //
+
 	"about" = new AboutAction();
 
-	"add": SlashActionImpl = {
+	"add": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
 			if (params == null) {
 				return false;
@@ -520,7 +524,7 @@ export class ActionManager {
 		}
 	};
 
-	"adminnote": SlashActionImpl = {
+	"adminnote": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
 			const action: Action = {
 				"type": type,
@@ -537,7 +541,7 @@ export class ActionManager {
 		}
 	};
 
-	"adminlevel": SlashActionImpl = {
+	"adminlevel": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
 			const action: Action = {
 				"type": type,
@@ -556,7 +560,7 @@ export class ActionManager {
 		}
 	};
 
-	"alter": SlashActionImpl = {
+	"alter": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
 			const action: Action = {
 				"type": type,
@@ -579,7 +583,7 @@ export class ActionManager {
 		}
 	};
 
-	"altercreature": SlashActionImpl = {
+	"altercreature": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
 			const action: Action = {
 				"type": "altercreature",
@@ -601,7 +605,7 @@ export class ActionManager {
 		}
 	};
 
-	"alterkill": SlashActionImpl = {
+	"alterkill": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
 			const target = params[0];
 			const killtype = params[1];
@@ -636,7 +640,7 @@ export class ActionManager {
 		}
 	};
 
-	"alterquest": SlashActionImpl = {
+	"alterquest": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
 			const action: Action = {
 				"type": "alterquest",
@@ -658,7 +662,7 @@ export class ActionManager {
 		}
 	};
 
-	"answer": SlashActionImpl = {
+	"answer": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
 			if (remainder == null || remainder == "") {
 				return false;
@@ -679,7 +683,7 @@ export class ActionManager {
 		}
 	};
 
-	"away": SlashActionImpl = {
+	"away": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
 			const action: Action = {
 				"type": "away",
@@ -700,7 +704,7 @@ export class ActionManager {
 		}
 	};
 
-	"ban": SlashActionImpl = {
+	"ban": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
 			const action: Action = {
 				"type": "ban",
@@ -722,7 +726,7 @@ export class ActionManager {
 		}
 	};
 
-	"chat": SlashActionImpl = {
+	"chat": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
 			const action: Action = {
 				"type": type,
@@ -741,7 +745,7 @@ export class ActionManager {
 		}
 	};
 
-	"clear": SlashActionImpl = {
+	"clear": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
 			(ui.get(UIComponentEnum.ChatLog) as ChatLogComponent).clear();
 			return true;
@@ -754,7 +758,7 @@ export class ActionManager {
 	};
 
 	/*
-	"clickmode": SlashActionImpl = {
+	"clickmode": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
 			const newMode = !stendhal.config.getBoolean("input.doubleclick");
 			stendhal.config.set("input.doubleclick", newMode);
@@ -774,7 +778,7 @@ export class ActionManager {
 
 	"debug" = new DebugAction();
 
-	"drop": SlashActionImpl = {
+	"drop": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
 			console.log(type, params, remainder);
 			let name = remainder;
@@ -803,7 +807,7 @@ export class ActionManager {
 		}
 	};
 
-	"emojilist": SlashActionImpl = {
+	"emojilist": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
 			const emojilist = singletons.getEmojiStore().getEmojiList().sort();
 			for (const idx in emojilist) {
@@ -820,7 +824,7 @@ export class ActionManager {
 		}
 	};
 
-	"gag": SlashActionImpl = {
+	"gag": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
 			const action: Action = {
 				"type": "gag",
@@ -841,7 +845,7 @@ export class ActionManager {
 		}
 	};
 
-	"group": SlashActionImpl = {
+	"group": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
 			const action: Action = {
 				"type": "group_management",
@@ -876,7 +880,7 @@ export class ActionManager {
 		}
 	};
 
-	"grumpy": SlashActionImpl = {
+	"grumpy": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
 			const action: Action = {
 				"type": "grumpy",
@@ -897,7 +901,7 @@ export class ActionManager {
 		}
 	};
 
-	"ignore": SlashActionImpl = {
+	"ignore": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
 			const action: Action = {
 					"type": "ignore"
@@ -943,7 +947,7 @@ export class ActionManager {
 		}
 	};
 
-	"inspectkill": SlashActionImpl = {
+	"inspectkill": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
 			const target = params[0];
 			var creature = null;
@@ -970,7 +974,7 @@ export class ActionManager {
 		}
 	};
 
-	"inspectquest": SlashActionImpl = {
+	"inspectquest": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
 			const action: Action = {
 					"type": "inspectquest",
@@ -990,7 +994,7 @@ export class ActionManager {
 	};
 
 
-	"jail": SlashActionImpl = {
+	"jail": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
 			const action: Action = {
 				"type": "jail",
@@ -1008,7 +1012,7 @@ export class ActionManager {
 		}
 	};
 
-	"me": SlashActionImpl = {
+	"me": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
 			const action: Action = {
 				"type": "emote",
@@ -1024,7 +1028,7 @@ export class ActionManager {
 		}
 	};
 
-	"movecont": SlashActionImpl = {
+	"movecont": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
 			const enable = !stendhal.config.getBoolean("move.cont");
 			const action: Action = {
@@ -1055,7 +1059,7 @@ export class ActionManager {
 	"msg" = this["tell"];
 	"/" = new ReTellAction();
 
-	"mute": SlashActionImpl = {
+	"mute": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
 			singletons.getSoundManager().toggleSound();
 			if (stendhal.config.getBoolean("sound")) {
@@ -1072,7 +1076,7 @@ export class ActionManager {
 		}
 	};
 
-	"p": SlashActionImpl = {
+	"p": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
 			const action: Action = {
 				"type": "group_message",
@@ -1090,7 +1094,7 @@ export class ActionManager {
 
 	"progressstatus" = new ProgressStatusAction();
 
-	"remove": SlashActionImpl = {
+	"remove": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
 			if (params == null) {
 				return false;
@@ -1111,7 +1115,7 @@ export class ActionManager {
 		}
 	};
 
-	"screenshot": SlashActionImpl = {
+	"screenshot": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
 			return singletons.getDownloadUtil().buildScreenshot().execute();
 		},
@@ -1122,7 +1126,7 @@ export class ActionManager {
 		}
 	};
 
-	"sentence": SlashActionImpl = {
+	"sentence": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
 			if (params == null) {
 				return false;
@@ -1148,7 +1152,7 @@ export class ActionManager {
 
 	"settings" = new SettingsAction();
 
-	"stopwalk": SlashActionImpl = {
+	"stopwalk": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
 			const action: Action = {
 				"type": "walk",
@@ -1164,7 +1168,7 @@ export class ActionManager {
 		}
 	};
 
-	"volume": SlashActionImpl = {
+	"volume": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
 			const layername = params[0];
 			let vol = params[1];
@@ -1204,7 +1208,7 @@ export class ActionManager {
 		}
 	};
 
-	"summon": SlashActionImpl = {
+	"summon": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
 			var x = null;
 			var y = null;
@@ -1266,7 +1270,7 @@ export class ActionManager {
 		}
 	};
 
-	"summonat": SlashActionImpl = {
+	"summonat": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
 			var amount = params[2];
 			// don't require first parameter to be integer amount
@@ -1300,7 +1304,7 @@ export class ActionManager {
 		}
 	};
 
-	"support": SlashActionImpl = {
+	"support": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
 			const action: Action = {
 				"type": "support",
@@ -1316,7 +1320,7 @@ export class ActionManager {
 		}
 	};
 
-	"supportanswer": SlashActionImpl = {
+	"supportanswer": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
 			const action: Action = {
 				"type": "supportanswer",
@@ -1337,9 +1341,9 @@ export class ActionManager {
 			];
 		}
 	};
-	"supporta": SlashActionImpl = this["supportanswer"];
+	"supporta": ActionBaseImpl = this["supportanswer"];
 
-	"teleport": SlashActionImpl = {
+	"teleport": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
 			const action: Action = {
 				"type": "teleport",
@@ -1358,7 +1362,7 @@ export class ActionManager {
 		}
 	};
 
-	"teleportto": SlashActionImpl = {
+	"teleportto": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
 			const action: Action = {
 				"type": "teleportto",
@@ -1374,7 +1378,7 @@ export class ActionManager {
 		}
 	};
 
-	"tellall": SlashActionImpl = {
+	"tellall": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
 			const action: Action = {
 				"type": "tellall",
@@ -1390,7 +1394,7 @@ export class ActionManager {
 		}
 	};
 
-	"walk": SlashActionImpl = {
+	"walk": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
 			const action: Action = {
 				"type": "walk"
@@ -1405,7 +1409,7 @@ export class ActionManager {
 		}
 	};
 
-	"atlas": SlashActionImpl = {
+	"atlas": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
 			window.location.href = "https://stendhalgame.org/world/atlas.html?me="
 				+ marauroa.currentZoneName + "." + marauroa.me.x + "." + marauroa.me.y;
@@ -1418,7 +1422,7 @@ export class ActionManager {
 		}
 	};
 
-	"beginnersguide": SlashActionImpl = {
+	"beginnersguide": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
 			window.location.href = "https://stendhalgame.org/wiki/Stendhal_Beginner's_Guide";
 			return true;
@@ -1436,7 +1440,7 @@ export class ActionManager {
 
 	"manual" = new OpenWebsiteAction("https://stendhalgame.org/wiki/Stendhal_Manual/Controls_and_Game_Settings");
 
-	"profile": SlashActionImpl = {
+	"profile": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
 			var url = "https://stendhalgame.org/character/";
 			var name = marauroa.me["_name"] || singletons.getSessionManager().getCharName();
@@ -1471,7 +1475,7 @@ export class ActionManager {
 
 	"halloffame" = new OpenWebsiteAction("https://stendhalgame.org/world/hall-of-fame/active_overview.html");
 
-	"storemessage": SlashActionImpl = {
+	"storemessage": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
 			const action: Action = {
 				"type": "storemessage",
@@ -1489,7 +1493,7 @@ export class ActionManager {
 	};
 
 	/** Default action executed if a type is not registered. */
-	"_default": SlashActionImpl = {
+	"_default": ActionBaseImpl = {
 		execute: (type: string, params: string[], remainder: string): boolean => {
 			const action: Action = {
 				"type": type

@@ -11,8 +11,9 @@
 
 declare var marauroa: any;
 
+import { ActionBaseImpl } from "./ActionBaseImpl";
+
 import { ParamList } from "../ParamList";
-import { SlashActionImpl } from "../SlashAction";
 
 import { Pair } from "../../util/Pair";
 
@@ -23,7 +24,7 @@ import { Pair } from "../../util/Pair";
  * TODO:
  * - add parameter checking for client-side-only actions
  */
-export abstract class ClientActionImpl extends SlashActionImpl {
+export abstract class ClientActionImpl extends ActionBaseImpl {
 
 	/**
 	 * Retrieves help information.
@@ -57,7 +58,7 @@ export abstract class ClientActionImpl extends SlashActionImpl {
 	 *   Parameter formatted string.
 	 */
 	static formatParams(params: any, namesOnly=true): string {
-		// NOTE: can this check be changed to `instanceof SlashActionImpl`?
+		// NOTE: can this check be changed to `instanceof ActionBaseImpl`?
 		if (params instanceof ClientActionImpl) {
 			params = params.params;
 		}
