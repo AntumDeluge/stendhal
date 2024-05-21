@@ -11,13 +11,15 @@
  ***************************************************************************/
 
 import { ParamList } from "./ParamList";
-import { SlashAction } from "./SlashAction";
+
+import { RelayActionImpl } from "./impl/RelayActionImpl";
 
 import { Pair } from "../util/Pair";
 
 
-export class TellAction extends SlashAction {
+export class TellAction extends RelayActionImpl {
 
+	override readonly type = "tell";
 	override readonly minParams;
 	override readonly maxParams;
 	override readonly aliases = ["msg"];
@@ -41,10 +43,10 @@ export class TellAction extends SlashAction {
 		this.maxParams = typeof(maxParams) !== "undefined" ? maxParams : 1;
 	}
 
-	override execute(_type: string, params: string[], remainder: string): boolean {
+	override executeInterim(params: string[], remainder: string): boolean {
 		const target = params[0];
 		const action = {
-			"type": "tell",
+			"type": this.type,
 			"target": target,
 			"text": remainder
 		};

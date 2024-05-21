@@ -22,10 +22,10 @@ export class ReTellAction extends TellAction {
 		super(0, 0);
 	}
 
-	override execute(_type: string, params: string[], remainder: string): boolean {
+	override executeInterim(params: string[], remainder: string): boolean {
 		const target = ReTellAction.getLastPlayerTell();
 		if (typeof(target) !== "undefined") {
-			return super.execute(_type, [target], remainder);
+			return super.executeInterim([target], remainder);
 		}
 		return true;
 	}
