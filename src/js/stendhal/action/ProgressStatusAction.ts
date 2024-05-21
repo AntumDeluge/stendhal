@@ -10,7 +10,6 @@
  *                                                                         *
  ***************************************************************************/
 
-import { Actions } from "./Actions";
 import { ParamList } from "./ParamList";
 
 import { RelayActionImpl } from "./impl/RelayActionImpl";
@@ -31,9 +30,9 @@ import { Pair } from "../util/Pair";
  */
 export class ProgressStatusAction extends RelayActionImpl {
 
-	readonly type = Actions.PROGRESS_STATUS;
-	readonly minParams = 0;
-	readonly maxParams = 0;
+	override readonly type = "progressstatus";
+	override readonly minParams = 0;
+	override readonly maxParams = 0;
 
 
 	executeInterim(params: string[], remainder=""): boolean {
