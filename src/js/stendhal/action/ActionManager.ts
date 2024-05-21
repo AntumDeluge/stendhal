@@ -53,6 +53,8 @@ interface Action {
 export class ActionManager {
 	[index: string]: any; // FIXME: not necessary?
 
+	private userActions: string[];
+	private adminActions: string[];
 	private aliases: string[];
 
 	/** Singleton instance. */
@@ -73,6 +75,8 @@ export class ActionManager {
 	 * Hidden singleton constructor.
 	 */
 	private constructor() {
+		this.userActions = [];
+		this.adminActions = [];
 		this.aliases = [];
 		this.initActions();
 	}
@@ -81,6 +85,20 @@ export class ActionManager {
 		// *** user actions *** //
 
 		// *** admin/GM actions *** //
+	}
+
+	/**
+	 * Retrieves names of registered user actions.
+	 */
+	public getUserActions(): string[] {
+		return [...this.userActions];
+	}
+
+	/**
+	 * Retrieves names of registered admin/GM actions.
+	 */
+	public getAdminActions(): string [] {
+		return [...this.adminActions];
 	}
 
 	/**
@@ -112,6 +130,11 @@ export class ActionManager {
 				}
 				this.aliases.push(alias);
 			}
+		}
+		if (action.admin) {
+			this.adminActions.push(_type);
+		} else {
+			this.userActions.push(_type);
 		}
 		return true;
 	}

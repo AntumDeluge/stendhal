@@ -31,6 +31,8 @@ export abstract class ActionBaseImpl {
 	desc?: string;
 	/** Alternative aliases. */
 	aliases?: string[];
+	/** Denotes as admin/GM action. */
+	admin?: boolean;
 
 
 	/**
