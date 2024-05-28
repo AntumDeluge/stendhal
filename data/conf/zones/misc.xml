@@ -41,6 +41,9 @@ Walk on, and you will be returned to the land of the living...
 
 	<zone name="int_admin_playground" file="interiors/abstract/admin_playground.tmx"
 		accessible="false">
+		<attributes>
+			<parameter name="parallax">demo</parameter>
+		</attributes>
 
 		<entity x="8" y="5">
 			<implementation class-name="games.stendhal.server.entity.mapstuff.block.BlockTarget"/>
