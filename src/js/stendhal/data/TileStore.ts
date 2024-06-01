@@ -1,5 +1,5 @@
 /***************************************************************************
- *                    Copyright © 2003-2023 - Stendhal                     *
+ *                    Copyright © 2003-2024 - Stendhal                     *
  ***************************************************************************
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -10,6 +10,8 @@
  ***************************************************************************/
 
 import { Paths } from "./Paths";
+
+import { DrawingStage } from "../util/DrawingStage";
 import { JSONLoader } from "../util/JSONLoader";
 
 declare var stendhal: any;
@@ -26,6 +28,9 @@ export class TileStore {
 
 	private landscapeMap?: AnimationMap;
 	private weatherMap?: AnimationMap;
+
+	/** Cache for built parallax background images. */
+	private parallaxCache: Record<string, HTMLImageElement[]>;
 
 	/** Singleton instance. */
 	private static instance: TileStore;
@@ -45,7 +50,7 @@ export class TileStore {
 	 * Hidden singleton constructor.
 	 */
 	private constructor() {
-		// do nothing
+		this.parallaxCache = {};
 	}
 
 	getLandscapeMap(): AnimationMap {
@@ -150,5 +155,98 @@ export class TileStore {
 		}
 
 		return ani;
+	}
+
+	/**
+	 * Builds or retrieves a cached parallax background.
+	 *
+	 * FIXME:
+	 * - if image doesn't load correctly a black image is cached
+	 * - affects initial map loading time
+	 *
+	 * @param {string} name
+	 *   Image file basename.
+	 * @param {number} scroll
+	 *   Scroll ratio of background.
+	 * @param {number} width
+	 *   Map pixel width.
+	 * @param {number} height
+	 *   Map pixel height.
+	 * @returns {HTMLImageElement}
+	 *   Background image.
+	 */
+	getParallax(name: string, scroll: number, width: number, height: number): HTMLImageElement {
+		for (const p of this.parallaxCache[name] || []) {
+			if (p.width >= width && p.height >= height) {
+				// use cached image with dimensions large enough to cover map
+				return p;
+			}
+		}
+
+		// build a new image
+		const parallax = new Image();
+		let image = stendhal.data.sprites.get(Paths.parallax + "/" + name + ".png");
+		if (!image) {
+			image = stendhal.data.sprites.getFailsafe();
+		}
+		if (!image.height) {
+			const onloadOrig = image.onload;
+			image.onload = () => {
+				image.onload = onloadOrig;
+				parallax.src = DrawingStage.get().buildParallax(image, scroll, width, height);
+			};
+		} else {
+			// image is loaded so go ahead & draw
+			parallax.src = DrawingStage.get().buildParallax(image, scroll, width, height);
+		}
+
+		// cache for quick re-use
+		this.cacheParallax(name, parallax);
+		return parallax;
+	}
+
+	/**
+	 * Builds or retrieves a cached parallax background using promise.
+	 *
+	 * @param {string} name
+	 *   Image file basename.
+	 * @param {number} scroll
+	 *   Scroll ratio of background.
+	 * @param {number} width
+	 *   Map pixel width.
+	 * @param {number} height
+	 *   Map pixel height.
+	 * @returns {HTMLImageElement}
+	 *   Background image.
+	 */
+	getParallaxPromise(name: string, scroll: number, width: number, height: number): Promise<HTMLImageElement> {
+		return new Promise((resolve, reject) => {
+			const parallax = this.getParallax(name, scroll, width, height);
+			if (parallax.height) {
+				resolve(parallax);
+			} else {
+				parallax.onload = () => {
+					resolve(parallax);
+				};
+				parallax.onerror = (error) => {
+					reject(error);
+				};
+			}
+		});
+	}
+
+	/**
+	 * Caches an image.
+	 *
+	 * @param {string} name
+	 *   Image file basename or identifier.
+	 * @param {HTMLImageElement} image
+	 *   Image to be cached.
+	 */
+	private cacheParallax(name: string, image: HTMLImageElement) {
+		const group = this.parallaxCache[name] || [];
+		group.push(image);
+		// FIXME: should be sorted with smallest images first
+		this.parallaxCache[name] = group;
 	}
 }

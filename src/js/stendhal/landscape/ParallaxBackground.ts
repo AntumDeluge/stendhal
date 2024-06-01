@@ -54,10 +54,6 @@ export class ParallaxBackground {
 	 *   Map pixel height.
 	 */
 	setImage(name: string, width: number, height: number) {
-		const fullPath = singletons.getPaths().parallax + "/" + name + ".png";
-		this.image = singletons.getSpriteStore().get(fullPath);
-
-		/* FIXME:
 		//this.image = singletons.getTileStore().getParallax(name, ParallaxBackground.SCROLL, width, height);
 		singletons.getTileStore().getParallaxPromise(name, ParallaxBackground.SCROLL, width, height)
 				.then(image => {
@@ -65,7 +61,6 @@ export class ParallaxBackground {
 				}).catch(error => {
 					console.error("Error setting parallax background \"" + name + "\"\n", error);
 				});
-		*/
 	}
 
 	/**
@@ -79,20 +74,8 @@ export class ParallaxBackground {
 		if (!this.image || !this.image.height) {
 			return;
 		}
-
-		// FIXME: seams are visible when walking
-		let dy = offsetY - ((offsetY / 4) % this.image.height);
-		for (dy; dy < this.image.height * 100; dy += this.image.height) {
-			let dx = offsetX - ((offsetX / 4) % this.image.width);
-			for (dx; dx < this.image.width * 100; dx += this.image.width) {
-				ctx.drawImage(this.image, dx, dy);
-			}
-		}
-
-		/* TODO: use the following when `setImage` fixed
 		const tileLeft = offsetX - (offsetX * ParallaxBackground.SCROLL);
 		const tileTop = offsetY - (offsetY * ParallaxBackground.SCROLL);
 		ctx.drawImage(this.image, tileLeft, tileTop);
-		*/
 	}
 }
