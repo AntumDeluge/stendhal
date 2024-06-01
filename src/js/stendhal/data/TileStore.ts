@@ -221,7 +221,7 @@ export class TileStore {
 	 */
 	getParallaxPromise(name: string, scroll: number, width: number, height: number): Promise<HTMLImageElement> {
 		return new Promise((resolve, reject) => {
-			const parallax = this.getParallax(name, scroll, width, height);
+			let parallax = this.getParallax(name, scroll, width, height);
 			if (parallax.height) {
 				resolve(parallax);
 			} else {
@@ -229,7 +229,23 @@ export class TileStore {
 					resolve(parallax);
 				};
 				parallax.onerror = (error) => {
-					reject(error);
+					//reject(error);
+					console.warn("Using failsafe parallax instead of \"" + name + "\"\n", error);
+
+					// try with failsafe image (should be cached at startup)
+					const failsafe = stendhal.data.sprites.getFailsafe();
+					parallax = new Image();
+					parallax.src = DrawingStage.get().buildParallax(failsafe, scroll, width, height);
+					if (parallax.height) {
+						resolve(parallax);
+					} else {
+						parallax.onload = () => {
+							resolve(parallax);
+						};
+						parallax.onerror = (error) => {
+							reject(error);
+						};
+					}
 				};
 			}
 		});
