@@ -21,6 +21,11 @@ export class ParallaxBackground {
 	/** Tiled image to be drawn. */
 	private image?: HTMLImageElement;
 
+	private width = 0;
+	private height = 0;
+
+	private debugging = false;
+
 	/** Singleton instance. */
 	private static instance: ParallaxBackground;
 
@@ -54,6 +59,15 @@ export class ParallaxBackground {
 	 *   Map pixel height.
 	 */
 	setImage(name: string, width: number, height: number) {
+		if (!this.debugging) {
+			this.width = width;
+			this.height = height;
+			this.image = singletons.getSpriteStore().get(singletons.getPaths().parallax + "/" + name
+					+ ".png");
+			return;
+		}
+
+		// NOTE: map loading time is affected using this method
 		//this.image = singletons.getTileStore().getParallax(name, ParallaxBackground.SCROLL, width, height);
 		singletons.getTileStore().getParallaxPromise(name, ParallaxBackground.SCROLL, width, height)
 				.then(image => {
@@ -74,6 +88,19 @@ export class ParallaxBackground {
 		if (!this.image || !this.image.height) {
 			return;
 		}
+
+		if (!this.debugging) {
+			// NOTE: seams are visible when walking using this method
+			let dy = offsetY - ((offsetY * ParallaxBackground.SCROLL) % this.image.height);
+			for (dy; dy < this.height; dy += this.image.height) {
+				let dx = offsetX - ((offsetX * ParallaxBackground.SCROLL) % this.image.width);
+				for (dx; dx < this.width; dx += this.image.width) {
+					ctx.drawImage(this.image, dx, dy);
+				}
+			}
+			return;
+		}
+
 		const tileLeft = offsetX - (offsetX * ParallaxBackground.SCROLL);
 		const tileTop = offsetY - (offsetY * ParallaxBackground.SCROLL);
 		ctx.drawImage(this.image, tileLeft, tileTop);
