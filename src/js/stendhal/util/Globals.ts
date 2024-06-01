@@ -1,5 +1,6 @@
 /***************************************************************************
- *                   (C) Copyright 2003-2024 - Stendhal                    *
+ *                    Copyright © 2024 - Faiumoni e. V.                    *
+ ***************************************************************************
  ***************************************************************************
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -9,20 +10,34 @@
  *                                                                         *
  ***************************************************************************/
 
-import { Client } from "./Client";
+declare global {
+	interface Window {
+		stendhal: any;
+	}
+}
 
-import { Globals } from "./util/Globals";
 
-declare var stendhal: any;
+export class Globals {
+
+	/** Property denoting state of class initialization. */
+	private static initialized = false;
 
 
-// entry point
-(function() {
-	// initialize "stendhal" object
-	Globals.init();
-	stendhal.main = Client.get();
-	stendhal.main.init();
+	/**
+	 * Static class.
+	 */
+	private constructor() {
+		// do nothing
+	}
 
-	document.addEventListener('DOMContentLoaded', stendhal.main.startup);
-	window.addEventListener('error', stendhal.main.onerror);
-})();
+	static init() {
+		if (Globals.initialized) {
+			console.warn("Tried to re-initialize globals class");
+			return;
+		}
+		Globals.initialized = true;
+
+		//window.marauroa = window.marauroa || {}; // marauroa object should already be intialized
+		window.stendhal = window.stendhal || {};
+	}
+}
