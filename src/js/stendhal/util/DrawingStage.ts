@@ -257,4 +257,31 @@ export class DrawingStage {
 
 		// TODO:
 	}
+
+	/**
+	 * Constructs an image to be used as a parallax scrolling backgroun on a map.
+	 *
+	 * @param {HTMLImageElement} image
+	 *   Source image to be tiled as background.
+	 * @param {number} scroll
+	 *   Scrol ratio of background.
+	 * @param {number} width
+	 *   Map pixel width.
+	 * @param {height} height
+	 *   Map pixel height
+	 * @returns {string}
+	 *   PNG data encoded string.
+	 */
+	buildParallax(image: HTMLImageElement, scroll: number, width: number, height: number): string {
+		// needs to be large enough to cover entire map in relation to scroll rate
+		this.setSize(width / scroll, height / scroll);
+		for (let dy = 0; dy < this.canvas.height; dy += image.height) {
+			for (let dx = 0; dx < this.canvas.width; dx += image.width) {
+				this.ctx.drawImage(image, dx, dy);
+			}
+		}
+		const data = this.toDataURL();
+		this.reset();
+		return data;
+	}
 }
