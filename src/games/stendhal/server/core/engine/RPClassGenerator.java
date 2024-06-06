@@ -203,6 +203,11 @@ public class RPClassGenerator {
 		if (!RPClass.hasRPClass("wall")) {
 			Wall.generateRPClass();
 		}
+		/*
+		if (!RPClass.hasRPClass("passive_effect")) {
+			PassiveEffect.generateRPClass();
+		}
+		*/
 		// ActiveEntity sub-classes
 		if (!RPClass.hasRPClass("rpentity")) {
 			RPEntity.generateRPClass();
