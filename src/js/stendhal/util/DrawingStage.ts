@@ -69,6 +69,18 @@ export class DrawingStage {
 	}
 
 	/**
+	 * Compares canvas dimensions against image and adjusts if necessary.
+	 *
+	 * @param {HTMLImageElement} image
+	 *   Image to compare against.
+	 */
+	private checkSize(image: HTMLImageElement) {
+		if (this.canvas.width < image.width || this.canvas.height < image.height) {
+			this.setSize(image.width, image.height);
+		}
+	}
+
+	/**
 	 * Converts canvas data to PNG data URL.
 	 *
 	 * @returns {string}
@@ -88,5 +100,21 @@ export class DrawingStage {
 		const image = new Image();
 		image.src = this.toDataURL();
 		return image;
+	}
+
+	/**
+	 * Draws an image on the canvas.
+	 *
+	 * @param {HTMLImageElement} image
+	 *   Image to be drawn.
+	 * @param {boolean} [reset=true]
+	 *   If `true` erases current image data before drawing.
+	 */
+	public drawImage(image: HTMLImageElement, reset=true) {
+		if (reset) {
+			this.reset();
+		}
+		this.checkSize(image);
+		this.ctx.drawImage(image, 0, 0);
 	}
 }
