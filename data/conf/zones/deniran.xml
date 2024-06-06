@@ -395,6 +395,12 @@ Entrance fee is 10 money</attribute>
 			<parameter name="weather">varying</parameter>
 		</attributes>
 
+		<entity x="28" y="33">
+			<implementation class-name="games.stendhal.server.entity.mapstuff.PassiveEffect"/>
+			<attribute name="name">small_windmill_blades</attribute>
+			<attribute name="foreground">true</attribute>
+		</entity>
+
 	</zone>
 
 	<!--  Level -1 -->
