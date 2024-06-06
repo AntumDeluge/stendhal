@@ -117,4 +117,28 @@ export class DrawingStage {
 		this.checkSize(image);
 		this.ctx.drawImage(image, 0, 0);
 	}
+
+	/**
+	 * Draws a rotated image on the canvas.
+	 *
+	 * NOTE: currently only supports accurate rotation on square image in 90 degree increments
+	 *
+	 * @param {HTMLImageElement} image
+	 *   Image to be drawn.
+	 * @param {number} angle
+	 *   Desired angle of image rotation.
+	 * @param {boolean} [reset=true]
+	 *   If `true` erases current image data before drawing.
+	 */
+	drawImageRotated(image: HTMLImageElement, angle: number, reset=true) {
+		if (reset) {
+			this.reset();
+		}
+		this.checkSize(image);
+		this.ctx.translate(this.canvas.width / 2, this.canvas.height / 2);
+		this.ctx.rotate(angle * Math.PI / 180);
+		this.ctx.translate(-this.canvas.width / 2, -this.canvas.height / 2);
+		// NOTE: do we need to set canvas size again in case of non-square image?
+		this.ctx.drawImage(image, 0, 0);
+	}
 }
