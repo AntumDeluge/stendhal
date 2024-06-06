@@ -13,6 +13,8 @@ declare var stendhal: any;
 
 import { Paths } from "./Paths";
 
+import { DrawingStage } from "../util/DrawingStage";
+
 
 class SpriteImage extends Image {
 	// number of times the image has been accessed after initial creation
@@ -135,19 +137,9 @@ export class SpriteStore {
 	 *   Angle of rotation.
 	 */
 	private rotate(img: HTMLImageElement, angle: number) {
-		const canvas = <HTMLCanvasElement> document.getElementById("drawing-stage")!;
-		const ctx = canvas.getContext("2d")!;
-		// make sure working with blank canvas
-		ctx.clearRect(0, 0, canvas.width, canvas.height);
-		canvas.width = img.width;
-		canvas.height = img.height;
-
-		ctx.translate(canvas.width / 2, canvas.height / 2);
-		ctx.rotate(angle * Math.PI / 180);
-		ctx.translate(-canvas.width / 2, -canvas.height / 2);
-		ctx.drawImage(img, 0, 0);
-
-		img.src = canvas.toDataURL("image/png");
+		const stage = DrawingStage.get();
+		stage.drawImageRotated(img, angle);
+		img.src = stage.toDataURL();
 	}
 
 	/**
