@@ -13,6 +13,8 @@ import { LoopedSoundSource } from "../../entity/LoopedSoundSource";
 
 import { Point } from "../../util/Point";
 
+import { MathUtil } from "../../util/MathUtil";
+
 declare var marauroa: any;
 declare var stendhal: any;
 
@@ -205,15 +207,15 @@ export class LoopedSoundSourceManager {
 	/**
 	 * Adjusts volume level for each looped sound source in current zone.
 	 *
-	 * @param x {number}
+	 * @param {number} x
 	 *   The new X coordinate of listening entity.
-	 * @param y {number}
+	 * @param {number} y
 	 *   The new Y coordinate of listening entity.
 	 */
 	onDistanceChanged(x: number, y: number) {
 		for (const ent of this.getZoneEntities()) {
 			if (ent.isLoaded()) {
-				const layerName = stendhal.sound.checkLayer(ent["layer"]);
+				const layer = stendhal.sound.checkLayer(MathUtil.parseIntDefault(ent["layer"], -1));
 				const snd = this.sources[ent["id"]].sound;
 				stendhal.sound.adjustForDistance(layer, snd, ent["radius"], new Point(ent["x"], ent["y"]));
 			}

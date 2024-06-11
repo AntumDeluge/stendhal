@@ -65,17 +65,28 @@ export class SoundLayer extends AbstractEnum<string> {
 	/**
 	 * Retrieves sound layer corresponding to layer name.
 	 *
-	 * @param name {string}
-	 *   Layer name.
-	 * @return {data.sound.SoundLayer.SoundLayer}
-	 *   Sound layer matching name or `undefined`.
+	 * @param {string|number} l
+	 *   Layer name or index.
+	 * @returns {SoundLayer}
+	 *   Sound layer matching name/index or `SoundLayer.GUI` if not recognized.
 	 */
-	static checkLayerName(name: string): SoundLayer|undefined {
+	static checkLayer(l: string|number): SoundLayer {
+		if (typeof(l) === "number") {
+			const layer = SoundLayer.layers[l];
+			if (layer) {
+				return layer;
+			}
+			console.warn("Unknown layer \"" + l + "\"\n", new Error());
+			// default to GUI
+			return SoundLayer.GUI;
+		}
 		for (const layer of SoundLayer.layers) {
-			if (layer.value === name) {
+			if (layer.value === l) {
 				return layer;
 			}
 		}
-		return undefined;
+		console.warn("Unknown layer \"" + l + "\"\n", new Error());
+		// default to GUI
+		return SoundLayer.GUI;
 	}
 }
