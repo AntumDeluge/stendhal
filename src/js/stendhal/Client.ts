@@ -19,6 +19,8 @@ import { Paths } from "./data/Paths";
 
 import { Color } from "./data/color/Color";
 
+import { SoundLayer } from "./data/sound/SoundLayer";
+
 import { Ground } from "./entity/Ground";
 import { RPObject } from "./entity/RPObject";
 
@@ -385,7 +387,7 @@ export class Client {
 		Chat.log("client", "Loading world...");
 
 		// play login sound for this user
-		stendhal.sound.playGlobalizedEffect("ui/login");
+		stendhal.sound.playGlobal(SoundLayer.GUI, "ui/login");
 	}
 
 	/**
@@ -476,8 +478,11 @@ export class Client {
 
 		// global zone music
 		const musicVolume = parseFloat(zoneinfo["music_volume"]);
+		/*
 		stendhal.sound.playSingleGlobalizedMusic(zoneinfo["music"],
 				!Number.isNaN(musicVolume) ? musicVolume : 1.0);
+		*/
+		stendhal.sound.playZoneMusic(zoneinfo["music"]);
 
 		// parallax background
 		if (stendhal.config.getBoolean("effect.parallax")) {

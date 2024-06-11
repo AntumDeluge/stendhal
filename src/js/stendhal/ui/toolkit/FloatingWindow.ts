@@ -14,6 +14,8 @@ declare var stendhal: any;
 import { Component } from "./Component";
 import { DialogContentComponent } from "./DialogContentComponent";
 
+import { SoundLayer } from "../../data/sound/SoundLayer";
+
 import { Point } from "../../util/Point";
 
 
@@ -64,11 +66,11 @@ export class FloatingWindow extends Component {
 		const closeButton = this.child(".windowtitleclose")!;
 		closeButton.addEventListener("click", (event) => {
 			this.onClose(event);
-			stendhal.sound.playGlobalizedEffect(this.closeSound);
+			stendhal.sound.playGlobal(SoundLayer.GUI, this.closeSound);
 		});
 		closeButton.addEventListener("touchend", (event) => {
 			this.onClose(event);
-			stendhal.sound.playGlobalizedEffect(this.closeSound);
+			stendhal.sound.playGlobal(SoundLayer.GUI, this.closeSound);
 		});
 		this.onMouseMovedDuringDragListener = (event: Event) => {
 			if (event.type === "mousemove") {

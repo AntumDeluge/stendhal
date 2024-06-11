@@ -13,7 +13,10 @@
 import { RPEvent } from "./RPEvent";
 
 import { SoundID } from "../data/sound/SoundID";
+import { SoundLayer } from "../data/sound/SoundLayer";
 import { SoundManager } from "../data/sound/SoundManager";
+
+import { MathUtil } from "../util/MathUtil";
 
 declare var marauroa: any;
 declare var stendhal: any;
@@ -54,7 +57,9 @@ export class SoundEvent extends RPEvent {
 			sound = SoundID[this["sound_id"]];
 		}
 
-		stendhal.sound.playLocalizedEffect(entity["_x"], entity["_y"], radius, this["layer"], sound,
-				volume);
+		// TODO: include `volume`
+		const lidx = MathUtil.parseIntDefault(this["layer"], -1);
+		stendhal.sound.playPerceived(SoundLayer.checkLayer(lidx), sound, radius, entity["_x"],
+				entity["_y"]);
 	}
 }

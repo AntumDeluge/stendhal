@@ -9,6 +9,8 @@
  *                                                                         *
  ***************************************************************************/
 
+import { SoundLayer } from "./SoundLayer";
+
 import { LoopedSoundSource } from "../../entity/LoopedSoundSource";
 
 import { Point } from "../../util/Point";
@@ -101,13 +103,21 @@ export class LoopedSoundSourceManager {
 		}
 
 		let snd: any;
-		const layer = source["layer"];
+		const layer = SoundLayer.checkLayer(MathUtil.parseIntDefault(source["layer"], -1));
 		if (this.isMusic(source["sound"])) {
+			/*
 			snd = stendhal.sound.playLocalizedMusic(source["x"], source["y"], source["radius"], layer,
 					source["sound"], source["volume"]);
+			*/
+			snd = stendhal.sound.playPerceivedMusic(source["sound"], source["radius"], source["x"],
+					source["y"]);
 		} else {
+			/*
 			snd = stendhal.sound.playLocalizedLoop(source["x"], source["y"], source["radius"], layer,
 					source["sound"], source["volume"]);
+			*/
+			snd = stendhal.sound.playPerceivedLoop(layer, source["sound"], source["radius"], source["x"],
+					source["y"]);
 		}
 
 		if (!snd) {
@@ -215,7 +225,7 @@ export class LoopedSoundSourceManager {
 	onDistanceChanged(x: number, y: number) {
 		for (const ent of this.getZoneEntities()) {
 			if (ent.isLoaded()) {
-				const layer = stendhal.sound.checkLayer(MathUtil.parseIntDefault(ent["layer"], -1));
+				const layer = SoundLayer.checkLayer(MathUtil.parseIntDefault(ent["layer"], -1));
 				const snd = this.sources[ent["id"]].sound;
 				stendhal.sound.adjustForDistance(layer, snd, ent["radius"], new Point(ent["x"], ent["y"]));
 			}

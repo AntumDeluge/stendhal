@@ -19,6 +19,8 @@ import { SliderComponent } from "../../toolkit/SliderComponent";
 
 import { singletons } from "../../../SingletonRepo";
 
+import { SoundLayer } from "../../../data/sound/SoundLayer";
+
 
 export class SoundTab extends AbstractSettingsTab {
 
@@ -58,10 +60,9 @@ export class SoundTab extends AbstractSettingsTab {
 			const layer = group[0];
 			const label = group[1];
 			const slider = new SliderComponent("setting-vol-" + layer, label, 0, 100);
-			slider.setValue(sound.getVolume(layer) * 100);
+			slider.setValue(sound.getLayerVolume(layer));
 			slider.addListener(function(evt: Event) {
-				sound.setVolume(layer, slider.getValue() / 100);
-			});
+				sound.setLayerVolume(layer, slider.getValue());
 			slider.addTo(col1);
 			this.sliders.push(slider);
 		}

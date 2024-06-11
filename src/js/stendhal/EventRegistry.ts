@@ -12,6 +12,8 @@
 declare var marauroa: any;
 declare var stendhal: any;
 
+import { SoundLayer } from "./data/sound/SoundLayer";
+
 import { RPEntity } from "./entity/RPEntity";
 import { RPObject } from "./entity/RPObject";
 
@@ -144,7 +146,7 @@ export class EventRegistry {
 				// play notification sound
 				const notif = stendhal.config.get("chat.private.sound");
 				if (notif && this.soundTextEvents[ttype]) {
-					stendhal.sound.playGlobalizedEffect(notif);
+					stendhal.sound.playGlobal(SoundLayer.GUI, notif);
 				}
 			}
 		}); // private_text

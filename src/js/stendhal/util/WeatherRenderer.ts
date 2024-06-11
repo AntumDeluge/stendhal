@@ -11,7 +11,8 @@
 
 import { TileStore } from "../data/TileStore";
 
-import { SoundObject } from "../data/sound/SoundFactory";
+import { SoundLayer } from "../data/sound/SoundLayer";
+import { SoundLoopObject } from "../data/sound/SoundLoopObject";
 
 declare var stendhal: any;
 
@@ -36,8 +37,7 @@ export class WeatherRenderer {
 	private lastUpdate = 0;
 	private tilesX = 0;
 	private tilesY = 0;
-	private audio?: SoundObject;
-	private soundLayer = stendhal.sound.layers.indexOf("ambient");
+	private audio?: SoundLoopObject;
 
 	private weatherName?: string;
 
@@ -100,7 +100,7 @@ export class WeatherRenderer {
 		// stop previous sounds
 		// FIXME: should continue playing if weather is same on next map
 		if (this.audio) {
-			stendhal.sound.stop(this.soundLayer, this.audio);
+			this.audio.stop();
 			this.audio = undefined;
 		}
 
@@ -148,7 +148,7 @@ export class WeatherRenderer {
 			this.tilesY = Math.ceil(canvas.height / spriteH) + 1;
 
 			if (weatherLoops[weather]) {
-				this.audio = stendhal.sound.playGlobalizedLoop("weather/" + weather, this.soundLayer);
+				this.audio = stendhal.sound.playGlobalLoop(SoundLayer.AMBIENT, "weather/" + weather);
 			}
 		}
 	}
