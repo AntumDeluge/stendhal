@@ -172,4 +172,59 @@ export class MathUtil {
 	static parseIntDefault(st: string, d: number): number {
 		return Math.floor(MathUtil.parseFloatDefault(st, d));
 	}
+
+	/**
+	 * Retrieves Euclidean distance between two points.
+	 *
+	 * @param {number} x1
+	 *   X coordinate of first point on 2d plane.
+	 * @param {number} y1
+	 *   Y coordinate of first point on 2d plane.
+	 * @param {number} x2
+	 *   X coordinate of second point on 2d plane.
+	 * @param {number} y2
+	 *   Y coordinate of second point on 2d plane.
+	 * @returns {number}
+	 *   Distance of one position relative to the other.
+	 */
+	static getDistance(x1: number, y1: number, x2: number, y2: number): number;
+
+	/**
+	 * Retrieves Euclidean distance between two points.
+	 *
+	 * @param {Point} pos1
+	 *   First point on 2d plane.
+	 * @param {Point} pos2
+	 *   Second point on 2d plane.
+	 * @returns {number}
+	 *   Distance of one position relative to the other.
+	 */
+	static getDistance(pos1: Point, pos2: Point): number;
+
+	// implementation method
+	static getDistance(p1: number|Point, p2: number|Point, p3?: number, p4?: number): number {
+		let numeric = true;
+		for (const p of [p1, p2, p3, p4]) {
+			if (typeof(p) !== "number") {
+				numeric = false;
+				break;
+			}
+		}
+
+		let x1: number, y1: number, x2: number, y2: number;
+		if (numeric) {
+			x1 = p1 as number;
+			y1 = p2 as number;
+			x2 = p3 as number;
+			y2 = p4 as number;
+		} else if (p1 instanceof Point && p2 instanceof Point) {
+			x1 = (p1 as Point).x;
+			y1 = (p1 as Point).y;
+			x2 = (p2 as Point).x;
+			y2 = (p2 as Point).y;
+		} else {
+			throw new Error("Incompatible parameter types");
+		}
+		return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+	}
 }
