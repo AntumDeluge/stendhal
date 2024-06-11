@@ -9,10 +9,12 @@
  *                                                                         *
  ***************************************************************************/
 
+import { LoopedSoundSource } from "../../entity/LoopedSoundSource";
+
+import { Point } from "../../util/Point";
+
 declare var marauroa: any;
 declare var stendhal: any;
-
-import { LoopedSoundSource } from "../../entity/LoopedSoundSource";
 
 
 // server doesn't distinguish between music & looped sound effects so we
@@ -213,8 +215,7 @@ export class LoopedSoundSourceManager {
 			if (ent.isLoaded()) {
 				const layerName = stendhal.sound.checkLayer(ent["layer"]);
 				const snd = this.sources[ent["id"]].sound;
-				stendhal.sound.adjustForDistance(layerName, snd, ent["radius"],
-						ent["x"], ent["y"], x, y);
+				stendhal.sound.adjustForDistance(layer, snd, ent["radius"], new Point(ent["x"], ent["y"]));
 			}
 		}
 	}
