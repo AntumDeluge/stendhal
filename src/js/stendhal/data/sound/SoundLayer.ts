@@ -65,13 +65,20 @@ export class SoundLayer extends AbstractEnum<string> {
 	/**
 	 * Retrieves sound layer corresponding to layer name.
 	 *
-	 * @param {string|number} l
-	 *   Layer name or index.
+	 * @param {(string|number|SoundLayer)=} l
+	 *   Layer, name, or index.
 	 * @returns {SoundLayer}
 	 *   Sound layer matching name/index or `SoundLayer.GUI` if not recognized.
 	 */
-	static checkLayer(l: string|number): SoundLayer {
-		if (typeof(l) === "number") {
+	static check(l?: string|number|SoundLayer): SoundLayer {
+		if (l instanceof SoundLayer) {
+			return l as SoundLayer;
+		}
+		const ltype = typeof(l);
+		if (ltype === "undefined") {
+			return SoundLayer.GUI;
+		}
+		if (ltype === "number") {
 			const layer = SoundLayer.layers[l];
 			if (layer) {
 				return layer;
