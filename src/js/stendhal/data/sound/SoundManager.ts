@@ -27,7 +27,7 @@ import { ComponentBase } from "../../ui/toolkit/ComponentBase";
  * TODO:
  * - use fade in/out for music layer
  */
-export class SoundManagerNG extends ComponentBase {
+export class SoundManager extends ComponentBase {
 
 	/** Main HTML element. */
 	readonly componentElement: HTMLAudioElement;
@@ -41,20 +41,20 @@ export class SoundManagerNG extends ComponentBase {
 	private readonly cache: Record<string, SoundObject>;
 
 	/** Singleton instance. */
-	private static instance: SoundManagerNG;
+	private static instance: SoundManager;
 
 
 	/**
 	 * Retrieves singleton instance.
 	 *
-	 * @returns {SoundManagerNG}
+	 * @returns {SoundManager}
 	 *   Sound manager singleton instance.
 	 */
-	static get(): SoundManagerNG {
-		if (!SoundManagerNG.instance) {
-			SoundManagerNG.instance = new SoundManagerNG();
+	static get(): SoundManager {
+		if (!SoundManager.instance) {
+			SoundManager.instance = new SoundManager();
 		}
-		return SoundManagerNG.instance;
+		return SoundManager.instance;
 	}
 
 	/**

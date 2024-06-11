@@ -11,7 +11,7 @@
  ***************************************************************************/
 
 import { SoundLayer } from "./SoundLayer";
-import { SoundManagerNG } from "./SoundManagerNG";
+import { SoundManager } from "./SoundManager";
 import { SoundUtil } from "./SoundUtil";
 
 import { MathUtil } from "../../util/MathUtil";
@@ -234,7 +234,7 @@ export class SoundObject {
 	 */
 	protected onEnded(evt: Event) {
 		if (evt.type === "endsound") {
-			SoundManagerNG.get().getLayer(this.audio.layer).remove(this);
+			SoundManager.get().getLayer(this.audio.layer).remove(this);
 		}
 	}
 
