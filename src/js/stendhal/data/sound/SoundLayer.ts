@@ -39,6 +39,16 @@ export class SoundLayer extends AbstractEnum<string> {
 	}
 
 	/**
+	 * Retreives all layer types.
+	 *
+	 * @returns {SoundLayer[]}
+	 *   Registered layers.
+	 */
+	static getLayers(): SoundLayer[] {
+		return [...this.layers];
+	}
+
+	/**
 	 * Retrieves all layer names.
 	 *
 	 * @return {string[]}
