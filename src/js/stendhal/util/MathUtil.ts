@@ -140,4 +140,36 @@ export class MathUtil {
 		}
 		return slice ? h.slice(-6) : h;
 	}
+
+	/**
+	 * Parses a float value from string.
+	 *
+	 * @param {string} st
+	 *   String to be parsed.
+	 * @param {number} d
+	 *   Default value if `st` cannot be parsed.
+	 * @returns {number}
+	 *   Float value.
+	 */
+	static parseFloatDefault(st: string, d: number): number {
+		let i = parseFloat(st);
+		if (Number.isNaN(i)) {
+			i = d;
+		}
+		return i;
+	}
+
+	/**
+	 * Parses an integer value from string.
+	 *
+	 * @param {string} st
+	 *   String to be parsed.
+	 * @param {number} d
+	 *   Default value if `st` cannot be parsed.
+	 * @returns {number}
+	 *   Integer value.
+	 */
+	static parseIntDefault(st: string, d: number): number {
+		return Math.floor(MathUtil.parseFloatDefault(st, d));
+	}
 }
