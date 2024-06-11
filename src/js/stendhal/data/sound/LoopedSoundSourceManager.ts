@@ -13,9 +13,8 @@ import { SoundLayer } from "./SoundLayer";
 
 import { LoopedSoundSource } from "../../entity/LoopedSoundSource";
 
-import { Point } from "../../util/Point";
-
 import { MathUtil } from "../../util/MathUtil";
+import { Point } from "../../util/Point";
 
 declare var marauroa: any;
 declare var stendhal: any;
