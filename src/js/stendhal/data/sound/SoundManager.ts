@@ -85,36 +85,36 @@ export class SoundManager extends ComponentBase {
 	/**
 	 * Loads a sound.
 	 *
-	 * @param {SoundLayer} layer
-	 *   Sound layer on which to play.
 	 * @param {string} id
 	 *   Sound name/identifier.
+	 * @param {number} volume
+	 *   Base volume level.
+	 * @param {SoundLayer} layer
+	 *   Sound layer on which to play.
 	 * @param {SoundType} type
 	 *   Sound type.
 	 * @returns {SoundObject}
 	 *   Cached or new sound.
 	 */
-	private load(layer: SoundLayer, id: string, type: SoundType): SoundObject {
+	private load(id: string, volume: number, layer: SoundLayer, type: SoundType): SoundObject {
 		if (!this.cache[id]) {
 			let prefix = stendhal.paths.sounds;
 			if (type === SoundType.MUSIC || type === SoundType.MAP_MUSIC) {
 				prefix = stendhal.paths.music;
 			}
 			const source = prefix + "/" + id;
-			// TODO: set basevolume dynamically
-			const basevolume = 100;
 			switch(type) {
 				case SoundType.MUSIC:
-					this.cache[id] = new MusicObject(layer, id, source, basevolume);
+					this.cache[id] = new MusicObject(layer, id, source, volume);
 					break;
 				case SoundType.MAP_MUSIC:
-					this.cache[id] = new MapMusicObject(layer, id, source, basevolume);
+					this.cache[id] = new MapMusicObject(layer, id, source, volume);
 					break;
 				case SoundType.LOOP:
-					this.cache[id] = new SoundLoopObject(layer, id, source, basevolume);
+					this.cache[id] = new SoundLoopObject(layer, id, source, volume);
 					break;
 				default:
-					this.cache[id] = new SoundObject(layer, id, source, basevolume);
+					this.cache[id] = new SoundObject(layer, id, source, volume);
 			}
 		}
 		return this.cache[id];
@@ -123,31 +123,33 @@ export class SoundManager extends ComponentBase {
 	/**
 	 * Loads a sound & readies for playing on layer.
 	 *
-	 * @param {SoundLayer} layer
-	 *   Sound layer on which to play.
 	 * @param {string} id
 	 *   Sound name/identifier.
+	 * @param {number} volume
+	 *   Base volume level.
+	 * @param {SoundLayer} layer
+	 *   Sound layer on which to play.
 	 * @param {SoundType} type
 	 *   Sound type.
 	 * @returns {SoundObject}
 	 *   Cached or new sound.
 	 */
-	private loadAndReady(layer: SoundLayer, id: string, type: SoundType): SoundObject {
-		this.load(layer, id, type);
+	private loadAndReady(id: string, volume: number, layer: SoundLayer, type: SoundType): SoundObject {
+		this.load(id, volume, layer, type);
 		// add to layer channel
 		this.getLayer(layer).push(this.cache[id]);
 		return this.cache[id];
 	}
 
-	playPerceived(layer: SoundLayer, name: string, radius: number, x: number, y: number,
-			type=SoundType.EFFECT) : SoundObject {
-		const sound = this.load(layer, name, type);
+	playLocal(id: string, volume: number, radius: number, x: number, y: number, layer: SoundLayer,
+			type=SoundType.EFFECT): SoundObject {
+		const sound = this.load(id, volume, layer, type);
 		sound.setRadius(radius);
 		sound.setPosition(x, y);
 		return sound;
 	}
 
-	playPerceivedLoop(layer: SoundLayer, name: string, radius: number, x: number, y: number)
+	playLocalLoop(id: string, radius: number, x: number, y: number, layer: SoundLayer)
 			: SoundLoopObject {
 		/*
 		const sound = this.load(layer, name, SoundType.PERCEIVED_LOOP);
@@ -155,34 +157,34 @@ export class SoundManager extends ComponentBase {
 		sound.setPosition(x, y);
 		return sound;
 		*/
-		return this.playPerceived(layer, name, radius, x, y, SoundType.LOOP);
+		return this.playLocal(id, radius, x, y, layer, SoundType.LOOP);
 	}
 
-	playPerceivedMusic(name: string, radius: number, x: number, y: number): MusicObject {
-		return this.playPerceived(SoundLayer.MUSIC, name, radius, x, y, SoundType.MUSIC);
+	playLocalMusic(id: string, radius: number, x: number, y: number): MusicObject {
+		return this.playLocal(id, radius, x, y, SoundLayer.MUSIC, SoundType.MUSIC);
 	}
 
-	playGlobal(layer: SoundLayer, name: string, type=SoundType.EFFECT): SoundObject {
-		return this.load(layer, name, type);
+	playGlobal(id: string, layer: SoundLayer, type=SoundType.EFFECT): SoundObject {
+		return this.load(id, layer, type);
 	}
 
-	playGlobalLoop(layer: SoundLayer, name: string): SoundLoopObject {
-		return this.playGlobal(layer, name, SoundType.LOOP);
+	playGlobalLoop(id: string, layer: SoundLayer): SoundLoopObject {
+		return this.playGlobal(id, layer, SoundType.LOOP);
 	}
 
-	playGlobalMusic(name: string): MusicObject {
-		return this.playGlobal(SoundLayer.MUSIC, name, SoundType.MUSIC);
+	playGlobalMusic(id: string): MusicObject {
+		return this.playGlobal(id, SoundLayer.MUSIC, SoundType.MUSIC);
 	}
 
-	playZoneMusic(name?: string): MapMusicObject|undefined {
-		if (!name) {
-			this.stopMapMusic();
+	playZoneMusic(id?: string): MapMusicObject|undefined {
+		if (!id) {
+			this.stopZoneMusic();
 			return this.zoneMusic;
 		}
-		if (this.zoneMusic && name !== this.zoneMusic.getId()) {
+		if (this.zoneMusic && id !== this.zoneMusic.getId()) {
 			// map plays different music than previous
-			this.stopMapMusic();
-			this.zoneMusic = this.playGlobal(SoundLayer.MUSIC, name, SoundType.MAP_MUSIC);
+			this.stopZoneMusic();
+			this.zoneMusic = this.playGlobal(id, SoundLayer.MUSIC, SoundType.MAP_MUSIC);
 		}
 		return this.zoneMusic;
 	}
@@ -190,8 +192,6 @@ export class SoundManager extends ComponentBase {
 	/**
 	 * Adjust volume level depending on distance from sound source.
 	 *
-	 * @param {SoundLayer} layer
-	 *   Layer sound is playing on (FIXME: may not be necessary).
 	 * @param {SoundLoopObject} sound
 	 *   Sound source.
 	 * @param {number} radius
@@ -199,44 +199,59 @@ export class SoundManager extends ComponentBase {
 	 * @param {Point} lpos
 	 *   Listener's position.
 	 */
-	adjustForDistance(layer: SoundLayer, sound: SoundLoopObject, radius: number, lpos: Point) {
+	adjustForDistance(sound: SoundLoopObject, radius: number, lpos: Point) {
 		// DEBUG:
 		console.warn("adjustForDistance not implemented");
 
 		// TODO:
 	}
 
-	stopMapMusic() {
+	stopZoneMusic() {
 		if (this.zoneMusic) {
 			this.zoneMusic.stop();
 			this.zoneMusic = undefined;
 		}
 	}
 
+	/**
+	 * Stops & removes all active sounds.
+	 */
 	stopAll() {
 		for (const layer of this.getLayers()) {
 			layer.stop();
 		}
 	}
 
+	/**
+	 * Pauses all active sounds.
+	 */
 	pauseAll() {
 		for (const layer of this.getLayers()) {
 			layer.pause();
 		}
 	}
 
+	/**
+	 * Resumes all active sounds from paused state.
+	 */
 	resumeAll() {
 		for (const layer of this.getLayers()) {
 			layer.resume();
 		}
 	}
 
+	/**
+	 * Mutes all active sounds.
+	 */
 	muteAll() {
 		for (const layer of this.getLayers()) {
 			layer.mute();
 		}
 	}
 
+	/**
+	 * Unmutes all active sounds.
+	 */
 	unmuteAll() {
 		for (const layer of this.getLayers()) {
 			layer.unmute();
@@ -255,7 +270,7 @@ export class SoundManager extends ComponentBase {
 		if (layer instanceof SoundLayer) {
 			layer = layer.value;
 		}
-		return this.layers[layer as string];
+		return this.layers[layer as string] || this.layers[SoundLayer.GUI.value];
 	}
 
 	/**
@@ -266,11 +281,8 @@ export class SoundManager extends ComponentBase {
 	 */
 	getLayers(): SoundLayerGroup[] {
 		const layers: SoundLayerGroup[] = [];
-		for (const layer of SoundLayer.getLayers()) {
-			const group = this.getLayer(layer);
-			if (group) {
-				layers.push(group);
-			}
+		for (const lname in this.layers) {
+			layers.push(this.layers[lname]);
 		}
 		return layers;
 	}
