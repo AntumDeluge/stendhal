@@ -200,9 +200,8 @@ export class SoundObject {
 	 */
 	//~ private getAdjustedVolume(layerName: string, volBase: number): number {
 	private getAdjustedVolume(): number {
-		// TODO: change config to use int range between 0-100
-		const volMaster = stendhal.config.config.getFloat("sound.master.volume") * 100;
-		const volLayer = stendhal.config.getFloat("sound." + this.audio.layer.value + ".volume") * 100;
+		const volMaster = stendhal.config.config.getInt("sound.master.volume");
+		const volLayer = stendhal.config.getInt("sound." + this.audio.layer.value + ".volume");
 		let volActual = (this.audio.basevolume * 100) * volMaster;
 		if (typeof(volLayer) !== "number") {
 			console.warn("Cannot adjust volume for layer \"" + this.audio.layer.value + "\"");

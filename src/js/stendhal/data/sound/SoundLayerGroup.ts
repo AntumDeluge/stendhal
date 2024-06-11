@@ -35,8 +35,7 @@ export class SoundLayerGroup extends Array<SoundObject> {
 	constructor(layer: SoundLayer) {
 		super();
 		const lname = layer.value;
-		// TODO: change config to use integer value between 0-100
-		const volume = stendhal.config.getFloat("sound." + lname + ".volume") * 100;
+		const volume = stendhal.config.getInt("sound." + lname + ".volume");
 		if (typeof(volume) === "undefined") {
 			console.error("Unsupported layer \"" + lname + "\"");
 			this.volume = 100;
