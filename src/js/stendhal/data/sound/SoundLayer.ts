@@ -74,26 +74,28 @@ export class SoundLayer extends AbstractEnum<string> {
 		if (l instanceof SoundLayer) {
 			return l as SoundLayer;
 		}
-		const ltype = typeof(l);
-		if (ltype === "undefined") {
-			return SoundLayer.GUI;
-		}
-		if (ltype === "number") {
-			const layer = SoundLayer.layers[l];
-			if (layer) {
-				return layer;
-			}
-			console.warn("Unknown layer \"" + l + "\"\n", new Error());
-			// default to GUI
-			return SoundLayer.GUI;
-		}
-		for (const layer of SoundLayer.layers) {
-			if (layer.value === l) {
-				return layer;
-			}
-		}
-		console.warn("Unknown layer \"" + l + "\"\n", new Error());
 		// default to GUI
-		return SoundLayer.GUI;
+		let result = SoundLayer.GUI;
+		let unknown = true;
+		const ltype = typeof(l);
+		if (ltype === "number") {
+			const layer = SoundLayer.layers[l as number];
+			if (layer) {
+				result = layer;
+				unknown = false;
+			}
+		} else if (ltype === "string") {
+			for (const layer of SoundLayer.layers) {
+				if (layer.value === l) {
+					result = layer;
+					unknown = false;
+					break;
+				}
+			}
+		}
+		if (unknown) {
+			console.warn("Unknown layer \"" + l + "\"\n", new Error());
+		}
+		return result;
 	}
 }
