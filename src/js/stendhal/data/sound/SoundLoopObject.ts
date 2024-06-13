@@ -57,7 +57,9 @@ export class SoundLoopObject extends SoundObject {
 
 		// event listeners
 		this.audio.onended = () => {
-			this.onEnded(new Event("loopsound"));
+			if (this.onEnded) {
+				this.onEnded(new Event("loopsound"));
+			}
 		};
 	}
 

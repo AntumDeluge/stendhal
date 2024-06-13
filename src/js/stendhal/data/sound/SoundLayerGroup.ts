@@ -13,6 +13,9 @@
 import { SoundLayer } from "./SoundLayer";
 import { SoundObject } from "./SoundObject";
 import { SoundUtil } from "./SoundUtil";
+import { MapMusicObject } from "./MapMusicObject";
+
+import { Chat } from "../../util/Chat";
 
 declare var stendhal: any;
 
@@ -20,10 +23,16 @@ declare var stendhal: any;
 /**
  * Represents all sounds playing on a single layer.
  */
-export class SoundLayerGroup extends Array<SoundObject> {
+export class SoundLayerGroup {
 
+	/** Maximum number of sounds that can play simultaneously on a layer group. */
+	private static readonly MAX = 25;
+
+	/** Currently active sounds. */
+	private readonly sounds: Array<SoundObject>;
 	/** Layer volume to apply to sounds. */
 	private volume: number;
+	private layerName: string;
 
 
 	/**
@@ -33,11 +42,11 @@ export class SoundLayerGroup extends Array<SoundObject> {
 	 *   Layer ID.
 	 */
 	constructor(layer: SoundLayer) {
-		super();
-		const lname = layer.value;
-		const volume = stendhal.config.getInt("sound." + lname + ".volume");
+		this.sounds = [];
+		this.layerName = layer.value;
+		const volume = stendhal.config.getInt("sound." + this.layerName + ".volume");
 		if (typeof(volume) === "undefined") {
-			console.error("Unsupported layer \"" + lname + "\"");
+			console.error("Unsupported layer: " + this.layerName + "\n", new Error());
 			this.volume = 100;
 		} else {
 			this.volume = SoundUtil.normVolume(volume);
@@ -67,47 +76,72 @@ export class SoundLayerGroup extends Array<SoundObject> {
 	/**
 	 * Removes a sound from this channel.
 	 *
-	 * @param {SoundObject} snd
+	 * @param {SoundObject} sound
 	 *   Sound to be removed.
 	 * @returns {boolean}
 	 *   `true` if sound object not found in channel.
 	 */
-	remove(snd: SoundObject): boolean {
-		// make sure sound is no longer playing
-		snd.stop();
-		const idx = this.indexOf(snd);
+	remove(sound: SoundObject): boolean {
+		const idx = this.sounds.indexOf(sound);
 		if (idx > -1) {
-			this.splice(this.indexOf(snd), 1);
+			this.sounds.splice(this.sounds.indexOf(sound), 1);
 		}
-		return this.indexOf(snd) < 0;
+		return this.sounds.indexOf(sound) < 0;
 	}
 
-	stop() {
-		for (const sound of [...this]) {
+	play(sound: SoundObject) {
+		if (this.sounds.length >= SoundLayerGroup.MAX) {
+			console.warn("Not playing \"" + sound.getSource() + "\", cannot play more than "
+					+ SoundLayerGroup.MAX + " simultaneous sounds");
+			return;
+		}
+
+		// DEBUG:
+		Chat.debug("Playing on layer \"" + this.layerName + "\":", sound.getSource());
+
+		if (sound.isPlaying()) {
+			// make a copy so multiple instances can play simultaneously
+			sound = sound.makeCopy();
+		}
+		sound.onEnded = () => {
+			if (!this.remove(sound)) {
+				console.warn("Failed to remove sound:", sound.getSource());
+			}
+		};
+		this.sounds.push(sound);
+		sound.play();
+	}
+
+	stop(force=false) {
+		for (const sound of [...this.sounds]) {
+			if (sound instanceof MapMusicObject && !force) {
+				// zone music should continue playing on zone change
+				continue;
+			}
 			sound.stop();
 		}
 	}
 
 	pause() {
-		for (const sound of this) {
+		for (const sound of this.sounds) {
 			sound.pause();
 		}
 	}
 
 	resume() {
-		for (const sound of this) {
+		for (const sound of this.sounds) {
 			sound.play();
 		}
 	}
 
 	mute() {
-		for (const sound of this) {
+		for (const sound of this.sounds) {
 			sound.mute();
 		}
 	}
 
 	unmute() {
-		for (const sound of this) {
+		for (const sound of this.sounds) {
 			sound.unmute();
 		}
 	}

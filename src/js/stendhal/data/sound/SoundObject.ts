@@ -46,12 +46,14 @@ export class SoundObject {
 	/** The HTML audio element. */
 	protected readonly audio: AudioElementImpl;
 
+	onEnded?: Function;
+
 
 	/**
 	 * Creates a new sound object.
 	 *
 	 * @param {SoundLayer} layer
-	 *   Channel this sound plays on.
+	 *   Layer this sound plays on.
 	 * @param {string} id
 	 *   Name/Identifier.
 	 * @param {string} source
@@ -65,7 +67,7 @@ export class SoundObject {
 	 * Creates a new sound object.
 	 *
 	 * @param {SoundLayer} layer
-	 *   Channel this sound plays on.
+	 *   Layer this sound plays on.
 	 * @param {string} source
 	 *   Audio source filename.
 	 * @param {number} volume
@@ -89,13 +91,73 @@ export class SoundObject {
 			audio.src = p2 as string + ".ogg";
 			audio.basevolume = this.checkVolume(typeof(p3) !== "undefined" ? p3 : 100);
 		}
+
+		if (Number.isNaN(parseFloat(audio.basevolume))) {
+			console.error("Attempted to assign non-number to volume: " + audio.basevolume + "\n",
+					new Error());
+		}
+
 		audio.volume = audio.basevolume;
 		this.audio = audio as AudioElementImpl;
 
 		// event listeners
 		this.audio.onended = () => {
-			this.onEnded(new Event("endsound"));
+			if (this.onEnded) {
+				this.onEnded(new Event("endsound"));
+			}
 		};
+	}
+
+	/**
+	 * Makes a copy of a sound object.
+	 *
+	 * @param {SoundObject} obj
+	 *   Object to be copied.
+	 * @returns {SoundObject}
+	 *   New sound object instance.
+	 */
+	/*
+	static copy(obj: SoundObject): SoundObject {
+		// use extending class constructor
+		return new this(obj.audio.layer, obj.audio.id, obj.audio.src.replace(/\.ogg$/, ""),
+				obj.audio.basevolume);
+	}
+	*/
+
+	/**
+	 * Makes a copy of this sound object.
+	 *
+	 * @returns {SoundObject}
+	 *   New sound object instance.
+	 */
+	makeCopy(): SoundObject {
+		const clazz = Object.getPrototypeOf(this).constructor;
+		return new clazz(this.audio.layer, this.audio.id, this.audio.src.replace(/\.ogg$/, ""),
+				this.audio.basevolume);
+	}
+
+	/**
+	 * Checks if an object is considered the same as this one.
+	 *
+	 * @param {any} obj
+	 *   Object to be compared.
+	 * @returns {boolean}
+	 *   `true` if `obj` is `SoundObject` instance & attributes match.
+	 */
+	equals(obj: any): boolean {
+		if (!(obj instanceof SoundObject)) {
+			return false;
+		}
+		return this.audio.id === obj.audio.id && this.audio.src === obj.audio.src
+				&& this.audio.layer === obj.audio.layer && this.audio.loop === obj.audio.loop
+				&& this.audio.basevolume === obj.audio.basevolume;
+	}
+
+	isPlaying(): boolean {
+		if (this.audio.loop) {
+			return true;
+		}
+		return !this.audio.ended;
 	}
 
 	/**
@@ -106,6 +168,16 @@ export class SoundObject {
 	 */
 	getId(): string {
 		return this.audio.id;
+	}
+
+	/**
+	 * Retrieves audio source.
+	 *
+	 * @returns {string}
+	 *   Path to audio source file.
+	 */
+	getSource(): string {
+		return this.audio.src;
 	}
 
 	/**
@@ -228,17 +300,6 @@ export class SoundObject {
 	}
 
 	/**
-	 * Removes from channel when playing ends.
-	 *
-	 * @param {Event} evt
-	 */
-	protected onEnded(evt: Event) {
-		if (evt.type === "endsound") {
-			SoundManager.get().getLayer(this.audio.layer).remove(this);
-		}
-	}
-
-	/**
 	 * Begins playback.
 	 */
 	play() {
@@ -256,7 +317,9 @@ export class SoundObject {
 			sSound.onended(new Event("stopsound"));
 		}
 		*/
-		this.onEnded(new Event("endsound"));
+		if (this.onEnded) {
+			this.onEnded(new Event("endsound"));
+		}
 	}
 
 	/**

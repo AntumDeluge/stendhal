@@ -102,21 +102,21 @@ export class LoopedSoundSourceManager {
 		}
 
 		let snd: any;
-		const layer = SoundLayer.checkLayer(MathUtil.parseIntDefault(source["layer"], -1));
+		const layer = SoundLayer.check(MathUtil.parseIntDefault(source["layer"], -1));
 		if (this.isMusic(source["sound"])) {
 			/*
 			snd = stendhal.sound.playLocalizedMusic(source["x"], source["y"], source["radius"], layer,
 					source["sound"], source["volume"]);
 			*/
-			snd = stendhal.sound.playPerceivedMusic(source["sound"], source["radius"], source["x"],
-					source["y"]);
+			snd = stendhal.sound.playLocalMusic(source["sound"], source["volume"], source["radius"],
+					source["x"], source["y"]);
 		} else {
 			/*
 			snd = stendhal.sound.playLocalizedLoop(source["x"], source["y"], source["radius"], layer,
 					source["sound"], source["volume"]);
 			*/
-			snd = stendhal.sound.playPerceivedLoop(layer, source["sound"], source["radius"], source["x"],
-					source["y"]);
+			snd = stendhal.sound.playLocalLoop(source["sound"], source["volume"], source["radius"],
+					source["x"], source["y"], layer);
 		}
 
 		if (!snd) {
@@ -146,7 +146,7 @@ export class LoopedSoundSourceManager {
 		// FIXME: doesn't always delete reference
 		delete this.sources[id];
 		const errmsg = [];
-		if (!stendhal.sound.stop(source.layer, source.sound)) {
+		if (!stendhal.sound.stopAll(source.layer, source.sound)) {
 			errmsg.push("failed to stop looped sound source with ID '" + id + "' ("
 					+ source.sound.src + ")");
 		}
@@ -224,7 +224,7 @@ export class LoopedSoundSourceManager {
 	onDistanceChanged(x: number, y: number) {
 		for (const ent of this.getZoneEntities()) {
 			if (ent.isLoaded()) {
-				const layer = SoundLayer.checkLayer(MathUtil.parseIntDefault(ent["layer"], -1));
+				const layer = SoundLayer.check(MathUtil.parseIntDefault(ent["layer"], -1));
 				const snd = this.sources[ent["id"]].sound;
 				stendhal.sound.adjustForDistance(layer, snd, ent["radius"], new Point(ent["x"], ent["y"]));
 			}

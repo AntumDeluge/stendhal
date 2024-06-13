@@ -15,5 +15,5 @@ export const enum SoundType {
 	EFFECT,
 	LOOP,
 	MUSIC,
-	MAP_MUSIC
+	ZONE_MUSIC
 }

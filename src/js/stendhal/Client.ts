@@ -387,7 +387,7 @@ export class Client {
 		Chat.log("client", "Loading world...");
 
 		// play login sound for this user
-		stendhal.sound.playGlobal(SoundLayer.GUI, "ui/login");
+		stendhal.sound.playGlobal("ui/login", 100, SoundLayer.GUI);
 	}
 
 	/**

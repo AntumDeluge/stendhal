@@ -15,6 +15,8 @@ import { MusicObject } from "./MusicObject";
 
 /**
  * Wrapper class for an `HTMLAudioElement` representing music that should loop.
+ *
+ * TODO: rename to "ZoneMusicObject"
  */
 export class MapMusicObject extends MusicObject {
 }

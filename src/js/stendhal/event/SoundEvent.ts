@@ -44,12 +44,8 @@ export class SoundEvent extends RPEvent {
 			return;
 		}
 
-		let volume = 1;
-		// Adjust by the server specified volume, if any
-		if (this.hasOwnProperty("volume")) {
-			// NOTE: server uses int in range 1-100 while HTMLAudioElement uses float in range 0-1
-			volume *= this["volume"] / 100;
-		}
+		// adjust by the server specified volume, if any
+		const volume = MathUtil.parseIntDefault(this["volume"], 100);
 
 		let sound = this["sound"];
 		// get sound from ID
@@ -57,9 +53,8 @@ export class SoundEvent extends RPEvent {
 			sound = SoundID[this["sound_id"]];
 		}
 
-		// TODO: include `volume`
 		const lidx = MathUtil.parseIntDefault(this["layer"], -1);
-		stendhal.sound.playPerceived(SoundLayer.checkLayer(lidx), sound, radius, entity["_x"],
+		stendhal.sound.playLocal(sound, volume, SoundLayer.checkLayer(lidx), radius, entity["_x"],
 				entity["_y"]);
 	}
 }

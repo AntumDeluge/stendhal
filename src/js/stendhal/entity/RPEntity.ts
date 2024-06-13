@@ -715,14 +715,14 @@ export class RPEntity extends ActiveEntity {
 		this.attackResult = this.createResultIcon(stendhal.paths.sprites + "/combat/hitted.png");
 		var sounds = ["attack-melee-01", "attack-melee-02", "attack-melee-03", "attack-melee-04", "attack-melee-05", "attack-melee-06", "attack-melee-07"];
 		var index = Math.floor(Math.random() * Math.floor(sounds.length));
-		stendhal.sound.playPerceived(SoundLayer.SFX, sounds[index], 20, this["_x"], this["_y"]);
+		stendhal.sound.playLocal(sounds[index], 100, 20, this["_x"], this["_y"], SoundLayer.SFX);
 	}
 
 	onBlocked(_source: Entity) {
 		this.attackResult = this.createResultIcon(stendhal.paths.sprites + "/combat/blocked.png");
 		var sounds = ["clang-metallic-1", "clang-dull-1"];
 		var index = Math.floor(Math.random() * Math.floor(sounds.length));
-		stendhal.sound.playPerceived(SoundLayer.SFX, sounds[index], 20, this["_x"], this["_y"]);
+		stendhal.sound.playLocal(sounds[index], 100, 20, this["_x"], this["_y"], SoundLayer.SFX);
 	}
 
 	onMissed(_source: Entity) {
