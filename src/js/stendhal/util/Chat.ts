@@ -1,5 +1,5 @@
 /***************************************************************************
- *                (C) Copyright 2022-2023 - Faiumoni e. V.                 *
+ *                (C) Copyright 2022-2024 - Faiumoni e. V.                 *
  ***************************************************************************
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -8,6 +8,8 @@
  *   License, or (at your option) any later version.                       *
  *                                                                         *
  ***************************************************************************/
+
+import { Debug } from "./Debug";
 
 import { ui } from "../ui/UI";
 import { UIComponentEnum } from "../ui/UIComponentEnum";
@@ -22,7 +24,6 @@ declare let stendhal: any;
  */
 export class Chat {
 
-	public static debugLogEnabled = false;
 	private static clog: ChatLogComponent;
 
 	// available actions from attending NPC
@@ -94,9 +95,16 @@ export class Chat {
 		Chat.log(type, message, orator, profile, true);
 	}
 
-	public static debug(message: string) {
-		if (Chat.debugLogEnabled) {
-			Chat.log("client", message);
+	/**
+	 * Prints a message to console & log if debugging enabled.
+	 *
+	 * @param {...string} msg
+	 *   Message text.
+	 */
+	public static debug(...msg: string[]) {
+		if (Debug.isActive("log")) {
+			console.log(...msg);
+			Chat.log("client", msg.join(" "));
 		}
 	}
 }

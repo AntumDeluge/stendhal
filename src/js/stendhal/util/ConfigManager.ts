@@ -41,6 +41,7 @@ export class ConfigManager {
 		"chat.visible": "false",
 		"chat-opts.custom": "",
 		"click-indicator": "false",
+		"debug.log": "false",
 		"effect.blood": "true",
 		"effect.entity-overlay": "true",
 		"effect.lighting": "true",

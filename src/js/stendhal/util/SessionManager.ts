@@ -9,6 +9,8 @@
  *                                                                         *
  ***************************************************************************/
 
+import { Debug } from "./Debug";
+
 declare var stendhal: any;
 
 
@@ -74,6 +76,11 @@ export class SessionManager {
 				value = "null";
 			}
 			this.set(key, value);
+		}
+
+		if (stendhal.config.getBoolean("debug.log")) {
+			// Chat.debug message debugging was activated in previous session
+			Debug.setActive("log", true);
 		}
 
 		this.update();
@@ -178,7 +185,7 @@ export class SessionManager {
 	}
 
 	/**
-	 * Syncs inteface with updated settings.
+	 * Syncs interface with updated settings.
 	 */
 	update() {
 		if (stendhal.config.getBoolean("zoom.touch")) {

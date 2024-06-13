@@ -45,7 +45,9 @@ export class DebugAction extends SlashAction {
 		} else if (params[0] === "weather") {
 			this.debugWeather(params[1]);
 		} else if (params[0] === "log") {
-			Chat.debugLogEnabled = true;
+			stendhal.config.set("debug.log", Debug.toggle("log"));
+			Chat.log("client", "Chat.debug messages " + (stendhal.config.getBoolean("debug.log")
+					? "enabled" : "disabled"));
 		} else if (params[0] === "settings") {
 			Chat.log("client", "Experimental settings " + (Debug.toggle("settings") ? "enabled"
 					: "disabled"));
