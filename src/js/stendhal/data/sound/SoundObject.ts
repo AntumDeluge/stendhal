@@ -45,6 +45,8 @@ export class SoundObject {
 
 	/** The HTML audio element. */
 	protected readonly audio: AudioElementImpl;
+	/** Property denoting the active state. */
+	private active: boolean;
 
 	onEnded?: Function;
 
@@ -77,6 +79,7 @@ export class SoundObject {
 
 	// implementation constructor
 	constructor(layer: SoundLayer, p1: string, p2: string|number, p3?: number) {
+		this.active = false;
 		// use `any` temporary object to set readonly properties
 		const audio = new Audio() as any;
 		audio.layer = layer;
@@ -99,6 +102,11 @@ export class SoundObject {
 
 		audio.volume = audio.basevolume;
 		this.audio = audio as AudioElementImpl;
+
+		// DEBUG:
+		//~ if (this.audio.volume < 0.2) {
+			//~ console.log("created sound object with volume " + (this.audio.volume * 100), new Error());
+		//~ }
 
 		// event listeners
 		this.audio.onended = () => {
@@ -153,11 +161,8 @@ export class SoundObject {
 				&& this.audio.basevolume === obj.audio.basevolume;
 	}
 
-	isPlaying(): boolean {
-		if (this.audio.loop) {
-			return true;
-		}
-		return !this.audio.ended;
+	isActive(): boolean {
+		return this.active;
 	}
 
 	/**
@@ -303,6 +308,14 @@ export class SoundObject {
 	 * Begins playback.
 	 */
 	play() {
+		// DEBUG:
+		const volume = this.audio.volume * 100;
+		if (volume < 2) {
+			console.log("low volume (" + volume + ") detected for sound: " + this.audio.src + "\n",
+					new Error());
+		}
+
+		this.active = true;
 		this.audio.play();
 	}
 
@@ -310,6 +323,7 @@ export class SoundObject {
 	 * Stops playback & removes from channel.
 	 */
 	stop() {
+		this.active = false;
 		this.audio.pause();
 		this.audio.currentTime = 0;
 		/*

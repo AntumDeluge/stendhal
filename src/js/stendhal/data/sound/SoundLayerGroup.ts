@@ -99,7 +99,7 @@ export class SoundLayerGroup {
 		// DEBUG:
 		Chat.debug("Playing on layer \"" + this.layerName + "\":", sound.getSource());
 
-		if (sound.isPlaying()) {
+		if (sound.isActive()) {
 			// make a copy so multiple instances can play simultaneously
 			sound = sound.makeCopy();
 		}

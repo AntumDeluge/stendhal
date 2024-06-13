@@ -34,7 +34,8 @@ declare var stendhal: any;
  * TODO:
  * - use fade in/out for music layer
  * FIXME:
- * - sounds not playing
+ * - memory leak
+ * - some event volume incorrect
  */
 export class SoundManager extends ComponentBase {
 
@@ -121,7 +122,7 @@ export class SoundManager extends ComponentBase {
 			}
 		}
 		let sound = this.cache[id];
-		if (sound.isPlaying()) {
+		if (sound.isActive()) {
 			// make a copy so multiple instances can play simultaneously
 			sound = sound.makeCopy();
 		}
