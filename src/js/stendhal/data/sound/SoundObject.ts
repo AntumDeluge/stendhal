@@ -141,7 +141,7 @@ export class SoundObject {
 	makeCopy(): SoundObject {
 		const clazz = Object.getPrototypeOf(this).constructor;
 		return new clazz(this.audio.layer, this.audio.id, this.audio.src.replace(/\.ogg$/, ""),
-				this.audio.basevolume);
+				this.audio.basevolume * 100);
 	}
 
 	/**
