@@ -96,8 +96,11 @@ export class SettingsDialog extends TabDialogContentComponent {
 	 *     Optional popup tooltip text.
 	 * @return
 	 *     HTMLInputElement.
+	 * @deprecated
 	 */
 	private createCheckBoxSkel(id: string, tooltip?: string): HTMLInputElement {
+		console.warn("deprecated SettingsDialog.createCheckBoxSkel");
+
 		const checkbox = <HTMLInputElement> this.child("input[type=checkbox][id=" + id + "]")!;
 		if (tooltip) {
 			checkbox.title = tooltip;
@@ -141,10 +144,12 @@ export class SettingsDialog extends TabDialogContentComponent {
 	 *     used).
 	 * @return
 	 *     HTMLInputElement.
+	 * @deprecated
 	 */
 	createCheckBox(id: string, setid: string, ttpos: string="",
 			ttneg: string="", action?: Function,
 			von?: string, voff?: string): HTMLInputElement {
+		console.warn("deprecated SettingsDialog.createCheckBox");
 
 		const chk = this.createCheckBoxSkel(id)!;
 		chk.checked = stendhal.config.getBoolean(setid);
