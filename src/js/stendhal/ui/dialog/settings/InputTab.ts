@@ -33,14 +33,14 @@ export class InputTab extends AbstractSettingsTab {
 
 		/* *** pathfinding *** */
 
-		WidgetFactory.checkbox(col1, "set-pathfinding-ground", "Pathfinding via ground", "pathfinding",
+		WidgetFactory.check(col1, "set-pathfinding-ground", "Pathfinding via ground", "pathfinding",
 				"Click/Tap ground to walk", "Ground pathfinding disabled")
 				.addListener(function(e: Event) {
 					// update quick menu button image
 					(ui.get(UIComponentEnum.QMPathFinding) as QuickMenuButton).update();
 				});
 
-		WidgetFactory.checkbox(col1, "set-pathfinding-minimap", "Pathfinding via minimap",
+		WidgetFactory.check(col1, "set-pathfinding-minimap", "Pathfinding via minimap",
 				"pathfinding.minimap", "Click/Tap minimap to walk", "Minimap pathfinding disabled");
 
 

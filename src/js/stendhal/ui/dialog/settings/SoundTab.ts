@@ -40,7 +40,7 @@ export class SoundTab extends AbstractSettingsTab {
 		// state of sound when dialog is created
 		let soundEnabled = config.getBoolean("sound");
 
-		WidgetFactory.checkbox(col1, "set-sound", "Enable sound", "sound")
+		WidgetFactory.check(col1, "set-sound", "Enable sound", "sound")
 				.addListener((evt: Event) => {
 					sound.onStateChanged();
 					this.setSlidersEnabled(config.getBoolean("sound"));

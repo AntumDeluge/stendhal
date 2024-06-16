@@ -44,34 +44,34 @@ export class GeneralTab extends AbstractSettingsTab {
 
 		const col1 = this.child("#col1")!;
 
-		WidgetFactory.checkbox(col1, "set-creature-speech", "Creature speech bubbles",
+		WidgetFactory.check(col1, "set-creature-speech", "Creature speech bubbles",
 				"speech.creature", "Creature speech bubbles are enabled",
 				"Creature speech bubbles are disabled");
 
 		const player_stats = ui.get(UIComponentEnum.PlayerStats) as PlayerStatsComponent;
 
-		WidgetFactory.checkbox(col1, "set-charname", "Status panel character name",
+		WidgetFactory.check(col1, "set-charname", "Status panel character name",
 				"panel.stats.charname")
 				.addListener((evt: Event) => {
 					player_stats.enableCharName(config.getBoolean("panel.stats.charname"));
 				});
 
-		WidgetFactory.checkbox(col1, "set-hpbar", "Status panel HP bar", "panel.stats.hpbar")
+		WidgetFactory.check(col1, "set-hpbar", "Status panel HP bar", "panel.stats.hpbar")
 				.addListener((evt: Event) => {
 					player_stats.enableBar("hp", config.getBoolean("panel.stats.hpbar"));
 				});
 
-		WidgetFactory.checkbox(col1, "set-chat-float", "Floating chat panel", "chat.float")
+		WidgetFactory.check(col1, "set-chat-float", "Floating chat panel", "chat.float")
 				.addListener((evt: Event) => {
 					(ui.get(UIComponentEnum.BottomPanel) as ChatPanel)
 							.setFloating(config.getBoolean("chat.float"));
 				});
 
-		WidgetFactory.checkbox(col1, "set-chat-hide", "Auto-hide chat panel", "chat.autohide",
+		WidgetFactory.check(col1, "set-chat-hide", "Auto-hide chat panel", "chat.autohide",
 				undefined, undefined, true);
 
 		// FIXME: are there unique properties for pinch & tap zooming?
-		WidgetFactory.checkbox(col1, "set-zoom-touch", "Touch zoom", "zoom.touch",
+		WidgetFactory.check(col1, "set-zoom-touch", "Touch zoom", "zoom.touch",
 				"Touch zooming enabled (may not work with all browsers)",
 				"Touch zooming disabled (may not work with all browsers)")
 				.addListener(function(evt: Event) {
@@ -83,7 +83,7 @@ export class GeneralTab extends AbstractSettingsTab {
 
 		const col2 = this.child("#col2")!;
 
-		WidgetFactory.checkbox(col2, "set-inv-double-click", "Double-click items",
+		WidgetFactory.check(col2, "set-inv-double-click", "Double-click items",
 				"inventory.double-click", "Items are used/consumed with double click/touch",
 				"Items are used/consumed with single click/touch")
 				.addListener(function(evt: Event) {
@@ -94,12 +94,12 @@ export class GeneralTab extends AbstractSettingsTab {
 					}
 				});
 
-		WidgetFactory.checkbox(col2, "set-inv-quick-pickup", "Quick pickup from chests and corpses",
+		WidgetFactory.check(col2, "set-inv-quick-pickup", "Quick pickup from chests and corpses",
 				"inventory.quick-pickup",
 				"Click tranfers items from chests and corpses to player inventory",
 				"Click executes default action on items in chests and corpses");
 
-		WidgetFactory.checkbox(col2, "set-move-cont", "Continuous movement", "move.cont",
+		WidgetFactory.check(col2, "set-move-cont", "Continuous movement", "move.cont",
 				"Player will continue to walk after changing areas",
 				"Player will stop after changing areas")
 				.addListener(function(evt: Event) {
@@ -118,7 +118,7 @@ export class GeneralTab extends AbstractSettingsTab {
 
 		// TODO: make this multiple choice to customize sound
 		// FIXME: broken
-		const privateMessageSound = WidgetFactory.checkbox(col2, "set-private-message-sound",
+		const privateMessageSound = WidgetFactory.check(col2, "set-private-message-sound",
 				"Private message notifications", undefined, "Private message audio notifications enabled",
 				"Private message audio notifications disabled");
 		privateMessageSound.setValue(config.get("chat.private.sound") === "ui/notify_up" ? true : false);
@@ -127,7 +127,7 @@ export class GeneralTab extends AbstractSettingsTab {
 			config.set("chat.private.sound", enabled ? "ui/notify_up" : "null");
 		});
 
-		WidgetFactory.checkbox(col2, "set-native-emojis", "Native emojis", "emojis.native",
+		WidgetFactory.check(col2, "set-native-emojis", "Native emojis", "emojis.native",
 				"Using native emojis", "Using built-in emojis", true)
 				.addListener(function(evt: Event) {
 					singletons.getChatInput().refresh();

@@ -41,7 +41,7 @@ export namespace WidgetFactory {
 	 * @returns {SettingsComponent}
 	 *   New widget.
 	 */
-	export function checkbox(parent: ComponentBase|HTMLElement, id: string, label: string,
+	export function check(parent: ComponentBase|HTMLElement, id: string, label: string,
 			cid?: string, ttpos?: string, ttneg?: string, experimental=false): SettingsComponent {
 		// FIXME: don't need to pass experimental to component constructor
 		const component = new SettingsComponent(id, label, WidgetType.CHECK, undefined, experimental);
