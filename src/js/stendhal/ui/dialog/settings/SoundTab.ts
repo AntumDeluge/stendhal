@@ -17,6 +17,8 @@ import { SettingsDialog } from "../SettingsDialog";
 import { SettingsComponent } from "../../toolkit/SettingsComponent";
 import { SliderComponent } from "../../toolkit/SliderComponent";
 
+import { WidgetFactory } from "../../factory/WidgetFactory";
+
 import { singletons } from "../../../SingletonRepo";
 
 import { SoundLayer } from "../../../data/sound/SoundLayer";
@@ -38,14 +40,11 @@ export class SoundTab extends AbstractSettingsTab {
 		// state of sound when dialog is created
 		let soundEnabled = config.getBoolean("sound");
 
-		// TODO: add DOM element creation to `SettingsDialog.createCheckBox`
-		const chkSound = new SettingsComponent("chk_sound", "Enable sound");
-		chkSound.setConfigId("sound");
-		chkSound.addListener((evt: Event) => {
-			sound.onStateChanged();
-			this.setSlidersEnabled(config.getBoolean("sound"));
-		});
-		chkSound.addTo(col1);
+		WidgetFactory.checkbox(col1, "set-sound", "Enable sound", "sound")
+				.addListener((evt: Event) => {
+					sound.onStateChanged();
+					this.setSlidersEnabled(config.getBoolean("sound"));
+				});
 
 		const layers = [
 			["master", "Master"],
