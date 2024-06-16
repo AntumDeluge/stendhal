@@ -14,14 +14,11 @@ import { AbstractSettingsTab } from "./AbstractSettingsTab";
 
 import { SettingsDialog } from "../SettingsDialog";
 
-import { SettingsComponent } from "../../toolkit/SettingsComponent";
 import { SliderComponent } from "../../toolkit/SliderComponent";
 
 import { WidgetFactory } from "../../factory/WidgetFactory";
 
 import { singletons } from "../../../SingletonRepo";
-
-import { SoundLayer } from "../../../data/sound/SoundLayer";
 
 
 export class SoundTab extends AbstractSettingsTab {
