@@ -39,10 +39,8 @@ export class SliderComponent extends WidgetComponent {
 	 *   Lowest possible value this component can represent.
 	 * @param {number} max
 	 *   Highest possible value this component can represent.
-	 * @param {boolean} [experimental=false]
-	 *   Marks this element to be hidden unless settings debugging is enabled.
 	 */
-	constructor(id: string, label: string, min: number, max: number, experimental=false) {
+	constructor(id: string, label: string, min: number, max: number) {
 		super(WidgetType.SLIDER);
 
 		this.labelElement = document.createElement("label");
@@ -56,10 +54,6 @@ export class SliderComponent extends WidgetComponent {
 		this.componentElement = componentElement;
 		// listen for changes to component element
 		this.initChangeListener();
-
-		if (experimental) {
-			this.componentElement.classList.add("experimental");
-		}
 	}
 
 	/**

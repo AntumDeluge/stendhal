@@ -45,11 +45,8 @@ export class SettingsComponent extends WidgetComponent {
 	 *   The type of this component. E.g. check box, text input, etc.
 	 * @param {OptionsEnum} [options={}]
 	 *   Options for multi-select enumeration.
-	 * @param {boolean} [experimental=false]
-	 *   Marks this element to be hidden unless settings debugging is enabled.
 	 */
-	constructor(id: string, label: string, type=WidgetType.CHECK, options: OptionsEnum={},
-			experimental=false) {
+	constructor(id: string, label: string, type=WidgetType.CHECK, options: OptionsEnum={}) {
 		super(type);
 		// create label first
 		this.labelElement = document.createElement("label") as HTMLLabelElement;
@@ -61,10 +58,6 @@ export class SettingsComponent extends WidgetComponent {
 		}
 		// listen for changes to component element
 		this.initChangeListener();
-
-		if (experimental) {
-			this.componentElement.classList.add("experimental");
-		}
 	}
 
 	/**
