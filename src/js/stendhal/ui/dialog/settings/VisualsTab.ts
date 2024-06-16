@@ -14,6 +14,8 @@ import { AbstractSettingsTab } from "./AbstractSettingsTab";
 
 import { SettingsDialog } from "../SettingsDialog";
 
+import { WidgetFactory } from "../../factory/WidgetFactory";
+
 import { SettingsComponent } from "../../toolkit/SettingsComponent";
 
 import { singletons } from "../../../SingletonRepo";
@@ -29,66 +31,64 @@ export class VisualsTab extends AbstractSettingsTab {
 
 		const col1 = this.child("#col1")!;
 
-		parent.createCheckBox("chk_light", "effect.lighting",
-				"Lighting effects are enabled", "Lighting effects are disabled", function() {
+		WidgetFactory.checkbox(col1, "set-light", "Light effects", "effect.lighting",
+				"Lighting effects are enabled", "Lighting effects are disabled")
+				.addListener(function(evt: Event) {
 					StandardMessages.changeNeedsRefresh();
 				});
 
-		parent.createCheckBox("chk_weather", "effect.weather",
-				"Weather is enabled", "Weather is disabled", function() {
+		WidgetFactory.checkbox(col1, "set-weather", "Weather", "effect.weather", "Weather is enabled",
+				"Weather is disabled")
+				.addListener(function(evt: Event) {
 					StandardMessages.changeNeedsRefresh();
-				})!;
+				});
 
-		parent.createCheckBox("chk_blood", "effect.blood",
-				"Gory images are enabled", "Gory images are disabled");
+		WidgetFactory.checkbox(col1, "set-blood", "Blood", "effect.blood", "Gory images are enabled",
+				"Gory images are disabled")
+				.addListener(function(evt: Event) {
+					StandardMessages.changeNeedsRefresh();
+				});
 
-		parent.createCheckBox("chk_nonude", "effect.no-nude",
+		WidgetFactory.checkbox(col1, "set-nonude", "Cover naked entities", "effect.no-nude",
 				"Naked entities have undergarments", "Naked entities are not covered");
 
-		parent.createCheckBox("chk_shadows", "effect.shadows",
-				"Shadows are enabled", "Shadows are disabled");
+		WidgetFactory.checkbox(col1, "set-shadows", "Shadows", "effect.shadows", "Shadows are enabled",
+				"Shadows are disabled");
 
-		parent.createCheckBox("chk_clickindicator", "click-indicator",
+		WidgetFactory.checkbox(col1, "set-click-indicator", "Display clicks/touches", "click-indicator",
 				"Displaying clicks", "Not displaying clicks");
 
-		const chkAnimate = new SettingsComponent("chk_animate", "Animate");
-		chkAnimate.setConfigId("activity-indicator.animate");
-		chkAnimate.setEnabled(config.getBoolean("activity-indicator"));
-		chkAnimate.addListener((evt: Event) => {
-			StandardMessages.changeNeedsRefresh();
-			parent.refresh();
-		});
+		let chkAnimate: SettingsComponent;
+		WidgetFactory.checkbox(col1, "set-activity-indicator", "Object activity indicator",
+				"activity-indicator",
+				"Display an indictor over certain interactive objects and corpses that aren't empty")
+			.addListener(function(evt: Event) {
+				chkAnimate.setEnabled(config.getBoolean("activity-indicator"));
+				StandardMessages.changeNeedsRefresh();
+				parent.refresh();
+			});
 
-		const chkActivityInd = new SettingsComponent("chk_activityindicator", "Object activity indicator");
-		chkActivityInd.setConfigId("activity-indicator");
-		chkActivityInd.setTooltip("Display an indictor over certain interactive objects and corpses"
-				+ " that aren't empty");
-		chkActivityInd.addListener((evt: Event) => {
-			chkAnimate.setEnabled(chkActivityInd.getValue() as boolean);
+		chkAnimate = WidgetFactory.checkbox(col1, "set-activity-indicator-animate", "Animate",
+				"activity-indicator.animate");
+		chkAnimate.addListener(function(evt: Event) {
 			StandardMessages.changeNeedsRefresh();
 			parent.refresh();
 		});
-		chkActivityInd.addTo(col1);
-		chkAnimate.addTo(col1);
 		chkAnimate.componentElement.classList.add("indented");
+		chkAnimate.setEnabled(config.getBoolean("activity-indicator"));
 
-		const chkParallax = new SettingsComponent("chk_parallax", "Parallax scrolling backgrounds");
-		chkParallax.setTooltip("Parallax scrolling enabled", "Parallax scrolling disabled");
-		chkParallax.setConfigId("effect.parallax");
-		chkParallax.addListener((evt: Event) => {
-			StandardMessages.changeNeedsRefresh();
-			parent.refresh();
-		});
-		chkParallax.addTo(col1);
+		WidgetFactory.checkbox(col1, "set-parallax", "Parallax scrolling backgrounds",
+				"effect.parallax", "Parallax scrolling enabled", "Parallax scrolling disabled")
+			.addListener(function(evt: Event) {
+				StandardMessages.changeNeedsRefresh();
+				parent.refresh();
+			});
 
-		const chkEntityOverlay = new SettingsComponent("chk_entity_overlay",
-				"Entity overlay effects");
-		chkEntityOverlay.setValue(config.getBoolean("effect.entity-overlay"));
-		chkEntityOverlay.addListener((evt: Event) => {
-			config.set("effect.entity-overlay", chkEntityOverlay.getValue());
-			StandardMessages.changeNeedsRefresh();
-			parent.refresh();
-		});
-		chkEntityOverlay.addTo(col1);
+		WidgetFactory.checkbox(col1, "set-entity-overlay", "Entity overlay effects",
+				"effect.entity-overlay")
+			.addListener((evt: Event) => {
+				StandardMessages.changeNeedsRefresh();
+				parent.refresh();
+			});
 	}
 }
