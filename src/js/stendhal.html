@@ -273,47 +273,40 @@
 		<!-- TODO: create dynamically with ui/toolkit/SettingsComponent class -->
 
 		<div class="horizontalgroup pad-contents" id="settings-general">
-		<div id="settings_panel1" class="verticalgroup vgroupcol">
-			<label class="checksetting"><input type="checkbox" id="chk_speechcr">Creature speech bubbles</label>
-			<label class="checksetting"><input type="checkbox" id="chk_charname">Status panel character name</label>
-			<label class="checksetting"><input type="checkbox" id="chk_hpbar">Status panel HP bar</label>
-			<label class="checksetting"><input type="checkbox" id="chk_floatchat">Floating chat panel</label>
-			<label class="checksetting"><input type="checkbox" id="chk_hidechat" class="experimental">Auto-hide chat panel</label>
-			<label class="checksetting"><input type="checkbox" id="chk_zoom">Touch zoom</label>
-		</div>
+			<div id="col1" class="verticalgroup vgroupcol"></div>
+			<div id="col2" class="verticalgroup vgroupcol"></div>
+			<!--<div id="col3" class="verticalgroup vgroupcol"></div>-->
+			<!--
 		<div id="settings_panel2" class="verticalgroup vgroupcol">
-			<label class="checksetting"><input type="checkbox" id="chk_dblclick">Double-click items</label>
-			<label class="checksetting"><input type="checkbox" id="chk_chestqp">Quick pickup from chests and corpses</label>
-			<label class="checksetting"><input type="checkbox" id="chk_movecont">Continuous movement</label>
 			<label class="checksetting"><input type="checkbox" id="chk_pvtsnd">Private message notifications</label>
-			<label class="checksetting"><input type="checkbox" id="chk_nativeemojis" class="experimental">Native emojis</label>
 		</div>
-		<div id="settings_panel3" class="verticalgroup vgroupcolr">
-			<div>
-				<label for="selecttheme">Theme:</label>
-				<select id="selecttheme"></select>
+		-->
+			<div id="col3" class="verticalgroup vgroupcolr">
+				<div>
+					<label for="selecttheme">Theme:</label>
+					<select id="selecttheme"></select>
+				</div>
+				<div>
+					<label for="selfontbody">Main font:</label>
+					<select id="selfontbody"></select>
+				</div>
+				<div>
+					<label for="selfontchat">Chat log font:</label>
+					<select id="selfontchat"></select>
+				</div>
+				<div>
+					<label for="selfonttlog">Travel log font:</label>
+					<select id="selfonttlog"></select>
+				</div>
+				<div>
+					<label for="selmenustyle">Menu style:</label>
+					<select id="selmenustyle"></select>
+				</div>
+				<div>
+					<label for="txtchatopts">Custom chat keywords:</label>
+					<input type="text" id="txtchatopts">
+				</div>
 			</div>
-			<div>
-				<label for="selfontbody">Main font:</label>
-				<select id="selfontbody"></select>
-			</div>
-			<div>
-				<label for="selfontchat">Chat log font:</label>
-				<select id="selfontchat"></select>
-			</div>
-			<div>
-				<label for="selfonttlog">Travel log font:</label>
-				<select id="selfonttlog"></select>
-			</div>
-			<div>
-				<label for="selmenustyle">Menu style:</label>
-				<select id="selmenustyle"></select>
-			</div>
-			<div>
-				<label for="txtchatopts">Custom chat keywords:</label>
-				<input type="text" id="txtchatopts">
-			</div>
-		</div>
 		</div>
 
 		<div class="horizontalgroup pad-contents" id="settings-visuals">

@@ -21,6 +21,8 @@ import { ChatPanel } from "../../ChatPanel";
 import { ui } from "../../UI";
 import { UIComponentEnum } from "../../UIComponentEnum";
 
+import { WidgetFactory } from "../../factory/WidgetFactory";
+
 import { ChatLogComponent } from "../../component/ChatLogComponent";
 import { ItemInventoryComponent } from "../../component/ItemInventoryComponent";
 import { PlayerEquipmentComponent } from "../../component/PlayerEquipmentComponent";
@@ -40,47 +42,51 @@ export class GeneralTab extends AbstractSettingsTab {
 
 		/* *** left panel *** */
 
-		parent.createCheckBox("chk_speechcr", "speech.creature",
-				"Creature speech bubbles are enabled", "Creature speech bubbles are disabled");
+		const col1 = this.child("#col1")!;
+
+		WidgetFactory.checkbox(col1, "set-creature-speech", "Creature speech bubbles",
+				"speech.creature", "Creature speech bubbles are enabled",
+				"Creature speech bubbles are disabled");
 
 		const player_stats = ui.get(UIComponentEnum.PlayerStats) as PlayerStatsComponent;
 
-		const chk_charname = parent.createCheckBox("chk_charname", "panel.stats.charname",
-				undefined, undefined,
-				function() {
-					player_stats.enableCharName(chk_charname.checked);
-				})!;
-
-		const chk_hpbar = parent.createCheckBox("chk_hpbar", "panel.stats.hpbar",
-				undefined, undefined,
-				function() {
-					player_stats.enableBar("hp", chk_hpbar.checked);
-				})!;
-
-		const chk_floatchat = parent.createCheckBox("chk_floatchat", "chat.float",
-				undefined, undefined,
-				function() {
-					(ui.get(UIComponentEnum.BottomPanel) as ChatPanel).setFloating(chk_floatchat.checked);
+		WidgetFactory.checkbox(col1, "set-charname", "Status panel character name",
+				"panel.stats.charname")
+				.addListener((evt: Event) => {
+					player_stats.enableCharName(config.getBoolean("panel.stats.charname"));
 				});
 
-		parent.createCheckBox("chk_hidechat", "chat.autohide",
-				"Chat panel will be hidden after sending text", "Chat panel will remain on-screen");
+		WidgetFactory.checkbox(col1, "set-hpbar", "Status panel HP bar", "panel.stats.hpbar")
+				.addListener((evt: Event) => {
+					player_stats.enableBar("hp", config.getBoolean("panel.stats.hpbar"));
+				});
+
+		WidgetFactory.checkbox(col1, "set-chat-float", "Floating chat panel", "chat.float")
+				.addListener((evt: Event) => {
+					(ui.get(UIComponentEnum.BottomPanel) as ChatPanel)
+							.setFloating(config.getBoolean("chat.float"));
+				});
+
+		WidgetFactory.checkbox(col1, "set-chat-hide", "Auto-hide chat panel", "chat.autohide",
+				undefined, undefined, true);
 
 		// FIXME: are there unique properties for pinch & tap zooming?
-		parent.createCheckBox("chk_zoom", "zoom.touch",
+		WidgetFactory.checkbox(col1, "set-zoom-touch", "Touch zoom", "zoom.touch",
 				"Touch zooming enabled (may not work with all browsers)",
-				"Touch zooming disabled (may not work with all browsers)",
-				function() {
+				"Touch zooming disabled (may not work with all browsers)")
+				.addListener(function(evt: Event) {
 					singletons.getSessionManager().update();
 				});
 
 
 		/* *** center panel *** */
 
-		parent.createCheckBox("chk_dblclick", "inventory.double-click",
-				"Items are used/consumed with double click/touch",
-				"Items are used/consumed with single click/touch",
-				function() {
+		const col2 = this.child("#col2")!;
+
+		WidgetFactory.checkbox(col2, "set-inv-double-click", "Double-click items",
+				"inventory.double-click", "Items are used/consumed with double click/touch",
+				"Items are used/consumed with single click/touch")
+				.addListener(function(evt: Event) {
 					// update cursors
 					(ui.get(UIComponentEnum.PlayerEquipment) as PlayerEquipmentComponent).markDirty();
 					for (const cid of [UIComponentEnum.Bag, UIComponentEnum.Keyring]) {
@@ -88,32 +94,42 @@ export class GeneralTab extends AbstractSettingsTab {
 					}
 				});
 
-		// FIXME: open chest windows are not refreshed
-		parent.createCheckBox("chk_chestqp", "inventory.quick-pickup",
+		WidgetFactory.checkbox(col2, "set-inv-quick-pickup", "Quick pickup from chests and corpses",
+				"inventory.quick-pickup",
 				"Click tranfers items from chests and corpses to player inventory",
 				"Click executes default action on items in chests and corpses");
 
-		const chk_movecont = parent.createCheckBox("chk_movecont", "move.cont",
+		WidgetFactory.checkbox(col2, "set-move-cont", "Continuous movement", "move.cont",
 				"Player will continue to walk after changing areas",
-				"Player will stop after changing areas",
-				function() {
+				"Player will stop after changing areas")
+				.addListener(function(evt: Event) {
 					const action = {"type": "move.continuous"} as {[index: string]: string;};
-					if (chk_movecont.checked) {
+					if (config.getBoolean("move.cont")) {
 						action["move.continuous"] = "";
 					}
 					marauroa.clientFramework.sendAction(action);
-				})!;
+				});
 
-		// TODO: make this multiple choice
-		const chk_pvtsnd = parent.createCheckBox("chk_pvtsnd", "chat.private.sound",
-				"Private message audio notifications enabled",
-				"Private message audio notifications disabled",
-				undefined, "ui/notify_up", "null");
-		chk_pvtsnd.checked = config.get("chat.private.sound") === "ui/notify_up";
+		//~ const chk_pvtsnd = parent.createCheckBox("chk_pvtsnd", "chat.private.sound",
+				//~ "Private message audio notifications enabled",
+				//~ "Private message audio notifications disabled",
+				//~ undefined, "ui/notify_up", "null");
+		//~ chk_pvtsnd.checked = config.get("chat.private.sound") === "ui/notify_up";
 
-		parent.createCheckBox("chk_nativeemojis", "emojis.native",
-				"Using native emojis", "Using built-in emojis",
-				function() {
+		// TODO: make this multiple choice to customize sound
+		// FIXME: broken
+		const privateMessageSound = WidgetFactory.checkbox(col2, "set-private-message-sound",
+				"Private message notifications", undefined, "Private message audio notifications enabled",
+				"Private message audio notifications disabled");
+		privateMessageSound.setValue(config.get("chat.private.sound") === "ui/notify_up" ? true : false);
+		privateMessageSound.addListener(function(evt: Event) {
+			const enabled = privateMessageSound.getValue() as boolean;
+			config.set("chat.private.sound", enabled ? "ui/notify_up" : "null");
+		});
+
+		WidgetFactory.checkbox(col2, "set-native-emojis", "Native emojis", "emojis.native",
+				"Using native emojis", "Using built-in emojis", true)
+				.addListener(function(evt: Event) {
 					singletons.getChatInput().refresh();
 				});
 
