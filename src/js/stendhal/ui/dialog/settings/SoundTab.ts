@@ -58,12 +58,11 @@ export class SoundTab extends AbstractSettingsTab {
 		for (const group of layers) {
 			const layer = group[0];
 			const label = group[1];
-			const slider = new SliderComponent("setting-vol-" + layer, label, 0, 100);
-			slider.setValue(sound.getLayerVolume(layer));
+			const slider = WidgetFactory.slider(col1, "set-volume-" + layer, label, undefined, 0, 100,
+					sound.getLayerVolume(layer));
 			slider.addListener(function(evt: Event) {
 				sound.setLayerVolume(layer, slider.getValue());
 			});
-			slider.addTo(col1);
 			this.sliders.push(slider);
 		}
 		this.setSlidersEnabled(soundEnabled);
