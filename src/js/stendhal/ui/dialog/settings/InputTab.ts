@@ -17,6 +17,8 @@ import { SettingsDialog } from "../SettingsDialog";
 import { ui } from "../../UI";
 import { UIComponentEnum } from "../../UIComponentEnum";
 
+import { WidgetFactory } from "../../factory/WidgetFactory";
+
 import { QuickMenuButton } from "../../quickmenu/QuickMenuButton";
 
 import { singletons } from "../../../SingletonRepo";
@@ -27,18 +29,19 @@ export class InputTab extends AbstractSettingsTab {
 	constructor(parent: SettingsDialog, element: HTMLElement) {
 		super(element);
 
+		const col1 = this.child("#col1")!;
 
 		/* *** pathfinding *** */
 
-		parent.createCheckBox("chk_pathfinding", "pathfinding",
-				"Click/Tap ground to walk", "Ground pathfinding disabled",
-				function(e: Event) {
+		WidgetFactory.checkbox(col1, "set-pathfinding-ground", "Pathfinding via ground", "pathfinding",
+				"Click/Tap ground to walk", "Ground pathfinding disabled")
+				.addListener(function(e: Event) {
 					// update quick menu button image
 					(ui.get(UIComponentEnum.QMPathFinding) as QuickMenuButton).update();
 				});
 
-		parent.createCheckBox("chk_pathfindingmm", "pathfinding.minimap",
-				"Click/Tap minimap to walk", "Minimap pathfinding disabled");
+		WidgetFactory.checkbox(col1, "set-pathfinding-minimap", "Pathfinding via minimap",
+				"pathfinding.minimap", "Click/Tap minimap to walk", "Minimap pathfinding disabled");
 
 
 		/* *** joystick interface *** */
