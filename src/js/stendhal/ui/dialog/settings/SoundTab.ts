@@ -63,6 +63,7 @@ export class SoundTab extends AbstractSettingsTab {
 			slider.setValue(sound.getLayerVolume(layer));
 			slider.addListener(function(evt: Event) {
 				sound.setLayerVolume(layer, slider.getValue());
+			});
 			slider.addTo(col1);
 			this.sliders.push(slider);
 		}
