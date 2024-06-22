@@ -1,6 +1,6 @@
 /* $Id$ */
 /***************************************************************************
- *                      (C) Copyright 2003 - Marauroa                      *
+ *                   (C) Copyright 2003-2024 - Marauroa                    *
  ***************************************************************************
  ***************************************************************************
  *                                                                         *
@@ -29,6 +29,7 @@ import games.stendhal.server.core.pathfinder.Node;
 import games.stendhal.server.core.pathfinder.Path;
 import games.stendhal.server.entity.Killer;
 import games.stendhal.server.entity.mapstuff.spawner.SheepFood;
+import games.stendhal.server.entity.npc.behaviour.impl.idle.WanderIdleBehaviour;
 import games.stendhal.server.entity.player.Player;
 import marauroa.common.game.Definition.Type;
 import marauroa.common.game.RPClass;
@@ -136,6 +137,8 @@ public class Sheep extends DomesticAnimal {
 			owner.getZone().add(this);
 			owner.setSheep(this);
 		}
+
+		setIdleBehaviour(new WanderIdleBehaviour());
 
 		update();
 		updateSoundList();
@@ -302,7 +305,9 @@ public class Sheep extends DomesticAnimal {
 				logger.debug("Sheep (ownerless) moves randomly");
 				setIdea("walk");
 				maybeMakeSound(20);
-				moveRandomly();
+				//moveRandomly();
+				// FIXME: doesn't appear to work
+				idler.perform(this);
 			} else {
 				logger.debug("Sheep sleeping");
 				setIdea(null);
