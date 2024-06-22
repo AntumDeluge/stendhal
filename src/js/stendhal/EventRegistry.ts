@@ -13,6 +13,7 @@ declare var marauroa: any;
 declare var stendhal: any;
 
 import { SoundID } from "./data/sound/SoundID";
+import { SoundManager } from "./data/sound/SoundManager";
 
 import { RPEntity } from "./entity/RPEntity";
 import { RPObject } from "./entity/RPObject";
@@ -373,7 +374,10 @@ export class EventRegistry {
 					// NOTE: server uses int in range 1-100 while HTMLAudioElement uses float in range 0-1
 					volume *= parseInt(this["volume"], 10) / 100;
 				}
-				var radius = parseInt(this["radius"], 10);
+				let radius = SoundManager.DEFAULT_RADIUS;
+				if (this.hasOwnProperty("radius")) {
+					radius = parseInt(this["radius"], 10);
+				}
 
 				let sound = this["sound"];
 				const sound_id = this["sound_id"];
