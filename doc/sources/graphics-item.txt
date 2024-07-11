@@ -501,6 +501,7 @@ vampirette_entrails.png  Katie Russell (kymara); GPL 2.0 or newer; Stendhal
 venom_gland.png          Jordan Irwin; OGA BY 3.0; Stendhal
 vinegar.png              omero; CC BY-SA 3.0; Stendhal
 virgin_olive_oil.png     tigertoes; CC BY-SA 3.0; Stendhal
+worm                     Frank Tremmel (frankes), Jordan Irwin (AntumDeluge); CC0; Stendhal, https://openclipart.org/detail/215247
 
 data/sprites/items/missile/
 
