@@ -28,6 +28,7 @@ export class SoundEvent extends RPEvent {
 	sound_id?: string;
 	volume!: number;
 	radius?: number;
+	// FIXME: should this be number?
 	layer!: string;
 
 
