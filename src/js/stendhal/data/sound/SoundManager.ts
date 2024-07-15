@@ -39,6 +39,9 @@ declare var stendhal: any;
  */
 export class SoundManager extends ComponentBase {
 
+	/** Distance at which entity sounds can be heard. */
+	public static readonly DEFAULT_RADIUS = 23;
+
 	/** Main HTML element. */
 	readonly componentElement: HTMLAudioElement;
 	private readonly ctx: AudioContext;
