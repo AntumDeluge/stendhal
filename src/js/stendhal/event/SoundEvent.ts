@@ -45,9 +45,6 @@ export class SoundEvent extends RPEvent {
 			return;
 		}
 
-		// adjust by the server specified volume, if any
-		const volume = MathUtil.parseIntDefault(this["volume"], 100);
-
 		let sound = this["sound"];
 		// get sound from ID
 		if (this["sound_id"]) {
@@ -55,7 +52,7 @@ export class SoundEvent extends RPEvent {
 		}
 
 		const lidx = MathUtil.parseIntDefault(this["layer"], -1);
-		stendhal.sound.playLocal(sound, volume, SoundLayer.checkLayer(lidx), radius, entity["_x"],
+		stendhal.sound.playLocal(sound, this["volume"], SoundLayer.check(lidx), radius, entity["_x"],
 				entity["_y"]);
 	}
 }
