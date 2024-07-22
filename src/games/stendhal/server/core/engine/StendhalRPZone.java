@@ -40,6 +40,8 @@ import games.stendhal.common.Direction;
 import games.stendhal.common.Line;
 import games.stendhal.common.MathHelper;
 import games.stendhal.common.Rand;
+import games.stendhal.common.TerrainMap;
+import games.stendhal.common.TerrainType;
 import games.stendhal.common.filter.FilterCriteria;
 import games.stendhal.common.grammar.Grammar;
 import games.stendhal.common.tiled.LayerDefinition;
@@ -152,6 +154,8 @@ public class StendhalRPZone extends MarauroaRPZone {
 	/** Contains data to verify is someone is in a PK-free area. */
 	public CollisionDetection protectionMap;
 
+	public TerrainMap terrainMap;
+
 	/** Position of this zone in the world map. */
 	private boolean interior = true;
 
@@ -188,6 +192,7 @@ public class StendhalRPZone extends MarauroaRPZone {
 
 		collisionMap = new CollisionDetection();
 		protectionMap = new CollisionDetection();
+		terrainMap = new TerrainMap();
 		String readable = createReadableName(name);
 		if (!name.equals(readable)) {
 			readableName = readable;
@@ -203,6 +208,7 @@ public class StendhalRPZone extends MarauroaRPZone {
 	public StendhalRPZone(final String name, final int width, final int height) {
 		this(name);
 		collisionMap.init(width, height);
+		terrainMap.init(width, height);
 	}
 
 	public StendhalRPZone(final String name, final StendhalRPZone zone) {
@@ -214,6 +220,7 @@ public class StendhalRPZone extends MarauroaRPZone {
 		contents.addAll(zone.contents);
 		collisionMap = zone.collisionMap;
 		protectionMap  = zone.protectionMap;
+		terrainMap = zone.terrainMap;
 
 		this.zoneid = new ID(name);
 	}
@@ -2037,6 +2044,20 @@ public class StendhalRPZone extends MarauroaRPZone {
 			logger.warn("Found multiple weather entities in zone " + getName() + ".");
 		}
 		return (WeatherEntity) entities.get(0);
+	}
+
+	/**
+	 * Retrieves type of terrain at a position.
+	 *
+	 * @param x
+	 *   X zone position.
+	 * @param y
+	 *   Y zone position.
+	 * @return
+	 *   Terrain type.
+	 */
+	public TerrainType getTerrainType(int x, int y) {
+		return terrainMap.get(x, y);
 	}
 
 	/**
