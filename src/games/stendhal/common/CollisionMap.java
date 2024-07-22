@@ -132,7 +132,12 @@ public class CollisionMap {
 	 */
 	public CollisionType getCollisionType(final int x, final int y) {
 		final byte ctype = getCollision(x, y);
-		return CollisionType.fromValue(ctype);
+		final CollisionType type = CollisionType.fromValue(ctype);
+
+		// DEBUG:
+		System.out.println("type: " + type);
+
+		return type;
 	}
 
 	/**

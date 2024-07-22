@@ -62,6 +62,9 @@ public class CollisionLayerDefinition extends LayerDefinition {
 				break;
 			}
 		}
+
+		// DEBUG:
+		System.out.print("\nset map of collision layer\n");
 	}
 
 	/**
