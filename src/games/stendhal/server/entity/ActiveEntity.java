@@ -543,7 +543,7 @@ public abstract class ActiveEntity extends Entity {
 
 		final boolean collidesObjects = zone.collidesObjects(this, area) && getResistance() > 95;
 
-		return !zone.collides(area) && !collidesObjects;
+		return !zone.collides(area, has("flying")) && !collidesObjects;
 	}
 
 	/**

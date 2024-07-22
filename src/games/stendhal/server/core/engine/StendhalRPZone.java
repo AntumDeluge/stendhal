@@ -1136,10 +1136,15 @@ public class StendhalRPZone extends MarauroaRPZone {
 	 *
 	 * @param shape
 	 *   Rectangle area.
+	 * @param flying
+	 *   {@code true} if entity is considered to be flying.
 	 * @return
 	 *   {@code true} if any collision tiles are found in the area.
 	 */
-	public boolean collides(final Rectangle2D shape) {
+	public boolean collides(final Rectangle2D shape, boolean flying) {
+		if (flying) {
+			return !collisionMap.canFlyOver(shape);
+		}
 		return collisionMap.collides(shape);
 	}
 
