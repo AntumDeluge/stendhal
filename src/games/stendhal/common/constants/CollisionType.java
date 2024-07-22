@@ -17,7 +17,7 @@ package games.stendhal.common.constants;
  */
 public enum CollisionType {
 	NONE((byte) 0x00),
-	NORMAL((byte) 0x01),
+	NORMAL((byte) 0x01), // TODO: change to "HARD"
 	WALKBLOCK((byte) 0x02),
 	FLYOVER((byte) 0x03);
 
