@@ -23,6 +23,18 @@ public class CollisionLayerDefinition extends LayerDefinition {
 
 
 	/**
+	 * Creates a new collision layer definition.
+	 *
+	 * @param layerWidth
+	 *   Width of layer.
+	 * @param layerHeight
+	 *   Height of layer.
+	 */
+	public CollisionLayerDefinition(final int layerWidth, final int layerHeight) {
+		super(layerWidth, layerHeight);
+	}
+
+	/**
 	 * Copy constructor.
 	 *
 	 * @param other
