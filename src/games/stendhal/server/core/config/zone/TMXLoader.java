@@ -33,6 +33,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import games.stendhal.common.Base64;
+import games.stendhal.common.tiled.CollisionLayerDefinition;
 import games.stendhal.common.tiled.LayerDefinition;
 import games.stendhal.common.tiled.StendhalMapStructure;
 import games.stendhal.common.tiled.TileSetDefinition;
@@ -141,10 +142,17 @@ public class TMXLoader {
 	 * @throws Exception
 	 */
 	private LayerDefinition readLayer(final Node t) throws Exception {
+		final String layerName = getAttributeValue(t, "name");
 		final int layerWidth = getAttribute(t, "width", stendhalMap.getWidth());
 		final int layerHeight = getAttribute(t, "height", stendhalMap.getHeight());
+		final boolean collisionLayer = "collision".equals(layerName);
 
-		final LayerDefinition layer = new LayerDefinition(layerWidth, layerHeight);
+		final LayerDefinition layer;
+		if (collisionLayer) {
+			layer = new LayerDefinition(layerWidth, layerHeight);
+		} else {
+			layer = new CollisionLayerDefinition(layerWidth, layerHeight);
+		}
 
 		final int offsetX = getAttribute(t, "x", 0);
 		final int offsetY = getAttribute(t, "y", 0);
