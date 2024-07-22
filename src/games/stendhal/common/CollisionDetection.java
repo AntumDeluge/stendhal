@@ -393,4 +393,17 @@ public class CollisionDetection {
 	public boolean canFlyOver(final int x, final int y, final int w, final int h) {
 		return canShootOver(x, y, w, h);
 	}
+
+	/**
+	 * Checks if a flying entity can traverse an area of nodes.
+	 *
+	 * @param shape
+	 *   Entity position and dimensions.
+	 * @return
+	 *   {@code true} if nodes collision does not interfere with flying entities.
+	 */
+	public boolean canFlyOver(Rectangle2D shape) {
+		return canFlyOver((int) shape.getX(), (int) shape.getY(), (int) shape.getWidth(),
+				(int) shape.getHeight());
+	}
 }
