@@ -14,6 +14,9 @@ package games.stendhal.common;
 
 import java.awt.geom.Rectangle2D;
 
+import org.apache.log4j.Logger;
+
+import games.stendhal.common.constants.CollisionType;
 import games.stendhal.common.tiled.LayerDefinition;
 
 /**
@@ -21,6 +24,8 @@ import games.stendhal.common.tiled.LayerDefinition;
  * not with any of the non trespasable areas of the world.
  */
 public class CollisionDetection {
+
+	private static final Logger logger = Logger.getLogger(CollisionDetection.class);
 
 	private CollisionMap map;
 
@@ -58,6 +63,24 @@ public class CollisionDetection {
 	}
 
 	/**
+	 * Set a position in the collision map to collision type.
+	 *
+	 * @param x
+	 *   X coordinate.
+	 * @param y
+	 *   Y coordinate.
+	 * @param t
+	 *   Collision type.
+	 */
+	public void setCollide(final int x, final int y, final CollisionType t) {
+		if ((x < 0) || (x >= width) || (y < 0) || (y >= height)) {
+			return;
+		}
+		//map.set(x, y);
+		map.set(x, y, t);
+	}
+
+	/**
 	 * Set a position in the collision map to static collision.
 	 *
 	 * @param x
@@ -66,10 +89,13 @@ public class CollisionDetection {
 	 *   Y coordinate.
 	 */
 	public void setCollide(final int x, final int y) {
+		/*
 		if ((x < 0) || (x >= width) || (y < 0) || (y >= height)) {
 			return;
 		}
 		map.set(x, y);
+		*/
+		setCollide(x, y, CollisionType.NORMAL);
 	}
 
 	/**
@@ -89,8 +115,55 @@ public class CollisionDetection {
 				 * NOTE: Right now our collision detection system is binary, so
 				 * something is blocked or is not.
 				 */
+				/*
 				if (collisionLayer.getTileAt(x, y) != 0) {
 					map.set(x, y);
+				*/
+				final int tileId = collisionLayer.getTileAt(x, y);
+				if (tileId != 0) {
+					setCollide(x, y, CollisionType.fromValue((byte) tileId));
+				}
+			}
+		}
+	}
+
+	/**
+	 * Fill the collision map from layer data.
+	 *
+	 * @param collisionLayer
+	 *   Static collision information.
+	 * @param gid
+	 *   Tileset GID offset.
+	 */
+	public void setCollisionData(final LayerDefinition collisionLayer, final Integer gid) {
+		// First we build the int array.
+		collisionLayer.build();
+		init(collisionLayer.getWidth(), collisionLayer.getHeight());
+
+		if (gid == null) {
+			logger.debug("collision tileset not found, no collision data available");
+			return;
+		}
+
+		for (int y = 0; y < height; y++) {
+			for (int x = 0; x < width; x++) {
+				final int tileId = collisionLayer.getTileAt(x, y);
+
+				byte collType = (byte) (tileId - gid + 1);
+				if (collType < 0x00) {
+					logger.debug("non-standard collision type: " + collType);
+
+					// no collision
+					collType = 0x00;
+				} else if (collType > CollisionType.count()) {
+					logger.debug("non-standard collision type: " + collType);
+
+					// default to normal collision
+					collType = 0x01;
+				}
+
+				if (collType > 0x00) {
+					map.set(x, y, collType);
 				}
 			}
 		}
@@ -220,10 +293,104 @@ public class CollisionDetection {
 		if ((x < 0) || (x >= width)) {
 			return true;
 		}
-
 		if ((y < 0) || (y >= height)) {
 			return true;
 		}
-		return map.get(x, y);
+		//return map.get(x, y);
+		return map.getCollision(x, y) > 0;
+	}
+
+	/**
+	 * Retrieves collision type for a node.
+	 */
+	public CollisionType getCollisionType(final int x, final int y) {
+		return map.getCollisionType(x, y);
+	}
+
+	/**
+	 * Checks if items can be placed on this node.
+	 *
+	 * @param x
+	 *   Node X coordinate.
+	 * @param y
+	 *   Node Y coordinate.
+	 * @return
+	 *   {@code true} if hard collision is not detected at position.
+	 */
+	public boolean canSetItemOn(final int x, final int y) {
+		return !map.getCollisionType(x, y).equals(CollisionType.NORMAL);
+	}
+
+	/**
+	 * Checks if projectiles can traverse a node.
+	 *
+	 * @param x
+	 *   Node X coordinate.
+	 * @param y
+	 *   Node Y coordinate.
+	 * @return
+	 *   {@code true} if node collision does not interfere with projectiles.
+	 */
+	public boolean canShootOver(final int x, final int y) {
+		//return map.get(x, y);
+		return canSetItemOn(x, y);
+	}
+
+	/**
+	 * Checks if projectiles can traverse an area of nodes.
+	 *
+	 * @param x
+	 *   First node X coordinate.
+	 * @param y
+	 *   First node Y coordinate.
+	 * @param w
+	 *   Horizontal number of nodes in area.
+	 * @param h
+	 *   Vertical number of nodes in area.
+	 * @return
+	 *   {@code true} if nodes collision does not interfere with projectiles.
+	 */
+	public boolean canShootOver(final int x, final int y, final int w, final int h) {
+		for (int ix = x; ix < x + w; ix++) {
+			for (int iy = y; iy < y + h; iy++) {
+				if (!canShootOver(ix, iy)) {
+					return false;
+				}
+			}
+		}
+
+		return true;
+	}
+
+	/**
+	 * Checks if a flying entity can traverse a node.
+	 *
+	 * @param x
+	 *   Node X coordinate.
+	 * @param y
+	 *   Node Y coordinate.
+	 * @return
+	 *   {@code true} if node collision does not interfere with flying entities.
+	 */
+	public boolean canFlyOver(final int x, final int y) {
+		return canShootOver(x, y);
+	}
+
+	/**
+	 * Checks if a flying entity can traverse an area of nodes.
+	 *
+	 * @param x
+	 *   Node X coordinate.
+	 * @param y
+	 *   Node Y coordinate.
+	 * @param w
+	 *   Horizontal number of nodes in area.
+	 * @param h
+	 *   Vertical number of nodes in area.
+	 * @return
+	 *   {@code true} if nodes collision does not interfere with flying entities.
+	 */
+	public boolean canFlyOver(final int x, final int y, final int w, final int h) {
+		return canShootOver(x, y, w, h);
 	}
 }
