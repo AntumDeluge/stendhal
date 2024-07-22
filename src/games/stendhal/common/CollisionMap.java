@@ -179,7 +179,7 @@ public class CollisionMap {
 	 */
 	public void set(final int i, final int j) {
 		//colls[i].set(j);
-		set(i, j, CollisionType.NORMAL.getValue());
+		set(i, j, CollisionType.HARD.getValue());
 	}
 
 	/**
@@ -227,7 +227,7 @@ public class CollisionMap {
 			colls[x].set(y, (int) (y + shape.getHeight()));
 		}
 		*/
-		set(shape, CollisionType.NORMAL.getValue());
+		set(shape, CollisionType.HARD.getValue());
 	}
 
 	/**

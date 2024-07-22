@@ -95,7 +95,7 @@ public class CollisionDetection {
 		}
 		map.set(x, y);
 		*/
-		setCollide(x, y, CollisionType.NORMAL);
+		setCollide(x, y, CollisionType.HARD);
 	}
 
 	/**
@@ -318,7 +318,7 @@ public class CollisionDetection {
 	 *   {@code true} if hard collision is not detected at position.
 	 */
 	public boolean canSetItemOn(final int x, final int y) {
-		return !map.getCollisionType(x, y).equals(CollisionType.NORMAL);
+		return !map.getCollisionType(x, y).equals(CollisionType.HARD);
 	}
 
 	/**
