@@ -1,6 +1,6 @@
 /* $Id$ */
 /***************************************************************************
- *                   (C) Copyright 2003-2010 - Stendhal                    *
+ *                   (C) Copyright 2003-2024 - Stendhal                    *
  ***************************************************************************
  ***************************************************************************
  *                                                                         *
@@ -37,13 +37,13 @@ import marauroa.common.net.Serializable;
  */
 public class LayerDefinition implements Serializable {
 	/** To which map this layer belong. */
-	private StendhalMapStructure map = null;
+	protected StendhalMapStructure map = null;
 
 	/** Width of the layer that SHOULD be the same that the width of the map. */
-	private int width;
+	protected int width;
 
 	/** Height of the layer that SHOULD be the same that the height of the map. */
-	private int height;
+	protected int height;
 
 	/**
 	 * Name of the layer that MUST be one of the available:
@@ -61,13 +61,13 @@ public class LayerDefinition implements Serializable {
 	private String name;
 
 	/** The data encoded as int in a array of size width*height .*/
-	private int[] data = null;
+	protected int[] data = null;
 
 	/**
 	 * The same data in a raw byte array, so we save reencoding it again for
 	 * serialization.
 	 */
-	private byte[] raw;
+	protected byte[] raw;
 
 	/**
 	 * Constructor.
