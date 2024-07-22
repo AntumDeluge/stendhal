@@ -1,6 +1,6 @@
 /* $Id$ */
 /***************************************************************************
- *                   (C) Copyright 2003-2023 - Stendhal                    *
+ *                   (C) Copyright 2003-2024 - Stendhal                    *
  ***************************************************************************
  ***************************************************************************
  *                                                                         *
@@ -27,6 +27,7 @@ import javax.swing.SwingUtilities;
 
 import games.stendhal.client.StendhalClient;
 import games.stendhal.common.CollisionDetection;
+import games.stendhal.common.constants.CollisionType;
 import marauroa.common.game.RPAction;
 
 class MapPanel extends JComponent {
@@ -35,18 +36,16 @@ class MapPanel extends JComponent {
 	 */
 	private static final long serialVersionUID = -6471592733173102868L;
 
-	/**
-	 * The color of the background (palest grey).
-	 */
-	private static final Color COLOR_BACKGROUND = new Color(0.8f, 0.8f, 0.8f);
-	/**
-	 * The color of blocked areas (red).
-	 */
-	public static final Color COLOR_BLOCKED = new Color(1.0f, 0.0f, 0.0f);
-	/**
-	 * The color of protected areas (palest green).
-	 */
-	private static final Color COLOR_PROTECTION = new Color(202, 230, 202);
+	/** The color of the background (palest grey). */
+	private static final Color COLOR_BACKGROUND = new Color(0xCC, 0xCC, 0xCC);
+	/** The color of blocked areas (red). */
+	public static final Color COLOR_BLOCKED = new Color(0xFF, 0x00, 0x00);
+	/** The color of protected areas (palest green). */
+	private static final Color COLOR_PROTECTION = new Color(0xCA, 0xE6, 0xCA);
+	/** Walk blocker collision (dark pink). */
+	private static final Color COLOR_WALKBLOCK = new Color(0xD1, 0x90, 0xE0);
+	/** Color for collision nodes that can be flown over (carolina blue). */
+	private static final Color COLOR_FLYOVER = new Color(0x56, 0xA0, 0xD3);
 	/**
 	 * The color of other players (white).
 	 */
@@ -277,7 +276,15 @@ class MapPanel extends JComponent {
 		for (int x = 0; x < mapWidth; x++) {
 			for (int y = 0; y < mapHeight; y++) {
 				if (cd.collides(x, y)) {
-					g.setColor(COLOR_BLOCKED);
+					//g.setColor(COLOR_BLOCKED);
+					final CollisionType t = cd.getCollisionType(x, y);
+					if (t.equals(CollisionType.WALKBLOCK)) {
+						g.setColor(COLOR_WALKBLOCK);
+					} else if (t.equals(CollisionType.FLYOVER)) {
+						g.setColor(COLOR_FLYOVER);
+					} else {
+						g.setColor(COLOR_BLOCKED);
+					}
 					g.fillRect(x * scale, y * scale, scale, scale);
 				} else if (pd != null && pd.collides(x, y)) {
 					// draw protection only if there is no collision to draw
