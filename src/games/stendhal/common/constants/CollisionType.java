@@ -73,4 +73,14 @@ public enum CollisionType {
 		// default to no collision
 		return CollisionType.NONE;
 	}
+
+	/**
+	 * Retrieves collision types.
+	 *
+	 * @return
+	 *   Number of registered collision types.
+	 */
+	public static int count() {
+		return Counter.count;
+	}
 }
