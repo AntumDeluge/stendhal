@@ -2230,6 +2230,7 @@ Caution: These dungeons contain many rats, and more dangerous creatures. Enter a
 		</entity>
 
 		<!-- table infront of INN -->
+		<!--
 		<entity x="45" y="41">
 			<implementation
 				class-name="games.stendhal.server.entity.mapstuff.area.WalkBlocker"/>
@@ -2237,6 +2238,7 @@ Caution: These dungeons contain many rats, and more dangerous creatures. Enter a
 			<attribute name="width">4</attribute>
 			<attribute name="height">1</attribute>
 		</entity>
+		-->
 
 
 		<!-- signs over the doors -->
