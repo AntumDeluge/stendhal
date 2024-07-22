@@ -232,7 +232,6 @@ public final class ZonesXMLLoader {
 				zonedata.getLayer("protection"));
 
 		// DEBUG:
-		/*
 		if (zone.getName().equals("0_semos_city")) {
 			System.out.println("\nChecking Semos City collision ...");
 			final LayerDefinition collisionLayer = zonedata.getLayer("collision");
@@ -252,7 +251,6 @@ public final class ZonesXMLLoader {
 
 			System.out.println();
 		}
-		*/
 
 		if (desc.isInterior()) {
 			zone.setPosition();

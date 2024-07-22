@@ -135,7 +135,7 @@ public class CollisionMap {
 		final CollisionType type = CollisionType.fromValue(ctype);
 
 		// DEBUG:
-		System.out.println("type: " + type);
+		//System.out.println("type: " + type);
 
 		return type;
 	}

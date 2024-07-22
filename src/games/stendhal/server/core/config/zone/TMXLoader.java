@@ -168,15 +168,13 @@ public class TMXLoader {
 
 		// DEBUG:
 		final boolean semos_collsion = currentFilename.endsWith("semos/city.tmx") && collisionLayer;
-		/*
 		if (currentFilename.endsWith("semos/city.tmx")) {
-			final String layerName = layer.getName();
 			System.out.println("\nReading Semos City layer: " + layerName);
 			if (layerName.equals("collision")) {
 				System.out.println("collision layer");
 			}
+			System.out.println();
 		}
-		*/
 		if (semos_collsion) {
 			System.out.println("Reading Semos City collision layer\n");
 		}
