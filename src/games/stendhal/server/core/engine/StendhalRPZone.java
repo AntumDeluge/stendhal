@@ -464,6 +464,22 @@ public class StendhalRPZone extends MarauroaRPZone {
 	}
 
 	/**
+	 * Sets collision information for this zone.
+	 *
+	 * @param name
+	 *   Layer name.
+	 * @param collisionLayer
+	 *   Layer definition.
+	 * @param gid
+	 *   Tileset GID offset.
+	 */
+	public void addCollisionLayer(final String name, final LayerDefinition collisionLayer,
+			final Integer gid) throws IOException {
+		addToContent(name, collisionLayer.encode());
+		collisionMap.setCollisionData(collisionLayer, gid);
+	}
+
+	/**
 	 * Sets protection information for this zone.
 	 *
 	 * @param name
@@ -1162,7 +1178,12 @@ public class StendhalRPZone extends MarauroaRPZone {
 	public synchronized boolean collides(final Entity entity, final double x, final double y,
 			final boolean checkObjects) {
 
-		if (collisionMap.collides(x, y, entity.getWidth(), entity.getHeight())) {
+		if (entity.has("flying")) {
+			if (!collisionMap.canFlyOver((int) x, (int) y, (int) entity.getWidth(),
+					(int) entity.getHeight())) {
+				return true;
+			}
+		} else if (collisionMap.collides(x, y, entity.getWidth(), entity.getHeight())) {
 			return true;
 		}
 
