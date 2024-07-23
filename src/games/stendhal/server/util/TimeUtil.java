@@ -16,14 +16,21 @@
  ***************************************************************************/
 package games.stendhal.server.util;
 
+import java.io.IOException;
 import java.time.LocalTime;
 
+import org.apache.log4j.Logger;
+
+import games.stendhal.common.MathHelper;
 import games.stendhal.common.grammar.Grammar;
+import marauroa.common.Configuration;
 
 /**
  * Utility functions for time in the game.
  */
 public class TimeUtil {
+
+	private static Logger logger = Logger.getLogger(TimeUtil.class);
 
 	public static final long MILLISECONDS_IN_MINUTE = 60 * 1000;
 	public static final long MILLISECONDS_IN_HOUR = 60 * MILLISECONDS_IN_MINUTE;
@@ -265,5 +272,49 @@ public class TimeUtil {
 	 */
 	public static int secondsToMidnight() {
 		return SECONDS_IN_DAY - LocalTime.now().toSecondOfDay();
+	}
+
+	/**
+	 * Attempts to retrieve configured duration of a single turn.
+	 *
+	 * @return
+	 *   Duration in seconds of a turn.
+	 */
+	public static int secondsPerTurn() {
+		int seconds = 300; // default duration
+		try {
+			Configuration conf = Configuration.getConfiguration();
+			seconds = MathHelper.parseIntDefault(conf.get("turn_length"), seconds);
+		} catch (IOException e) {
+			logger.error("Failed to get turn duration from configuration, using default value: "
+					+ seconds + " seconds", e);
+		}
+		return seconds;
+	}
+
+	/**
+	 * Converts seconds to turns.
+	 *
+	 * @param turns
+	 *   Number of turns.
+	 * @return
+	 *   Seconds equivalent to number of turns.
+	 */
+	public static int turnsToSeconds(int turns) {
+		double seconds = turns * secondsPerTurn();
+		return (int) Math.floor(seconds);
+	}
+
+	/**
+	 * Converts turns to seconds.
+	 *
+	 * @param seconds
+	 *   Number of seconds.
+	 * @return
+	 *   Turns equivalent to number of seconds.
+	 */
+	public static int secondsToTurns(int seconds) {
+		double turns = seconds / secondsPerTurn();
+		return (int) Math.floor(turns);
 	}
 }
