@@ -1,5 +1,5 @@
 /***************************************************************************
- *                   Copyright (C) 2003-2022 - Arianne                     *
+ *                   Copyright (C) 2003-2024 - Arianne                     *
  ***************************************************************************
  ***************************************************************************
  *                                                                         *
@@ -16,13 +16,10 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 
 import games.stendhal.server.core.engine.SingletonRepository;
-import games.stendhal.server.core.engine.StendhalRPZone;
 import games.stendhal.server.core.rule.EntityManager;
-import games.stendhal.server.entity.RPEntity;
-import games.stendhal.server.entity.player.Player;
 
 
-public class Shovel extends AreaUseItem {
+public class Shovel extends Tool {
 
 	private static final Logger logger = Logger.getLogger(Shovel.class);
 
@@ -46,6 +43,7 @@ public class Shovel extends AreaUseItem {
 		super(item);
 	}
 
+	/*
 	@Override
 	protected boolean onUsedInArea(final RPEntity user, final StendhalRPZone zone, final int x, final int y) {
 		if (user instanceof Player) {
@@ -85,6 +83,7 @@ public class Shovel extends AreaUseItem {
 
 		return true;
 	}
+	*/
 
 	/**
 	 * Checks if a position is within 10 steps of where ring is buried.
