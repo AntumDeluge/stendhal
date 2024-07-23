@@ -1875,6 +1875,7 @@ Mature sheep wanted: please speak to Sato.
 		<configurator class-name="games.stendhal.server.maps.semos.city.RudolphNPC"
 			condition="stendhal.christmas"/>
 		<configurator class-name="games.stendhal.server.maps.semos.city.DragonKeeperNPC" condition="stendhal.petleveling"/>
+		<configurator class-name="games.stendhal.server.maps.semos.city.DiggableMoneyTreasure"/>
 
 
 		<!-- START: Mine Town Weeks Boutique -->
