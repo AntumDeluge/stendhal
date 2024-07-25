@@ -19,7 +19,8 @@ public enum CollisionType {
 	NONE((byte) 0x00),
 	HARD((byte) 0x01),
 	WALKBLOCK((byte) 0x02),
-	FLYOVER((byte) 0x03);
+	FLYOVER((byte) 0x03),
+	FAUX((byte) 0x03);
 
 	private final byte byteValue;
 
