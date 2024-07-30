@@ -118,6 +118,7 @@ export class Client {
 		stendhal.data.cstatus.init();
 		stendhal.data.group = singletons.getGroupManager();
 		stendhal.data.outfit = singletons.getOutfitStore();
+		stendhal.data.outfit.init();
 		stendhal.data.sprites = singletons.getSpriteStore();
 		stendhal.data.map = singletons.getMap();
 		// online players
@@ -180,8 +181,6 @@ export class Client {
 		singletons.getTileStore().init();
 		// initialize emoji data
 		singletons.getEmojiStore().init();
-		// initialize outfit data
-		stendhal.data.outfit.init();
 
 		new DesktopUserInterfaceFactory().create();
 
