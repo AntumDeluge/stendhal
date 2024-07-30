@@ -9,6 +9,8 @@
  *                                                                         *
  ***************************************************************************/
 
+import { OutfitPreviewComponent } from "../component/OutfitPreviewComponent";
+
 import { DialogContentComponent } from "../toolkit/DialogContentComponent";
 
 import { Client } from "../../Client";
@@ -16,7 +18,11 @@ import { SlashActionRepo } from "../../SlashActionRepo";
 
 
 /**
- * a dialog to select your character from
+ * A dialog to select your character from.
+ *
+ * FIXME:
+ *   - can't select characters if dialog extends past right edge
+ *   - doesn't display after refresh
  */
 export class ChooseCharacterDialog extends DialogContentComponent {
 
@@ -34,7 +40,16 @@ export class ChooseCharacterDialog extends DialogContentComponent {
 					this.componentElement.dispatchEvent(new Event("close"));
 					Client.get().chooseCharacter(name);
 				});
-				characterList.append(button);
+				const preview = new OutfitPreviewComponent();
+				let outfit = characters[i]["a"]["outfit_ext"];
+				if (outfit) {
+					preview.setOutfit(outfit);
+				}
+
+				const col = document.createElement("div");
+				col.classList.add("verticalgroup", "choose-character");
+				col.append(preview.componentElement, button);
+				characterList.append(col);
 			}
 		}
 

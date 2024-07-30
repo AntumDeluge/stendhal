@@ -58,6 +58,10 @@ input:invalid {
 	color: #FFF;
 }
 
+.choose-character {
+	min-width: 96px;
+}
+
 li.online {
 	color: var(--text-color-online);
 }
