@@ -193,6 +193,9 @@ export class Outfit {
 	 *
 	 * TODO:
 	 *   - use dress layer based on body type
+	 * FIXME:
+	 *   - sometimes Player outfit displays as "body=0,head=0" at login
+	 *   - `callback` not always called
 	 *
 	 * @param {Function} callback
 	 *   Function to pass image to when ready.
