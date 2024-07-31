@@ -29,10 +29,37 @@ export class Creature extends RPEntity {
 
 	override set(key: string, value: string) {
 		super.set(key, value);
-
 		if (key === "name") {
 			// overlay animation
 			this.overlay = EntityOverlayRegistry.get("creature", this);
+		} else if (key === "subclass") {
+			this.updateSprite();
+		}
+	}
+
+	override unset(key: string) {
+		super.unset(key);
+		if (key === "subclass") {
+			this.updateSprite();
+		}
+	}
+
+	override updateSprite() {
+		if (typeof(this["outfit_ext"]) !== "undefined" || typeof(this["outfit"]) !== "undefined") {
+			super.updateSprite();
+		} else if (typeof(this["class"]) !== "undefined" && typeof(this["subclass"]) !== "undefined") {
+			let filename = stendhal.paths.sprites + "/" + this.spritePath + "/" + this["class"] + "/"
+					+ this["subclass"];
+			// check for safe image
+			if (!stendhal.config.getBoolean("effect.blood")
+					&& stendhal.data.sprites.hasSafeImage(filename)) {
+				filename = filename + "-safe.png";
+			} else {
+				filename = filename + ".png";
+			}
+			this.sprite = stendhal.data.sprites.get(filename);
+		} else {
+			this.sprite = undefined;
 		}
 	}
 

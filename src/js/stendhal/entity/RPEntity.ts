@@ -58,7 +58,7 @@ export class RPEntity extends ActiveEntity {
 	// canvas for merging outfit layers to be drawn
 	private octx?: CanvasRenderingContext2D;
 
-	private sprite?: HTMLImageElement;
+	protected sprite?: HTMLImageElement;
 
 	private attackers: {[key: string]: any} = { size: 0 };
 
@@ -117,7 +117,7 @@ export class RPEntity extends ActiveEntity {
 		} else if (key === "subclass" && typeof(oldValue) !== "undefined" && value !== oldValue) {
 			this.onTransformed();
 		}
-		if (["class", "subclass", "outfit", "outfit_ext", "outfit_colors"].indexOf(key) > -1) {
+		if (["class", "outfit", "outfit_ext", "outfit_colors"].indexOf(key) > -1) {
 			this.updateSprite();
 		}
 	}
@@ -132,7 +132,7 @@ export class RPEntity extends ActiveEntity {
 			this.addFloater("Receptive", "#ffff00");
 		}
 		super.unset(key);
-		if (["class", "subclass", "outfit", "outfit_ext", "outfit_colors"].indexOf(key) > -1) {
+		if (["class", "outfit", "outfit_ext", "outfit_colors"].indexOf(key) > -1) {
 			this.updateSprite();
 		}
 	}
@@ -140,7 +140,7 @@ export class RPEntity extends ActiveEntity {
 	/**
 	 * Sets image to be drawn representing this entity.
 	 */
-	private updateSprite() {
+	protected updateSprite() {
 		if (typeof(this["outfit_ext"]) !== "undefined") {
 			Outfit.build(this["outfit_ext"], this["outfit_colors"]).toImage((image: HTMLImageElement) => {
 				this.sprite = image;
@@ -159,9 +159,6 @@ export class RPEntity extends ActiveEntity {
 			});
 		} else if (typeof(this["class"]) !== "undefined") {
 			let filename = stendhal.paths.sprites + "/" + this.spritePath + "/" + this["class"];
-			if (typeof(this["subclass"]) !== "undefined") {
-				filename += "/" + this["subclass"];
-			}
 			// check for safe image
 			if (!stendhal.config.getBoolean("effect.blood")
 					&& stendhal.data.sprites.hasSafeImage(filename)) {
