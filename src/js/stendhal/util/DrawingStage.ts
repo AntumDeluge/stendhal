@@ -81,6 +81,26 @@ export class DrawingStage {
 	}
 
 	/**
+	 * Retrieves current width of drawing area.
+	 *
+	 * @returns {number}
+	 *   Canvas pixel width.
+	 */
+	getWidth(): number {
+		return this.canvas.width;
+	}
+
+	/**
+	 * Retrieves current height of drawing area.
+	 *
+	 * @returns {number}
+	 *   Canvas pixel height.
+	 */
+	getHeight(): number {
+		return this.canvas.height;
+	}
+
+	/**
 	 * Converts canvas data to PNG data URL.
 	 *
 	 * @returns {string}
