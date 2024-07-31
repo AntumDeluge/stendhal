@@ -205,7 +205,7 @@ export class Outfit {
 		// get directly from cache since we don't want to return failsafe image
 		let image: HTMLImageElement = stendhal.data.sprites.getCached(sig);
 
-		const onReady = function(e?: Event) {
+		const onReady = (e?: Event) => {
 			image.removeEventListener("load", onReady);
 			callback(image);
 		};
@@ -255,12 +255,16 @@ export class Outfit {
 
 		if (layers.length == 0) {
 			image = stendhal.data.sprites.getFailsafe();
-			callback(image);
+			if (image.height > 0) {
+				onReady();
+			} else {
+				image.addEventListener("load", onReady);
+			}
 			return;
 		}
 
 		let onAllLayersReady: Function;
-		const onLayerReady = function(e?: Event) {
+		const onLayerReady = (e?: Event) => {
 			for (const layer of layers) {
 				if (!layer.complete || layer.height === 0) {
 					return;
@@ -269,7 +273,7 @@ export class Outfit {
 			onAllLayersReady();
 		};
 
-		onAllLayersReady = function() {
+		onAllLayersReady = () => {
 			for (const layer of layers) {
 				layer.removeEventListener("load", onLayerReady);
 				stage.drawImage(layer);
