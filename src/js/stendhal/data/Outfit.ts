@@ -274,6 +274,13 @@ export class Outfit {
 				layer.removeEventListener("load", onLayerReady);
 				stage.drawImage(layer);
 			}
+			const sw = stage.getWidth();
+			const sh = stage.getHeight();
+			if (sw === 0 || sh === 0) {
+				console.error("Invalid outfit image dimensions: " + sw + "x" + sh);
+			} else if (stage.isEmpty()) {
+				console.warn(new Error("Empty outfit image"));
+			}
 			image = stage.toImage();
 			stage.reset();
 			stendhal.data.sprites.cache(sig, image);
