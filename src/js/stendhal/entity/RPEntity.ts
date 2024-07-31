@@ -114,10 +114,10 @@ export class RPEntity extends ActiveEntity {
 			this.onLevelChanged(key, value, oldValue);
 		} else if (["title", "name", "class", "type"].indexOf(key) >-1) {
 			this.createTitleTextSprite();
-		} else if (["class", "subclass", "outfit", "outfit_ext", "outfit_colors"].indexOf(key) > -1) {
-			if (key === "subclass" && typeof(oldValue) !== "undefined" && value !== oldValue) {
-				this.onTransformed();
-			}
+		} else if (key === "subclass" && typeof(oldValue) !== "undefined" && value !== oldValue) {
+			this.onTransformed();
+		}
+		if (["class", "subclass", "outfit", "outfit_ext", "outfit_colors"].indexOf(key) > -1) {
 			this.updateSprite();
 		}
 	}
@@ -141,15 +141,6 @@ export class RPEntity extends ActiveEntity {
 	 * Sets image to be drawn representing this entity.
 	 */
 	private updateSprite() {
-		// DEBUG:
-		let msg = this["name"] + " updating sprite ...";
-		msg += "\noutfit: " + this["outfit"];
-		msg += "\noutfit_ext: " + this["outfit_ext"];
-		msg += "\noutfit_colors: " + this["outfit_colors"];
-		msg += "\nclass: " + this["class"];
-		msg += "\nsubclass: " + this["subclass"];
-		console.log(msg);
-
 		if (typeof(this["outfit_ext"]) !== "undefined") {
 			Outfit.build(this["outfit_ext"], this["outfit_colors"]).toImage((image: HTMLImageElement) => {
 				this.sprite = image;
@@ -428,7 +419,6 @@ export class RPEntity extends ActiveEntity {
 	 * Draws entity sprite & shadow.
 	 *
 	 * FIXME:
-	 *   - not drawing NPCs using "class"
 	 *   - outfits not drawing after page reload (have to clear browser cache)
 	 *   - not drawing outfit layer colors
 	 *
