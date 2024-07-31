@@ -17,6 +17,8 @@ import { Entity } from "./Entity";
 import { singletons } from "../SingletonRepo";
 import { MenuItem } from "../action/MenuItem";
 
+import { Outfit } from "../data/Outfit";
+
 import { Color } from "../data/color/Color";
 
 import { Chat } from "../util/Chat";
@@ -56,6 +58,8 @@ export class RPEntity extends ActiveEntity {
 	// canvas for merging outfit layers to be drawn
 	private octx?: CanvasRenderingContext2D;
 
+	private sprite?: HTMLImageElement;
+
 	private attackers: {[key: string]: any} = { size: 0 };
 
 	/**
@@ -65,6 +69,14 @@ export class RPEntity extends ActiveEntity {
 	 */
 	protected overlay?: OverlaySpriteImpl;
 
+
+	/*
+	constructor() {
+		super();
+		// called here in case attributes set before instance is created
+		this.updateSprite();
+	}
+	*/
 
 	override set(key: string, value: any) {
 		// Ugly hack to detect changes. The old value is no
@@ -102,8 +114,11 @@ export class RPEntity extends ActiveEntity {
 			this.onLevelChanged(key, value, oldValue);
 		} else if (["title", "name", "class", "type"].indexOf(key) >-1) {
 			this.createTitleTextSprite();
-		} else if (key === "subclass" && typeof(oldValue) !== "undefined" && value !== oldValue) {
-			this.onTransformed();
+		} else if (["class", "subclass", "outfit", "outfit_ext", "outfit_colors"].indexOf(key) > -1) {
+			if (key === "subclass" && typeof(oldValue) !== "undefined" && value !== oldValue) {
+				this.onTransformed();
+			}
+			this.updateSprite();
 		}
 	}
 
@@ -117,6 +132,56 @@ export class RPEntity extends ActiveEntity {
 			this.addFloater("Receptive", "#ffff00");
 		}
 		super.unset(key);
+		if (["class", "subclass", "outfit", "outfit_ext", "outfit_colors"].indexOf(key) > -1) {
+			this.updateSprite();
+		}
+	}
+
+	/**
+	 * Sets image to be drawn representing this entity.
+	 */
+	private updateSprite() {
+		// DEBUG:
+		let msg = this["name"] + " updating sprite ...";
+		msg += "\noutfit: " + this["outfit"];
+		msg += "\noutfit_ext: " + this["outfit_ext"];
+		msg += "\noutfit_colors: " + this["outfit_colors"];
+		msg += "\nclass: " + this["class"];
+		msg += "\nsubclass: " + this["subclass"];
+		console.log(msg);
+
+		if (typeof(this["outfit_ext"]) !== "undefined") {
+			Outfit.build(this["outfit_ext"], this["outfit_colors"]).toImage((image: HTMLImageElement) => {
+				this.sprite = image;
+			});
+		} else if (typeof(this["outfit"]) !== "undefined") {
+			// legacy support
+			const outfit: string[] = [];
+			outfit.push("body=" + (this["outfit"] % 100));
+			outfit.push("dress=" + (Math.floor(this["outfit"]/100) % 100));
+			outfit.push("head=" + (Math.floor(this["outfit"]/10000) % 100));
+			outfit.push("hair=" + (Math.floor(this["outfit"]/1000000) % 100));
+			outfit.push("detail=" + (Math.floor(this["outfit"]/100000000) % 100));
+
+			Outfit.build(outfit.join(","), this["outfit_colors"]).toImage((image: HTMLImageElement) => {
+				this.sprite = image;
+			});
+		} else if (typeof(this["class"]) !== "undefined") {
+			let filename = stendhal.paths.sprites + "/" + this.spritePath + "/" + this["class"];
+			if (typeof(this["subclass"]) !== "undefined") {
+				filename += "/" + this["subclass"];
+			}
+			// check for safe image
+			if (!stendhal.config.getBoolean("effect.blood")
+					&& stendhal.data.sprites.hasSafeImage(filename)) {
+				filename = filename + "-safe.png";
+			} else {
+				filename = filename + ".png";
+			}
+			this.sprite = stendhal.data.sprites.get(filename);
+		} else {
+			this.sprite = undefined;
+		}
 	}
 
 	override isVisibleToAction(_filter: boolean) {
@@ -353,11 +418,45 @@ export class RPEntity extends ActiveEntity {
 		}
 		this.drawCombat(ctx);
 		this.drawMain(ctx);
+		this.drawOverlayAnimation(ctx);
+		//~ this.drawMainLegacy(ctx);
 		this.drawAttack(ctx);
 		this.drawStatusIcons(ctx);
 	}
 
+	/**
+	 * Draws entity sprite & shadow.
+	 *
+	 * FIXME:
+	 *   - not drawing NPCs using "class"
+	 *   - outfits not drawing after page reload (have to clear browser cache)
+	 *   - not drawing outfit layer colors
+	 *
+	 * @param {CanvasRenderingContext2D} ctx
+	 *   Canvas in which it is to be drawn.
+	 */
 	drawMain(ctx: CanvasRenderingContext2D) {
+		if (!this.sprite || this.sprite.height === 0) {
+			return;
+		}
+		// draw shadow first
+		if (stendhal.config.getBoolean("effect.shadows") && this.castsShadow()) {
+			// check for configured shadow style
+			let shadow_style = this["shadow_style"];
+			if (typeof(shadow_style) === "undefined") {
+				// default to sprite dimensions
+				// NOTE: if ent shadow style not configured default style will not look correct
+				shadow_style = (this.sprite.width / 3) + "x" + (this.sprite.height / 4);
+			}
+			const shadow = stendhal.data.sprites.getShadow(shadow_style);
+			if (typeof(shadow) !== "undefined") {
+				this.drawSpriteImage(ctx, shadow);
+			}
+		}
+		this.drawSpriteImage(ctx, this.sprite);
+	}
+
+	drawMainLegacy(ctx: CanvasRenderingContext2D) {
 		if (typeof(this["outfit"]) != "undefined" || typeof(this["outfit_ext"]) != "undefined") {
 			this.drawMultipartOutfit(ctx);
 		} else {
