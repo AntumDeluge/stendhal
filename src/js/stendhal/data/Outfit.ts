@@ -263,19 +263,9 @@ export class Outfit {
 			return;
 		}
 
-		let onAllLayersReady: Function;
-		const onLayerReady = (e?: Event) => {
+		// builds componsite image from layers
+		const buildComposite = () => {
 			for (const layer of layers) {
-				if (!layer.complete || layer.height === 0) {
-					return;
-				}
-			}
-			onAllLayersReady();
-		};
-
-		onAllLayersReady = () => {
-			for (const layer of layers) {
-				layer.removeEventListener("load", onLayerReady);
 				stage.drawImage(layer);
 			}
 			const sw = stage.getWidth();
@@ -295,12 +285,22 @@ export class Outfit {
 			}
 		};
 
-		for (const layer of layers) {
-			if (layer.height > 0) {
-				onLayerReady();
-			} else {
-				layer.addEventListener("load", onLayerReady);
+		// checks if all layer images have loaded & executes function to build composite image
+		const checkLayers = (e?: Event) => {
+			for (const layer of layers) {
+				if (layer.height === 0) {
+					layer.addEventListener("load", checkLayers);
+					return;
+				}
 			}
+			// all layers ready
+			for (const layer of layers) {
+				layer.removeEventListener("load", checkLayers);
+			}
+			buildComposite();
 		}
+
+		// entry point for checking layers' loaded state
+		checkLayers();
 	}
 }
