@@ -117,7 +117,14 @@ export class RPEntity extends ActiveEntity {
 		} else if (key === "subclass" && typeof(oldValue) !== "undefined" && value !== oldValue) {
 			this.onTransformed();
 		}
-		if (["class", "outfit", "outfit_ext", "outfit_colors"].indexOf(key) > -1) {
+		if (["class", "outfit", "outfit_ext"].indexOf(key) > -1) {
+			this.updateSprite();
+		}
+	}
+
+	override setMapEntry(map: string, key: string, value: object) {
+		super.setMapEntry(map, key, value);
+		if (map === "outfit_colors") {
 			this.updateSprite();
 		}
 	}
@@ -132,7 +139,14 @@ export class RPEntity extends ActiveEntity {
 			this.addFloater("Receptive", "#ffff00");
 		}
 		super.unset(key);
-		if (["class", "outfit", "outfit_ext", "outfit_colors"].indexOf(key) > -1) {
+		if (["class", "outfit", "outfit_ext"].indexOf(key) > -1) {
+			this.updateSprite();
+		}
+	}
+
+	override unsetMapEntry(map: string, key: string) {
+		super.unsetMapEntry(map, key);
+		if (map === "outfit_colors") {
 			this.updateSprite();
 		}
 	}
@@ -141,8 +155,16 @@ export class RPEntity extends ActiveEntity {
 	 * Sets image to be drawn representing this entity.
 	 */
 	protected updateSprite() {
+		const outfitColoring: string[] = [];
+		if (typeof(this["outfit_colors"]) !== "undefined") {
+			for (const part in this["outfit_colors"]) {
+				outfitColoring.push(part + "=" + this["outfit_colors"][part]);
+			}
+		}
+
 		if (typeof(this["outfit_ext"]) !== "undefined") {
-			Outfit.build(this["outfit_ext"], this["outfit_colors"]).toImage((image: HTMLImageElement) => {
+			Outfit.build(this["outfit_ext"], outfitColoring.join(","))
+					.toImage((image: HTMLImageElement) => {
 				this.sprite = image;
 			});
 		} else if (typeof(this["outfit"]) !== "undefined") {
@@ -154,7 +176,8 @@ export class RPEntity extends ActiveEntity {
 			outfit.push("hair=" + (Math.floor(this["outfit"]/1000000) % 100));
 			outfit.push("detail=" + (Math.floor(this["outfit"]/100000000) % 100));
 
-			Outfit.build(outfit.join(","), this["outfit_colors"]).toImage((image: HTMLImageElement) => {
+			Outfit.build(outfit.join(","), outfitColoring.join(","))
+					.toImage((image: HTMLImageElement) => {
 				this.sprite = image;
 			});
 		} else if (typeof(this["class"]) !== "undefined") {
@@ -416,8 +439,7 @@ export class RPEntity extends ActiveEntity {
 	 * Draws entity sprite & shadow.
 	 *
 	 * FIXME:
-	 *   - outfits not drawing after page reload (have to clear browser cache)
-	 *   - not drawing outfit layer colors
+	 *   - full player outfit not drawing after clearing browser cache
 	 *
 	 * @param {CanvasRenderingContext2D} ctx
 	 *   Canvas in which it is to be drawn.
