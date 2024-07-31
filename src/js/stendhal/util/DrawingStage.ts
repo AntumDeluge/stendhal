@@ -137,4 +137,23 @@ export class DrawingStage {
 		this.checkSize(image);
 		this.ctx.drawImage(image, 0, 0);
 	}
+
+	/**
+	 * Checks if staged image data is empty (no visible pixels).
+	 *
+	 * @returns {boolean}
+	 *   `true` if only fully tranparent pixels are present.
+	 */
+	isEmpty(): boolean {
+		// image data is an array in which each set of 4 numbers represents a pixel's RGBA values
+		const data = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height).data;
+		for (let offset = 0; offset < data.length; offset += 4) {
+			// check pixel alpha level (data[offset] = red, data[offset+3] = alpha)
+			if (data[offset+3] > 0) {
+				// pixel is not fully transparent
+				return false;
+			}
+		}
+		return true;
+	}
 }
