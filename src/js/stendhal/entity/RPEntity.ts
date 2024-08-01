@@ -58,7 +58,10 @@ export class RPEntity extends ActiveEntity {
 	// canvas for merging outfit layers to be drawn
 	private octx?: CanvasRenderingContext2D;
 
+	/** Image representing this entity. */
 	protected sprite?: HTMLImageElement;
+	/** Current outfit sprite loader. */
+	private outfitLoader?: any;
 
 	private attackers: {[key: string]: any} = { size: 0 };
 
@@ -69,14 +72,6 @@ export class RPEntity extends ActiveEntity {
 	 */
 	protected overlay?: OverlaySpriteImpl;
 
-
-	/*
-	constructor() {
-		super();
-		// called here in case attributes set before instance is created
-		this.updateSprite();
-	}
-	*/
 
 	override set(key: string, value: any) {
 		// Ugly hack to detect changes. The old value is no
@@ -118,14 +113,18 @@ export class RPEntity extends ActiveEntity {
 			this.onTransformed();
 		}
 		if (["class", "outfit", "outfit_ext"].indexOf(key) > -1) {
-			this.updateSprite();
+			if (["outfit", "outfit_ext"].indexOf(key) > -1) {
+				this.onOutfitChange();
+			} else {
+				this.updateSprite();
+			}
 		}
 	}
 
 	override setMapEntry(map: string, key: string, value: object) {
 		super.setMapEntry(map, key, value);
 		if (map === "outfit_colors") {
-			this.updateSprite();
+			this.onOutfitChange();
 		}
 	}
 
@@ -140,46 +139,126 @@ export class RPEntity extends ActiveEntity {
 		}
 		super.unset(key);
 		if (["class", "outfit", "outfit_ext"].indexOf(key) > -1) {
-			this.updateSprite();
+			this.onOutfitChange();
 		}
 	}
 
 	override unsetMapEntry(map: string, key: string) {
 		super.unsetMapEntry(map, key);
 		if (map === "outfit_colors") {
-			this.updateSprite();
+			this.onOutfitChange();
 		}
 	}
 
+	private onOutfitChange() {
+		// mark current load to abort & free for new load
+		if (this.outfitLoader) {
+			this.outfitLoader.cancelled = true;
+		}
+		this.outfitLoader = undefined;
+		this.updateSprite();
+	}
+
 	/**
-	 * Sets image to be drawn representing this entity.
+	 * Handles loading image to be drawn representing this entity.
 	 */
 	protected updateSprite() {
-		const outfitColoring: string[] = [];
-		if (typeof(this["outfit_colors"]) !== "undefined") {
-			for (const part in this["outfit_colors"]) {
-				outfitColoring.push(part + "=" + this["outfit_colors"][part]);
-			}
+		if (this.outfitLoader) {
+			// outfit is still loading or was cancelled
+			return;
 		}
 
-		if (typeof(this["outfit_ext"]) !== "undefined") {
-			Outfit.build(this["outfit_ext"], outfitColoring.join(","))
-					.toImage((image: HTMLImageElement) => {
-				this.sprite = image;
-			});
-		} else if (typeof(this["outfit"]) !== "undefined") {
-			// legacy support
-			const outfit: string[] = [];
-			outfit.push("body=" + (this["outfit"] % 100));
-			outfit.push("dress=" + (Math.floor(this["outfit"]/100) % 100));
-			outfit.push("head=" + (Math.floor(this["outfit"]/10000) % 100));
-			outfit.push("hair=" + (Math.floor(this["outfit"]/1000000) % 100));
-			outfit.push("detail=" + (Math.floor(this["outfit"]/100000000) % 100));
+		const hasOutfit = typeof(this["outfit_ext"]) !== "undefined";
+		const hasLegacyOutfit = typeof(this["outfit"]) !== "undefined";
 
-			Outfit.build(outfit.join(","), outfitColoring.join(","))
-					.toImage((image: HTMLImageElement) => {
-				this.sprite = image;
-			});
+		if (hasOutfit || hasLegacyOutfit) {
+			const outfitColoring: string[] = [];
+			if (typeof(this["outfit_colors"]) !== "undefined") {
+				for (const part in this["outfit_colors"]) {
+					outfitColoring.push(part + "=" + this["outfit_colors"][part]);
+				}
+			}
+
+			if (hasOutfit) {
+				this.outfitLoader = {
+					loadAttempts: 0,
+					cancelled: false,
+					exec: function(entity: RPEntity) {
+						if (this.loadAttempts >= 10) {
+							console.warn("Gave up loading outfit image for " + this["name"] + " after "
+									+ this.loadAttempts + " attempts");
+							entity.sprite = undefined;
+							return;
+						}
+						this.loadAttempts++;
+						Outfit.build(entity["outfit_ext"], outfitColoring.join(","))
+								.toImage((image?: HTMLImageElement) => {
+							if (this.cancelled) {
+								// cancelling function should have updated `RPEntity.outfitLoader`
+								return;
+							}
+							if (typeof(image) === "undefined") {
+								window.setTimeout(() => {
+									if (this.cancelled) {
+										// cancelled: don't re-attempt to load outfit
+										return;
+									}
+									this.exec(entity);
+								}, 500);
+							}
+							entity.sprite = image;
+							if (entity.outfitLoader === this) {
+								entity.outfitLoader = undefined;
+							}
+						});
+					}
+				};
+			} else {
+				// legacy support
+				const outfit: string[] = [];
+				outfit.push("body=" + (this["outfit"] % 100));
+				outfit.push("dress=" + (Math.floor(this["outfit"]/100) % 100));
+				outfit.push("head=" + (Math.floor(this["outfit"]/10000) % 100));
+				outfit.push("hair=" + (Math.floor(this["outfit"]/1000000) % 100));
+				outfit.push("detail=" + (Math.floor(this["outfit"]/100000000) % 100));
+
+				this.outfitLoader = {
+					loadAttempts: 0,
+					cancelled: false,
+					exec: function(entity: RPEntity) {
+						if (this.loadAttempts >= 10) {
+							console.warn("Gave up loading outfit image for " + this["name"] + " after "
+									+ this.loadAttempts + " attempts");
+							entity.sprite = undefined;
+							return;
+						}
+						this.loadAttempts++;
+						Outfit.build(outfit.join(","), outfitColoring.join(","))
+								.toImage((image?: HTMLImageElement) => {
+							if (this.cancelled) {
+								// cancelling function should have updated `RPEntity.outfitLoader`
+								return;
+							}
+							if (typeof(image) === "undefined") {
+								window.setTimeout(() => {
+									if (this.cancelled) {
+										// cancelled: don't re-attempt to load outfit
+										return;
+									}
+									this.exec(entity);
+								}, 500);
+							}
+							entity.sprite = image;
+							if (entity.outfitLoader === this) {
+								entity.outfitLoader = undefined;
+							}
+						});
+					}
+				};
+			}
+
+			// begin loading image
+			this.outfitLoader.exec(this);
 		} else if (typeof(this["class"]) !== "undefined") {
 			let filename = stendhal.paths.sprites + "/" + this.spritePath + "/" + this["class"];
 			// check for safe image
@@ -446,6 +525,8 @@ export class RPEntity extends ActiveEntity {
 	 */
 	drawMain(ctx: CanvasRenderingContext2D) {
 		if (!this.sprite || this.sprite.height === 0) {
+			// called here in case outfit sprite wasn't loaded
+			this.updateSprite();
 			return;
 		}
 		// draw shadow first
