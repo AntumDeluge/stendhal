@@ -195,7 +195,10 @@ export class Outfit {
 	 *   - use dress layer based on body type
 	 * FIXME:
 	 *   - sometimes Player outfit displays as "body=0,head=0" at login
-	 *   - `callback` not always called
+	 *   - need to exclude non-player pickable bodies from "no-nonude" option if variant not available
+	 *   - sometimes not all layers are drawn on inital login after clearing browser cache
+	 *     (Firefox/Windows)
+	 *   - layer coloring doesn't work on initial login after clearing browser cache (Firefox/Windows)
 	 *
 	 * @param {Function} callback
 	 *   Function to pass image to when ready.
@@ -203,10 +206,15 @@ export class Outfit {
 	toImage(callback: Function) {
 		const sig = this.getSignature();
 		// get directly from cache since we don't want to return failsafe image
-		let image: HTMLImageElement = stendhal.data.sprites.getCached(sig);
+		let image: HTMLImageElement|undefined = stendhal.data.sprites.getCached(sig);
 
 		const onReady = (e?: Event) => {
-			image.removeEventListener("load", onReady);
+			if (image) {
+				if (image.height === 0) {
+					console.error("Failed to convert outfit layers to image");
+				}
+				image.removeEventListener("load", onReady);
+			}
 			callback(image);
 		};
 
@@ -255,10 +263,10 @@ export class Outfit {
 
 		if (layers.length == 0) {
 			image = stendhal.data.sprites.getFailsafe();
-			if (image.height > 0) {
+			if (image!.height > 0) {
 				onReady();
 			} else {
-				image.addEventListener("load", onReady);
+				image!.addEventListener("load", onReady);
 			}
 			return;
 		}
@@ -270,10 +278,21 @@ export class Outfit {
 			}
 			const sw = stage.getWidth();
 			const sh = stage.getHeight();
-			if (sw === 0 || sh === 0) {
-				console.error("Invalid outfit image dimensions: " + sw + "x" + sh);
-			} else if (stage.isEmpty()) {
-				console.warn(new Error("Empty outfit image"));
+			const invalidDimensions = sw === 0 || sh === 0;
+			const emptyImage = stage.isEmpty();
+			if (invalidDimensions || emptyImage) {
+				if (invalidDimensions) {
+					console.error("Invalid outfit image dimensions: " + sw + "x" + sh);
+				} else {
+					//console.warn(new Error("Empty outfit image"));
+					console.warn("Warning: Empty outfit image");
+					console.trace();
+				}
+				stage.reset();
+				// pass undefined to callback, calling methods may handle such cases such as re-trying
+				image = undefined;
+				onReady();
+				return;
 			}
 			image = stage.toImage();
 			stage.reset();
