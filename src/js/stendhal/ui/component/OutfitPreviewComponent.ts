@@ -22,9 +22,6 @@ declare var stendhal: any;
 
 /**
  * Component to preview an entity's outfit sprite.
- *
- * FIXME:
- *   - character select previews don't draw after page refresh
  */
 export class OutfitPreviewComponent extends Component {
 
@@ -33,11 +30,18 @@ export class OutfitPreviewComponent extends Component {
 	private image?: HTMLImageElement;
 	private bgColor?: string;
 
+	/** Determines if current attempt to load image should be cancelled. */
+	private cancelRetry: boolean;
+	/** Number of times loading image has been attempted. */
+	private loadAttempts;
+
 
 	constructor() {
 		super("outfit-preview-template");
 		this.dir = Direction.DOWN;
 		this.index = 1;
+		this.cancelRetry = false;
+		this.loadAttempts = 0;
 	}
 
 	/**
@@ -47,10 +51,33 @@ export class OutfitPreviewComponent extends Component {
 	 *   Outfit formatted string ("body=0,head=2,eyes=1,...).
 	 * @param {string=} coloring
 	 *   Outfit coloring.
+	 * @param {number} [retryDelay=500]
+	 *   Milliseconds delay between retries.
 	 */
-	setOutfit(outfit: string, coloring?: string) {
+	setOutfit(outfit: string, coloring?: string, retryDelay=500) {
+		this.loadAttempts++;
 		const otemp = Outfit.build(outfit, coloring);
-		otemp.toImage((image: HTMLImageElement) => {
+		otemp.toImage((image?: HTMLImageElement) => {
+			if (this.cancelRetry) {
+				// cancelled: don't re-attempt to load outfit
+				return;
+			}
+			if (typeof(image) === "undefined") {
+				// maximum attempts to load image
+				if (this.loadAttempts < 10) {
+					console.debug("Re-attempting to load outfit image (tries: " + (this.loadAttempts+1) + ")");
+					window.setTimeout(() => {
+						if (this.cancelRetry) {
+							// cancelled: don't re-attempt to load outfit
+							return;
+						}
+						this.setOutfit(outfit, coloring);
+					}, retryDelay);
+				} else {
+					console.warn("Gave up loading outfit image after " + this.loadAttempts + " attempts");
+				}
+				return;
+			}
 			this.image = image;
 			this.update();
 		});
@@ -139,5 +166,12 @@ export class OutfitPreviewComponent extends Component {
 			ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 		}
 		ctx.drawImage(this.image, this.index * w, (this.dir.val - 1) * h, w, h, 0, 0, w, h);
+	}
+
+	/**
+	 * Marks to abort at next attempt to load outfit image.
+	 */
+	cancel() {
+		this.cancelRetry = true;
 	}
 }
