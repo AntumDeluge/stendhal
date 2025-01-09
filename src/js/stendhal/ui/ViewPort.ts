@@ -198,6 +198,12 @@ export class ViewPort {
 
 		// create color filter in background
 		this.coloringCtx.drawImage(this.HSLFilter, 0, 0);
+		// add lighting effects
+		for (const entity of stendhal.zone.entities) {
+			if (entity["light_source"]) {
+				entity.drawLightSource(this.coloringCtx);
+			}
+		}
 
 		// apply filter & lighting effects to main context
 		this.ctx.save();

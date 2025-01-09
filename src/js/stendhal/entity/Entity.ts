@@ -1,5 +1,5 @@
 /***************************************************************************
- *                   (C) Copyright 2003-2024 - Stendhal                    *
+ *                   (C) Copyright 2003-2025 - Stendhal                    *
  ***************************************************************************
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -26,6 +26,10 @@ export class Entity extends RPObject {
 	minimapStyle = "rgb(200,255,200)";
 	zIndex = 10000;
 
+	// light effect
+	private lightSource?: HTMLImageElement;
+
+
 	override set(key: string, value: any) {
 		super.set(key, value);
 		if (key === 'name') {
@@ -35,9 +39,28 @@ export class Entity extends RPObject {
 			this["_name"] = value;
 		} else if (['x', 'y', 'height', 'width'].indexOf(key) > -1) {
 			this[key] = parseInt(value, 10);
+		} else if (key === "light_source") {
+			this.setLightSource(value);
 		} else {
 			this[key] = value;
 		}
+	}
+
+	override unset(key: string) {
+		if (key === "light_source") {
+			this.unsetLightSource();
+		}
+		super.unset(key);
+	}
+
+	private setLightSource(source: string) {
+		// should we use an image from sprites directory instead of tilesets?
+		this.lightSource = stendhal.data.sprites.get(stendhal.paths.tileset + "/light/entity_" + source
+				+ ".png");
+	}
+
+	private unsetLightSource() {
+		this.lightSource = undefined;
 	}
 
 	/**
@@ -231,6 +254,20 @@ export class Entity extends RPObject {
 
 			ctx.drawImage(image, offsetX, offsetY, width, height, x, y, width, height);
 		}
+	}
+
+	drawLightSource(ctx: CanvasRenderingContext2D) {
+		if (typeof(this.lightSource) === "undefined" || this.lightSource.height == 0) {
+			return;
+		}
+
+		ctx.save();
+		ctx.globalCompositeOperation = "lighter";
+		ctx.globalAlpha = 0.5;
+		let x = this["_x"] * 32 + 16 - this.lightSource.width / 2 - stendhal.ui.viewport.offsetX;
+		let y = this["_y"] * 32 + 32 - this.lightSource.height / 2 - this["drawHeight"] / 4 - stendhal.ui.viewport.offsetY;
+		ctx.drawImage(this.lightSource, x, y);
+		ctx.restore();
 	}
 
 	/**
