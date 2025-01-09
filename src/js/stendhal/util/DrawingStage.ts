@@ -1,5 +1,5 @@
 /***************************************************************************
- *                    Copyright © 2024 - Faiumoni e. V.                    *
+ *                 Copyright © 2024-2025 - Faiumoni e. V.                  *
  ***************************************************************************
  ***************************************************************************
  *                                                                         *
@@ -100,6 +100,14 @@ export class DrawingStage {
 		const image = new Image();
 		image.src = this.toDataURL();
 		return image;
+	}
+
+	fill(color: string, alpha=1.0) {
+		this.ctx.save();
+		this.ctx.fillStyle = color;
+		this.ctx.globalAlpha = alpha;
+		this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+		this.ctx.restore();
 	}
 
 	/**
