@@ -1,5 +1,5 @@
 /***************************************************************************
- *                 Copyright © 2023-2024 - Faiumoni e. V.                  *
+ *                 Copyright © 2023-2025 - Faiumoni e. V.                  *
  ***************************************************************************
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -493,14 +493,9 @@ export class Client {
 			if (zoneinfo["blend_method"]) {
 				stendhal.ui.gamewindow.setBlendMethod(zoneinfo["blend_method"]);
 			}
-			const hsl = Color.numToHSL(Number(zoneinfo["color"]));
-			stendhal.ui.gamewindow.HSLFilter = hsl.toString();
-			// deprecated
-			stendhal.ui.gamewindow.filter = "hue-rotate(" + hsl.H + "deg) saturate(" + hsl.S
-					+ ") brightness(" + hsl.L + ")";
+			stendhal.ui.gamewindow.setHSLFilter(Color.numToHSL(Number(zoneinfo["color"])).toString());
 		} else {
-			stendhal.ui.gamewindow.HSLFilter = undefined;
-			stendhal.ui.gamewindow.filter = undefined;
+			stendhal.ui.gamewindow.unsetHSLFilter();
 		}
 
 		singletons.getWeatherRenderer().update(zoneinfo["weather"]);

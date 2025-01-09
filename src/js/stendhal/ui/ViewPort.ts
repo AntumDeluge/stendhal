@@ -54,6 +54,7 @@ export class ViewPort {
 
 	/** Drawing context. */
 	private ctx: CanvasRenderingContext2D;
+	private coloringCtx: CanvasRenderingContext2D;
 	/** Map tile pixel width. */
 	private readonly targetTileWidth = 32;
 	/** Map tile pixel height. */
@@ -71,7 +72,8 @@ export class ViewPort {
 	/** Coloring method of current zone. */
 	private filter?: string; // deprecated, use `HSLFilter`
 	/** Coloring filter of current zone. */
-	private HSLFilter?: string;
+	private HSLFilter?: HTMLImageElement;
+	private HSLFilterAlpha = 0.75;
 	private colorMethod = "";
 	private blendMethod = ""; // FIXME: unused
 
@@ -102,6 +104,10 @@ export class ViewPort {
 		this.ctx = element.getContext("2d")!;
 		this.width = element.width;
 		this.height = element.height;
+		const coloringElement = document.createElement("canvas");
+		coloringElement.width = this.width;
+		coloringElement.height = this.height;
+		this.coloringCtx = coloringElement.getContext("2d")!;
 
 		this.initialStyle = {};
 		//~ const stylesheet = getComputedStyle(element);
@@ -144,13 +150,11 @@ export class ViewPort {
 				var tileOffsetX = Math.floor(this.offsetX / this.targetTileWidth);
 				var tileOffsetY = Math.floor(this.offsetY / this.targetTileHeight);
 
-				// FIXME: filter should not be applied to "blend" layers
-				//this.applyFilter();
+				// FIXME: HSL filter should not be applied to "blend" layers
 				stendhal.data.map.parallax.draw(this.ctx, this.offsetX, this.offsetY);
 				stendhal.data.map.strategy.render(this.ctx.canvas, this, tileOffsetX, tileOffsetY, this.targetTileWidth, this.targetTileHeight);
 
 				this.weatherRenderer.draw(this.ctx);
-				//this.removeFilter();
 				this.applyHSLFilter();
 				this.drawEntitiesTop();
 				this.drawEmojiSprites();
@@ -172,45 +176,34 @@ export class ViewPort {
 		}, Math.max((1000/20) - (new Date().getTime()-startTime), 1));
 	}
 
-	/**
-	 * Adds map's coloring filter to viewport.
-	 *
-	 * FIXME:
-	 * - colors are wrong
-	 * - doesn't support "blend" layers
-	 * - very slow
-	 *
-	 * @deprecated
-	 */
-	applyFilter() {
-		if (this.filter && stendhal.config.getBoolean("effect.lighting")) {
-			this.ctx.filter = this.filter;
-		}
+	setHSLFilter(color: string, alpha=0.75) {
+		// TODO: image should be cached
+		const stage = singletons.getDrawingStage();
+		stage.reset();
+		stage.setSize(this.ctx.canvas.width, this.ctx.canvas.height);
+		stage.fill(color);
+
+		this.HSLFilter = stage.toImage();
+		this.HSLFilterAlpha = alpha;
 	}
 
-	/**
-	 * Removes map's coloring filter from viewport.
-	 *
-	 * @deprecated
-	 */
-	removeFilter() {
-		this.ctx.filter = "none";
+	unsetHSLFilter() {
+		this.HSLFilter = undefined;
 	}
 
-	/**
-	 * Add coloring filter to viewport.
-	 */
-	private applyHSLFilter() {
-		if (!this.HSLFilter) {
+	applyHSLFilter() {
+		if (!stendhal.config.getBoolean("effect.lighting") || !this.HSLFilter || !this.HSLFilter.height) {
 			return;
 		}
+
+		// create color filter in background
+		this.coloringCtx.drawImage(this.HSLFilter, 0, 0);
+
+		// apply filter & lighting effects to main context
 		this.ctx.save();
-		// FIXME: is this the appropriate alpha level to use? "color_method" value from server doesn't
-		//        appear to include alpha information
-		this.ctx.globalAlpha = 0.75;
+		this.ctx.globalAlpha = this.HSLFilterAlpha;
 		this.ctx.globalCompositeOperation = (this.colorMethod || this.ctx.globalCompositeOperation) as GlobalCompositeOperation;
-		this.ctx.fillStyle = this.HSLFilter;
-		this.ctx.fillRect(this.offsetX, this.offsetY, this.ctx.canvas.width, this.ctx.canvas.height);
+		this.ctx.drawImage(this.coloringCtx.canvas, this.offsetX, this.offsetY);
 		this.ctx.restore();
 	}
 
