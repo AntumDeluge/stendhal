@@ -13,9 +13,8 @@ import { FloatingWindow } from "../ui/toolkit/FloatingWindow";
 import { TravelLogDialog } from "../ui/dialog/TravelLogDialog";
 import { ui } from "../ui/UI";
 import { UIComponentEnum } from "../ui/UIComponentEnum";
-import { RPEvent } from "./RPEvent";
-
-declare let stendhal: any;
+import { RPEvent } from "marauroa"
+import { stendhal } from "stendhal";
 
 
 /**

@@ -1,5 +1,5 @@
 /***************************************************************************
- *                 Copyright © 2023-2024 - Faiumoni e. V.                  *
+ *                 Copyright © 2023-2026 - Faiumoni e. V.                  *
  ***************************************************************************
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -9,25 +9,22 @@
  *                                                                         *
  ***************************************************************************/
 
-declare var marauroa: any;
-declare var stendhal: any;
+import { marauroa, Deserializer, RPObject } from "marauroa"
+import { stendhal } from "./stendhal";
 
-import { PerceptionListener } from "./PerceptionListener";
+import { StendhalPerceptionListener } from "./PerceptionListener";
 import { singletons } from "./SingletonRepo";
 
 import { Paths } from "./data/Paths";
 
 import { Color } from "./data/color/Color";
 
+import { EntityRegistry } from "./entity/EntityRegistry";
 import { Ground } from "./entity/Ground";
-import { RPObject } from "./entity/RPObject";
 
 import { ui } from "./ui/UI";
 import { UIComponentEnum } from "./ui/UIComponentEnum";
 
-import { BuddyListComponent } from "./ui/component/BuddyListComponent";
-import { MiniMapComponent } from "./ui/component/MiniMapComponent";
-import { PlayerEquipmentComponent } from "./ui/component/PlayerEquipmentComponent";
 import { ZoneInfoComponent } from "./ui/component/ZoneInfoComponent";
 
 import { ChooseCharacterDialog } from "./ui/dialog/ChooseCharacterDialog";
@@ -40,6 +37,7 @@ import { SingletonFloatingWindow } from "./ui/toolkit/SingletonFloatingWindow";
 import { Chat } from "./util/Chat";
 import { DialogHandler } from "./util/DialogHandler";
 import { Globals } from "./util/Globals";
+import { TileMap } from "data/TileMap";
 
 
 /**
@@ -62,6 +60,7 @@ export class Client {
 
 	/** Singleton instance. */
 	private static instance: Client;
+	public loaded = false;
 
 
 	/**
@@ -78,7 +77,7 @@ export class Client {
 	 * Hidden singleton constructor.
 	 */
 	private constructor() {
-		// do nothing
+		// empty
 	}
 
 	/**
@@ -91,19 +90,19 @@ export class Client {
 		}
 		this.initialized = true;
 
-		// add version & build info to DOM for retrieval by browser
-		document.documentElement.setAttribute("data-build-version", stendhal.data.build.version);
-		document.documentElement.setAttribute("data-build-build", stendhal.data.build.build);
-
-		stendhal.paths = singletons.getPaths();
 		stendhal.config = singletons.getConfigManager();
 		stendhal.session = singletons.getSessionManager();
 		stendhal.actions = singletons.getSlashActionRepo();
+		new EntityRegistry().init();
 
 		this.initData();
 		this.initSound();
 		this.initUI();
 		this.initZone();
+
+		// add version & build info to DOM for retrieval by browser
+		document.documentElement.setAttribute("data-build-version", stendhal.data.build?.version);
+		document.documentElement.setAttribute("data-build-build", stendhal.data.build?.build);
 	}
 
 	/**
@@ -119,7 +118,6 @@ export class Client {
 		stendhal.data.group = singletons.getGroupManager();
 		stendhal.data.outfit = singletons.getOutfitStore();
 		stendhal.data.sprites = singletons.getSpriteStore();
-		stendhal.data.map = singletons.getMap();
 		// online players
 		stendhal.players = [];
 	}
@@ -259,11 +257,14 @@ export class Client {
 	 * Registers Marauroa event handlers.
 	 */
 	registerMarauroaEventHandlers() {
-		marauroa.clientFramework.onDisconnect = function(_reason: string, _error: string) {
+		marauroa.clientFramework.onDisconnect = function(_reason: string, _code: number, _wasClean: boolean) {
 			if (!Client.instance.unloading) {
 				Chat.logH("error", "Disconnected from server.");
+				if (window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1" && window.location.hostname !== "::1") {
+					window.location.href = "/account/mycharacters.html";
+				}
 			}
-		};
+		}.bind(this);
 
 		marauroa.clientFramework.onLoginRequired = function(config: Record<string, string>) {
 			if (config["client_login_url"]) {
@@ -281,25 +282,25 @@ export class Client {
 				"Login",
 				new LoginDialog(),
 				100, 50).enableCloseButton(false);
-		};
+		}.bind(this);
 
 		marauroa.clientFramework.onCreateAccountAck = function(username: string) {
 			// TODO: We should login automatically
 			alert("Account succesfully created, please login.");
 			window.location.reload();
-		};
+		}.bind(this);
 
 		marauroa.clientFramework.onCreateCharacterAck = function(charname: string, _template: any) {
 			// Client.get().chooseCharacter(charname);
-		};
+		}.bind(this);
 
 		marauroa.clientFramework.onLoginFailed = function(_reason: string, _text: string) {
 			alert("Login failed. " + _text);
 			// TODO: Server closes the connection, so we need to open a new one
 			window.location.reload();
-		};
+		}.bind(this);
 
-		marauroa.clientFramework.onAvailableCharacterDetails = function(characters: {[key: string]: RPObject}) {
+		marauroa.clientFramework.onAvailableCharacterDetails = (characters: {[key: string]: RPObject}) => {
 			SingletonFloatingWindow.closeAll();
 			if (!Object.keys(characters).length && this.username) {
 				marauroa.clientFramework.createCharacter(this.username, {});
@@ -331,9 +332,9 @@ export class Client {
 				}
 				items[i]["ack"] = true;
 			}
-		};
+		}.bind(this);
 
-		marauroa.clientFramework.onTransfer = function(items: any) {
+		marauroa.clientFramework.onTransfer = (items: any) => {
 			var data = {} as any;
 			var zoneName = ""
 			for (var i in items) {
@@ -345,34 +346,13 @@ export class Client {
 					this.onDataMap(items[i]["data"]);
 				}
 			}
-			stendhal.data.map.onTransfer(zoneName, data);
+			TileMap.get().onTransfer(zoneName, data);
 		};
 
 		// update user interface on perceptions
 		if (document.getElementById("viewport")) {
 			// override perception listener
-			marauroa.perceptionListener = new PerceptionListener(marauroa.perceptionListener);
-			marauroa.perceptionListener.onPerceptionEnd = function(_type: Int8Array, _timestamp: number) {
-				stendhal.zone.sortEntities();
-				(ui.get(UIComponentEnum.MiniMap) as MiniMapComponent).draw();
-				(ui.get(UIComponentEnum.BuddyList) as BuddyListComponent).update();
-				stendhal.ui.equip.update();
-				(ui.get(UIComponentEnum.PlayerEquipment) as PlayerEquipmentComponent).update();
-				if (!this.loaded) {
-					this.loaded = true;
-					// delay visibile change of client a little to allow for initialisation in the background for a smoother experience
-					window.setTimeout(function() {
-						let body = document.getElementById("body")!;
-						body.style.cursor = "auto";
-						document.getElementById("client")!.style.display = "block";
-						document.getElementById("loginpopup")!.style.display = "none";
-
-						// initialize observer after UI is ready
-						singletons.getUIUpdateObserver().init();
-						ui.onDisplayReady();
-					}, 300);
-				}
-			}
+			marauroa.perceptionListener = new StendhalPerceptionListener();
 		}
 	}
 
@@ -426,12 +406,12 @@ export class Client {
 		gamewindow.addEventListener("dblclick", stendhal.ui.gamewindow.onMouseDown);
 		gamewindow.addEventListener("dragstart", stendhal.ui.gamewindow.onDragStart);
 		gamewindow.addEventListener("mousemove", stendhal.ui.gamewindow.onMouseMove);
-		gamewindow.addEventListener("touchstart", stendhal.ui.gamewindow.onMouseDown);
+		gamewindow.addEventListener("touchstart", stendhal.ui.gamewindow.onMouseDown, {passive: true});
 		gamewindow.addEventListener("touchend", stendhal.ui.gamewindow.onTouchEnd);
 		gamewindow.addEventListener("dragover", stendhal.ui.gamewindow.onDragOver);
 		gamewindow.addEventListener("drop", stendhal.ui.gamewindow.onDrop);
 		gamewindow.addEventListener("contextmenu", stendhal.ui.gamewindow.onContentMenu);
-		gamewindow.addEventListener("wheel", stendhal.ui.gamewindow.onMouseWheel);
+		gamewindow.addEventListener("wheel", stendhal.ui.gamewindow.onMouseWheel, {passive: true});
 
 		singletons.getJoystickController().registerGlobalEventHandlers();
 
@@ -459,7 +439,7 @@ export class Client {
 			document.addEventListener("click", Client.handleClickIndicator);
 			document.addEventListener("touchend", Client.handleClickIndicator);
 		};
-		click_indicator.src = stendhal.paths.gui + "/click_indicator.png";
+		click_indicator.src = Paths.gui + "/click_indicator.png";
 	}
 
 	/**
@@ -469,8 +449,9 @@ export class Client {
 	 *   Information about map.
 	 */
 	onDataMap(data: any) {
+		let map = TileMap.get();
 		var zoneinfo = {} as {[key: string]: string};
-		var deserializer = marauroa.Deserializer.fromBase64(data);
+		var deserializer = Deserializer.fromBase64(data);
 		deserializer.readAttributes(zoneinfo);
 		(ui.get(UIComponentEnum.ZoneInfo) as ZoneInfoComponent).zoneChange(zoneinfo);
 
@@ -481,8 +462,8 @@ export class Client {
 
 		// parallax background
 		if (stendhal.config.getBoolean("effect.parallax")) {
-			stendhal.data.map.setParallax(zoneinfo["parallax"]);
-			stendhal.data.map.setIgnoredTiles(zoneinfo["parallax_ignore_tiles"]);
+			map.setParallax(zoneinfo["parallax"]);
+			map.setIgnoredTiles(zoneinfo["parallax_ignore_tiles"]);
 		}
 
 		// coloring information
@@ -518,7 +499,7 @@ export class Client {
 	 */
 	onMouseEnter(e: MouseEvent) {
 		// use Stendhal's built-in cursor for entire page
-		(e.target as HTMLElement).style.cursor = "url(" + stendhal.paths.sprites + "/cursor/normal.png) 1 3, auto";
+		(e.target as HTMLElement).style.cursor = "url(" + Paths.sprites + "/cursor/normal.png) 1 3, auto";
 	}
 
 	/**

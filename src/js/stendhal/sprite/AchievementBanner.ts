@@ -11,9 +11,10 @@
 
 import { TextBubble } from "./TextBubble";
 import { BackgroundPainter } from "../util/BackgroundPainter";
-
-declare const stendhal: any;
-
+import { RenderingContext2D } from "util/Types";
+import { Paths } from "../data/Paths";
+import { singletons } from "../SingletonRepo";
+import { stendhal } from "../stendhal";
 
 export class AchievementBanner extends TextBubble {
 
@@ -32,9 +33,9 @@ export class AchievementBanner extends TextBubble {
 	constructor(cat: string, title: string, desc: string) {
 		super(desc);
 		this.title = title;
-		const bg = stendhal.data.sprites.get(stendhal.paths.gui + "/banner_background.png");
+		const bg = singletons.getSpriteStore().get(Paths.gui + "/banner_background.png");
 		this.banner = new BackgroundPainter(bg);
-		this.icon = stendhal.data.sprites.get(stendhal.paths.achievements
+		this.icon = singletons.getSpriteStore().get(Paths.achievements
 				+ "/" + cat.toLowerCase() + ".png");
 
 		/* keep achievements on the screen a bit longer since they
@@ -42,8 +43,7 @@ export class AchievementBanner extends TextBubble {
 		 */
 		this.duration = TextBubble.STANDARD_DUR * 4;
 
-		const gamewindow =
-				<HTMLCanvasElement> document.getElementById("viewport")!;
+		const gamewindow = document.getElementById("viewport")! as HTMLCanvasElement;
 
 		const td = this.getTextDimensions(gamewindow.getContext("2d")!);
 		this.innerWidth = td.width + this.padding; // add padding between icon & text
@@ -55,7 +55,7 @@ export class AchievementBanner extends TextBubble {
 		this.y = gamewindow.height - this.height;
 	}
 
-	override draw(ctx: CanvasRenderingContext2D): boolean {
+	override draw(ctx: RenderingContext2D): boolean {
 		const targetX = stendhal.ui.gamewindow.offsetX + this.x;
 		const targetY = stendhal.ui.gamewindow.offsetY + this.y;
 
@@ -81,7 +81,7 @@ export class AchievementBanner extends TextBubble {
 		return this.expired();
 	}
 
-	private getTextDimensions(ctx: CanvasRenderingContext2D): any {
+	private getTextDimensions(ctx: RenderingContext2D): any {
 		const ret = {} as any;
 		ctx.font = this.font;
 		let m = ctx.measureText(this.text);

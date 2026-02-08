@@ -9,8 +9,9 @@
  *                                                                         *
  ***************************************************************************/
 
-declare var stendhal: any;
+import { stendhal } from "../stendhal";
 
+import { RenderingContext2D } from "util/Types";
 import { Color } from "../data/color/Color";
 import { Pair } from "../util/Pair";
 
@@ -45,7 +46,7 @@ export abstract class TextBubble {
 	 *     <code>true</code> if the sprites duration time has expired
 	 *     & should be removed from the screen.
 	 */
-	abstract draw(ctx: CanvasRenderingContext2D): boolean;
+	abstract draw(ctx: RenderingContext2D): boolean;
 
 	getX(): number {
 		return this.x;
@@ -128,7 +129,13 @@ export abstract class TextBubble {
 	 * @param ctx
 	 *   Canvas context on which text bubble is drawn.
 	 */
-	onAdded(ctx: CanvasRenderingContext2D) {
+	onAdded(ctx: RenderingContext2D) {
+		// TODO: Reference the Viewport directly instead of deriving the canvas from the context
+		if (!(ctx instanceof CanvasRenderingContext2D)) {
+			console.error("Cannot add event listeners because HTMLCanvasElement is required.");
+			return;
+		}
+
 		// prevent multiple listeners from being added
 		if (typeof(this.onRemovedAction) === "undefined") {
 			// add click listener to remove chat bubble

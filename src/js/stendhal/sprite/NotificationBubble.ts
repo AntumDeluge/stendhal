@@ -10,7 +10,7 @@
  *                                                                         *
  ***************************************************************************/
 
-declare var stendhal: any;
+import { stendhal } from "../stendhal";
 
 import { TextBubble } from "./TextBubble";
 
@@ -18,6 +18,10 @@ import { Color } from "../data/color/Color";
 
 import { NotificationType } from "../util/NotificationType";
 import { Speech } from "../util/Speech";
+import { RenderingContext2D } from "util/Types";
+import { Paths } from "../data/Paths";
+import { singletons } from "../SingletonRepo";
+import { HTMLImageElementUtil } from "./image/HTMLImageElementUtil";
 
 
 export class NotificationBubble extends TextBubble {
@@ -70,7 +74,7 @@ export class NotificationBubble extends TextBubble {
 		}
 	}
 
-	override draw(ctx: CanvasRenderingContext2D): boolean {
+	override draw(ctx: RenderingContext2D): boolean {
 		const screenTop = stendhal.ui.gamewindow.offsetY;
 		const screenBottom = screenTop + ctx.canvas.height;
 		const screenLeft = stendhal.ui.gamewindow.offsetX;
@@ -132,10 +136,10 @@ export class NotificationBubble extends TextBubble {
 	 * Loads a profile image to be drawn with text.
 	 */
 	private loadProfileSprite() {
-		const img = stendhal.data.sprites.get(stendhal.paths.sprites
+		const img = singletons.getSpriteStore().get(Paths.sprites
 				+ "/npc/" + this.profileName + ".png");
 		if (img.complete && img.height) {
-			this.profile = stendhal.data.sprites.getAreaOf(img, 48, 48, 48, 128);
+			this.profile = HTMLImageElementUtil.getAreaOf(img, 48, 48, 48, 128);
 		}
 	}
 }

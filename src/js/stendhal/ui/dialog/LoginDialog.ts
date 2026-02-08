@@ -14,7 +14,7 @@ import { ui } from "../UI";
 import { DialogContentComponent } from "../toolkit/DialogContentComponent";
 import { CreateAccountDialog } from "./CreateAccountDialog";
 
-declare var marauroa: any;
+import { marauroa } from "marauroa"
 
 /**
  * a dialog to enter username and password

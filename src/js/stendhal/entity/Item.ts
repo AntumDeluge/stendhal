@@ -13,10 +13,11 @@ import { ItemMap } from "./ItemMap";
 import { MenuItem } from "../action/MenuItem";
 import { Entity } from "./Entity";
 import { TextSprite } from "../sprite/TextSprite";
+import { RenderingContext2D } from "util/Types";
+import { Paths } from "../data/Paths";
+import { singletons } from "../SingletonRepo";
 
-declare var marauroa: any;
-declare var stendhal: any;
-
+import { marauroa } from "marauroa"
 
 export class Item extends Entity {
 
@@ -72,7 +73,7 @@ export class Item extends Entity {
 	override set(key: string, value: any) {
 		super.set(key, value);
 		if (key === "class" || key === "subclass") {
-			this.sprite.filename = stendhal.paths.sprites + "/items/"
+			this.sprite.filename = Paths.sprites + "/items/"
 				+ this["class"] + "/" + this["subclass"] + ".png";
 		}
 		if (key === "quantity") {
@@ -80,17 +81,20 @@ export class Item extends Entity {
 		}
 	}
 
-	override draw(ctx: CanvasRenderingContext2D) {
+	override draw(ctx: RenderingContext2D) {
 		this.sprite.offsetY = (this["state"] || 0) * 32
 		this.stepAnimation();
 
 		this.drawAt(ctx, this["x"] * 32, this["y"] * 32);
 	}
 
-	drawAt(ctx: CanvasRenderingContext2D, x: number, y: number) {
+	drawAt(ctx: RenderingContext2D, x: number, y: number) {
 		if (this.sprite) {
 			this.drawSpriteAt(ctx, x, y);
 			let textMetrics = this.quantityTextSprite.getTextMetrics(ctx);
+			if (!textMetrics) {
+				throw new Error("textMetrics is undefined");
+			}
 			this.quantityTextSprite.draw(ctx, x + (32 - textMetrics.width), y + 6);
 		}
 	}
@@ -128,7 +132,7 @@ export class Item extends Entity {
 		} else {
 			cursor = ItemMap.getCursor(this["class"], this["name"]);
 		}
-		return "url(" + stendhal.paths.sprites + "/cursor/" + cursor + ".png) 1 3, auto";
+		return "url(" + Paths.sprites + "/cursor/" + cursor + ".png) 1 3, auto";
 	}
 
 	public getToolTip(): string {
@@ -142,12 +146,12 @@ export class Item extends Entity {
 	}
 
 	public isAnimated(): boolean {
-		if (!stendhal.data.sprites.get(this.sprite.filename).height) {
+		if (!singletons.getSpriteStore().get(this.sprite.filename).height) {
 			return false;
 		}
 		if (this.animated == null) {
 			// store animation state
-			this.animated = (stendhal.data.sprites.get(this.sprite.filename).width / 32) > 1;
+			this.animated = (singletons.getSpriteStore().get(this.sprite.filename).width / 32) > 1;
 		}
 
 		return this.animated;
@@ -155,7 +159,7 @@ export class Item extends Entity {
 
 	private setXFrameIndex(idx: number) {
 		if (this.xFrames == null) {
-			const img = stendhal.data.sprites.get(this.sprite.filename);
+			const img = singletons.getSpriteStore().get(this.sprite.filename);
 			this.xFrames = img.width / 32;
 		}
 
@@ -169,7 +173,7 @@ export class Item extends Entity {
 
 	private setYFrameIndex(idx: number) {
 		if (this.yFrames == null) {
-			const img = stendhal.data.sprites.get(this.sprite.filename);
+			const img = singletons.getSpriteStore().get(this.sprite.filename);
 			this.yFrames = img.height / 32;
 		}
 

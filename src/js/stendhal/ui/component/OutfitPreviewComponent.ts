@@ -17,8 +17,6 @@ import { Outfit } from "../../data/Outfit";
 import { Direction } from "../../util/Direction";
 import { StringUtil } from "../../util/StringUtil";
 
-declare var stendhal: any;
-
 
 /**
  * Component to preview an entity's outfit sprite.
@@ -30,7 +28,7 @@ export class OutfitPreviewComponent extends Component {
 
 	private dir: Direction;
 	private index: number;
-	private image?: HTMLImageElement;
+	private image?: ImageBitmap;
 	private bgColor?: string;
 
 
@@ -50,7 +48,8 @@ export class OutfitPreviewComponent extends Component {
 	 */
 	setOutfit(outfit: string, coloring?: string) {
 		const otemp = Outfit.build(outfit, coloring);
-		otemp.toImage((image: HTMLImageElement) => {
+		otemp.toImage().then((image) => {
+			this.image?.close();
 			this.image = image;
 			this.update();
 		});
@@ -139,5 +138,9 @@ export class OutfitPreviewComponent extends Component {
 			ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 		}
 		ctx.drawImage(this.image, this.index * w, (this.dir.val - 1) * h, w, h, 0, 0, w, h);
+	}
+
+	close() {
+		this.image?.close();
 	}
 }

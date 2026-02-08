@@ -9,8 +9,8 @@
  *                                                                         *
  ***************************************************************************/
 
-declare var marauroa: any;
-declare var stendhal: any;
+import { marauroa } from "marauroa"
+import { stendhal } from "../stendhal";
 
 import { Entity } from "./Entity";
 import { Player } from "./Player";
@@ -225,7 +225,7 @@ export class User extends Player {
 	 * @param dir {util.Direction.Direction}
 	 *   New direction to face.
 	 */
-	public setFacing(dir: Direction) {
+	public faceTo(dir: Direction) {
 		marauroa.clientFramework.sendAction({type: "face", dir: ""+dir.val});
 	}
 

@@ -1,5 +1,5 @@
 /***************************************************************************
- *                 Copyright © 2003-2024 - Faiumoni e. V.                  *
+ *                 Copyright © 2003-2026 - Faiumoni e. V.                  *
  ***************************************************************************
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -9,8 +9,8 @@
  *                                                                         *
  ***************************************************************************/
 
-declare var marauroa: any;
-declare var stendhal: any;
+import { marauroa } from "marauroa"
+import { stendhal } from "../../stendhal";
 
 import { LoopedSoundSource } from "../../entity/LoopedSoundSource";
 

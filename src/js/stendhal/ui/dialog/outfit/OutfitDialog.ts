@@ -1,5 +1,5 @@
 /***************************************************************************
- *                (C) Copyright 2007-2024 - Faiumoni e. V.                 *
+ *                (C) Copyright 2007-2026 - Faiumoni e. V.                 *
  ***************************************************************************
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -19,8 +19,8 @@ import { OutfitPaletteColorSelector } from "./OutfitPaletteColorSelector";
 
 import { OutfitPreviewComponent } from "../../component/OutfitPreviewComponent";
 
-declare var marauroa: any;
-declare var stendhal: any;
+import { marauroa } from "marauroa"
+import { stendhal } from "../../../stendhal";
 
 
 /**
@@ -184,19 +184,24 @@ export class OutfitDialog extends DialogContentComponent {
 	}
 
 	makeSelector(part: string, index: number): OutfitPartSelector {
-		// FIXME: selector should be showing a default if index is less than 0
-		if (index < 0 || index === undefined) {
-			index = 0;
+		let minIndex = 0;
+		if (part === "dress" && stendhal.config.getBoolean("effect.no-nude")) {
+			minIndex = 1;
 		}
 
-		const selector = new OutfitPartSelector(part, index, stendhal.data.outfit.count[part] - 1, () => {
+		// FIXME: selector should be showing a default if index is less than 0
+		if (index < minIndex || index === undefined) {
+			index = minIndex;
+		}
+
+		const selector = new OutfitPartSelector(part, index, minIndex, stendhal.data.outfit.count[part] - 1, () => {
 			this.drawComposite();
 		});
 
-		document.getElementById("setoutfitprev" + part)!.addEventListener("click", function(e) {
+		document.getElementById("setoutfitprev" + part)!.addEventListener("click", function(_e) {
 			selector.previous();
 		});
-		document.getElementById("setoutfitnext" + part)!.addEventListener("click", function(e) {
+		document.getElementById("setoutfitnext" + part)!.addEventListener("click", function(_e) {
 			selector.next();
 		});
 		selector.draw();
@@ -224,7 +229,7 @@ export class OutfitDialog extends DialogContentComponent {
 		return null;
 	}
 
-	createColorSelector(classObject: any, part: string, ...partSelectors: any) {
+	createColorSelector(classObject: any, part: string, ...partSelectors: OutfitPartSelector[]) {
 		const toggle = document.getElementById("setoutfit" + part + "colortoggle") as HTMLInputElement;
 		const canvas = document.getElementById("setoutfit" + part + "colorcanvas")!;
 		const gradientCanvas = document.getElementById("setoutfit" + part + "colorgradient");
@@ -238,7 +243,7 @@ export class OutfitDialog extends DialogContentComponent {
 			toggle.checked = true;
 			selector.color = initialColor;
 		}
-		toggle.addEventListener("change", function(e) {
+		toggle.addEventListener("change", function(_e) {
 			selector.enabled = toggle.checked;
 		});
 		selector.draw();
@@ -246,7 +251,15 @@ export class OutfitDialog extends DialogContentComponent {
 	}
 
 	public override onParentClose() {
+		this.outfitPreview.close();
+		this.hatSelector.close();
+		this.hairSelector.close();
+		this.maskSelector.close();
+		this.eyesSelector.close();
+		this.mouthSelector.close();
+		this.headSelector.close();
+		this.bodySelector.close();
+		this.dressSelector.close();
 		ui.unregisterComponent(this);
 	}
-
 }

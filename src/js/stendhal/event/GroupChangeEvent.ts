@@ -9,13 +9,13 @@
  *                                                                         *
  ***************************************************************************/
 
-import { RPEvent } from "./RPEvent";
+import { RPEvent } from "marauroa"
 import { ui } from "../ui/UI";
 import { UIComponentEnum } from "../ui/UIComponentEnum";
 import { GroupPanelComponent } from "../ui/component/GroupPanelComponent";
 
-declare var stendhal: any;
-declare var marauroa: any;
+import { stendhal } from "../stendhal";
+import { marauroa } from "marauroa"
 
 /**
  * handles player trade events

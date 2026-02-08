@@ -10,7 +10,7 @@
  *                                                                         *
  ***************************************************************************/
 
-declare var stendhal: any;
+import { stendhal } from "../stendhal";
 
 import { SlashAction } from "./SlashAction";
 
@@ -28,7 +28,7 @@ export class SettingsAction extends SlashAction {
 
 	execute(_type: string, _params: string[], _remainder: string): boolean {
 		const wstate = stendhal.config.getWindowState("menu");
-		const offset = stendhal.ui.getPageOffset();
+		const offset = ui.getPageOffset();
 
 		const content = new SettingsDialog();
 		const dialog = ui.createSingletonFloatingWindow(

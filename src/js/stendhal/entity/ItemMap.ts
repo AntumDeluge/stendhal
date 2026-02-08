@@ -15,7 +15,7 @@ import { MenuItem } from "../action/MenuItem";
 
 const config = singletons.getConfigManager();
 
-declare var marauroa: any;
+import { marauroa } from "marauroa"
 
 const defaultUse = {
 	title: "Use",

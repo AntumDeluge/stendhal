@@ -9,10 +9,14 @@
  *                                                                         *
  ***************************************************************************/
 
+import { RPObject, RPZone} from "marauroa";
 import { Entity } from "./Entity";
 import { ActivityIndicatorSprite } from "../sprite/ActivityIndicatorSprite";
+import { RenderingContext2D } from "util/Types";
+import { Paths } from "../data/Paths";
+import { singletons } from "../SingletonRepo";
 
-declare var stendhal: any;
+import { stendhal } from "../stendhal";
 
 export class Sign extends Entity {
 	override zIndex = 5000;
@@ -32,11 +36,11 @@ export class Sign extends Entity {
 		}
 	}
 
-	override draw(ctx: CanvasRenderingContext2D) {
+	override draw(ctx: RenderingContext2D) {
 		if (!this.imagePath) {
-			this.imagePath = stendhal.paths.sprites + "/signs/" + this["class"] + ".png";
+			this.imagePath = Paths.sprites + "/signs/" + this["class"] + ".png";
 		}
-		var image = stendhal.data.sprites.get(this.imagePath);
+		var image = singletons.getSpriteStore().get(this.imagePath);
 		if (image.height) {
 			var localX = this["x"] * 32;
 			var localY = this["y"] * 32;
@@ -52,7 +56,12 @@ export class Sign extends Entity {
 	}
 
 	override getCursor(_x: number, _y: number) {
-		return "url(" + stendhal.paths.sprites + "/cursor/look.png) 1 3, auto";
+		return "url(" + Paths.sprites + "/cursor/look.png) 1 3, auto";
+	}
+
+	override destroy(parent: RPObject|RPZone): void {
+		this.indicator?.free();
+		super.destroy(parent);
 	}
 
 }

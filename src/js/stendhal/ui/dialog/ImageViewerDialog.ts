@@ -11,8 +11,8 @@
 
 import { Component } from "../toolkit/Component";
 
-declare var marauroa: any;
-declare var stendhal: any;
+import { marauroa } from "marauroa"
+import { stendhal } from "../../stendhal";
 
 /**
  * a dialog to display images

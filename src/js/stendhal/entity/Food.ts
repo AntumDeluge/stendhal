@@ -9,10 +9,12 @@
  *                                                                         *
  ***************************************************************************/
 
+import { RenderingContext2D } from "util/Types";
 import { Entity } from "./Entity";
+import { Paths } from "../data/Paths";
+import { singletons } from "../SingletonRepo";
 
-declare var marauroa: any;
-declare var stendhal: any;
+import { marauroa } from "marauroa"
 
 
 export class Food extends Entity {
@@ -27,8 +29,8 @@ export class Food extends Entity {
 		// TODO: play sound effect
 	}
 
-	override draw(ctx: CanvasRenderingContext2D) {
-		var image = stendhal.data.sprites.get(stendhal.paths.sprites + "/food.png");
+	override draw(ctx: RenderingContext2D) {
+		var image = singletons.getSpriteStore().get(Paths.sprites + "/food.png");
 		if (image.height) {
 			var localX = this["x"] * 32;
 			var localY = this["y"] * 32;
@@ -50,7 +52,7 @@ export class Food extends Entity {
 	}
 
 	override getCursor(_x: number, _y: number) {
-		return "url(" + stendhal.paths.sprites + "/cursor/look.png) 1 3, auto";
+		return "url(" + Paths.sprites + "/cursor/look.png) 1 3, auto";
 	}
 
 }

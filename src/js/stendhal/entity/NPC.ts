@@ -14,8 +14,8 @@ import { RPEntity } from "./RPEntity";
 import { EntityOverlayRegistry } from "../data/EntityOverlayRegistry";
 
 import { Color } from "../data/color/Color";
-
-declare var stendhal: any;
+import { RenderingContext2D } from "util/Types";
+import { Paths } from "../data/Paths";
 
 export class NPC extends RPEntity {
 	override minimapStyle = Color.NPC;
@@ -28,7 +28,7 @@ export class NPC extends RPEntity {
 		this["base_hp"] = 100;
 	}
 
-	override set(key: string, value: string) {
+	override set(key: string, value: any) {
 		super.set(key, value);
 
 		if (key === "name") {
@@ -42,7 +42,7 @@ export class NPC extends RPEntity {
 		}
 	}
 
-	override drawTop(ctx: CanvasRenderingContext2D) {
+	override drawTop(ctx: RenderingContext2D) {
 		var localX = this["_x"] * 32;
 		var localY = this["_y"] * 32;
 		if (typeof(this["no_hpbar"]) == "undefined") {
@@ -54,7 +54,7 @@ export class NPC extends RPEntity {
 	}
 
 	override getCursor(_x: number, _y: number) {
-		return "url(" + stendhal.paths.sprites + "/cursor/look.png) 1 3, auto";
+		return "url(" + Paths.sprites + "/cursor/look.png) 1 3, auto";
 	}
 
 }

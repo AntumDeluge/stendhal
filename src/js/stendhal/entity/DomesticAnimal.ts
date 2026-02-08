@@ -13,26 +13,28 @@ import { RPEntity } from "./RPEntity";
 import { MenuItem} from "../action/MenuItem";
 
 import { Color } from "../data/color/Color";
+import { RenderingContext2D } from "util/Types";
+import { Paths } from "../data/Paths";
+import { singletons } from "../SingletonRepo";
 
-declare var marauroa: any;
-declare var stendhal: any;
+import { marauroa } from "marauroa"
 
 export class DomesticAnimal extends RPEntity {
 
 	override minimapStyle = Color.DOMESTICANIMAL;
 
-	override drawMain(ctx: CanvasRenderingContext2D) {
+	override drawMain(ctx: RenderingContext2D) {
 		if (!this.imagePath && this["_rpclass"]) {
 			this["largeWeight"] = this["largeWeight"] | 20;
 			if (this["_rpclass"] == "sheep") {
 				this["largeWeight"] = 60;
 			}
-			this.imagePath = stendhal.paths.sprites + "/" + this["_rpclass"] + ".png";
+			this.imagePath = Paths.sprites + "/" + this["_rpclass"] + ".png";
 		}
 
 		var localX = this["_x"] * 32;
 		var localY = this["_y"] * 32;
-		var image = stendhal.data.sprites.get(this.imagePath);
+		var image = singletons.getSpriteStore().get(this.imagePath);
 		if (image.height) {
 			var nFrames = 3;
 			var nDirections = 4;
@@ -55,7 +57,7 @@ export class DomesticAnimal extends RPEntity {
 	}
 
 	override getCursor(_x: number, _y: number) {
-		return "url(" + stendhal.paths.sprites + "/cursor/look.png) 1 3, auto";
+		return "url(" + Paths.sprites + "/cursor/look.png) 1 3, auto";
 	}
 
 	override buildActions(list: MenuItem[]) {

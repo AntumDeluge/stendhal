@@ -9,8 +9,8 @@
  *                                                                         *
  ***************************************************************************/
 
-declare var marauroa: any;
-declare var stendhal: any;
+import { marauroa } from "marauroa"
+import { stendhal } from "../stendhal";
 
 import { RPEntity } from "./RPEntity";
 
@@ -22,6 +22,8 @@ import { UIComponentEnum } from "../ui/UIComponentEnum";
 import { GroupPanelComponent } from "../ui/component/GroupPanelComponent";
 
 import { Color } from "../data/color/Color";
+import { RenderingContext2D } from "util/Types";
+import { Paths } from "../data/Paths";
 
 
 export class Player extends RPEntity {
@@ -169,7 +171,7 @@ export class Player extends RPEntity {
 		}
 	}
 
-	override draw(ctx: CanvasRenderingContext2D) {
+	override draw(ctx: RenderingContext2D) {
 		if (this.isIgnored()) {
 			return;
 		}
@@ -236,8 +238,8 @@ export class Player extends RPEntity {
 
 	override getCursor(_x: number, _y: number) {
 		if (this.isVisibleToAction(false)) {
-			return "url(" + stendhal.paths.sprites + "/cursor/look.png) 1 3, auto";
+			return "url(" + Paths.sprites + "/cursor/look.png) 1 3, auto";
 		}
-		return "url(" + stendhal.paths.sprites + "/cursor/walk.png) 1 3, auto";
+		return "url(" + Paths.sprites + "/cursor/walk.png) 1 3, auto";
 	}
 }

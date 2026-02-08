@@ -10,7 +10,7 @@
  *                                                                         *
  ***************************************************************************/
 
-declare var marauroa: any;
+import { marauroa } from "marauroa"
 
 import { AbstractSettingsTab } from "./AbstractSettingsTab";
 

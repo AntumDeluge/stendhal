@@ -9,10 +9,10 @@
  *                                                                         *
  ***************************************************************************/
 
-import { Entity } from "./Entity";
-import { RPObject } from "./RPObject";
+import { marauroa, RPObject, RPZone } from "marauroa";
 
-declare var marauroa: any;
+import { RenderingContext2D } from "util/Types";
+import { Entity } from "./Entity";
 
 
 export class PopupInventory extends Entity {
@@ -20,7 +20,7 @@ export class PopupInventory extends Entity {
 	protected maxDistToView = 4;
 
 
-	override draw(ctx: CanvasRenderingContext2D) {
+	override draw(ctx: RenderingContext2D) {
 		super.draw(ctx);
 		if (this.inventory && this.inventory.isOpen() && !this.canViewContents()) {
 			// player has moved too far away
@@ -32,9 +32,9 @@ export class PopupInventory extends Entity {
 		// inheriting classes can override
 	}
 
-	override destroy(_parent: RPObject) {
+	override destroy(parent: RPObject|RPZone) {
 		this.closeInventoryWindow();
-		super.destroy(_parent);
+		super.destroy(parent);
 	}
 
 	/**

@@ -1,5 +1,5 @@
 /***************************************************************************
- *                   (C) Copyright 2003-2024 - Stendhal                    *
+ *                   (C) Copyright 2003-2026 - Stendhal                    *
  ***************************************************************************
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -9,9 +9,13 @@
  *                                                                         *
  ***************************************************************************/
 
+import { RenderingContext2D } from "util/Types";
 import { Entity } from "./Entity";
+import { Paths } from "../data/Paths";
 
-declare var stendhal: any;
+import { stendhal } from "../stendhal";
+import { ImageSprite } from "sprite/image/ImageSprite";
+import { images } from "sprite/image/ImageManager";
 
 export class Blood extends Entity {
 
@@ -20,27 +24,30 @@ export class Blood extends Entity {
 
 	constructor() {
 		super();
-		this.sprite = {
-			height: 32,
-			width: 32,
-			filename: stendhal.paths.sprites + "/combat/blood_red.png"
-		};
+		this.imageSprite = new ImageSprite(
+			images.load(Paths.sprites + "/combat/blood_red.png"),
+			0, 0, 32, 32
+		);
 	}
 
 	override set(key: string, value: any) {
 		super.set(key, value);
 		if (key === "amount") {
-			this.sprite.offsetY = parseInt(value, 10) * 32;
+			this.imageSprite!.offsetY = parseInt(value, 10) * 32;
 		} else if (key === "class") {
-			this.sprite.filename = stendhal.paths.sprites + "/combat/blood_" + value + ".png";
+			this.imageSprite?.free();
+			this.imageSprite = new ImageSprite(
+				images.load(Paths.sprites + "/combat/blood_" + value + ".png"),
+				0, parseInt(this["amount"], 10) * 32, 32, 32
+			);
 		}
 	}
 
-	override getCursor(x: number, y: number) {
-		return "url(" + stendhal.paths.sprites + "/cursor/walk.png) 1 3, auto";
+	override getCursor(_x: number, _y: number) {
+		return "url(" + Paths.sprites + "/cursor/walk.png) 1 3, auto";
 	}
 
-	override drawSpriteAt(ctx: CanvasRenderingContext2D, x: number, y: number) {
+	override drawSpriteAt(ctx: RenderingContext2D, x: number, y: number) {
 		if (!stendhal.config.getBoolean("effect.blood")) {
 			return;
 		}

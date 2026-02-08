@@ -12,7 +12,7 @@
 import { Component } from "../toolkit/Component";
 import { ItemContainerImplementation } from "./ItemContainerImplementation";
 
-declare var stendhal: any;
+import { stendhal } from "../../stendhal";
 
 /**
  * handles an item inventory
@@ -68,7 +68,6 @@ export class ItemInventoryComponent extends Component {
 
 	public override onParentClose() {
 		let idx = stendhal.ui.equip.indexOf(this.itemContainerImplementation);
-		console.log(stendhal.ui.equip.getInventory(), idx);
 		if (idx < 0) {
 			console.log("Cannot cleanup unknown itemContainerImplementation");
 			return;

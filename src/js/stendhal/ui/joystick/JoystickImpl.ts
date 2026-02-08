@@ -9,12 +9,13 @@
  *                                                                         *
  ***************************************************************************/
 
-declare var marauroa: any;
-declare var stendhal: any;
+import { marauroa } from "marauroa"
+import { stendhal } from "../../stendhal";
 
 import { ui } from "../UI";
 import { SoftwareJoystickController } from "../SoftwareJoystickController";
 import { Direction } from "../../util/Direction";
+import { Paths } from "../../data/Paths";
 
 
 /**
@@ -62,7 +63,7 @@ export abstract class JoystickImpl {
 	 *   Path to image.
 	 */
 	public static getResource(basename: string): string {
-		return stendhal.paths.gui + "/joystick/" + basename + ".png";
+		return Paths.gui + "/joystick/" + basename + ".png";
 	}
 
 	/**

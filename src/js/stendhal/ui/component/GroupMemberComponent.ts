@@ -9,8 +9,7 @@
  *                                                                         *
  ***************************************************************************/
 
-declare let marauroa: any;
-declare let stendhal: any;
+import { marauroa } from "marauroa"
 
 import { ChatInputComponent } from "./ChatInputComponent";
 
@@ -24,6 +23,7 @@ import { StatBarComponent } from "../component/StatBarComponent";
 import { ActionContextMenu } from "../dialog/ActionContextMenu";
 
 import { singletons } from "../../SingletonRepo";
+import { stendhal } from "stendhal";
 
 
 /**

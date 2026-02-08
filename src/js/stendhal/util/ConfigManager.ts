@@ -9,7 +9,7 @@
  *                                                                         *
  ***************************************************************************/
 
-declare var stendhal: any;
+import { stendhal } from "../stendhal";
 
 import { Point } from "./Point";
 
@@ -17,6 +17,7 @@ import { ui } from "../ui/UI";
 import { UIComponentEnum } from "../ui/UIComponentEnum";
 
 import { BuddyListComponent } from "../ui/component/BuddyListComponent";
+import { Paths } from "../data/Paths";
 
 
 /**
@@ -197,8 +198,6 @@ export class ConfigManager {
 		"Carlito": ""
 	};
 
-	/** Cached window states. */
-	private readonly windowstates: {[id: string]: Point} = {};
 	/** @deprecated */
 	private initialized = false;
 
@@ -456,7 +455,6 @@ export class ConfigManager {
 	 *   Vertical position.
 	 */
 	setWindowState(id: string, x: number, y: number) {
-		this.windowstates[id] = new Point(x, y);
 		this.set("window." + id, x + "," + y);
 	}
 
@@ -469,12 +467,11 @@ export class ConfigManager {
 	 *   Point containing X/Y positioning of window.
 	 */
 	getWindowState(id: string): Point {
-		if (!this.windowstates.hasOwnProperty(id)) {
-			const tmp: string[] = (this.get("window." + id) || "0,0").split(",");
-			// cache state
-			this.windowstates[id] = new Point(parseInt(tmp[0], 10), parseInt(tmp[1], 10));
-		}
-		return this.windowstates[id];
+		let val = this.get("window." + id) || "0,0";
+		let tmp: string[] = val.split(",");
+		let x = parseInt(tmp[0]);
+		let y = parseInt(tmp[1]);
+		return new Point(x >= 0 ? x : 0, y >= 0 ? y : 0);
 	}
 
 	/**
@@ -525,7 +522,7 @@ export class ConfigManager {
 	applyTheme(element: HTMLElement, children=false, recurse=false, updateBG=false) {
 		const current = this.getTheme();
 		element.style.setProperty("background",
-				"url(" + stendhal.paths.gui + "/" + this.themes.map[current] + ")");
+				"url(" + Paths.gui + "/" + this.themes.map[current] + ")");
 
 		// make texts readable with dark & light themes
 		let color = "#000000";
@@ -564,7 +561,7 @@ export class ConfigManager {
 
 		let rootStyle = document.documentElement.style;
 		rootStyle.setProperty("--background-url",
-			"url(" + stendhal.paths.gui + "/" + this.themes.map[current] + ")");
+			"url(" + Paths.gui + "/" + this.themes.map[current] + ")");
 		if (this.usingDarkTheme()) {
 			rootStyle.setProperty("--text-color", "#fff");
 			rootStyle.setProperty("--text-color-inactive", "#aaa");

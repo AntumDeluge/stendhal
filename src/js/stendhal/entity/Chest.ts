@@ -19,20 +19,22 @@ import { FloatingWindow } from "../ui/toolkit/FloatingWindow";
 import { ItemInventoryComponent } from "../ui/component/ItemInventoryComponent";
 
 import { Chat } from "../util/Chat";
+import { Paths } from "../data/Paths";
 
-declare var marauroa: any;
-declare var stendhal: any;
+import { marauroa } from "marauroa"
+import { stendhal } from "../stendhal";
+import { Entity } from "./Entity";
 
 
 let OPEN_SPRITE = {
-	filename: stendhal.paths.sprites + "/chest.png",
+	filename: Paths.sprites + "/chest.png",
 	height: 32,
 	width: 32,
 	offsetY: 32
 };
 
 let CLOSED_SPRITE = {
-	filename: stendhal.paths.sprites + "/chest.png",
+	filename: Paths.sprites + "/chest.png",
 	height: 32,
 	width: 32
 };
@@ -52,7 +54,7 @@ export class Chest extends PopupInventory {
 			this.sprite = OPEN_SPRITE;
 			this.open = true;
 		}
-		if (this.isNextTo(marauroa.me)) {
+		if (this.isNextTo(marauroa.me as Entity)) {
 			this.openInventoryWindow();
 		}
 	}
@@ -151,7 +153,7 @@ export class Chest extends PopupInventory {
 	}
 
 	override getCursor(_x: number, _y: number) {
-		return "url(" + stendhal.paths.sprites + "/cursor/bag.png) 1 3, auto";
+		return "url(" + Paths.sprites + "/cursor/bag.png) 1 3, auto";
 	}
 
 }

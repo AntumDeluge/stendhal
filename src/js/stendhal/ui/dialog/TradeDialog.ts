@@ -15,7 +15,7 @@ import { DialogContentComponent } from "../toolkit/DialogContentComponent";
 import { ui } from "../UI";
 import { UIComponentEnum } from "../UIComponentEnum";
 
-declare var marauroa: any;
+import { marauroa } from "marauroa"
 
 /**
  * a dialog to display images

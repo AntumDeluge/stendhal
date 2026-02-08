@@ -9,54 +9,56 @@
  *                                                                         *
  ***************************************************************************/
 
-declare var marauroa: any;
-declare var stendhal: any;
+import { Deserializer } from "marauroa"
+import { stendhal } from "../stendhal";
 
 import { Paths } from "./Paths";
 
-import { LandscapeRenderingStrategy, CombinedTilesetRenderingStrategy } from "../landscape/LandscapeRenderingStrategy";
+import { LandscapeRenderingStrategy } from "../landscape/LandscapeRenderingStrategy";
+import { CombinedTilesetRenderingStrategy } from "../landscape/CombinedTilesetRenderingStrategy";
 import { IndividualTilesetRenderingStrategy } from "../landscape/IndividualTilesetRenderingStrategy";
 import { ParallaxBackground } from "../landscape/ParallaxBackground";
 
 
-export class Map {
+export class TileMap {
 
-	private currentZoneName = "";
+	public currentZoneName = "";
 
-	private offsetX = 0;
-	private offsetY = 0;
-	private zoneSizeX = -1;
-	private zoneSizeY = -1;
-	private sizeX = 20;
-	private sizeY = 15;
+	public offsetX = 0;
+	public offsetY = 0;
+	public zoneSizeX = -1;
+	public zoneSizeY = -1;
+	public sizeX = 20;
+	public sizeY = 15;
 
-	private tileWidth = 32;
-	private tileHeight = 32;
-	private zoom = 100;
+	public tileWidth = 32;
+	public tileHeight = 32;
+	public zoom = 100;
 
-	private tilesetFilenames: string[] = [];
-	private aImages = -1;
-	private layerNames: any = -1;
-	private layers: any = -1;
-	private firstgids: any = -1;
-	private gidsindex: any = [];
+	public tilesetFilenames: string[] = [];
+	public aImages = -1;
+	public layerNames: any = -1;
+	public layers: any = -1;
+	public firstgids: any = -1;
+	public gidsindex: any = [];
 
-	private drawingError = false;
-	private targetTileWidth = 0;
-	private targetTileHeight = 0;
+	public drawingError = false;
+	public targetTileWidth = 0;
+	public targetTileHeight = 0;
 
-	private readonly layerGroups: any = [
+	public readonly layerGroups = [
 		["0_floor", "1_terrain", "2_object"],
 		["3_roof", "4_roof_add"]
 	];
-	private layerGroupIndexes: any;
+	public readonly blendLayers = ["blend_ground", "blend_roof"]
+	public layerGroupIndexes: any;
 
-	private strategy: LandscapeRenderingStrategy;
-	private protection: any;
-	private collisionData: any;
+	public strategy: LandscapeRenderingStrategy;
+	public protection: any;
+	public collisionData: any;
 
 	// alternatives for known images that may be considered violent or mature
-	private knownSafeTilesets: string[] = [
+	public knownSafeTilesets: string[] = [
 		Paths.tileset + "/item/armor/bloodied_small_axe",
 		Paths.tileset + "/item/blood/floor_stain",
 		Paths.tileset + "/item/blood/floor_stains_2",
@@ -64,22 +66,22 @@ export class Map {
 		Paths.tileset + "/item/blood/small_stains"
 	];
 
-	private parallax: ParallaxBackground;
-	private parallaxImage?: string;
-	private ignoredTiles: string[];
+	public parallax: ParallaxBackground;
+	public parallaxImage?: string;
+	public ignoredTiles: string[];
 
 	/** Singleton instance. */
-	private static instance: Map;
+	private static instance: TileMap;
 
 
 	/**
 	 * Retrieves singleton instance.
 	 */
-	static get(): Map {
-		if (!Map.instance) {
-			Map.instance = new Map();
+	static get(): TileMap {
+		if (!TileMap.instance) {
+			TileMap.instance = new TileMap();
 		}
-		return Map.instance;
+		return TileMap.instance;
 	}
 
 	/**
@@ -124,6 +126,8 @@ export class Map {
 		this.decodeMapLayer(content, "2_object");
 		this.decodeMapLayer(content, "3_roof");
 		this.decodeMapLayer(content, "4_roof_add");
+		this.decodeMapLayer(content, "blend_ground");
+		this.decodeMapLayer(content, "blend_roof");
 		this.protection = this.decodeMapLayer(content, "protection");
 		this.collisionData = this.decodeMapLayer(content, "collision");
 		this.layerGroupIndexes = this.mapLayerGroup();
@@ -138,7 +142,7 @@ export class Map {
 
 	decodeTileset(content: any, name: string) {
 		var layerData = content[name];
-		var deserializer = marauroa.Deserializer.fromBase64(layerData);
+		var deserializer = Deserializer.fromBase64(layerData);
 		var amount = deserializer.readInt() as number;
 
 		this.tilesetFilenames = [];
@@ -192,7 +196,7 @@ export class Map {
 		if (!layerData) {
 			return;
 		}
-		var deserializer = marauroa.Deserializer.fromDeflatedBase64(layerData);
+		var deserializer = Deserializer.fromDeflatedBase64(layerData);
 		deserializer.readString(); // zone name
 		this.zoneSizeX = deserializer.readInt();
 		this.zoneSizeY = deserializer.readInt();

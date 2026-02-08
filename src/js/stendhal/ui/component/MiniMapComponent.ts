@@ -9,14 +9,16 @@
  *                                                                         *
  ***************************************************************************/
 
-declare let marauroa: any;
-declare let stendhal: any;
+import { marauroa } from "marauroa"
 
 import { Component } from "../toolkit/Component";
 
 import { Player } from "../../entity/Player";
 
 import { Color } from "../../data/color/Color";
+import { RenderingContext2D } from "util/Types";
+import { stendhal } from "stendhal";
+import { TileMap } from "data/TileMap";
 
 
 /**
@@ -24,6 +26,7 @@ import { Color } from "../../data/color/Color";
  */
 export class MiniMapComponent extends Component {
 
+	private map: TileMap;
 	private width = 128;
 	private height = 128;
 	private minimumScale = 2;
@@ -32,7 +35,7 @@ export class MiniMapComponent extends Component {
 	private mapWidth = 1;
 	private mapHeight = 1;
 	private scale = 1;
-	private bgImage!: HTMLCanvasElement;
+	private bgImage?: ImageBitmap;
 	private lastZone?: number[];
 
 	// ground/collision colors
@@ -43,6 +46,7 @@ export class MiniMapComponent extends Component {
 
 	constructor() {
 		super("minimap");
+		this.map = TileMap.get();
 		this.componentElement.addEventListener("click", (event) => {
 			this.onClick(event);
 		});
@@ -53,8 +57,8 @@ export class MiniMapComponent extends Component {
 
 
 	private zoneChange() {
-		this.mapWidth = stendhal.data.map.zoneSizeX;
-		this.mapHeight = stendhal.data.map.zoneSizeY;
+		this.mapWidth = this.map.zoneSizeX;
+		this.mapHeight = this.map.zoneSizeY;
 		this.scale = Math.max(this.minimumScale, Math.min(this.height / this.mapHeight, this.width / this.mapWidth));
 		this.createBackgroundImage();
 	};
@@ -95,10 +99,10 @@ export class MiniMapComponent extends Component {
 	}
 
 	public draw() {
-		if (marauroa.currentZoneName === stendhal.data.map.currentZoneName
-			|| stendhal.data.map.currentZoneName === "int_vault"
-			|| stendhal.data.map.currentZoneName === "int_adventure_island"
-			|| stendhal.data.map.currentZoneName === "tutorial_island") {
+		if (marauroa.currentZoneName === this.map.currentZoneName
+			|| this.map.currentZoneName === "int_vault"
+			|| this.map.currentZoneName === "int_adventure_island"
+			|| this.map.currentZoneName === "tutorial_island") {
 
 			this.scale = 10;
 
@@ -119,7 +123,7 @@ export class MiniMapComponent extends Component {
 		}
 	}
 
-	drawBackground(ctx: CanvasRenderingContext2D) {
+	drawBackground(ctx: RenderingContext2D) {
 		ctx.save();
 		ctx.imageSmoothingEnabled = false;
 
@@ -137,10 +141,10 @@ export class MiniMapComponent extends Component {
 			return;
 		}
 
-		if (stendhal.data.map.collisionData !== this.lastZone) {
-			this.lastZone = stendhal.data.map.collisionData;
-			this.bgImage = document.createElement("canvas");
-			let ctx = this.bgImage.getContext("2d")!;
+		if (this.map.collisionData !== this.lastZone) {
+			this.lastZone = this.map.collisionData;
+			let canvas = new OffscreenCanvas(width, height);
+			let ctx = canvas.getContext("2d")!;
 			let imgData = ctx.createImageData(width, height);
 
 			for (let y = 0; y < height; y++) {
@@ -148,10 +152,10 @@ export class MiniMapComponent extends Component {
 					let color = MiniMapComponent.COLOR_GROUND;
 					// RGBA array. Find the actual position
 					let pos = 4 * (y * width + x);
-					if (stendhal.data.map.collision(x, y)) {
+					if (this.map.collision(x, y)) {
 						// red collision
 						color = MiniMapComponent.COLOR_COLLISION;
-					} else if (stendhal.data.map.isProtected(x, y)) {
+					} else if (this.map.isProtected(x, y)) {
 						// light green for protection
 						color = MiniMapComponent.COLOR_PROTECTION;
 					}
@@ -161,14 +165,15 @@ export class MiniMapComponent extends Component {
 					imgData.data[pos + 3] = 255; // opacity
 				}
 			}
-			this.bgImage.width  = width;
-			this.bgImage.height = height;
-
 			ctx.putImageData(imgData, 0, 0);
+			if (this.bgImage) {
+				this.bgImage.close();
+			}
+			this.bgImage = canvas.transferToImageBitmap();
 		}
 	}
 
-	drawEntities(ctx: CanvasRenderingContext2D) {
+	drawEntities(ctx: RenderingContext2D) {
 		ctx.fillStyle = Color.RED;
 		ctx.strokeStyle = Color.BLACK;
 		let isAdmin = marauroa.me["adminlevel"] && marauroa.me["adminlevel"] >= 600;
@@ -218,7 +223,7 @@ export class MiniMapComponent extends Component {
 		let pos = stendhal.ui.html.extractPosition(event);
 		let x = Math.floor((pos.canvasRelativeX + this.xOffset) / this.scale);
 		let y = Math.floor((pos.canvasRelativeY + this.yOffset) / this.scale);
-		if (!stendhal.data.map.collision(x, y)) {
+		if (!this.map.collision(x, y)) {
 			let action: any = {
 					type: "moveto",
 					x: x.toString(),

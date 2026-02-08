@@ -1,5 +1,5 @@
 /***************************************************************************
- *                   (C) Copyright 2003-2024 - Stendhal                    *
+ *                   (C) Copyright 2003-2026 - Stendhal                    *
  ***************************************************************************
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -9,12 +9,16 @@
  *                                                                         *
  ***************************************************************************/
 
+import { RenderingContext2D } from "util/Types";
 import { MenuItem } from "../action/MenuItem";
 import { Chat } from "../util/Chat";
-import { RPObject } from "./RPObject";
+import { RPObject, RPZone } from "marauroa";
+import { Paths } from "../data/Paths";
+import { singletons } from "../SingletonRepo";
 
-declare var marauroa: any;
-declare var stendhal: any;
+import { marauroa } from "marauroa"
+import { stendhal } from "../stendhal";
+import { ImageSprite } from "../sprite/image/ImageSprite";
 
 /**
  * General entity
@@ -25,6 +29,7 @@ export class Entity extends RPObject {
 	minimapShow = false;
 	minimapStyle = "rgb(200,255,200)";
 	zIndex = 10000;
+	imageSprite?: ImageSprite;
 
 	override set(key: string, value: any) {
 		super.set(key, value);
@@ -204,8 +209,8 @@ export class Entity extends RPObject {
 		this["_x"] = this["x"];
 	}
 
-	draw(ctx: CanvasRenderingContext2D) {
-		if (this.sprite) {
+	draw(ctx: RenderingContext2D) {
+		if (this.sprite || this.imageSprite) {
 			this.drawSprite(ctx);
 		}
 	}
@@ -213,23 +218,27 @@ export class Entity extends RPObject {
 	/**
 	 * draws a standard sprite
 	 */
-	drawSprite(ctx: CanvasRenderingContext2D) {
+	drawSprite(ctx: RenderingContext2D) {
 		this.drawSpriteAt(ctx, this["x"] * 32, this["y"] * 32);
 	}
 
-	drawSpriteAt(ctx: CanvasRenderingContext2D, x: number, y: number) {
-		var image = stendhal.data.sprites.get(this.sprite.filename);
-		if (image.height) {
-			var offsetX = this.sprite.offsetX || 0;
-			var offsetY = this.sprite.offsetY || 0;
-			var width = this.sprite.width || image.width;
-			var height = this.sprite.height || image.height;
+	drawSpriteAt(ctx: RenderingContext2D, x: number, y: number) {
+		if (this.imageSprite) {
+			this.imageSprite.drawOnto(ctx, x, y, this.getWidth() * 32, this.getHeight() * 32);
+		} else {
+			let image = singletons.getSpriteStore().get(this.sprite.filename);
+			if (image.height) {
+				let offsetX = this.sprite.offsetX || 0;
+				let offsetY = this.sprite.offsetY || 0;
+				let width = this.sprite.width || image.width;
+				let height = this.sprite.height || image.height;
 
-			// use entity dimensions to center sprite
-			x += Math.floor((this.getWidth() * 32 - width) / 2);
-			y += Math.floor((this.getHeight() * 32 - height) / 2);
-
-			ctx.drawImage(image, offsetX, offsetY, width, height, x, y, width, height);
+				// use entity dimensions to center sprite
+				x += Math.floor((this.getWidth() * 32 - width) / 2);
+				y += Math.floor((this.getHeight() * 32 - height) / 2);
+	
+				ctx.drawImage(image, offsetX, offsetY, width, height, x, y, width, height);
+			}
 		}
 	}
 
@@ -274,7 +283,7 @@ export class Entity extends RPObject {
 			cursor = this["cursor"];
 		}
 
-		return "url(" + stendhal.paths.sprites + "/cursor/" + cursor.toLowerCase().replace("_", "") + ".png) 1 3, auto";
+		return "url(" + Paths.sprites + "/cursor/" + cursor.toLowerCase().replace("_", "") + ".png) 1 3, auto";
 	}
 
 	/**
@@ -341,5 +350,9 @@ export class Entity extends RPObject {
 
 		return ent_rect.right > view_rect.left && ent_rect.left < view_rect.right
 				&& ent_rect.bottom > view_rect.top && ent_rect.top < view_rect.bottom
+	}
+
+	override destroy(_parent: RPObject|RPZone) {
+		this.imageSprite?.free();
 	}
 }

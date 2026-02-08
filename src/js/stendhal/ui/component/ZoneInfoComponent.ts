@@ -11,7 +11,7 @@
 
 import { Component } from "../toolkit/Component";
 
-declare let marauroa: any;
+import { marauroa } from "marauroa"
 
 /**
  * zone info

@@ -10,11 +10,13 @@
  *                                                                         *
  ***************************************************************************/
 
-import { DrawingStage } from "../util/DrawingStage";
 import { Pair } from "../util/Pair";
 import { StringUtil } from "../util/StringUtil";
+import { Paths } from "./Paths";
 
-declare var stendhal: any;
+import { stendhal } from "../stendhal";
+import { ImageMetadata } from "sprite/image/ImageMetadata";
+import { MultilayerImageLoader } from "sprite/image/MultilayerImageLoader";
 
 
 /**
@@ -193,40 +195,14 @@ export class Outfit {
 	 *
 	 * TODO:
 	 *   - use dress layer based on body type
-	 *
-	 * @param {Function} callback
-	 *   Function to pass image to when ready.
 	 */
-	toImage(callback: Function) {
-		const sig = this.getSignature();
-		// get directly from cache since we don't want to return failsafe image
-		let image: HTMLImageElement = stendhal.data.sprites.getCached(sig);
-
-		const onReady = function(e?: Event) {
-			image.removeEventListener("load", onReady);
-			callback(image);
-		};
-
-		if (image instanceof HTMLImageElement) {
-			if (image.height > 0) {
-				onReady();
-			} else {
-				image.addEventListener("load", onReady);
-			}
-			return;
-		}
-
-		const stage = DrawingStage.get();
-		stage.reset();
-		stage.setSize(48 * 3, 64 * 4);
-
+	async toImage(): Promise<ImageBitmap> {
+		let parts: ImageMetadata[] = [];
 		let outfitLayers = this.getLayers();
 		const detailIndex = this.getLayerIndex("detail") || 0;
 		if (stendhal.data.outfit.detailHasRearLayer(detailIndex)) {
 			outfitLayers = [new Pair("detail-rear", detailIndex), ...outfitLayers];
 		}
-
-		const layers: HTMLImageElement[] = [];
 		for (const l of outfitLayers) {
 			let layerName = l.first;
 			let suffix = "";
@@ -235,58 +211,21 @@ export class Outfit {
 				layerName = layerName.replace(/-rear$/, "");
 			}
 			const layerIndex = l.second;
-			let layerPath = stendhal.paths.sprites + "/outfit/" + layerName + "/"
+			let layerPath = Paths.sprites + "/outfit/" + layerName + "/"
 					+ StringUtil.padLeft(""+layerIndex, "0", 3) + suffix;
 			if (layerName === "body" && stendhal.config.getBoolean("effect.no-nude")) {
 				// FIXME: some non-player pickable bodies don't have "no-nude" variant
 				layerPath += "-nonude";
 			}
 			layerPath += ".png";
-			const coloring = this.getLayerColor(layerName);
-			if (typeof(coloring) === "undefined") {
-				layers.push(stendhal.data.sprites.get(layerPath));
-			} else {
-				layers.push(stendhal.data.sprites.getFiltered(layerPath, "trueColor", coloring));
+			let filter = undefined;
+			let coloring = this.getLayerColor(layerName);
+			if (coloring) {
+				filter = "trueColor";
 			}
+			parts.push(new ImageMetadata(layerPath, filter, coloring));
 		}
 
-		if (layers.length == 0) {
-			image = stendhal.data.sprites.getFailsafe();
-			callback(image);
-			return;
-		}
-
-		let onAllLayersReady: Function;
-		const onLayerReady = function(e?: Event) {
-			for (const layer of layers) {
-				if (!layer.complete || layer.height === 0) {
-					return;
-				}
-			}
-			onAllLayersReady();
-		};
-
-		onAllLayersReady = function() {
-			for (const layer of layers) {
-				layer.removeEventListener("load", onLayerReady);
-				stage.drawImage(layer);
-			}
-			image = stage.toImage();
-			stage.reset();
-			stendhal.data.sprites.cache(sig, image);
-			if (image.height > 0) {
-				onReady();
-			} else {
-				image.addEventListener("load", onReady);
-			}
-		};
-
-		for (const layer of layers) {
-			if (layer.height > 0) {
-				onLayerReady();
-			} else {
-				layer.addEventListener("load", onLayerReady);
-			}
-		}
+		return await new MultilayerImageLoader(parts).load();
 	}
 }

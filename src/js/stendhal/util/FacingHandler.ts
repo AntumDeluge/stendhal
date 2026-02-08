@@ -9,7 +9,7 @@
  *                                                                         *
  ***************************************************************************/
 
-declare var marauroa: any;
+import { marauroa } from "marauroa"
 
 import { Direction } from "./Direction";
 

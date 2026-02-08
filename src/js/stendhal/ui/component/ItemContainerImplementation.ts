@@ -9,8 +9,8 @@
  *                                                                         *
  ***************************************************************************/
 
-declare var marauroa: any;
-declare var stendhal: any;
+import { marauroa } from "marauroa"
+import { stendhal } from "../../stendhal";
 
 import { ui } from "../UI";
 
@@ -21,6 +21,8 @@ import { Item } from "../../entity/Item";
 import { singletons } from "../../SingletonRepo";
 
 import { Point } from "../../util/Point";
+import { Paths } from "../../data/Paths";
+import { HTMLImageElementUtil } from "sprite/image/HTMLImageElementUtil";
 
 
 /**
@@ -60,7 +62,7 @@ export class ItemContainerImplementation {
 			});
 			e.addEventListener("touchmove", (event: TouchEvent) => {
 				this.onTouchMove(event);
-			});
+			}, {passive: true});
 			e.addEventListener("drop", (event: DragEvent) => {
 				this.onDrop(event)
 			});
@@ -72,7 +74,7 @@ export class ItemContainerImplementation {
 			});
 			e.addEventListener("touchstart", (event: TouchEvent) => {
 				this.onTouchStart(event)
-			});
+			}, {passive: true});
 			e.addEventListener("touchend", (event: TouchEvent) => {
 				this.onTouchEnd(event)
 			});
@@ -131,7 +133,7 @@ export class ItemContainerImplementation {
 				}
 
 				e.style.backgroundImage = "url("
-						+ stendhal.data.sprites.checkPath(stendhal.paths.sprites
+						+ singletons.getSpriteStore().checkPath(Paths.sprites
 								+ "/items/" + o["class"] + "/" + o["subclass"] + ".png")
 						+ ")";
 				e.style.backgroundPosition = (xOffset+1) + "px " + (yOffset+1) + "px";
@@ -148,7 +150,7 @@ export class ItemContainerImplementation {
 		for (let i = cnt; i < this.size; i++) {
 			let e = this.parentElement.querySelector("#" + this.slot +this. suffix + i) as HTMLElement;
 			if (this.defaultImage) {
-				e.style.backgroundImage = "url(" + stendhal.paths.gui + "/" + this.defaultImage + ")";
+				e.style.backgroundImage = "url(" + Paths.gui + "/" + this.defaultImage + ")";
 			} else {
 				e.style.backgroundImage = "none";
 			}
@@ -190,7 +192,7 @@ export class ItemContainerImplementation {
 				quantity: item.hasOwnProperty("quantity") ? item["quantity"] : 1
 			};
 
-			const img = stendhal.data.sprites.getAreaOf(stendhal.data.sprites.get(item.sprite.filename), 32, 32);
+			const img = HTMLImageElementUtil.getAreaOf(singletons.getSpriteStore().get(item.sprite.filename), 32, 32);
 			if (event instanceof DragEvent && event.dataTransfer) {
 				stendhal.ui.heldObject = heldObject;
 				event.dataTransfer.setDragImage(img, 0, 0);
@@ -427,14 +429,14 @@ export class ItemContainerImplementation {
 	private updateCursor(target: HTMLElement, item?: Item) {
 		if (item) {
 			if (this.slot === "content" && stendhal.config.getBoolean("inventory.quick-pickup")) {
-				target.style.cursor = "url(" + stendhal.paths.sprites
+				target.style.cursor = "url(" + Paths.sprites
 						+ "/cursor/itempickupfromslot.png) 1 3, auto";
 				return;
 			}
 			target.style.cursor = item.getCursor(0, 0);
 			return;
 		}
-		target.style.cursor = "url(" + stendhal.paths.sprites
+		target.style.cursor = "url(" + Paths.sprites
 				+ "/cursor/normal.png) 1 3, auto";
 	}
 

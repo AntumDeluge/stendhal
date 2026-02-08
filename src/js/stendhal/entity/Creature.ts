@@ -16,9 +16,10 @@ import { EntityOverlayRegistry } from "../data/EntityOverlayRegistry";
 import { Color } from "../data/color/Color";
 
 import { SkillEffect } from "../sprite/action/SkillEffect";
+import { Paths } from "../data/Paths";
 
-declare var marauroa: any;
-declare var stendhal: any;
+import { marauroa } from "marauroa"
+import { stendhal } from "../stendhal";
 
 export class Creature extends RPEntity {
 
@@ -27,7 +28,7 @@ export class Creature extends RPEntity {
 	override titleStyle = "#ffc8c8";
 
 
-	override set(key: string, value: string) {
+	override set(key: string, value: any) {
 		super.set(key, value);
 
 		if (key === "name") {
@@ -52,7 +53,7 @@ export class Creature extends RPEntity {
 	}
 
 	override getCursor(_x: number, _y: number) {
-		return "url(" + stendhal.paths.sprites + "/cursor/attack.png) 1 3, auto";
+		return "url(" + Paths.sprites + "/cursor/attack.png) 1 3, auto";
 	}
 
 	/**

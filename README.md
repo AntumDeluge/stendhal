@@ -30,29 +30,28 @@ button to create or log in to your account.
 ### Mobile
 
 Play using the [progressive web app](https://en.wikipedia.org/wiki/Progressive_web_app). Just visit
-https://stendhalgame.org/ in your mobile browser and click "install" when prompted.
+[stendhalgame.org](https://stendhalgame.org/) in your mobile browser and click "install" when prompted.
 
 [<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" height="75">](https://f-droid.org/packages/org.stendhalgame.client/)
 
 Play on your Android device using the dedicated app. You can get it from the
-[F-Droid App Store](https://f-droid.org/) or download it from https://stendhalgame.org/download.html.
+[F-Droid App Store](https://f-droid.org/) or download it from [stendhalgame.org](https://stendhalgame.org/download.html).
 
 ### Classic Desktop
 
 [![Download](https://stendhalgame.org/images/downloadbutton.png)](https://arianne-project.org/download/stendhal.zip)
 
 Play using the classic desktop client. You will need Java which you can download from
-[https://www.java.com](https://www.java.com/en/download) on Microsoft Windows. Java is included in
+[java.com](https://www.java.com/en/download) on Microsoft Windows. Java is included in
 most Linux distributions. Both Oracle Java and OpenJDK are supported.
 
-Please download Stendhal from [https://stendhalgame.org](https://stendhalgame.org)<br>
-You can double click on stendhal-starter.jar and the client will run.<br>
-If you prefer to run from command line, then just execute this command
-in the stendhal folder:
+Please download Stendhal from [stendhalgame.org](https://stendhalgame.org/download.html).<br>
+You can double click on `stendhal-starter.jar` and the client will run.<br>
+If you prefer to run from command line, then just execute this command in the stendhal folder:
 
 `java -jar stendhal-starter.jar`
 
-There is a  [manual](https://stendhalgame.org/wiki/Stendhal_Manual), and there is Help from the client menu icons in the upper right hand side of the game screen.
+There is a [manual](https://stendhalgame.org/wiki/Stendhal_Manual), and there is Help from the client menu icons in the upper right hand side of the game screen.
 
 
 ## Development environment
@@ -67,7 +66,7 @@ There is a  [manual](https://stendhalgame.org/wiki/Stendhal_Manual), and there i
 
 Stendhal is free software. You can redistribute it and/or modify under the following terms:
 
-- The **server**, **java client**, and **Android client**: *GNU General Public License* 2 or later as published by the Free
+- The **server**, **java client**, and **Android client**: *GNU General Public License* 2 or later as published by the Free Software Foundation
 - The **web client** and **native client**: *GNU Affero General Public License* 3 or later as published by the Free Software Foundation with the definition of "System libraries" being extended to include authentication providers and software distribution platforms.
 - The **nativehelper** extensions: *GNU Lesser General Public License* 3 or later as published by the Free Software Foundation 
 
@@ -76,6 +75,6 @@ even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE
 [LICENSE.txt](LICENSE.txt) and [src/js/LICENSE.html](src/js/LICENSE.html) file for more details.
 
 Stendhal(c) is copyright of Miguel Angel Blanch Lardin, 2005-2008, arianne_rpg at users dot sourceforge dot net and others<br>
-Stendhal(c) is copyright of the Arianne Project, 2006-2025, arianne-general at lists dot sourceforge dot net
+Stendhal(c) is copyright of the Arianne Project, 2006-2026, arianne-general at lists dot sourceforge dot net
 
 Please have a look at the list of [contributors](doc/contributors.md#contributors).

@@ -9,8 +9,8 @@
  *                                                                         *
  ***************************************************************************/
 
-declare var marauroa: any;
-declare var stendhal: any;
+import { marauroa } from "marauroa"
+import { stendhal } from "../stendhal";
 
 import { HeldObject } from "./HeldObject";
 import { ui } from "./UI";
@@ -31,6 +31,10 @@ import { SpeechBubble } from "../sprite/SpeechBubble";
 import { TextBubble } from "../sprite/TextBubble";
 
 import { Point } from "../util/Point";
+import { Canvas, RenderingContext2D } from "util/Types";
+import { Debug } from "../util/Debug";
+import { TileMap } from "data/TileMap";
+import { HTMLImageElementUtil } from "sprite/image/HTMLImageElementUtil";
 
 
 /**
@@ -53,7 +57,7 @@ export class ViewPort {
 	private readonly height: number;
 
 	/** Drawing context. */
-	private ctx: CanvasRenderingContext2D;
+	private ctx: RenderingContext2D;
 	/** Map tile pixel width. */
 	private readonly targetTileWidth = 32;
 	/** Map tile pixel height. */
@@ -74,13 +78,13 @@ export class ViewPort {
 	private HSLFilter?: string;
 	private colorMethod = "";
 	private blendMethod = ""; // FIXME: unused
+	private map: TileMap;
 
 	/** Styles to be applied when chat panel is not floating. */
 	private readonly initialStyle: {[prop: string]: string};
 
 	/** Singleton instance. */
 	private static instance: ViewPort;
-
 
 	/**
 	 * Retrieves singleton instance.
@@ -96,6 +100,7 @@ export class ViewPort {
 	 * Hidden singleton constructor.
 	 */
 	private constructor() {
+		this.map = TileMap.get();
 		const element = this.getElement() as HTMLCanvasElement;
 		this.ctx = element.getContext("2d")!;
 		this.width = element.width;
@@ -128,10 +133,10 @@ export class ViewPort {
 		var startTime = new Date().getTime();
 
 		if (marauroa.me && document.visibilityState === "visible") {
-			if (marauroa.currentZoneName === stendhal.data.map.currentZoneName
-				|| stendhal.data.map.currentZoneName === "int_vault"
-				|| stendhal.data.map.currentZoneName === "int_adventure_island"
-				|| stendhal.data.map.currentZoneName === "tutorial_island") {
+			if (marauroa.currentZoneName === this.map.currentZoneName
+				|| this.map.currentZoneName === "int_vault"
+				|| this.map.currentZoneName === "int_adventure_island"
+				|| this.map.currentZoneName === "tutorial_island") {
 				this.drawingError = false;
 
 				this.ctx.globalAlpha = 1.0;
@@ -144,12 +149,14 @@ export class ViewPort {
 
 				// FIXME: filter should not be applied to "blend" layers
 				//this.applyFilter();
-				stendhal.data.map.parallax.draw(this.ctx, this.offsetX, this.offsetY);
-				stendhal.data.map.strategy.render(this.ctx.canvas, this, tileOffsetX, tileOffsetY, this.targetTileWidth, this.targetTileHeight);
+				this.map.parallax.draw(this.ctx, this.offsetX, this.offsetY);
+				this.map.strategy.render(this.ctx.canvas, this, tileOffsetX, tileOffsetY, this.targetTileWidth, this.targetTileHeight);
 
 				this.weatherRenderer.draw(this.ctx);
 				//this.removeFilter();
-				this.applyHSLFilter();
+				if (!Debug.isActive("light")) {
+					this.applyHSLFilter();
+				}
 				this.drawEntitiesTop();
 				this.drawEmojiSprites();
 				this.drawTextSprites();
@@ -198,9 +205,6 @@ export class ViewPort {
 			return;
 		}
 		this.ctx.save();
-		// FIXME: is this the appropriate alpha level to use? "color_method" value from server doesn't
-		//        appear to include alpha information
-		this.ctx.globalAlpha = 0.75;
 		this.ctx.globalCompositeOperation = (this.colorMethod || this.ctx.globalCompositeOperation) as GlobalCompositeOperation;
 		this.ctx.fillStyle = this.HSLFilter;
 		this.ctx.fillRect(this.offsetX, this.offsetY, this.ctx.canvas.width, this.ctx.canvas.height);
@@ -335,10 +339,10 @@ export class ViewPort {
 	/**
 	 * Updates viewport drawing position of map based on player position.
 	 *
-	 * @param canvas {HTMLCanvasElement}
+	 * @param canvas {Canvas}
 	 *   Viewport canvas element.
 	 */
-	adjustView(canvas: HTMLCanvasElement) {
+	adjustView(canvas: Canvas) {
 		// IE does not support ctx.resetTransform(), so use the following workaround:
 		this.ctx.setTransform(1, 0, 0, 1, 0, 0);
 
@@ -353,10 +357,10 @@ export class ViewPort {
 		}
 
 		// Keep the world within the screen view
-		centerX = Math.min(centerX, stendhal.data.map.zoneSizeX * this.targetTileWidth - canvas.width);
+		centerX = Math.min(centerX, this.map.zoneSizeX * this.targetTileWidth - canvas.width);
 		centerX = Math.max(centerX, 0);
 
-		centerY = Math.min(centerY, stendhal.data.map.zoneSizeY * this.targetTileHeight - canvas.height);
+		centerY = Math.min(centerY, this.map.zoneSizeY * this.targetTileHeight - canvas.height);
 		centerY = Math.max(centerY, 0);
 
 		if (this.freeze) {
@@ -519,9 +523,9 @@ export class ViewPort {
 			stendhal.ui.timestampMouseDown = +new Date();
 
 			if (e.type !== "dblclick" && e.target) {
-				e.target.addEventListener("mousemove", mHandle.onDrag);
+				e.target.addEventListener("mousemove", mHandle.onDrag, {passive: true});
 				e.target.addEventListener("mouseup", mHandle.onMouseUp);
-				e.target.addEventListener("touchmove", mHandle.onDrag);
+				e.target.addEventListener("touchmove", mHandle.onDrag, {passive: true});
 				e.target.addEventListener("touchend", mHandle.onMouseUp);
 			} else if (entity == stendhal.zone.ground) {
 				entity.onclick(pos.canvasRelativeX, pos.canvasRelativeY, true);
@@ -653,14 +657,14 @@ export class ViewPort {
 		var img = undefined;
 		let heldObject: HeldObject;
 		if (draggedEntity && draggedEntity.type === "item") {
-			img = stendhal.data.sprites.getAreaOf(stendhal.data.sprites.get(draggedEntity.sprite.filename), 32, 32);
+			img = HTMLImageElementUtil.getAreaOf(singletons.getSpriteStore().get(draggedEntity.sprite.filename), 32, 32);
 			heldObject = {
 				path: draggedEntity.getIdPath(),
 				zone: marauroa.currentZoneName,
 				quantity: draggedEntity.hasOwnProperty("quantity") ? draggedEntity["quantity"] : 1
 			}
 		} else if (draggedEntity && draggedEntity.type === "corpse") {
-			img = stendhal.data.sprites.get(draggedEntity.sprite.filename);
+			img = singletons.getSpriteStore().get(draggedEntity.sprite.filename);
 			heldObject = {
 				path: draggedEntity.getIdPath(),
 				zone: marauroa.currentZoneName,

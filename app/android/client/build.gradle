@@ -10,8 +10,8 @@ android {
 		applicationId namespace
 		minSdk 21
 		targetSdk 32
-		versionCode 1048005
-		versionName "1.48.5"
+		versionCode 1049005
+		versionName "1.49.5"
 		testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 		targetSdkVersion 32
 		minSdkVersion 21
@@ -26,7 +26,7 @@ android {
 	}
 
 	// build output
-	project.setProperty("archivesBaseName", "${namespace}-${defaultConfig.versionCode}")
+	project.setProperty("archivesBaseName", "${namespace}-${defaultConfig.versionName}")
 	project.setProperty("buildDir", "${projectDir}/../../../build/build_android_client")
 
 	/* A keystore.properties file can be placed in the root Android project directory and must

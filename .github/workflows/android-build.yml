@@ -7,16 +7,56 @@ on:
   pull_request:
     paths:
       - 'app/android/**'
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - id: job_info
+        uses: daleyjem/gh-job-id@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          job_name: 'build'
 
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v3
+      - name: Checkout Repository
+        uses: actions/checkout@v3
 
-      - name: Build Android Packages
-        run: cd app/android/client && gradle assemble
+      - name: Set Up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'adopt'
+
+      - name: Validate Gradle Wrapper .jar
+        run: |
+          cd app/android/gradle/wrapper
+          curl --location --output gradle-wrapper.jar.sha256 \
+            https://services.gradle.org/distributions/gradle-7.5.1-wrapper.jar.sha256
+          echo " gradle-wrapper.jar" >> gradle-wrapper.jar.sha256
+          sha256sum --check gradle-wrapper.jar.sha256
+
+      - name: Build APKs with Ant
+        uses: cedx/setup-ant@v6
+        with:
+          version: '1.10'
+      - run: ant -noinput -buildfile build.xml android -Dgradle.params="assembleDebug assembleRelease"
+
+      - name: Failure Report
+        uses: sarisia/actions-status-discord@v1
+        if: failure()
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_DEVELOPMENT }}
+        with:
+          title: 'Android Build Failed'
+          description: '${{ steps.job_info.outputs.html_url }}'
+          nodetail: true
+      - uses: sarisia/actions-status-discord@v1
+        if: failure()
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_DEVLOG }}
+        with:
+          title: 'Android Build Failed'
+          description: '${{ steps.job_info.outputs.html_url }}'
+          nodetail: true

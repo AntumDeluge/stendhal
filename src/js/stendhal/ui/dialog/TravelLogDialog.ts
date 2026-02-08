@@ -9,12 +9,13 @@
  *                                                                         *
  ***************************************************************************/
 
+import { Paths } from "../../data/Paths";
 import { DialogContentComponent } from "../toolkit/DialogContentComponent";
 import { ui } from "../UI";
 import { UIComponentEnum } from "../UIComponentEnum";
 
-declare var marauroa: any;
-declare var stendhal: any;
+import { marauroa } from "marauroa"
+import { stendhal } from "../../stendhal";
 
 /**
  * a dialog to display images
@@ -167,7 +168,7 @@ export class TravelLogDialog extends DialogContentComponent {
 		detailsSpan.innerHTML = "<h3>" + stendhal.ui.html.esc(selectedItem) + "</h3>";
 		if (this.repeatable[selectedItem]) {
 			detailsSpan.innerHTML += "<p id=\"travellogrepeatable\">"
-				+ "<img src=\"" + stendhal.paths.gui + "/rp.png\" /> <em>I can do this quest again.</em></p>";
+				+ "<img src=\"" + Paths.gui + "/rp.png\" /> <em>I can do this quest again.</em></p>";
 		}
 
 		detailsSpan.innerHTML += "<p id=\"travellogdescription\">"

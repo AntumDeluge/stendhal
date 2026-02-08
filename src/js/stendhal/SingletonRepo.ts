@@ -10,14 +10,13 @@
  ***************************************************************************/
 
 import { Client } from "./Client";
-import { EventRegistry } from "./EventRegistry";
+import { EventRegistry } from "./event/EventRegistry";
 import { SlashActionRepo } from "./SlashActionRepo";
 
 import { Zone } from "./entity/Zone";
 
 import { ConfigManager } from "./util/ConfigManager";
 import { DownloadUtil } from "./util/DownloadUtil";
-import { DrawingStage } from "./util/DrawingStage";
 import { FacingHandler } from "./util/FacingHandler";
 import { KeyHandler } from "./util/KeyHandler";
 import { SessionManager } from "./util/SessionManager";
@@ -27,7 +26,6 @@ import { CStatus } from "./data/CStatus";
 import { CacheManager } from "./data/CacheManager";
 import { EmojiStore } from "./data/EmojiStore";
 import { GroupManager } from "./data/GroupManager";
-import { Map } from "./data/Map";
 import { OutfitStore } from "./data/OutfitStore";
 import { Paths } from "./data/Paths";
 import { SpriteStore, store } from "./data/SpriteStore";
@@ -48,7 +46,9 @@ import { ViewPort } from "./ui/ViewPort";
 
 import { ChatInputComponent } from "./ui/component/ChatInputComponent";
 
-
+/**
+ * @Deprecated use Class.get() directly to prevent dependency chain
+ */
 export class SingletonRepo {
 
 	static getCStatus(): CStatus {
@@ -73,10 +73,6 @@ export class SingletonRepo {
 
 	static getDownloadUtil(): typeof DownloadUtil {
 		return DownloadUtil;
-	}
-
-	static getDrawingStage(): DrawingStage {
-		return DrawingStage.get();
 	}
 
 	static getEmojiStore(): EmojiStore {
@@ -117,10 +113,6 @@ export class SingletonRepo {
 
 	static getLoopedSoundSourceManager(): LoopedSoundSourceManager {
 		return LoopedSoundSourceManager.get();
-	}
-
-	static getMap(): Map {
-		return Map.get();
 	}
 
 	static getOutfitStore(): OutfitStore {

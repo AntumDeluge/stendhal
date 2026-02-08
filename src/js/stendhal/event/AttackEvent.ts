@@ -1,7 +1,5 @@
-/* $Id$ */
 /***************************************************************************
- *                   (C) Copyright 2003-2023 - Stendhal                    *
- ***************************************************************************
+ *                   (C) Copyright 2005-2026 - Stendhal                    *
  ***************************************************************************
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -11,27 +9,30 @@
  *                                                                         *
  ***************************************************************************/
 
-import { Sprite } from "./Sprite";
+import { RPEvent } from "marauroa"
 
-/**
- * A tileset.
- */
-export interface Tileset {
+export class AttackEvent extends RPEvent {
 
-    /**
-     * Get the number of tiles.
-     *
-     * @return The number of tiles.
-     */
-    getSize(): number;
+	public damage!: string;
+	public type!: string;
+	public weapon!: string;
 
-    /**
-     * Get the sprite for an index tile of a tileset.
-     *
-     * @param index
-     *            The index with-in the tileset.
-     *
-     * @return A sprite, or <code>null</code> if no mapped sprite.
-     */
-    getSprite(index: number): Sprite;
-}
+	public execute(entity: any): void {
+		let  target = entity.getAttackTarget();
+		if (!target) {
+			return;
+		}
+		if (this.hasOwnProperty("hit")) {
+			var damage = parseInt(this["damage"], 10);
+			if (damage !== 0) {
+				target.onDamaged(entity, damage);
+			} else {
+				target.onBlocked(entity);
+			}
+		} else {
+			target.onMissed(entity);
+		}
+		entity.onAttackPerformed(parseInt(this["type"], 10), this.hasOwnProperty("ranged"), this["weapon"]);
+	}
+
+};

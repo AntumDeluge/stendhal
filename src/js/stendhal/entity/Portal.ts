@@ -13,9 +13,10 @@ import { Entity } from "./Entity";
 import { MenuItem } from "../action/MenuItem";
 
 import { Color } from "../data/color/Color";
+import { Paths } from "../data/Paths";
 
-declare var marauroa: any;
-declare var stendhal: any;
+import { marauroa } from "marauroa"
+import { TileMap } from "data/TileMap";
 
 export class Portal extends Entity {
 
@@ -59,7 +60,8 @@ export class Portal extends Entity {
 	 */
 	override getDefaultAction() {
 		// don't try to walk to if on collision tile
-		if (stendhal.data.map.collision(this["x"], this["y"])) {
+		let map = TileMap.get();
+		if (map.collision(this["x"], this["y"])) {
 			return {
 				"type": "use",
 				"target": "#" + this["id"],
@@ -75,7 +77,7 @@ export class Portal extends Entity {
 	}
 
 	override getCursor(_x: number, _y: number) {
-		return "url(" + stendhal.paths.sprites + "/cursor/portal.png) 1 3, auto";
+		return "url(" + Paths.sprites + "/cursor/portal.png) 1 3, auto";
 	}
 
 }

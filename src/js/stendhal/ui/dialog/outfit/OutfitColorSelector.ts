@@ -1,5 +1,5 @@
 /***************************************************************************
- *                (C) Copyright 2015-2023 - Faiumoni e. V.                 *
+ *                (C) Copyright 2015-2026 - Faiumoni e. V.                 *
  ***************************************************************************
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -9,12 +9,15 @@
  *                                                                         *
  ***************************************************************************/
 
-declare var stendhal: any;
+import { singletons } from "../../../SingletonRepo";
+import { Canvas, RenderingContext2D } from "util/Types";
+import { ImageFilter } from "../../../sprite/image/ImageFilter";
+
 
 export class OutfitColorSelector {
-	protected ctx: CanvasRenderingContext2D;
-	private gradCtx: CanvasRenderingContext2D;
-	protected baseImage: HTMLCanvasElement;
+	protected ctx: RenderingContext2D;
+	private gradCtx: RenderingContext2D;
+	protected baseImage: Canvas;
 	private onColorChanged: Function;
 	private _enabled: boolean;
 	protected _x: number;
@@ -50,17 +53,19 @@ export class OutfitColorSelector {
 
 	get color() {
 		if (this.enabled) {
+			let filter = new ImageFilter();
 			const hsl = [this._x / this.baseImage.width, 1 - this._y / this.baseImage.height,
 				this.hX / this.baseImage.width];
-			const rgbArray = stendhal.data.sprites.filter.hsl2rgb(hsl);
-			return stendhal.data.sprites.filter.mergergb(rgbArray);
+			const rgbArray = filter.hsl2rgb(hsl);
+			return filter.mergergb(rgbArray);
 		}
 		return null;
 	}
 
 	set color(rgb) {
 		if (rgb != null) {
-			const hsl = stendhal.data.sprites.filter.rgb2hsl(stendhal.data.sprites.filter.splitrgb(rgb));
+			let filter = new ImageFilter();
+			const hsl = filter.rgb2hsl(filter.splitrgb(rgb));
 			this._x = hsl[0] * this.baseImage.width;
 			this._y = (1 - hsl[1]) * this.baseImage.height;
 			this.hX = hsl[2] * this.baseImage.width;
@@ -75,10 +80,11 @@ export class OutfitColorSelector {
 		img.width  = width;
 		img.height = height;
 		const ctx = img.getContext("2d")!;
+		let filter = new ImageFilter();
 		for (let x = 0; x < width; x++) {
 			for (let y = 0; y < height; y++) {
 				const hsl = [x / width, 1 - y / height, 0.5];
-				const rgb = stendhal.data.sprites.filter.hsl2rgb(hsl);
+				const rgb = filter.hsl2rgb(hsl);
 				ctx.fillStyle = this._rgbToCssString(rgb);
 				ctx.fillRect(x, y, 1, 1);
 			}
@@ -86,8 +92,8 @@ export class OutfitColorSelector {
 		return img;
 	}
 
-	_rgbToCssString(rgb: string[]) {
-		return "rgb(".concat(rgb[0], ",", rgb[1], ",", rgb[2], ")");
+	_rgbToCssString(rgb: string[]|number[]) {
+		return "rgb(" + rgb[0] + "," + rgb[1] + "," + rgb[2] + ")";
 	}
 
 	draw() {
@@ -135,14 +141,15 @@ export class OutfitColorSelector {
 	}
 
 	_calculateGradientStops() {
+		let filter = new ImageFilter();
 		const width = this.baseImage.width;
 		const height = this.baseImage.height;
 		const hslLeft = [this._x / width, 1 - this._y / height, 0.08];
 		const hslMiddle = [this._x / width, 1 - this._y / height, 0.5];
 		const hslRight = [this._x / width, 1 - this._y / height, 0.92];
-		const rgbLeft = stendhal.data.sprites.filter.hsl2rgb(hslLeft);
-		const rgbMiddle = stendhal.data.sprites.filter.hsl2rgb(hslMiddle);
-		const rgbRight = stendhal.data.sprites.filter.hsl2rgb(hslRight);
+		const rgbLeft = filter.hsl2rgb(hslLeft);
+		const rgbMiddle = filter.hsl2rgb(hslMiddle);
+		const rgbRight = filter.hsl2rgb(hslRight);
 
 		return [rgbLeft, rgbMiddle, rgbRight];
 	}

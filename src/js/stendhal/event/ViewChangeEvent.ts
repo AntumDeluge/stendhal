@@ -10,9 +10,10 @@
  *                                                                         *
  ***************************************************************************/
 
-declare var stendhal: any;
+import { stendhal } from "../stendhal";
 
-import { RPEvent } from "./RPEvent";
+import { Canvas } from "util/Types";
+import { RPEvent } from "marauroa"
 
 
 /**
@@ -24,8 +25,8 @@ export class ViewChangeEvent extends RPEvent {
 	public y!: number;
 
 
-	execute(entity: any) {
-		const canvas = stendhal.ui.viewport.getElement() as HTMLCanvasElement;
+	execute(_entity: any) {
+		const canvas = stendhal.ui.viewport.getElement() as Canvas;
 		queueMicrotask(() => {
 			stendhal.ui.viewport.freeze = true;
 			stendhal.ui.viewport.offsetX = this.x * stendhal.ui.viewport.targetTileWidth

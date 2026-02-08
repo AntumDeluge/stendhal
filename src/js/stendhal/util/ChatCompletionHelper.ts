@@ -10,8 +10,8 @@
  *                                                                         *
  ***************************************************************************/
 
-declare var marauroa: any;
-declare var stendhal: any;
+import { marauroa } from "marauroa"
+import { stendhal } from "../stendhal";
 
 import { SlashActionRepo } from "../SlashActionRepo";
 

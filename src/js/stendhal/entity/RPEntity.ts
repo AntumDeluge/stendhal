@@ -9,8 +9,8 @@
  *                                                                         *
  ***************************************************************************/
 
-declare var marauroa: any;
-declare var stendhal: any;
+import { marauroa } from "marauroa"
+import { stendhal } from "../stendhal";
 
 import { ActiveEntity } from "./ActiveEntity";
 import { Entity } from "./Entity";
@@ -33,6 +33,8 @@ import { BarehandAttackSprite } from "../sprite/action/BarehandAttackSprite";
 import { RangedAttackSprite } from "../sprite/action/RangedAttackSprite";
 
 import { ImageWithDimensions } from "data/ImageWithDimensions";
+import { RenderingContext2D } from "util/Types";
+import { Paths } from "../data/Paths";
 
 var HEALTH_BAR_HEIGHT = 6;
 
@@ -54,7 +56,7 @@ export class RPEntity extends ActiveEntity {
 	// for adjusting entity hp bar & title vertical position
 	protected titleDrawYOffset: number = 0;
 	// canvas for merging outfit layers to be drawn
-	private octx?: CanvasRenderingContext2D;
+	private octx?: RenderingContext2D;
 
 	private attackers: {[key: string]: any} = { size: 0 };
 
@@ -218,7 +220,7 @@ export class RPEntity extends ActiveEntity {
 		return typeof(this["no_shadow"]) === "undefined";
 	}
 
-	drawMultipartOutfit(ctx: CanvasRenderingContext2D) {
+	drawMultipartOutfit(ctx: RenderingContext2D) {
 		const store = singletons.getOutfitStore();
 		// layers in draw order
 		var layers = store.getLayerNames();
@@ -244,7 +246,7 @@ export class RPEntity extends ActiveEntity {
 		if (stendhal.config.getBoolean("effect.shadows") && this.castsShadow()) {
 			// dressed entities should use 48x64 sprites
 			// FIXME: this will not display correctly for horse outfit
-			const shadow = stendhal.data.sprites.getShadow("48x64");
+			const shadow = singletons.getSpriteStore().getShadow("48x64");
 
 			if (shadow && shadow.complete && shadow.height) {
 				// draw shadow below other layers
@@ -268,10 +270,8 @@ export class RPEntity extends ActiveEntity {
 			const lsprite = this.getOutfitPart(layer, outfit[layer], outfit["body"]);
 			if (lsprite && lsprite.complete && lsprite.height) {
 				if (!this.octx) {
-					let ocanvas = document.createElement("canvas");
+					let ocanvas = new OffscreenCanvas(lsprite.width, lsprite.height);
 					this.octx = ocanvas.getContext("2d")!;
-					ocanvas.width = lsprite.width;
-					ocanvas.height = lsprite.height;
 				}
 				this.octx!.drawImage(lsprite, 0, 0);
 			}
@@ -311,7 +311,7 @@ export class RPEntity extends ActiveEntity {
 			part = part.replace(/-rear$/, "");
 		}
 
-		const filename = stendhal.paths.sprites + "/outfit/" + part + "/" + n + ".png";
+		const filename = Paths.sprites + "/outfit/" + part + "/" + n + ".png";
 		const colors = this["outfit_colors"];
 		let colorname;
 		if (stendhal.data.outfit.isSkinLayer(part)) {
@@ -320,9 +320,9 @@ export class RPEntity extends ActiveEntity {
 			colorname = part;
 		}
 		if (typeof(colors) !== "undefined" && (typeof(colors[colorname]) !== "undefined")) {
-			return stendhal.data.sprites.getFiltered(filename, "trueColor", colors[colorname]);
+			return singletons.getSpriteStore().getFiltered(filename, "trueColor", colors[colorname]);
 		} else {
-			return stendhal.data.sprites.get(filename);
+			return singletons.getSpriteStore().get(filename);
 		}
 	}
 
@@ -347,7 +347,7 @@ export class RPEntity extends ActiveEntity {
 	/**
 	 * draw RPEntities
 	 */
-	override draw(ctx: CanvasRenderingContext2D) {
+	override draw(ctx: RenderingContext2D) {
 		if (typeof(this["ghostmode"]) != "undefined" && marauroa.me && !marauroa.me.isAdmin()) {
 			return;
 		}
@@ -357,23 +357,23 @@ export class RPEntity extends ActiveEntity {
 		this.drawStatusIcons(ctx);
 	}
 
-	drawMain(ctx: CanvasRenderingContext2D) {
+	drawMain(ctx: RenderingContext2D) {
 		if (typeof(this["outfit"]) != "undefined" || typeof(this["outfit_ext"]) != "undefined") {
 			this.drawMultipartOutfit(ctx);
 		} else {
-			let filename = stendhal.paths.sprites + "/" + this.spritePath + "/" + this["class"];
+			let filename = Paths.sprites + "/" + this.spritePath + "/" + this["class"];
 			if (typeof(this["subclass"]) != "undefined") {
 				filename = filename + "/" + this["subclass"];
 			}
 
 			// check for safe image
-			if (!stendhal.config.getBoolean("effect.blood") && stendhal.data.sprites.hasSafeImage(filename)) {
+			if (!stendhal.config.getBoolean("effect.blood") && singletons.getSpriteStore().hasSafeImage(filename)) {
 				filename = filename + "-safe.png";
 			} else {
 				filename = filename + ".png";
 			}
 
-			let image = stendhal.data.sprites.get(filename);
+			let image = singletons.getSpriteStore().get(filename);
 
 			if (stendhal.config.getBoolean("effect.shadows") && this.castsShadow()) {
 				// check for configured shadow style
@@ -383,7 +383,7 @@ export class RPEntity extends ActiveEntity {
 					shadow_style = (image.width / 3) + "x" + (image.height / 4);
 				}
 
-				const shadow = stendhal.data.sprites.getShadow(shadow_style);
+				const shadow = singletons.getSpriteStore().getShadow(shadow_style);
 
 				// draw shadow first
 				if (typeof(shadow) !== "undefined") {
@@ -396,21 +396,21 @@ export class RPEntity extends ActiveEntity {
 		}
 	}
 
-	drawStatusIcons(ctx: CanvasRenderingContext2D) {
+	drawStatusIcons(ctx: RenderingContext2D) {
 
 		function _drawAnimatedIcon(icon: CanvasImageSource, delay: number, nFrames: number, xdim: number, ydim: number, x: number, y: number) {
 			var frame = Math.floor(Date.now() / delay) % nFrames;
 			ctx.drawImage(icon, frame * xdim, 0, xdim, ydim, x, y, xdim, ydim);
 		}
 		function drawAnimatedIcon(iconPath: string, delay: number, x: number, y: number, fWidth?: number) {
-			var icon = stendhal.data.sprites.get(iconPath);
+			var icon = singletons.getSpriteStore().get(iconPath);
 			var dimH = icon.height;
 			var dimW = typeof(fWidth) !== "undefined" ? fWidth : dimH;
 			var nFrames = icon.width / dimW;
 			_drawAnimatedIcon(icon, delay, nFrames, dimW, dimH, x, y);
 		}
 		function drawAnimatedIconWithFrames(iconPath: string, nFrames: number, delay: number, x: number, y: number) {
-			var icon = stendhal.data.sprites.get(iconPath);
+			var icon = singletons.getSpriteStore().get(iconPath);
 			var ydim = icon.height;
 			var xdim = icon.width / nFrames;
 			_drawAnimatedIcon(icon, delay, nFrames, xdim, ydim, x, y);
@@ -419,53 +419,53 @@ export class RPEntity extends ActiveEntity {
 		var x = this["_x"] * 32 - 10;
 		var y = (this["_y"] + 1) * 32;
 		if (this.hasOwnProperty("choking")) {
-			ctx.drawImage(stendhal.data.sprites.get(stendhal.paths.sprites + "/ideas/choking.png"), x, y - 10);
+			ctx.drawImage(singletons.getSpriteStore().get(Paths.sprites + "/ideas/choking.png"), x, y - 10);
 		} else if (this.hasOwnProperty("eating")) {
-			ctx.drawImage(stendhal.data.sprites.get(stendhal.paths.sprites + "/ideas/eat.png"), x, y - 10);
+			ctx.drawImage(singletons.getSpriteStore().get(Paths.sprites + "/ideas/eat.png"), x, y - 10);
 		}
 		// NPC and pet idea icons
 		if (this.hasOwnProperty("idea")) {
-			const idea = stendhal.paths.sprites + "/ideas/" + this["idea"] + ".png";
-			const ani = stendhal.data.sprites.animations.idea[this["idea"]];
+			const idea = Paths.sprites + "/ideas/" + this["idea"] + ".png";
+			const ani = singletons.getSpriteStore().animations.idea[this["idea"]];
 			if (ani) {
 				drawAnimatedIcon(idea, ani.delay, x + ani.offsetX * this["width"],
 						y - this["drawHeight"] + ani.offsetY);
 			} else {
-				ctx.drawImage(stendhal.data.sprites.get(idea), x + 32 * this["width"],
+				ctx.drawImage(singletons.getSpriteStore().get(idea), x + 32 * this["width"],
 						y - this["drawHeight"]);
 			}
 		}
 		if (this.hasOwnProperty("away")) {
-			drawAnimatedIcon(stendhal.paths.sprites + "/ideas/away.png", 1500, x + 32 * this["width"], y - this["drawHeight"]);
+			drawAnimatedIcon(Paths.sprites + "/ideas/away.png", 1500, x + 32 * this["width"], y - this["drawHeight"]);
 		}
 		if (this.hasOwnProperty("grumpy")) {
-			drawAnimatedIcon(stendhal.paths.sprites + "/ideas/grumpy.png", 1000, x + 5, y - this["drawHeight"]);
+			drawAnimatedIcon(Paths.sprites + "/ideas/grumpy.png", 1000, x + 5, y - this["drawHeight"]);
 		}
 		if (this.hasOwnProperty("last_player_kill_time")) {
-			drawAnimatedIconWithFrames(stendhal.paths.sprites + "/ideas/pk.png", 12, 300, x, y - this["drawHeight"]);
+			drawAnimatedIconWithFrames(Paths.sprites + "/ideas/pk.png", 12, 300, x, y - this["drawHeight"]);
 		}
 		// status affects
 		if (this.hasOwnProperty("poisoned")) {
-			drawAnimatedIcon(stendhal.paths.sprites + "/status/poison.png", 100, x + 32 * this["width"] - 10, y - this["drawHeight"]);
+			drawAnimatedIcon(Paths.sprites + "/status/poison.png", 100, x + 32 * this["width"] - 10, y - this["drawHeight"]);
 		}
 		if (this.hasOwnProperty("status_confuse")) {
-			drawAnimatedIcon(stendhal.paths.sprites + "/status/confuse.png", 200, x + 32 * this["width"] - 14, y - this["drawHeight"] + 16);
+			drawAnimatedIcon(Paths.sprites + "/status/confuse.png", 200, x + 32 * this["width"] - 14, y - this["drawHeight"] + 16);
 		}
 		if (this.hasOwnProperty("status_shock")) {
-			drawAnimatedIcon(stendhal.paths.sprites + "/status/shock.png", 200, x + 32 * this["width"] - 25, y - 32, 38);
+			drawAnimatedIcon(Paths.sprites + "/status/shock.png", 200, x + 32 * this["width"] - 25, y - 32, 38);
 		}
 		// NPC job icons
 		let nextX = x;
 		if (this.hasOwnProperty("job_healer")) {
-			ctx.drawImage(stendhal.data.sprites.get(stendhal.paths.sprites + "/status/healer.png"), nextX, y - 10);
+			ctx.drawImage(singletons.getSpriteStore().get(Paths.sprites + "/status/healer.png"), nextX, y - 10);
 			nextX += 12;
 		}
 		if (this.hasOwnProperty("job_merchant")) {
-			ctx.drawImage(stendhal.data.sprites.get(stendhal.paths.sprites + "/status/merchant.png"), nextX, y - 10);
+			ctx.drawImage(singletons.getSpriteStore().get(Paths.sprites + "/status/merchant.png"), nextX, y - 10);
 			nextX += 12;
 		}
 		if (this.hasOwnProperty("job_producer")) {
-			ctx.drawImage(stendhal.data.sprites.get(stendhal.paths.sprites + "/status/producer.png"), nextX, y - 16);
+			ctx.drawImage(singletons.getSpriteStore().get(Paths.sprites + "/status/producer.png"), nextX, y - 16);
 			nextX += 16;
 		}
 	}
@@ -474,11 +474,11 @@ export class RPEntity extends ActiveEntity {
 	 * Draw colored ellipses (or rectangles on browsers that do not support
 	 * ellipses) when the entity is being attacked, or is attacking the user.
 	 */
-	drawCombat(ctx: CanvasRenderingContext2D) {
+	drawCombat(ctx: RenderingContext2D) {
 		if (this.attackers.size > 0) {
 			ctx.lineWidth = 1;
 			/*
-			 * As of 2015-9-15 CanvasRenderingContext2D.ellipse() is not
+			 * As of 2015-9-15 RenderingContext2D.ellipse() is not
 			 * supported in most browsers. Fall back to rectangles on these.
 			 * Also on Chrome 45.0.2454.85 ellipse() does not seem to support
 			 * the begin angle parameter correctly, nor does the stroke
@@ -539,7 +539,7 @@ export class RPEntity extends ActiveEntity {
 	 * the coordinates where to start floating. The method should return true
 	 * when the floater should be removed.
 	 */
-	drawFloaters(ctx: CanvasRenderingContext2D) {
+	drawFloaters(ctx: RenderingContext2D) {
 		var centerX = (this["_x"] + this["width"] / 2) * 32;
 		var topY = (this["_y"] + 1) * 32 - this["drawHeight"];
 		// Grab an unchanging copy
@@ -555,10 +555,10 @@ export class RPEntity extends ActiveEntity {
 	}
 
 	/**
-	 * @param {CanvasRenderingContext2D} ctx
+	 * @param {RenderingContext2D} ctx
 	 * @param {Image} image
 	 */
-	drawSpriteImage(ctx: CanvasRenderingContext2D, image: CanvasImageSource & ImageWithDimensions) {
+	drawSpriteImage(ctx: RenderingContext2D, image: CanvasImageSource & ImageWithDimensions) {
 		var localX = this["_x"] * 32;
 		var localY = this["_y"] * 32;
 		if (image.height) { // image.complete is true on missing image files
@@ -610,7 +610,7 @@ export class RPEntity extends ActiveEntity {
 		}
 	}
 
-	drawTop(ctx: CanvasRenderingContext2D) {
+	drawTop(ctx: RenderingContext2D) {
 		var localX = this["_x"] * 32;
 		var localY = this["_y"] * 32;
 		this.drawFloaters(ctx);
@@ -618,7 +618,7 @@ export class RPEntity extends ActiveEntity {
 		this.drawTitle(ctx, localX, localY + this.statusBarYOffset);
 	}
 
-	drawHealthBar(ctx: CanvasRenderingContext2D, x: number, y: number) {
+	drawHealthBar(ctx: RenderingContext2D, x: number, y: number) {
 		var drawX = x + ((this["width"] * 32) - this["drawWidth"]) / 2;
 		var drawY = y + (this["height"] * 32) - this["drawHeight"]
 				- HEALTH_BAR_HEIGHT + this.titleDrawYOffset;
@@ -655,16 +655,19 @@ export class RPEntity extends ActiveEntity {
 		}
 	}
 
-	drawTitle(ctx: CanvasRenderingContext2D, x: number, y: number) {
+	drawTitle(ctx: RenderingContext2D, x: number, y: number) {
 		if (this.titleTextSprite) {
 			let textMetrics = this.titleTextSprite.getTextMetrics(ctx);
+			if (!textMetrics) {
+				throw new Error("textMetrics is undefined");
+			}
 			var drawY = y + (this["height"] * 32) - this["drawHeight"]
 					- HEALTH_BAR_HEIGHT + this.titleDrawYOffset;
 			this.titleTextSprite.draw(ctx, x + (this["width"] * 32 - textMetrics.width) / 2, drawY - 5 - HEALTH_BAR_HEIGHT);
 		}
 	}
 
-	drawAttack(ctx: CanvasRenderingContext2D) {
+	drawAttack(ctx: RenderingContext2D) {
 		if (!this.attackSprite) {
 			return;
 		}
@@ -684,10 +687,10 @@ export class RPEntity extends ActiveEntity {
 	/**
 	 * Draws an animation over entity sprite.
 	 *
-	 * @param {CanvasRenderingContext2D} ctx
+	 * @param {RenderingContext2D} ctx
 	 *   Canvas context to draw on.
 	 */
-	private drawOverlayAnimation(ctx: CanvasRenderingContext2D) {
+	private drawOverlayAnimation(ctx: RenderingContext2D) {
 		if (this.overlay && this.overlay.draw(ctx, this["drawOffsetX"], this["drawOffsetY"],
 				this["drawWidth"], this["drawHeight"])) {
 			// overlay sprite expired
@@ -710,21 +713,21 @@ export class RPEntity extends ActiveEntity {
 	}
 
 	onDamaged(_source: Entity, damage: number) {
-		this.attackResult = this.createResultIcon(stendhal.paths.sprites + "/combat/hitted.png");
+		this.attackResult = this.createResultIcon(Paths.sprites + "/combat/hitted.png");
 		var sounds = ["attack-melee-01", "attack-melee-02", "attack-melee-03", "attack-melee-04", "attack-melee-05", "attack-melee-06", "attack-melee-07"];
 		var index = Math.floor(Math.random() * Math.floor(sounds.length));
 		stendhal.sound.playLocalizedEffect(this["_x"], this["_y"], 20, 3, sounds[index], 1);
 	}
 
 	onBlocked(_source: Entity) {
-		this.attackResult = this.createResultIcon(stendhal.paths.sprites + "/combat/blocked.png");
+		this.attackResult = this.createResultIcon(Paths.sprites + "/combat/blocked.png");
 		var sounds = ["clang-metallic-1", "clang-dull-1"];
 		var index = Math.floor(Math.random() * Math.floor(sounds.length));
 		stendhal.sound.playLocalizedEffect(this["_x"], this["_y"], 20, 3, sounds[index], 1);
 	}
 
 	onMissed(_source: Entity) {
-		this.attackResult = this.createResultIcon(stendhal.paths.sprites + "/combat/missed.png");
+		this.attackResult = this.createResultIcon(Paths.sprites + "/combat/missed.png");
 	}
 
 	protected onHPChanged(change: number) {
@@ -779,8 +782,8 @@ export class RPEntity extends ActiveEntity {
 	createResultIcon(imagePath: string) {
 		return {
 			initTime: Date.now(),
-			image: stendhal.data.sprites.get(imagePath),
-			draw: function(ctx: CanvasRenderingContext2D, x: number, y: number) {
+			image: singletons.getSpriteStore().get(imagePath),
+			draw: function(ctx: RenderingContext2D, x: number, y: number) {
 				ctx.drawImage(this.image, x, y);
 				return (Date.now() - this.initTime > 1200);
 			}
@@ -810,12 +813,12 @@ export class RPEntity extends ActiveEntity {
 			const imagePath = Nature.VALUES[nature].getWeaponPath(weapon);
 			/*
 			if (weapon.startsWith("blade_strike")) {
-				this.attackSprite = new BarehandAttackSprite(this, stendhal.data.sprites.get(imagePath));
+				this.attackSprite = new BarehandAttackSprite(this, singletons.getSpriteStore().get(imagePath));
 			} else {
 				this.attackSprite = new MeleeAttackSprite(this, imagePath);
 			}
 			*/
-			this.attackSprite = new BarehandAttackSprite(this, stendhal.data.sprites.get(imagePath));
+			this.attackSprite = new BarehandAttackSprite(this, singletons.getSpriteStore().get(imagePath));
 		}
 	}
 
@@ -844,10 +847,11 @@ export class RPEntity extends ActiveEntity {
 		}
 	}
 
-	override destroy(_obj: Entity) {
+	override destroy(obj: Entity) {
 		if (this._target) {
 			this._target.onAttackStopped(this);
 		}
+		super.destroy(obj);
 	}
 
 	/**

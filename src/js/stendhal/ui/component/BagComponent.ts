@@ -11,7 +11,7 @@
 
 import { ItemInventoryComponent } from "./ItemInventoryComponent";
 
-declare var marauroa: any;
+import { marauroa } from "marauroa"
 
 
 export class BagComponent extends ItemInventoryComponent {

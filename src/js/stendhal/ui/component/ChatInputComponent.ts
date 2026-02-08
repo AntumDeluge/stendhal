@@ -9,8 +9,7 @@
  *                                                                         *
  ***************************************************************************/
 
-declare let marauroa: any;
-declare let stendhal: any;
+import { marauroa } from "marauroa"
 
 import { ChatPanel } from "../ChatPanel";
 import { ui } from "../UI";
@@ -21,6 +20,8 @@ import { Component } from "../toolkit/Component";
 import { singletons } from "../../SingletonRepo";
 import { ChatCompletionHelper } from "../../util/ChatCompletionHelper";
 import { KeyCode } from "../../util/KeyCode";
+import { Paths } from "../../data/Paths";
+import { stendhal } from "stendhal";
 
 
 /**
@@ -86,7 +87,7 @@ export class ChatInputComponent extends Component {
 			btn_emoji.innerText = "☺";
 		} else {
 			// set image for emoji button
-			btn_emoji.appendChild(stendhal.data.sprites.get(stendhal.paths.sprites + "/emoji/smile.png").cloneNode());
+			btn_emoji.appendChild(singletons.getSpriteStore().get(Paths.sprites + "/emoji/smile.png").cloneNode());
 		}
 	}
 

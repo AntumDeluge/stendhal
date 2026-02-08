@@ -9,6 +9,8 @@
  *                                                                         *
  ***************************************************************************/
 
+import { CorpseSlot } from "./CorpseSlot";
+import { RenderingContext2D } from "util/Types";
 import { ActivityIndicatorSprite } from "../sprite/ActivityIndicatorSprite";
 
 import { ItemInventoryComponent } from "../ui/component/ItemInventoryComponent";
@@ -17,9 +19,11 @@ import { FloatingWindow } from "../ui/toolkit/FloatingWindow";
 import { Chat } from "../util/Chat";
 
 import { PopupInventory } from "./PopupInventory";
+import { Paths } from "../data/Paths";
+import { singletons } from "../SingletonRepo";
 
-declare var marauroa: any;
-declare var stendhal: any;
+import { marauroa, RPObject, RPZone } from "marauroa"
+import { stendhal } from "../stendhal";
 
 export class Corpse extends PopupInventory {
 
@@ -44,13 +48,13 @@ export class Corpse extends PopupInventory {
 		const bloodEnabled = stendhal.config.getBoolean("effect.blood");
 
 		if (bloodEnabled && (key === "image")) {
-			this.sprite.filename = stendhal.paths.sprites + "/corpse/" + value + ".png";
+			this.sprite.filename = Paths.sprites + "/corpse/" + value + ".png";
 		} else if (!bloodEnabled && (key === "harmless_image")) {
-			this.sprite.filename = stendhal.paths.sprites + "/corpse/" + value + ".png";
+			this.sprite.filename = Paths.sprites + "/corpse/" + value + ".png";
 		}
 	}
 
-	override draw(ctx: CanvasRenderingContext2D) {
+	override draw(ctx: RenderingContext2D) {
 		if (!this.sprite) {
 			return;
 		}
@@ -60,7 +64,7 @@ export class Corpse extends PopupInventory {
 			const tileW = stendhal.ui.gamewindow.targetTileWidth;
 			const tileH = stendhal.ui.gamewindow.targetTileHeight;
 			if (this.sprite.width == undefined || this.sprite.height == undefined) {
-				const image = stendhal.data.sprites.get(this.sprite.filename);
+				const image = singletons.getSpriteStore().get(this.sprite.filename);
 				if (image.complete) {
 					this.sprite.width = image.width < tileW ? tileW : image.width;
 					this.sprite.height = image.height < tileH ? tileH : image.height;
@@ -78,23 +82,8 @@ export class Corpse extends PopupInventory {
 	}
 
 	override createSlot(name: string) {
-		var slot = marauroa.util.fromProto(marauroa.rpslotFactory["_default"], {
-			add: function(object: any) {
-				marauroa.rpslotFactory["_default"].add.apply(this, arguments);
-				if (this._objects.length > 0) {
-					this._parent.autoOpenIfDesired();
-				}
-			},
-
-			del: function(key: any) {
-				marauroa.rpslotFactory["_default"].del.apply(this, arguments);
-				if (this._objects.length == 0) {
-					this._parent.closeCorpseInventory();
-				}
-			}
-		});
+		let slot = new CorpseSlot();
 		slot._name = name;
-		slot._objects = [];
 		slot._parent = this;
 		return slot;
 	}
@@ -168,18 +157,18 @@ export class Corpse extends PopupInventory {
 
 	override getCursor(_x: number, _y: number) {
 		if (this.isEmpty()) {
-			return "url(" + stendhal.paths.sprites + "/cursor/emptybag.png) 1 3, auto";
+			return "url(" + Paths.sprites + "/cursor/emptybag.png) 1 3, auto";
 		}
 
 		// owner
 		if (!this["corpse_owner"] || (this["corpse_owner"] == marauroa.me["_name"])) {
-			return "url(" + stendhal.paths.sprites + "/cursor/bag.png) 1 3, auto";
+			return "url(" + Paths.sprites + "/cursor/bag.png) 1 3, auto";
 		}
 
 		if ((stendhal.data.group.lootmode === "shared") && (stendhal.data.group.members[this["corpse_owner"]])) {
-			return "url(" + stendhal.paths.sprites + "/cursor/bag.png) 1 3, auto";
+			return "url(" + Paths.sprites + "/cursor/bag.png) 1 3, auto";
 		}
-		return "url(" + stendhal.paths.sprites + "/cursor/lockedbag.png) 1 3, auto";
+		return "url(" + Paths.sprites + "/cursor/lockedbag.png) 1 3, auto";
 	}
 
 	public override isDraggable(): boolean {
@@ -188,5 +177,10 @@ export class Corpse extends PopupInventory {
 
 	private isEmpty() {
 		return !this["content"] || this["content"]._objects.length === 0;
+	}
+
+	override destroy(parent: RPObject|RPZone): void {
+		this.indicator?.free();
+		super.destroy(parent);
 	}
 }

@@ -12,8 +12,11 @@
 
 import { AttackSprite } from "./AttackSprite";
 import { RPEntity } from "../../entity/RPEntity";
+import { RenderingContext2D } from "util/Types";
+import { Paths } from "../../data/Paths";
+import { singletons } from "../../SingletonRepo";
 
-declare var stendhal: any;
+import { stendhal } from "../../stendhal";
 
 
 export class RangedAttackSprite extends AttackSprite {
@@ -22,7 +25,7 @@ export class RangedAttackSprite extends AttackSprite {
 	private readonly targetX: number;
 	private readonly targetY: number;
 	private readonly color: string;
-	private readonly image = stendhal.data.sprites.get(stendhal.paths.sprites + "/combat/ranged.png");
+	private readonly image = singletons.getSpriteStore().get(Paths.sprites + "/combat/ranged.png");
 	private readonly weapon?: string;
 
 
@@ -35,7 +38,7 @@ export class RangedAttackSprite extends AttackSprite {
 		this.weapon = weapon;
 	}
 
-	override draw(ctx: CanvasRenderingContext2D, x: number, y: number, entityWidth: number,
+	override draw(ctx: RenderingContext2D, x: number, y: number, entityWidth: number,
 			entityHeight: number): boolean {
 		// FIXME: alignment with entity is not correct
 

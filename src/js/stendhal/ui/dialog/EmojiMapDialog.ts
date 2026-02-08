@@ -11,9 +11,10 @@
 
 import { DialogContentComponent } from "../toolkit/DialogContentComponent";
 import { singletons } from "../../SingletonRepo";
+import { Paths } from "../../data/Paths";
 
-declare var marauroa: any;
-declare var stendhal: any;
+import { marauroa } from "marauroa"
+import { stendhal } from "../../stendhal";
 
 
 export class EmojiMapDialog extends DialogContentComponent {
@@ -83,7 +84,7 @@ export class EmojiMapDialog extends DialogContentComponent {
 			const button = document.createElement("button");
 			button.classList.add("shortcut-button", "emoji-text");
 			if (!this.sysEmojis) {
-				button.appendChild(stendhal.data.sprites.get(stendhal.paths.sprites + "/emoji/" + emoji + ".png").cloneNode());
+				button.appendChild(singletons.getSpriteStore().get(Paths.sprites + "/emoji/" + emoji + ".png").cloneNode());
 			} else {
 				button.innerText = emoji;
 			}
